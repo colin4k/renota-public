@@ -1,7 +1,7 @@
 # Renota — Privacy Policy
 
-**Last Updated:** 2026-07-21
-**Effective Date:** 2026-07-21
+**Last Updated:** 2026-11-09
+**Effective Date:** 2026-11-09
 
 Renota ("we", "our", "the extension") is a Chrome extension that helps you capture text you read on the web and use it as personal context for AI-assisted writing. This Privacy Policy explains what data Renota handles, how it is used, and the choices you have.
 
@@ -11,7 +11,7 @@ By installing or using Renota, you agree to this Privacy Policy. If you do not a
 
 ## 1. Scope
 
-This policy applies to the Renota Chrome extension (the "Extension") distributed through the Chrome Web Store and any associated first-party infrastructure that the Extension communicates with, specifically the telemetry endpoint described in Section 4.
+This policy applies to the Renota Chrome extension (the "Extension") distributed through the Chrome Web Store and any associated first-party infrastructure that the Extension communicates with — specifically the telemetry endpoint described in Section 4 and the optional cloud sync service described in Section 3.1. The same cloud sync service is used by the Renota Zotero plugin and the Renota Android app ("FloatReader"), and this policy covers that service for all three clients.
 
 It does **not** apply to third-party services that you choose to connect to through Renota (such as LLM providers). When you configure an LLM provider, your prompts and the response from that provider are governed by that provider's own privacy policy. Section 5 lists the providers we currently support and links to their policies.
 
@@ -31,7 +31,7 @@ We want to be clear about what we do **not** do:
 
 ## 3. Data Stored Locally in Your Browser
 
-The following data is stored **only in your browser** (using `chrome.storage.local` and `IndexedDB`). It is not transmitted to our servers, and we have no technical ability to read it.
+The following data is stored **only in your browser** (using `chrome.storage.local` and `IndexedDB`). It is not transmitted to our servers, and we have no technical ability to read it — **unless you explicitly turn on Cloud Sync**, described in Section 3.1. Cloud Sync is off by default and requires an explicit sign-in.
 
 | Data | Purpose | Location |
 |------|---------|----------|
@@ -46,6 +46,32 @@ The following data is stored **only in your browser** (using `chrome.storage.loc
 You can inspect, export, or delete all of this data at any time. See Section 7 for instructions.
 
 ---
+
+### 3.1 Cloud Sync (optional, off by default)
+
+Cloud Sync keeps your knowledge base consistent across the Chrome extension, the Zotero plugin and the Android app. It is entirely opt-in: nothing is uploaded until you sign in with your email address on a device.
+
+**How it works.** You enter your email in Settings → Cloud Sync and receive an 8-character login code. Verifying the code issues a per-device access token (stored in `chrome.storage.local`). While signed in, the clients periodically call our sync endpoints (`/v1/sync/pull`, `/v1/sync/push`) to exchange knowledge entries.
+
+**What is uploaded** — only knowledge entries (the data listed in Section 3 that is part of your knowledge base):
+
+| Data | Purpose |
+|------|---------|
+| Clip content and surrounding context | So the entry is available on your other devices |
+| Source metadata (URL, title, domain, Zotero item/attachment keys, Android app name) | Attribution and navigation back to the source |
+| Tags, concepts, derived-from links, language, timestamps | Search quality and conflict resolution |
+| A SHA-256 hash of each entry's content | Duplicate detection during sync |
+| Delete markers ("tombstones") | So a deletion on one device propagates instead of resurrecting |
+
+**What is never uploaded:**
+
+- Your LLM API keys. They stay on each device (the Android app encrypts them with the system keystore) and go straight to your chosen provider.
+- Your browsing history, page content you did not save, or anything from other tabs or apps.
+- Screenshots or OCR images from the Android app — only the text you explicitly save.
+
+**Where it is stored.** A managed PostgreSQL database operated on our behalf by our hosting providers (Vercel and a managed Postgres provider), in the Asia-Pacific region. Entries are stored as plain text on the server, so this is **not** end-to-end encrypted: we could technically read them. Do not sync content you are unwilling to store that way. Delete markers are purged after 90 days.
+
+**Your controls.** Sign out on any device to stop syncing; the local copy remains. Deleting an entry propagates to your other devices. To delete your account and all cloud data, use the delete-account API (`DELETE /v1/me` with a valid device token) or contact us at `support@werenota.com`; deletion cascades to every entry, device token and login record belonging to the account.
 
 ## 4. Anonymous Telemetry
 
@@ -131,11 +157,13 @@ We do **not** inject advertising, modify page content, or exfiltrate data to rem
 
 - Open **Settings → Data** and click **"Clear all local data"** to remove the knowledge base, settings, and install ID from this browser.
 - Uninstalling the Extension also removes all locally stored data.
+- If you enabled Cloud Sync: **Settings → Cloud Sync → Sign out** stops syncing on that device. To remove the data from our servers, delete your account (`DELETE /v1/me`) or contact us at `support@werenota.com`.
 - To request deletion of any telemetry data we may have received, contact us at `support@werenota.com`.
 
 ### 7.3 Disable features
 
 - Turn off telemetry: see Section 4.4.
+- Turn off cloud sync: **Settings → Cloud Sync → Sign out** (or untick "Enable cloud sync").
 - Turn off the right-click menu: open **Settings → General**.
 - Turn off the in-page toolbar: open **Settings → Toolbar**.
 
@@ -152,6 +180,7 @@ If you are a California resident, you have the right to know, delete, correct, a
 ## 8. Data Retention
 
 - **Local data** (IndexedDB / `chrome.storage.local`): retained until you clear it or uninstall the Extension.
+- **Cloud sync data**: retained while your account exists. Delete markers are purged after 90 days. Deleting your account removes all entries, devices and login records.
 - **Telemetry events** on `telemetry.contextflow.app`: retained for up to **90 days** in aggregate form, then deleted. They are never linked to an individual.
 - **LLM prompts and responses**: handled by the third-party provider you configured. Please refer to their retention policies (Section 5).
 
