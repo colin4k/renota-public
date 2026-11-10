@@ -1,0 +1,21 @@
+{
+  "name": "renota-public",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Renota (睿记) public website — product pages for the Chrome extension, Zotero plugin and Android app",
+  "scripts": {
+    "build": "tsx src/build.ts",
+    "dev": "tsx src/build.ts --serve",
+    "preview": "tsx src/build.ts --serve",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "@types/markdown-it": "^14.1.2",
+    "@types/node": "^22.10.2",
+    "markdown-it": "^14.1.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.8.3"
+  }
+}
