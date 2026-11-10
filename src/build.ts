@@ -123,6 +123,20 @@ const faviconSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <path d="M22 46V18h12.5c6 0 9.5 3.2 9.5 8.2 0 4.1-2.4 6.9-6.3 7.8L45 46h-7.4l-6.4-11.2h-3V46H22Zm6.2-16h5.6c2.6 0 4.2-1.3 4.2-3.5 0-2.2-1.6-3.5-4.2-3.5h-5.6V30Z" fill="#fff"/>
 </svg>`;
 
+/**
+ * SVG → PNG。resvg 是原生模块，在少数平台上可能加载失败；
+ * 失败时只是没有预览图，不应该让整站构建挂掉。
+ */
+async function rasterize(svg: string, width: number): Promise<Buffer | null> {
+  try {
+    const { Resvg } = await import("@resvg/resvg-js");
+    return new Resvg(svg, { fitTo: { mode: "width", value: width } }).render().asPng();
+  } catch (error) {
+    console.warn(`! 无法生成预览图（${width}px）：${(error as Error).message}`);
+    return null;
+  }
+}
+
 async function build(): Promise<void> {
   await rm(dist, { recursive: true, force: true });
   await mkdir(path.join(dist, "assets"), { recursive: true });
@@ -159,7 +173,6 @@ async function build(): Promise<void> {
 
   // 社交预览图：优先复用 public/og/ 里已生成好的 PNG（提交进仓库），
   // 这样在缺少中文字体的 CI 镜像上也不会渲染出方框。
-  const { Resvg } = await import("@resvg/resvg-js");
   for (const page of pages) {
     for (const locale of locales) {
       const prebuilt = path.join(root, "public/og", `${page}-${locale}.png`);
@@ -182,8 +195,8 @@ async function build(): Promise<void> {
             : c.product[page].tagline;
 
       const svg = renderOgSvg({ title, subtitle, brand: c.siteName, locale });
-      const png = new Resvg(svg, { fitTo: { mode: "width", value: 1200 } }).render().asPng();
-      await writeFile(path.join(dist, "og", `${page}-${locale}.png`), png);
+      const png = await rasterize(svg, 1200);
+      if (png) await writeFile(path.join(dist, "og", `${page}-${locale}.png`), png);
     }
   }
 
@@ -196,8 +209,8 @@ async function build(): Promise<void> {
   <text x="90" y="120" font-family="Helvetica, Arial, sans-serif" font-size="96" font-weight="700"
         fill="#ffffff" text-anchor="middle">R</text>
 </svg>`;
-  const iconPng = new Resvg(iconSvg, { fitTo: { mode: "width", value: 180 } }).render().asPng();
-  await writeFile(path.join(dist, "apple-touch-icon.png"), iconPng);
+  const iconPng = await rasterize(iconSvg, 180);
+  if (iconPng) await writeFile(path.join(dist, "apple-touch-icon.png"), iconPng);
 
   console.log(`✔ built ${entries.length} pages for ${locales.length} locale(s) → dist/`);
   for (const entry of entries) console.log(`  ${entry.path}`);
