@@ -548,6 +548,8 @@ export const en = {
       "Prompts and the text they contain go directly to the model provider you configured.",
       "API keys never leave your device and are never uploaded.",
       "Cloud sync is off by default. If you enable it, knowledge entries are stored on our server so your other devices can read them.",
+      "The Android app on Google Play uses no Accessibility Service: the floating ball uses the system overlay permission, and screen capture goes through Android's MediaProjection consent dialog.",
+      "Screenshots stay on your phone. OCR runs on the device, and only the text you choose to save is sent to the model provider you configured.",
       "You can delete your account and all synced data at any time.",
     ],
     englishNote:

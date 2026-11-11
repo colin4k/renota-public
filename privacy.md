@@ -1,17 +1,17 @@
 # Renota — Privacy Policy
 
-**Last Updated:** 2026-11-09
-**Effective Date:** 2026-11-09
+**Last Updated:** 2026-11-11
+**Effective Date:** 2026-11-11
 
-Renota ("we", "our", "the extension") is a Chrome extension that helps you capture text you read on the web and use it as personal context for AI-assisted writing. This Privacy Policy explains what data Renota handles, how it is used, and the choices you have.
+Renota ("we", "our", "the apps") is a set of apps — a Chrome extension, a Zotero plugin and an Android app — that help you capture text you read and use it as personal context for AI-assisted writing. This Privacy Policy explains what data Renota handles, how it is used, and the choices you have.
 
-By installing or using Renota, you agree to this Privacy Policy. If you do not agree, please uninstall the extension.
+By installing or using Renota, you agree to this Privacy Policy. If you do not agree, please stop using it and uninstall the apps.
 
 ---
 
 ## 1. Scope
 
-This policy applies to the Renota Chrome extension (the "Extension") distributed through the Chrome Web Store and any associated first-party infrastructure that the Extension communicates with — specifically the telemetry endpoint described in Section 4 and the optional cloud sync service described in Section 3.1. The same cloud sync service is used by the Renota Zotero plugin and the Renota Android app ("FloatReader"), and this policy covers that service for all three clients.
+This policy applies to all three Renota clients — the Chrome extension distributed through the Chrome Web Store, the Zotero plugin, and the Android app distributed through Google Play or as a direct download — together with the first-party infrastructure they communicate with: specifically the telemetry endpoint described in Section 4 and the optional cloud sync service described in Section 3.1. The same cloud sync service is used by all three clients, and this policy covers that service for all of them.
 
 It does **not** apply to third-party services that you choose to connect to through Renota (such as LLM providers). When you configure an LLM provider, your prompts and the response from that provider are governed by that provider's own privacy policy. Section 5 lists the providers we currently support and links to their policies.
 
@@ -131,6 +131,8 @@ If you configure a custom base URL, you are responsible for reviewing that provi
 
 ## 6. Permissions Explained
 
+### 6.1 Chrome extension
+
 Chrome requires us to declare the permissions we use. Here is why we use each one:
 
 | Permission | Reason |
@@ -144,6 +146,28 @@ Chrome requires us to declare the permissions we use. Here is why we use each on
 | `<all_urls>` host permission | Allow the toolbar and right-click menu to work on every site you read |
 
 We do **not** inject advertising, modify page content, or exfiltrate data to remote servers beyond the third-party endpoints listed above.
+
+### 6.2 Android app
+
+The Android app is distributed through Google Play and, separately, as a direct download. The Google Play build declares the following permissions:
+
+| Permission | Reason |
+|------------|--------|
+| `SYSTEM_ALERT_WINDOW` ("Display over other apps") | Draw the floating ball on top of the app you are reading |
+| `FOREGROUND_SERVICE`, `FOREGROUND_SERVICE_MEDIA_PROJECTION` | Keep the capture session alive while the floating ball is visible |
+| `POST_NOTIFICATIONS` | Show the ongoing notification Android requires for a foreground service |
+| `INTERNET` | Send prompts to the model provider you configured |
+
+**The Google Play build does not request an Accessibility Service.** The floating ball is drawn with the standard system overlay permission, and screen capture uses Android's `MediaProjection` API, which shows a system consent dialog before the first capture. No accessibility-service permission appears in that build's manifest.
+
+A separate build, distributed only as a direct download from our website and never published on Google Play, offers an Accessibility-based variant that captures the screen without a consent dialog per session. If you install that build, you are asked to enable the service yourself in system settings; it reads window-title events to attribute a clip to the app it came from and does not inspect the content of other apps.
+
+### 6.3 Screen content on Android
+
+- Screenshots are processed entirely on your device and are **never uploaded to our servers**.
+- Optical character recognition (OCR) runs locally on the phone.
+- Only the text you explicitly select and save becomes a knowledge entry, and only that text is included in a prompt sent to the model provider you configured.
+- Cancelling a capture discards the screenshot; it is not written to storage.
 
 ---
 
