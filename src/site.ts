@@ -2,7 +2,7 @@
 
 export const site = {
   /** 线上域名，用于 canonical / sitemap / OG。部署到别的域名时改这一处。 */
-  url: "https://renota.app",
+  url: "https://www.werenota.com",
   /** 英文名（其余语言一律用它）。 */
   name: "Renota",
   /** 中文名。 */

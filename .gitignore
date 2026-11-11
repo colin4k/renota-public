@@ -3,3 +3,4 @@ dist/
 .vercel/
 # Claude Code local config (not for commit)
 .claude/
+.cloudflare/
