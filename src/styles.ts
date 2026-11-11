@@ -176,8 +176,7 @@ p { margin: 0 0 1em; }
 .faq-answer { padding: 0 0 14px; }
 .faq-answer p { margin: 0; color: var(--muted); }
 
-.install-grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin: 20px 0; }
-.install-card { display: flex; flex-direction: column; gap: 10px; }
+.install-card { display: flex; flex-direction: column; gap: 10px; margin: 20px 0; max-width: 420px; }
 .install-card .btn { align-self: flex-start; margin-top: auto; }
 
 .cta-band { padding: 72px 0; text-align: center; background: linear-gradient(180deg, var(--bg-soft), var(--bg)); border-top: 1px solid var(--border); }

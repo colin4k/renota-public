@@ -170,11 +170,9 @@ export function renderProduct(locale: Locale, page: ProductKey): PageMeta {
   const p = c.product[page];
   const seo = c.seo[page];
   const meta = PRODUCT_META[page];
-  // 商店还没上架时，主按钮指向源码构建，避免「写着商店、点开却是 GitHub」
-  const storeReady = page !== "chrome" || Boolean(site.links.chromeStore);
-  const primaryHref = storeReady ? meta.download : site.github.chrome;
-  const primaryLabel = storeReady ? p.install.primary.label : p.install.secondary.label;
-  const primaryNote = storeReady ? p.install.primary.note : p.install.secondary.note;
+  const primaryHref = meta.download;
+  const primaryLabel = p.install.primary.label;
+  const primaryNote = p.install.primary.note;
 
   const body = `
     ${breadcrumbs(pagePath(locale, "home"), c.nav.home, p.name)}
@@ -208,17 +206,10 @@ export function renderProduct(locale: Locale, page: ProductKey): PageMeta {
     ${section(
       p.install.title,
       `<p class="body-text">${escapeHtml(p.install.body)}</p>
-      <div class="install-grid">
-        <div class="card install-card">
-          <h3>${escapeHtml(primaryLabel)}</h3>
-          <p class="muted">${escapeHtml(primaryNote)}</p>
-          <a class="btn primary" href="${escapeHtml(primaryHref)}" rel="noopener">${escapeHtml(c.common.install)}</a>
-        </div>
-        <div class="card install-card">
-          <h3>${escapeHtml(p.install.secondary.label)}</h3>
-          <p class="muted">${escapeHtml(p.install.secondary.note)}</p>
-          <a class="btn" href="${escapeHtml(site.github[page])}" rel="noopener">${escapeHtml(c.common.viewOnGithub)}</a>
-        </div>
+      <div class="card install-card">
+        <h3>${escapeHtml(primaryLabel)}</h3>
+        <p class="muted">${escapeHtml(primaryNote)}</p>
+        <a class="btn primary" href="${escapeHtml(primaryHref)}" rel="noopener">${escapeHtml(c.common.install)}</a>
       </div>
       <p class="muted small"><strong>${escapeHtml(c.common.requirements)}:</strong> ${escapeHtml(p.install.requirements)}</p>`,
       { id: "install" },
