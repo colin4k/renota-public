@@ -1,0 +1,6 @@
+# Cloudflare Pages 配置。
+# Git 集成部署时，在 Pages 控制台填同样的构建命令与输出目录即可；
+# 用 CLI 时 wrangler 会读这个文件。
+name = "renota-public"
+pages_build_output_dir = "dist"
+compatibility_date = "2024-11-01"

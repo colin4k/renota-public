@@ -15,9 +15,23 @@ npm run build      # 只构建到 dist/
 npm run typecheck
 ```
 
-## 部署
+## 部署（Cloudflare Pages）
 
-推到 GitHub 后在 Vercel 导入即可 —— `vercel.json` 已声明构建命令与输出目录，不需要额外配置。
+推到 GitHub 后在 Cloudflare Pages 里连接仓库，构建配置：
+
+| 项 | 值 |
+|---|---|
+| Build command | `npm run build` |
+| Build output directory | `dist` |
+| Node version | 20 或更高 |
+
+或者用 CLI：
+
+```bash
+npx wrangler pages deploy dist --project-name renota-public
+```
+
+`wrangler.toml` 已声明输出目录；缓存与安全响应头在 `public/_headers`，会随构建复制到 `dist/`。
 
 上线前改一处域名：
 
@@ -26,6 +40,8 @@ src/site.ts  →  site.url
 ```
 
 `canonical`、`hreflang`、`sitemap.xml`、`robots.txt`、OG 图地址都由它生成，改完全站一致。
+
+> Cloudflare Pages 对 `/chrome` 会自动映射到 `/chrome/index.html`，与站内使用的 `/chrome/` 形式一致，不需要额外的重写规则。
 
 ## SEO 做了什么
 
