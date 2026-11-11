@@ -67,7 +67,6 @@ p { margin: 0 0 1em; }
 .site-nav a { color: var(--muted); font-size: 0.94rem; }
 .site-nav a:hover, .site-nav a[aria-current="page"] { color: var(--text); text-decoration: none; }
 .site-nav a[aria-current="page"] { color: var(--brand); }
-.nav-github { color: var(--muted); }
 
 .lang { position: relative; }
 .lang summary {

@@ -137,7 +137,6 @@ ${alternates(meta.page)}
       <nav class="site-nav" aria-label="Products">
         ${navLinks(meta.locale, meta.page, c)}
         <a href="${pagePath(meta.locale, "privacy")}"${meta.page === "privacy" ? ' aria-current="page"' : ""}>${escapeHtml(c.nav.privacy)}</a>
-        <a href="${site.github.chrome}" rel="noopener" class="nav-github">${escapeHtml(c.nav.github)}</a>
         ${languageSwitcher(meta.locale, meta.page, c)}
       </nav>
     </div>
