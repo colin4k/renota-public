@@ -18,7 +18,7 @@ export interface PageMeta {
   indexable?: boolean;
 }
 
-function escapeHtml(value: string): string {
+export function escapeHtml(value: string): string {
   return value
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
@@ -27,7 +27,6 @@ function escapeHtml(value: string): string {
     .replace(/'/g, "&#39;");
 }
 
-export { escapeHtml };
 
 function abs(path: string): string {
   return `${site.url}${path}`;
@@ -137,6 +136,7 @@ ${alternates(meta.page)}
       <nav class="site-nav" aria-label="Products">
         ${navLinks(meta.locale, meta.page, c)}
         <a href="${pagePath(meta.locale, "privacy")}"${meta.page === "privacy" ? ' aria-current="page"' : ""}>${escapeHtml(c.nav.privacy)}</a>
+        <a href="${pagePath(meta.locale, "account")}"${meta.page === "account" ? ' aria-current="page"' : ""}>${escapeHtml(c.nav.account)}</a>
         ${languageSwitcher(meta.locale, meta.page, c)}
       </nav>
     </div>

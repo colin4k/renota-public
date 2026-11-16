@@ -10,7 +10,7 @@ export type Locale = (typeof locales)[number];
 export const defaultLocale: Locale = "en";
 
 /** 页面标识（文件名），同时用于 URL 段。 */
-export const pages = ["home", "chrome", "zotero", "android", "privacy"] as const;
+export const pages = ["home", "chrome", "zotero", "android", "privacy", "account"] as const;
 export type PageKey = (typeof pages)[number];
 
 export const localeLabels: Record<Locale, string> = {

@@ -9,6 +9,7 @@ import { site } from "./site.js";
 import { locales, pagePath, pages, type Locale, type PageKey } from "./i18n/locales.js";
 import { content } from "./i18n/index.js";
 import { renderPage } from "./render/layout.js";
+import { renderAccount } from "./render/account.js";
 import { renderHome, renderProduct, renderPrivacy } from "./render/pages.js";
 import { css } from "./styles.js";
 import { renderOgSvg } from "./og.js";
@@ -161,7 +162,9 @@ async function build(): Promise<void> {
         ? renderHome(entry.locale)
         : entry.page === "privacy"
           ? renderPrivacy(entry.locale, policyHtml)
-          : renderProduct(entry.locale, entry.page);
+          : entry.page === "account"
+            ? renderAccount(entry.locale)
+            : renderProduct(entry.locale, entry.page);
 
     const html = renderPage(meta);
     const file = htmlPath(entry.locale, entry.page);
@@ -169,11 +172,16 @@ async function build(): Promise<void> {
     await writeFile(file, html);
   }
 
-  await writeFile(path.join(dist, "sitemap.xml"), sitemap(entries.map((e) => ({ path: e.path, lastmod: e.lastmod }))));
+  // 账号页是功能区，不收录进站点地图，避免被索引到。
+  await writeFile(
+    path.join(dist, "sitemap.xml"),
+    sitemap(entries.filter((e) => e.page !== "account").map((e) => ({ path: e.path, lastmod: e.lastmod }))),
+  );
 
   // 社交预览图：优先复用 public/og/ 里已生成好的 PNG（提交进仓库），
   // 这样在缺少中文字体的 CI 镜像上也不会渲染出方框。
   for (const page of pages) {
+    if (page === "account") continue; // 账号页不分享，不需要社交预览图
     for (const locale of locales) {
       const prebuilt = path.join(root, "public/og", `${page}-${locale}.png`);
       if (existsSync(prebuilt)) {

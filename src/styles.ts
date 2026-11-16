@@ -179,6 +179,33 @@ p { margin: 0 0 1em; }
 .install-card { display: flex; flex-direction: column; gap: 10px; margin: 20px 0; max-width: 420px; }
 .install-card .btn { align-self: flex-start; margin-top: auto; }
 
+/* ---------- 账号页 ---------- */
+.account-hero { padding: 64px 0 8px; }
+.account { padding: 16px 0 96px; }
+.account-card { max-width: 680px; }
+.account-card h2 { margin: 0 0 12px; font-size: 1.25rem; }
+.account-card h3 { margin: 28px 0 10px; font-size: 1rem; }
+.account-status { max-width: 680px; margin: 0 0 16px; padding: 12px 16px; border-radius: 12px; border: 1px solid var(--border); }
+.account-status.ok { border-color: rgba(110, 231, 183, 0.45); color: #a7f3d0; }
+.account-status.err { border-color: rgba(248, 113, 113, 0.45); color: #fca5a5; }
+.account-form { margin: 20px 0 8px; }
+.account-form label { display: block; font-size: 0.86rem; color: var(--muted); margin-bottom: 8px; }
+.account-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.account-row input { flex: 1 1 260px; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--border); background: var(--bg-soft); color: inherit; font: inherit; }
+.account-row input:focus { outline: 2px solid var(--brand); outline-offset: 1px; }
+.account-facts { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin: 16px 0 4px; }
+.account-facts dt { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.account-facts dd { margin: 4px 0 0; font-size: 1rem; }
+.account-devices { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.account-devices li { padding: 10px 14px; border-radius: 10px; background: var(--bg-soft); font-size: 0.9rem; }
+.account-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.account-danger { margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--border); }
+.account-danger summary { cursor: pointer; color: var(--muted); font-size: 0.9rem; }
+.account-danger .btn { margin-top: 12px; }
+.btn.danger { border-color: rgba(248, 113, 113, 0.5); color: #fca5a5; }
+.btn.danger:hover { border-color: #f87171; }
+.account-back { margin-top: 32px; font-size: 0.9rem; }
+
 .cta-band { padding: 72px 0; text-align: center; background: linear-gradient(180deg, var(--bg-soft), var(--bg)); border-top: 1px solid var(--border); }
 .cta-band p { color: var(--muted); max-width: 60ch; margin: 0 auto; }
 .cta-band .cta-row { justify-content: center; }
