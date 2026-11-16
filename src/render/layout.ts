@@ -4,6 +4,13 @@ import { site } from "../site.js";
 import { content, htmlLang, ogLocale, type Content } from "../i18n/index.js";
 import { defaultLocale, locales, pagePath, pageUrl, type Locale, type PageKey } from "../i18n/locales.js";
 
+/**
+ * 样式表路径。构建时会改写为带内容哈希的文件名（styles.<hash>.css），
+ * 这样 /assets/* 的 immutable 长缓存才名副其实 —— 改了样式文件名就变，
+ * 浏览器必然重新下载，不会出现「HTML 更新了但 CSS 还是旧的」。
+ */
+export const DEFAULT_CSS_HREF = "/assets/styles.css";
+
 export interface PageMeta {
   locale: Locale;
   page: PageKey;
@@ -16,6 +23,8 @@ export interface PageMeta {
   jsonLd?: unknown[];
   /** 是否让搜索引擎索引（隐私页之外的页面都为 true） */
   indexable?: boolean;
+  /** 带内容哈希的样式表路径，由构建流程注入 */
+  cssHref?: string;
 }
 
 export function escapeHtml(value: string): string {
@@ -121,8 +130,8 @@ ${alternates(meta.page)}
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-  <link rel="preload" href="/assets/styles.css" as="style">
-  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="preload" href="${escapeHtml(meta.cssHref ?? DEFAULT_CSS_HREF)}" as="style">
+  <link rel="stylesheet" href="${escapeHtml(meta.cssHref ?? DEFAULT_CSS_HREF)}">
   ${jsonLd}
 </head>
 <body>

@@ -180,32 +180,102 @@ p { margin: 0 0 1em; }
 .install-card .btn { align-self: flex-start; margin-top: auto; }
 
 /* ---------- 账号页 ---------- */
-.account-hero { padding: 64px 0 8px; }
-.account { padding: 16px 0 96px; }
-.account-card { max-width: 680px; }
-.account-card h2 { margin: 0 0 12px; font-size: 1.25rem; }
-.account-card h3 { margin: 28px 0 10px; font-size: 1rem; }
-.account-status { max-width: 680px; margin: 0 0 16px; padding: 12px 16px; border-radius: 12px; border: 1px solid var(--border); }
-.account-status.ok { border-color: rgba(110, 231, 183, 0.45); color: #a7f3d0; }
-.account-status.err { border-color: rgba(248, 113, 113, 0.45); color: #fca5a5; }
-.account-google { display: inline-flex; align-items: center; gap: 10px; width: 100%; justify-content: center; }
-.account-form { margin: 12px 0 8px; }
-.account-form label { display: block; font-size: 0.86rem; color: var(--muted); margin-bottom: 8px; }
-.account-row { display: flex; flex-wrap: wrap; gap: 10px; }
-.account-row input { flex: 1 1 260px; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--border); background: var(--bg-soft); color: inherit; font: inherit; }
-.account-row input:focus { outline: 2px solid var(--brand); outline-offset: 1px; }
-.account-facts { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin: 16px 0 4px; }
-.account-facts dt { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
-.account-facts dd { margin: 4px 0 0; font-size: 1rem; }
-.account-devices { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
-.account-devices li { padding: 10px 14px; border-radius: 10px; background: var(--bg-soft); font-size: 0.9rem; }
-.account-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
-.account-danger { margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--border); }
-.account-danger summary { cursor: pointer; color: var(--muted); font-size: 0.9rem; }
-.account-danger .btn { margin-top: 12px; }
-.btn.danger { border-color: rgba(248, 113, 113, 0.5); color: #fca5a5; }
-.btn.danger:hover { border-color: #f87171; }
-.account-back { margin-top: 32px; font-size: 0.9rem; }
+.account-hero { padding: 72px 0 12px; }
+.account-hero h1 { font-size: 2rem; margin: 0 0 10px; }
+.account-hero .lede { margin: 0; max-width: 60ch; }
+.account { padding: 8px 0 104px; }
+
+/* 面板：窄卡片，一眼扫完 */
+.panel {
+  background: linear-gradient(180deg, var(--panel), var(--bg-soft));
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 28px;
+  max-width: 560px;
+}
+.panel-title { margin: 0 0 8px; font-size: 1.15rem; }
+.panel-lede { margin: 0 0 22px; color: var(--muted); font-size: 0.92rem; line-height: 1.65; }
+
+/* 状态提示 */
+.account-status { max-width: 560px; margin: 0 0 16px; padding: 11px 15px; border-radius: 12px;
+  border: 1px solid var(--border); font-size: 0.9rem; background: var(--bg-soft); }
+.account-status.ok { border-color: rgba(110, 231, 183, 0.4); color: #a7f3d0; }
+.account-status.err { border-color: rgba(248, 113, 113, 0.4); color: #fca5a5; }
+
+/* 第三方登录按钮：暗色底 + 品牌图标，与站点风格一致又保持识别度 */
+.provider-btn { display: flex; align-items: center; justify-content: center; gap: 10px;
+  width: 100%; padding: 12px 18px; font-weight: 600; }
+.provider-btn:hover { border-color: var(--brand); background: var(--panel); }
+.provider-icon { flex: 0 0 auto; }
+
+/* 分隔线 */
+.divider { display: flex; align-items: center; gap: 12px; margin: 20px 0;
+  color: var(--muted); font-size: 0.82rem; }
+.divider::before, .divider::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+
+/* 邮箱表单 */
+.auth-form { margin: 0; }
+.auth-form label { display: block; font-size: 0.82rem; color: var(--muted); margin-bottom: 8px; }
+.auth-input-row { display: flex; gap: 10px; }
+.auth-input-row input { flex: 1 1 auto; min-width: 0; padding: 12px 14px; border-radius: 10px;
+  border: 1px solid var(--border); background: var(--bg); color: inherit; font: inherit; }
+.auth-input-row input::placeholder { color: #5a5a70; }
+.auth-input-row input:focus { outline: 2px solid var(--brand); outline-offset: 1px; border-color: transparent; }
+.auth-input-row .btn { flex: 0 0 auto; white-space: nowrap; }
+.auth-note { margin: 14px 0 0; font-size: 0.86rem; color: var(--muted); }
+
+/* 已登录：账号栏 */
+.account-panel { max-width: 560px; }
+.account-head { display: flex; align-items: center; gap: 14px; padding-bottom: 20px;
+  border-bottom: 1px solid var(--border); }
+.account-avatar { width: 44px; height: 44px; flex: 0 0 auto; border-radius: 12px;
+  display: grid; place-items: center; font-weight: 700; font-size: 1.05rem; color: #fff;
+  background: linear-gradient(135deg, #8b7cf6, #4f3fd0); }
+.account-head-text { min-width: 0; }
+.account-email { margin: 0; font-weight: 600; font-size: 1rem; overflow-wrap: anywhere; }
+.account-since { margin: 2px 0 0; font-size: 0.82rem; color: var(--muted); }
+
+/* 统计格 */
+.account-stats { display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1px; margin: 0; background: var(--border); border-bottom: 1px solid var(--border); }
+.account-stats > div { background: var(--bg-soft); padding: 16px 18px; }
+.account-stats > div.wide { grid-column: 1 / -1; }
+.account-stats dt { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.account-stats dd { margin: 6px 0 0; font-size: 1.1rem; font-weight: 600; }
+.account-stats dd code { font-size: 0.86rem; font-weight: 400; color: var(--muted); }
+
+/* 设备列表 */
+.account-section { padding-top: 22px; }
+.account-section h3 { margin: 0 0 12px; font-size: 0.9rem; color: var(--muted); font-weight: 600; }
+.device-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.device-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+  padding: 11px 14px; border-radius: 10px; background: var(--bg); border: 1px solid var(--border); }
+.device-name { font-size: 0.92rem; }
+.device-meta { font-size: 0.8rem; color: var(--muted); white-space: nowrap; }
+.device-empty { padding: 14px; border-radius: 10px; border: 1px dashed var(--border);
+  color: var(--muted); font-size: 0.88rem; }
+
+/* 操作区 */
+.account-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px;
+  padding-top: 20px; border-top: 1px solid var(--border); }
+.account-actions .btn { font-size: 0.9rem; }
+
+/* 危险操作：默认折叠，避免误触 */
+.danger-zone { margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--border); }
+.danger-zone summary { cursor: pointer; font-size: 0.86rem; color: var(--muted); }
+.danger-zone summary:hover { color: #fca5a5; }
+.danger-body { margin-top: 12px; }
+.danger-body .btn { margin-top: 10px; font-size: 0.88rem; }
+
+.account-back { margin-top: 28px; font-size: 0.88rem; }
+
+@media (max-width: 560px) {
+  .panel { padding: 22px; }
+  .account-stats { grid-template-columns: 1fr; }
+  .account-stats > div.wide { grid-column: auto; }
+  .auth-input-row { flex-direction: column; }
+  .auth-input-row .btn { width: 100%; }
+}
 
 .cta-band { padding: 72px 0; text-align: center; background: linear-gradient(180deg, var(--bg-soft), var(--bg)); border-top: 1px solid var(--border); }
 .cta-band p { color: var(--muted); max-width: 60ch; margin: 0 auto; }

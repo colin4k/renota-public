@@ -31,47 +31,70 @@ export function renderAccount(locale: Locale): PageMeta {
       <div class="wrap">
         <p id="account-status" class="account-status" hidden></p>
 
-        <div id="signed-out" class="card account-card">
-          <h2>${escapeHtml(a.signedOut.heading)}</h2>
-          <p class="body-text">${escapeHtml(a.signedOut.body)}</p>
-          <p id="google-row" hidden>
-            <a class="btn primary account-google" id="google-signin" href="${escapeHtml(API_BASE)}/v1/auth/google?next=${encodeURIComponent(
+        <div id="signed-out" class="panel auth-panel">
+          <h2 class="panel-title">${escapeHtml(a.signedOut.heading)}</h2>
+          <p class="panel-lede">${escapeHtml(a.signedOut.body)}</p>
+
+          <div id="google-row" hidden>
+            <a class="btn provider-btn" id="google-signin" href="${escapeHtml(API_BASE)}/v1/auth/google?next=${encodeURIComponent(
               `${site.url}${pagePath(locale, "account")}`,
-            )}">${escapeHtml(a.signedOut.google)}</a>
-          </p>
-          <p class="muted small" id="google-or" hidden>${escapeHtml(a.signedOut.orEmail)}</p>
-          <form id="login-form" class="account-form" novalidate>
+            )}">
+              <svg class="provider-icon" viewBox="0 0 48 48" aria-hidden="true" width="18" height="18">
+                <path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.6l6.7-6.7C35.6 2.6 30.2 0 24 0 14.6 0 6.4 5.4 2.5 13.3l7.8 6c1.9-5.6 7.1-9.8 13.7-9.8z"/>
+                <path fill="#4285F4" d="M46.1 24.6c0-1.6-.1-3.1-.4-4.6H24v9.1h12.4c-.5 2.9-2.1 5.4-4.5 7l7.6 5.9c4.4-4.1 6.6-10.1 6.6-17.4z"/>
+                <path fill="#FBBC05" d="M10.3 28.7c-.5-1.5-.8-3-.8-4.7s.3-3.2.8-4.7l-7.8-6C.9 16.5 0 20.1 0 24s.9 7.5 2.5 10.7l7.8-6z"/>
+                <path fill="#34A853" d="M24 48c6.2 0 11.4-2 15.2-5.5l-7.6-5.9c-2.1 1.4-4.8 2.3-7.6 2.3-6.6 0-11.8-4.2-13.7-9.9l-7.8 6C6.4 42.6 14.6 48 24 48z"/>
+              </svg>
+              ${escapeHtml(a.signedOut.google)}
+            </a>
+            <div class="divider" id="google-or"><span>${escapeHtml(a.signedOut.orEmail)}</span></div>
+          </div>
+
+          <form id="login-form" class="auth-form" novalidate>
             <label for="email">${escapeHtml(a.signedOut.emailLabel)}</label>
-            <div class="account-row">
+            <div class="auth-input-row">
               <input id="email" name="email" type="email" required autocomplete="email"
                      placeholder="${escapeHtml(a.signedOut.placeholder)}" />
               <button type="submit" class="btn primary" id="login-submit">${escapeHtml(a.signedOut.send)}</button>
             </div>
           </form>
-          <p id="login-note" class="muted small" hidden></p>
+          <p id="login-note" class="auth-note" hidden></p>
         </div>
 
-        <div id="signed-in" class="card account-card" hidden>
-          <h2>${escapeHtml(a.signedIn.heading)}</h2>
-          <dl class="account-facts">
-            <div><dt>${escapeHtml(a.signedIn.emailLabel)}</dt><dd id="fact-email">—</dd></div>
+        <div id="signed-in" class="panel account-panel" hidden>
+          <header class="account-head">
+            <span class="account-avatar" aria-hidden="true">R</span>
+            <div class="account-head-text">
+              <p class="account-email" id="fact-email">—</p>
+              <p class="account-since">${escapeHtml(a.signedIn.heading)}</p>
+            </div>
+          </header>
+
+          <dl class="account-stats">
             <div><dt>${escapeHtml(a.signedIn.clipsLabel)}</dt><dd id="fact-clips">—</dd></div>
             <div><dt>${escapeHtml(a.signedIn.sessionsLabel)}</dt><dd id="fact-sessions">—</dd></div>
-            <div><dt>${escapeHtml(a.signedIn.syncEndpoint)}</dt><dd><code>${escapeHtml(API_BASE)}</code></dd></div>
+            <div class="wide">
+              <dt>${escapeHtml(a.signedIn.syncEndpoint)}</dt>
+              <dd><code id="fact-endpoint">${escapeHtml(API_BASE)}</code></dd>
+            </div>
           </dl>
 
-          <h3>${escapeHtml(a.signedIn.devicesLabel)}</h3>
-          <ul id="device-list" class="account-devices"></ul>
+          <section class="account-section">
+            <h3>${escapeHtml(a.signedIn.devicesLabel)}</h3>
+            <ul id="device-list" class="device-list"></ul>
+          </section>
 
           <div class="account-actions">
             <button type="button" class="btn" id="sign-out">${escapeHtml(a.signedIn.signOut)}</button>
             <button type="button" class="btn" id="sign-out-all">${escapeHtml(a.signedIn.signOutAll)}</button>
           </div>
 
-          <details class="account-danger">
+          <details class="danger-zone">
             <summary>${escapeHtml(a.signedIn.deleteAccount)}</summary>
-            <p class="muted small">${escapeHtml(a.signedIn.deleteWarning)}</p>
-            <button type="button" class="btn danger" id="delete-account">${escapeHtml(a.signedIn.deleteConfirm)}</button>
+            <div class="danger-body">
+              <p class="muted small">${escapeHtml(a.signedIn.deleteWarning)}</p>
+              <button type="button" class="btn danger" id="delete-account">${escapeHtml(a.signedIn.deleteConfirm)}</button>
+            </div>
           </details>
         </div>
 
@@ -151,15 +174,26 @@ const ACCOUNT_SCRIPT = String.raw`
     list.textContent = "";
     if (!data.devices || data.devices.length === 0) {
       var empty = document.createElement("li");
-      empty.className = "muted small";
+      empty.className = "device-empty";
       empty.textContent = dict.noDevices;
       list.appendChild(empty);
       return;
     }
     data.devices.forEach(function (device) {
       var li = document.createElement("li");
+      li.className = "device-row";
+
+      var main = document.createElement("span");
+      main.className = "device-name";
+      main.textContent = device.name || device.clientId;
+
+      var meta = document.createElement("span");
+      meta.className = "device-meta";
       var when = new Date(device.lastSeenAt).toISOString().slice(0, 10);
-      li.textContent = (device.name || device.clientId) + " · " + device.platform + " · " + when;
+      meta.textContent = device.platform + " · " + when;
+
+      li.appendChild(main);
+      li.appendChild(meta);
       list.appendChild(li);
     });
   }

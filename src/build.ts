@@ -9,6 +9,7 @@ import { site } from "./site.js";
 import { locales, pagePath, pages, type Locale, type PageKey } from "./i18n/locales.js";
 import { content } from "./i18n/index.js";
 import { renderPage } from "./render/layout.js";
+import { createHash } from "node:crypto";
 import { renderAccount } from "./render/account.js";
 import { renderHome, renderProduct, renderPrivacy } from "./render/pages.js";
 import { css } from "./styles.js";
@@ -148,7 +149,11 @@ async function build(): Promise<void> {
     await cp(path.join(root, "public"), dist, { recursive: true });
   }
 
-  await writeFile(path.join(dist, "assets/styles.css"), css.trimStart());
+  // 内容哈希：文件名随内容变化，配合 immutable 长缓存既省流量又不会拿到旧样式。
+  const cssBody = css.trimStart();
+  const cssHash = createHash("sha256").update(cssBody).digest("hex").slice(0, 10);
+  const cssHref = `/assets/styles.${cssHash}.css`;
+  await writeFile(path.join(dist, "assets", `styles.${cssHash}.css`), cssBody);
   await writeFile(path.join(dist, "favicon.svg"), faviconSvg);
   await writeFile(path.join(dist, "site.webmanifest"), webmanifest());
   await writeFile(path.join(dist, "robots.txt"), robots());
@@ -166,7 +171,7 @@ async function build(): Promise<void> {
             ? renderAccount(entry.locale)
             : renderProduct(entry.locale, entry.page);
 
-    const html = renderPage(meta);
+    const html = renderPage({ ...meta, cssHref });
     const file = htmlPath(entry.locale, entry.page);
     await mkdir(path.dirname(file), { recursive: true });
     await writeFile(file, html);
