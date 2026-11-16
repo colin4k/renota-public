@@ -559,6 +559,8 @@ export const en = {
     intro: "Cloud sync needs an account. Sign in once and the same knowledge base follows you across the browser, Zotero and your phone.",
     signedOut: {
       heading: "Sign in or create an account",
+      google: "Continue with Google",
+      orEmail: "or use your email address",
       body: "Enter your email address. We send a one-time link — no password to remember, and no account exists until you click it.",
       emailLabel: "Email address",
       placeholder: "you@example.com",

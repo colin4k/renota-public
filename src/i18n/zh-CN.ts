@@ -557,6 +557,8 @@ export const zhCN: Content = {
     intro: "云同步需要一个账号。登录一次，同一份知识库就会跟着你的浏览器、Zotero 和手机走。",
     signedOut: {
       heading: "登录或创建账号",
+      google: "使用 Google 账号继续",
+      orEmail: "或使用邮箱地址",
       body: "输入邮箱地址，我们会发一条一次性登录链接 —— 不用记密码，而且在你点开链接之前不会创建任何账号。",
       emailLabel: "邮箱地址",
       placeholder: "you@example.com",

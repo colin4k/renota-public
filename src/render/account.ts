@@ -34,6 +34,12 @@ export function renderAccount(locale: Locale): PageMeta {
         <div id="signed-out" class="card account-card">
           <h2>${escapeHtml(a.signedOut.heading)}</h2>
           <p class="body-text">${escapeHtml(a.signedOut.body)}</p>
+          <p id="google-row" hidden>
+            <a class="btn primary account-google" id="google-signin" href="${escapeHtml(API_BASE)}/v1/auth/google?next=${encodeURIComponent(
+              `${site.url}${pagePath(locale, "account")}`,
+            )}">${escapeHtml(a.signedOut.google)}</a>
+          </p>
+          <p class="muted small" id="google-or" hidden>${escapeHtml(a.signedOut.orEmail)}</p>
           <form id="login-form" class="account-form" novalidate>
             <label for="email">${escapeHtml(a.signedOut.emailLabel)}</label>
             <div class="account-row">
@@ -158,6 +164,18 @@ const ACCOUNT_SCRIPT = String.raw`
     });
   }
 
+  function loadProviders() {
+    return fetch(API + "/v1/auth/providers", { credentials: "include" })
+      .then(function (res) { return res.ok ? res.json() : { google: false }; })
+      .then(function (info) {
+        if (info.google) {
+          document.getElementById("google-row").hidden = false;
+          document.getElementById("google-or").hidden = false;
+        }
+      })
+      .catch(function () {});
+  }
+
   function refresh() {
     return api("/v1/web/account", { method: "GET" }).then(function (res) {
       if (res.ok) return res.json().then(renderSignedIn);
@@ -232,6 +250,7 @@ const ACCOUNT_SCRIPT = String.raw`
       });
   });
 
+  loadProviders();
   refresh().catch(function () {
     renderSignedOut();
   });

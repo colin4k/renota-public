@@ -188,7 +188,8 @@ p { margin: 0 0 1em; }
 .account-status { max-width: 680px; margin: 0 0 16px; padding: 12px 16px; border-radius: 12px; border: 1px solid var(--border); }
 .account-status.ok { border-color: rgba(110, 231, 183, 0.45); color: #a7f3d0; }
 .account-status.err { border-color: rgba(248, 113, 113, 0.45); color: #fca5a5; }
-.account-form { margin: 20px 0 8px; }
+.account-google { display: inline-flex; align-items: center; gap: 10px; width: 100%; justify-content: center; }
+.account-form { margin: 12px 0 8px; }
 .account-form label { display: block; font-size: 0.86rem; color: var(--muted); margin-bottom: 8px; }
 .account-row { display: flex; flex-wrap: wrap; gap: 10px; }
 .account-row input { flex: 1 1 260px; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--border); background: var(--bg-soft); color: inherit; font: inherit; }
