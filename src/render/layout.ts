@@ -182,6 +182,7 @@ ${meta.body}
         <h2 class="footer-title">${escapeHtml(c.footer.legal)}</h2>
         <ul>
           <li><a href="${pagePath(meta.locale, "privacy")}">${escapeHtml(c.footer.privacy)}</a></li>
+          <li><a href="${pagePath(meta.locale, "terms")}">${escapeHtml(c.footer.terms)}</a></li>
         </ul>
       </div>
     </div>

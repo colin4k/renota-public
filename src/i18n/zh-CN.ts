@@ -22,6 +22,7 @@ export const zhCN: Content = {
     resources: "资源",
     legal: "法律",
     privacy: "隐私政策",
+    terms: "服务条款",
     source: "源代码",
     cloud: "同步服务",
     copyright: "睿记 Renota。自带 API Key。",
@@ -50,6 +51,10 @@ export const zhCN: Content = {
   },
 
   seo: {
+    terms: {
+      title: "服务条款",
+      description: "使用睿记的服务条款：内容归属、API Key、可接受使用、服务可用性与责任范围。",
+    },
     home: {
       title: "睿记 Renota — 读任何东西，留下有用的，然后问自己的笔记",
       description:
@@ -71,7 +76,7 @@ export const zhCN: Content = {
         "在任意界面上框选一块区域提问。离线中文 OCR，扫描版 PDF 也能用，与桌面端共用同一份知识库。",
     },
     privacy: {
-      title: "隐私政策 — 睿记 Renota",
+      title: "隐私政策",
       description: "睿记在你的设备上存了什么、什么会离开设备、开启云同步时会上传什么，以及如何删除。",
     },
   },
@@ -551,6 +556,22 @@ export const zhCN: Content = {
     ],
     englishNote: "下方完整政策为权威版本，以英文撰写。若简要说明与全文有出入，以全文为准。",
   },
+
+  terms: {
+    title: "服务条款",
+    intro: "使用睿记的规则 —— 内容始终属于你，密钥留在你的设备上，模型输出需要你自己判断。",
+    fullPolicy: "完整条款",
+    summaryTitle: "简要说明",
+    summary: [
+      "你保存的一切都归你所有。我们只为提供服务而存储和传输这些内容。",
+      "你需要自备 API Key，并直接向模型服务商付费。我们看不到你的 Key。",
+      "AI 输出可能是错的。睿记是阅读辅助工具，不构成专业建议。",
+      "云同步是可选的，不登录也能使用各端应用。",
+      "你可以随时删除账号和已同步的数据。",
+    ],
+    englishNote: "下方完整条款为权威版本，以英文撰写。若简要说明与全文有出入，以全文为准。",
+  },
+
 
   account: {
     title: "账号",

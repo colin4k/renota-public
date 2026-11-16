@@ -11,7 +11,7 @@ import { content } from "./i18n/index.js";
 import { renderPage } from "./render/layout.js";
 import { createHash } from "node:crypto";
 import { renderAccount } from "./render/account.js";
-import { renderHome, renderProduct, renderPrivacy } from "./render/pages.js";
+import { renderHome, renderProduct, renderPrivacy, renderTerms } from "./render/pages.js";
 import { css } from "./styles.js";
 import { renderOgSvg } from "./og.js";
 
@@ -20,8 +20,8 @@ const dist = path.join(root, "dist");
 
 const md = new MarkdownIt({ html: false, linkify: true, typographer: false, breaks: true });
 
-async function loadPolicyHtml(): Promise<string> {
-  const raw = await readFile(path.join(root, "privacy.md"), "utf8");
+async function loadMarkdownPage(file: string): Promise<string> {
+  const raw = await readFile(path.join(root, file), "utf8");
   // 去掉原来的 H1（页面自己会渲染标题）
   return md.render(raw.replace(/^#\s+.*\n/, ""));
 }
@@ -158,7 +158,8 @@ async function build(): Promise<void> {
   await writeFile(path.join(dist, "site.webmanifest"), webmanifest());
   await writeFile(path.join(dist, "robots.txt"), robots());
 
-  const policyHtml = await loadPolicyHtml();
+  const policyHtml = await loadMarkdownPage("privacy.md");
+  const termsHtml = await loadMarkdownPage("terms.md");
   const entries = localeEntries();
 
   for (const entry of entries) {
@@ -169,7 +170,9 @@ async function build(): Promise<void> {
           ? renderPrivacy(entry.locale, policyHtml)
           : entry.page === "account"
             ? renderAccount(entry.locale)
-            : renderProduct(entry.locale, entry.page);
+            : entry.page === "terms"
+              ? renderTerms(entry.locale, termsHtml)
+              : renderProduct(entry.locale, entry.page);
 
     const html = renderPage({ ...meta, cssHref });
     const file = htmlPath(entry.locale, entry.page);
@@ -186,7 +189,7 @@ async function build(): Promise<void> {
   // 社交预览图：优先复用 public/og/ 里已生成好的 PNG（提交进仓库），
   // 这样在缺少中文字体的 CI 镜像上也不会渲染出方框。
   for (const page of pages) {
-    if (page === "account") continue; // 账号页不分享，不需要社交预览图
+    if (page === "account" || page === "terms") continue; // 功能区页面不分享，跳过社交预览图
     for (const locale of locales) {
       const prebuilt = path.join(root, "public/og", `${page}-${locale}.png`);
       if (existsSync(prebuilt)) {

@@ -21,6 +21,7 @@ export const en = {
     resources: "Resources",
     legal: "Legal",
     privacy: "Privacy policy",
+    terms: "Terms of service",
     source: "Source code",
     cloud: "Sync service",
     copyright: "Renota. Bring your own API key.",
@@ -49,6 +50,11 @@ export const en = {
   },
 
   seo: {
+    terms: {
+      title: "Terms of Service",
+      description:
+        "The terms that govern your use of Renota: your content, your API keys, acceptable use, availability, and liability.",
+    },
     home: {
       title: "Renota — read anything, keep what matters, ask your own notes",
       description:
@@ -70,7 +76,7 @@ export const en = {
         "Select any region on screen and ask about it. Offline Chinese OCR, works with scanned PDFs, and shares the same knowledge base as the desktop apps.",
     },
     privacy: {
-      title: "Privacy policy — Renota",
+      title: "Privacy policy",
       description:
         "What Renota stores on your device, what leaves it, when cloud sync uploads anything, and how to delete it.",
     },
@@ -553,6 +559,23 @@ export const en = {
     englishNote:
       "The full policy below is the authoritative version and is written in English. If anything in the summary differs, the full policy prevails.",
   },
+
+  terms: {
+    title: "Terms of Service",
+    intro: "The rules for using Renota — your content stays yours, keys stay on your device, and model output needs your judgement.",
+    fullPolicy: "Full terms",
+    summaryTitle: "Short version",
+    summary: [
+      "You own everything you save. We only store and transmit it to run the service for you.",
+      "You bring your own API key and pay your model provider directly. We never see your key.",
+      "AI output can be wrong. Renota is a reading aid, not professional advice.",
+      "Cloud sync is optional; the apps work without an account.",
+      "You can delete your account and synced data at any time.",
+    ],
+    englishNote:
+      "The full terms below are the authoritative version and are written in English. If anything in the summary differs, the full terms prevail.",
+  },
+
 
   account: {
     title: "Account",

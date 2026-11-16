@@ -30,7 +30,7 @@ function faqJsonLd(items: Array<{ q: string; a: string }>): unknown {
   };
 }
 
-function breadcrumbJsonLd(locale: Locale, page: ProductKey | "privacy", label: string): unknown {
+function breadcrumbJsonLd(locale: Locale, page: ProductKey | "privacy" | "terms", label: string): unknown {
   const home = content(locale).nav.home;
   return {
     "@context": "https://schema.org",
@@ -229,6 +229,75 @@ export function renderProduct(locale: Locale, page: ProductKey): PageMeta {
       faqJsonLd(p.faq.items),
     ],
   };
+}
+
+/**
+ * 隐私政策与服务条款的版面完全一致，只有文案与全文字典不同。
+ * 抽成一个生成器，避免两页各写一遍结构后逐渐走样。
+ */
+function renderLegalPage(
+  locale: Locale,
+  page: "privacy" | "terms",
+  d: {
+    title: string;
+    intro: string;
+    summaryTitle: string;
+    summary: string[];
+    fullPolicy: string;
+    englishNote: string;
+  },
+  seo: { title: string; description: string },
+  policyHtml: string,
+): PageMeta {
+  const c = content(locale);
+  const body = `
+    ${breadcrumbs(pagePath(locale, "home"), c.nav.home, d.title)}
+
+    <section class="hero plain">
+      <div class="wrap">
+        <h1>${escapeHtml(d.title)}</h1>
+        <p class="lede">${escapeHtml(d.intro)}</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <h2>${escapeHtml(d.summaryTitle)}</h2>
+        ${checklist(d.summary)}
+        <p class="muted small">${escapeHtml(d.englishNote)}</p>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="wrap">
+        <h2>${escapeHtml(d.fullPolicy)}</h2>
+        <div class="prose">${policyHtml}</div>
+      </div>
+    </section>`;
+
+  return {
+    locale,
+    page,
+    title: seo.title,
+    description: seo.description,
+    body,
+    jsonLd: [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        name: d.title,
+        url: pageUrl(locale, page),
+        inLanguage: locale,
+        description: seo.description,
+      },
+      breadcrumbJsonLd(locale, page, d.title),
+    ],
+  };
+}
+
+export function renderTerms(locale: Locale, policyHtml: string): PageMeta {
+  const c = content(locale);
+  return renderLegalPage(locale, "terms", c.terms, c.seo.terms, policyHtml);
 }
 
 export function renderPrivacy(locale: Locale, policyHtml: string): PageMeta {
