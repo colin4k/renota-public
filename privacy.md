@@ -1,7 +1,7 @@
 # Renota — Privacy Policy
 
-**Last Updated:** 2026-11-11
-**Effective Date:** 2026-11-11
+**Last Updated:** 2026-11-17
+**Effective Date:** 2026-11-17
 
 Renota ("we", "our", "the apps") is a set of apps — a Chrome extension, a Zotero plugin and an Android app — that help you capture text you read and use it as personal context for AI-assisted writing. This Privacy Policy explains what data Renota handles, how it is used, and the choices you have.
 
@@ -69,9 +69,9 @@ Cloud Sync keeps your knowledge base consistent across the Chrome extension, the
 - Your browsing history, page content you did not save, or anything from other tabs or apps.
 - Screenshots or OCR images from the Android app — only the text you explicitly save.
 
-**Where it is stored.** A managed PostgreSQL database operated on our behalf by our hosting providers (Vercel and a managed Postgres provider), in the Asia-Pacific region. Entries are stored as plain text on the server, so this is **not** end-to-end encrypted: we could technically read them. Do not sync content you are unwilling to store that way. Delete markers are purged after 90 days.
+**Where it is stored.** Entries live in Cloudflare's D1 database (the index and metadata) and R2 object storage (entry bodies), served through Cloudflare's edge network. Entries are stored as plain text on the server, so this is **not** end-to-end encrypted: we could technically read them. Do not sync content you are unwilling to store that way. Delete markers are purged after 90 days.
 
-**Your controls.** Sign out on any device to stop syncing; the local copy remains. Deleting an entry propagates to your other devices. To delete your account and all cloud data, use the delete-account API (`DELETE /v1/me` with a valid device token) or contact us at `support@werenota.com`; deletion cascades to every entry, device token and login record belonging to the account.
+**Your controls.** Sign out on any device to stop syncing; the local copy remains. Deleting an entry propagates to your other devices. To delete your account and all cloud data, use the "Delete account" action on the account settings page; it removes only that account's entries, device tokens and login records.
 
 ## 4. Anonymous Telemetry
 
@@ -181,7 +181,7 @@ A separate build, distributed only as a direct download from our website and nev
 
 - Open **Settings → Data** and click **"Clear all local data"** to remove the knowledge base, settings, and install ID from this browser.
 - Uninstalling the Extension also removes all locally stored data.
-- If you enabled Cloud Sync: **Settings → Cloud Sync → Sign out** stops syncing on that device. To remove the data from our servers, delete your account (`DELETE /v1/me`) or contact us at `support@werenota.com`.
+- If you enabled Cloud Sync: **Settings → Cloud Sync → Sign out** stops syncing on that device. To remove the data from our servers, delete your account on the account settings page, or contact us at `support@werenota.com`.
 - To request deletion of any telemetry data we may have received, contact us at `support@werenota.com`.
 
 ### 7.3 Disable features
