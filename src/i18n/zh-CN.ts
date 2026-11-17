@@ -26,6 +26,7 @@ export const zhCN: Content = {
     terms: "服务条款",
     copyright: "睿记 Renota。自带 API Key。",
     discord: "Discord",
+    mail: "邮件",
     madeFor: "为读得多的人做的。",
   },
 

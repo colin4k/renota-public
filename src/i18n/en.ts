@@ -25,6 +25,7 @@ export const en = {
     terms: "Terms of service",
     copyright: "Renota. Bring your own API key.",
     discord: "Discord",
+    mail: "Mail",
     madeFor: "Made for people who read a lot.",
   },
 
