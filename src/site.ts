@@ -1,8 +1,14 @@
 // 站点级配置。改这里就能改所有页面里的链接与品牌信息。
 
+// 两个环境（生产 / sandbox）共用一套代码，靠构建期环境变量区分子域。
+const SITE_URL = (process.env.SITE_URL ?? "https://www.werenota.com").replace(/\/+$/, "");
+const CLOUD_API = (process.env.CLOUD_API_BASE ?? "https://cloud.werenota.com").replace(/\/+$/, "");
+
 export const site = {
-  /** 线上域名，用于 canonical / sitemap / OG。部署到别的域名时改这一处。 */
-  url: "https://www.werenota.com",
+  /** 线上域名，用于 canonical / sitemap / OG。 */
+  url: SITE_URL,
+  /** 后端 API 基址（account / billing / sync 都打到这里）。 */
+  apiBase: CLOUD_API,
   /** 英文名（其余语言一律用它）。 */
   name: "Renota",
   /** 中文名。 */

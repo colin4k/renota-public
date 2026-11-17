@@ -661,6 +661,8 @@ export const en = {
       failed: "Could not start checkout. Please try again.",
       cancelDone: "Cancellation scheduled. Access continues until the period ends.",
       pricingLink: "Compare plans",
+      manageBilling: "Manage billing",
+      portalFailed: "Could not open the billing portal. Please try again.",
       pastDue: "Payment failed — update your card with Paddle to keep syncing.",
     },
     signedOut: {

@@ -68,14 +68,15 @@ src/site.ts  →  site.url
 - 搜索引擎要能无 JS 抓到定价内容
 - 结账前必须先有网站登录态，账号页本来就有
 
-账号页的流程：
+结账只有一个入口：站点的 `/checkout` 页。
 
 ```
-POST /v1/billing/checkout  →  {transactionId, environment, clientToken}
-Paddle.Initialize({token}); Paddle.Checkout.open({transactionId})
+Paddle.PricePreview()  → 展示 Paddle 算好的含税总价
+Paddle.Checkout.open({items:[{priceId}], settings:{displayMode:'overlay', variant:'one-page'}})
 ```
 
-金额由服务端的 price id 决定，前端拿不到、也改不了价格。
+账号页的「订阅」按钮只是跳到 `/checkout`，不再自己建 transaction。
+金额始终来自 Paddle 的 `formattedTotals`，前端不做任何价格运算。
 付款结果不靠前端回调，而是 `cloud.werenota.com/v1/billing/webhook` 落库，
 账号页再 `GET /v1/billing/status` 读真实状态。
 

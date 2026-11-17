@@ -9,7 +9,7 @@ import { site } from "../site.js";
 import { escapeHtml, type PageMeta } from "./layout.js";
 
 /** 同步服务地址：与三端客户端的默认值保持一致。 */
-const API_BASE = "https://cloud.werenota.com";
+const API_BASE = site.apiBase;
 
 function escapeForScript(value: unknown): string {
   return JSON.stringify(value).replace(/</g, "\\u003c").replace(/-->/g, "--\\u003e");
@@ -18,6 +18,8 @@ function escapeForScript(value: unknown): string {
 export function renderAccount(locale: Locale): PageMeta {
   const c = content(locale);
   const a = c.account;
+  // 结账只有一个入口：站点自己的 /checkout 页面（Paddle.js 直连 priceId）。
+  const checkoutHref = locale === "en" ? "/checkout/" : `/${locale}/checkout/`;
 
   const body = `
     <section class="hero account-hero">
@@ -92,7 +94,8 @@ export function renderAccount(locale: Locale): PageMeta {
                 <div class="plan-when" id="plan-when"></div>
               </div>
               <div class="plan-actions">
-                <button type="button" class="btn primary" id="plan-subscribe" hidden>${escapeHtml(a.plan.checkout)}</button>
+                <a class="btn primary" id="plan-subscribe" href="${escapeHtml(checkoutHref)}" hidden>${escapeHtml(a.plan.checkout)}</a>
+                <button type="button" class="btn" id="plan-portal" hidden>${escapeHtml(a.plan.manageBilling)}</button>
                 <button type="button" class="btn" id="plan-cancel" hidden>${escapeHtml(a.plan.cancel)}</button>
                 <a class="btn" href="${pagePath(locale, "pricing")}">${escapeHtml(a.plan.pricingLink)}</a>
               </div>
@@ -180,26 +183,12 @@ const ACCOUNT_SCRIPT = String.raw`
   // ---------- 订阅 ----------
 
   var billingCache = null;
-  var paddleLoading = null;
 
   function formatDay(ts) {
     if (!ts) return "";
     var d = new Date(ts);
     var pad = function (n) { return n < 10 ? "0" + n : String(n); };
     return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
-  }
-
-  function loadPaddle() {
-    if (window.Paddle) return Promise.resolve(window.Paddle);
-    if (paddleLoading) return paddleLoading;
-    paddleLoading = new Promise(function (resolve, reject) {
-      var script = document.createElement("script");
-      script.src = "https://cdn.paddle.com/paddle/v2/paddle.js";
-      script.onload = function () { resolve(window.Paddle); };
-      script.onerror = function () { reject(new Error("paddle_unavailable")); };
-      document.head.appendChild(script);
-    });
-    return paddleLoading;
   }
 
   function renderPlan(plan, planExpiresAt) {
@@ -211,6 +200,7 @@ const ACCOUNT_SCRIPT = String.raw`
     var whenEl = document.getElementById("plan-when");
     var subscribeEl = document.getElementById("plan-subscribe");
     var cancelEl = document.getElementById("plan-cancel");
+    var portalEl = document.getElementById("plan-portal");
     var p = dict.plan;
 
     var isPro = plan === "pro";
@@ -237,6 +227,8 @@ const ACCOUNT_SCRIPT = String.raw`
 
     var available = !!(billingCache && billingCache.available);
     subscribeEl.hidden = isPro || !available;
+    // 有订阅才有 Paddle customer，自助改卡/开发票才有意义。
+    if (portalEl) portalEl.hidden = !isPro || !available;
   }
 
   function refreshBilling() {
@@ -249,41 +241,8 @@ const ACCOUNT_SCRIPT = String.raw`
       .catch(function () { return null; });
   }
 
-  function startCheckout() {
-    var button = document.getElementById("plan-subscribe");
-    button.disabled = true;
-
-    api("/v1/billing/checkout", { method: "POST", body: "{}" })
-      .then(function (res) {
-        return res.json().then(function (body) {
-          if (!res.ok) throw new Error(body.code || "checkout_failed");
-          return body;
-        });
-      })
-      .then(function (order) {
-        return loadPaddle().then(function (Paddle) {
-          Paddle.Environment.set(order.environment === "production" ? "production" : "sandbox");
-          Paddle.Initialize({
-            token: order.clientToken,
-            eventCallback: function (event) {
-              if (event && event.name === "checkout.completed") {
-                // webhook 落库有几百毫秒延迟，等一会儿再拉状态
-                setTimeout(function () { refresh().then(function () {}); location.reload(); }, 2500);
-              }
-            },
-          });
-          Paddle.Checkout.open({ transactionId: order.transactionId });
-        });
-      })
-      .catch(function () {
-        showStatus(dict.plan.failed, "err");
-      })
-      .finally(function () {
-        button.disabled = false;
-        button.textContent = dict.plan.checkout;
-      });
-  }
-
+  // 结账走站点的 /checkout 页面（那个页面自己调 Paddle.js），
+  // 账号页不再建 transaction、也不初始化 Paddle —— 只有一条链路。
   function cancelPlan() {
     if (!window.confirm(dict.plan.cancelHint)) return;
     var button = document.getElementById("plan-cancel");
@@ -297,6 +256,28 @@ const ACCOUNT_SCRIPT = String.raw`
       .then(function () { return refresh(); })
       .catch(function () { showStatus(dict.errors.generic, "err"); })
       .finally(function () {
+        button.disabled = false;
+      });
+  }
+
+  // 自助账单管理：服务端用会话里的 customer_id 铸一条已登录的 Paddle portal 链接，
+  // 这里只负责整页跳过去（Paddle 要求托管页，不能嵌 iframe）。
+  function openPortal() {
+    var button = document.getElementById("plan-portal");
+    button.disabled = true;
+
+    api("/v1/billing/portal", { method: "POST", body: "{}" })
+      .then(function (res) {
+        return res.json().then(function (body) {
+          if (!res.ok) throw new Error(body.code || "portal_failed");
+          return body;
+        });
+      })
+      .then(function (session) {
+        window.location.href = session.url;
+      })
+      .catch(function () {
+        showStatus(dict.plan.portalFailed, "err");
         button.disabled = false;
       });
   }
@@ -401,8 +382,8 @@ const ACCOUNT_SCRIPT = String.raw`
       });
   });
 
-  document.getElementById("plan-subscribe").addEventListener("click", startCheckout);
   document.getElementById("plan-cancel").addEventListener("click", cancelPlan);
+  document.getElementById("plan-portal").addEventListener("click", openPortal);
 
   document.getElementById("sign-out").addEventListener("click", function () {
     api("/v1/auth/logout", { method: "POST", body: "{}" }).then(function () {
@@ -434,7 +415,8 @@ const ACCOUNT_SCRIPT = String.raw`
   loadProviders();
   refresh()
     .then(function () {
-      if (wantsSubscribe && !inEl.hidden) startCheckout();
+      // 从那封「点这里订阅」的邮件跳回来时，直接送去结算页。
+      if (wantsSubscribe && !inEl.hidden) location.replace(document.getElementById("plan-subscribe").getAttribute("href"));
     })
     .catch(function () {
       renderSignedOut();

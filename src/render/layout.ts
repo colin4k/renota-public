@@ -2,7 +2,19 @@
 
 import { site } from "../site.js";
 import { content, htmlLang, ogLocale, type Content } from "../i18n/index.js";
-import { defaultLocale, locales, pagePath, pageUrl, type Locale, type PageKey } from "../i18n/locales.js";
+import { defaultLocale, locales, pages, pagePath, pageUrl, type Locale, type PageKey } from "../i18n/locales.js";
+
+/**
+ * 功能页：没有导航项、不进 sitemap、不参与 hreflang。
+ * checkout 和 welcome 属于这类 —— 它们由 Paddle 结算流程驱动，
+ * 不是站点内容，搜索引擎也没有索引它们的理由。
+ */
+export type UtilityPageKey = "checkout" | "welcome";
+export type AnyPageKey = PageKey | UtilityPageKey;
+
+function isSitePage(page: AnyPageKey): page is PageKey {
+  return (pages as readonly string[]).includes(page);
+}
 
 /**
  * 样式表路径。构建时会改写为带内容哈希的文件名（styles.<hash>.css），
@@ -13,7 +25,9 @@ export const DEFAULT_CSS_HREF = "/assets/styles.css";
 
 export interface PageMeta {
   locale: Locale;
-  page: PageKey;
+  page: AnyPageKey;
+  /** 功能页的 canonical 路径（站点页面由 page + locale 推导，不用填） */
+  canonicalPath?: string;
   /** <title>，不含站点名后缀（由这里统一拼） */
   title: string;
   description: string;
@@ -41,7 +55,7 @@ function abs(path: string): string {
   return `${site.url}${path}`;
 }
 
-function navLinks(locale: Locale, current: PageKey, c: Content): string {
+function navLinks(locale: Locale, current: PageKey | null, c: Content): string {
   const items: Array<[PageKey, string]> = [
     ["chrome", c.nav.chrome],
     ["zotero", c.nav.zotero],
@@ -56,7 +70,9 @@ function navLinks(locale: Locale, current: PageKey, c: Content): string {
   return links;
 }
 
-function languageSwitcher(locale: Locale, current: PageKey, c: Content): string {
+function languageSwitcher(locale: Locale, current: PageKey | null, c: Content): string {
+  // 功能页不参与语言互跳：结算页的文案由 Paddle 自己的本地化负责。
+  if (current === null) return "";
   if (locales.length < 2) return "";
   const links = locales
     .filter((l) => l !== locale)
@@ -88,9 +104,23 @@ function fullTitle(meta: PageMeta): string {
 export function renderPage(meta: PageMeta): string {
   const c = content(meta.locale);
   const title = fullTitle(meta);
-  const canonical = pageUrl(meta.locale, meta.page);
-  const ogImage = `${site.url}/og/${meta.page}-${meta.locale}.png`;
+  const sitePage = isSitePage(meta.page) ? meta.page : null;
+  const canonical = sitePage
+    ? pageUrl(meta.locale, sitePage)
+    : `${site.url}${meta.canonicalPath ?? "/"}`;
+  // 功能页没有预渲染的社媒预览图，也不该出现在分享卡片里。
+  const ogImage = sitePage ? `${site.url}/og/${sitePage}-${meta.locale}.png` : null;
   const indexable = meta.indexable !== false;
+
+  const hreflangTags = sitePage ? alternates(sitePage) : "";
+  const ogImageTags = ogImage
+    ? `  <meta property="og:image" content="${ogImage}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="${escapeHtml(title)}">
+  <meta name="twitter:card" content="summary_large_image">`
+    : `  <meta name="twitter:card" content="summary">`;
+  const twitterImageTag = ogImage ? `  <meta name="twitter:image" content="${ogImage}">` : "";
 
   const jsonLd = (meta.jsonLd ?? [])
     .map((block) => `<script type="application/ld+json">${JSON.stringify(block)}</script>`)
@@ -109,7 +139,7 @@ export function renderPage(meta: PageMeta): string {
   <title>${escapeHtml(title)}</title>
   <meta name="description" content="${escapeHtml(meta.description)}">
   <link rel="canonical" href="${canonical}">
-${alternates(meta.page)}
+${hreflangTags}
   <meta name="robots" content="${indexable ? "index, follow" : "noindex, follow"}">
   <meta name="theme-color" content="#12121a">
   <meta property="og:type" content="website">
@@ -119,14 +149,10 @@ ${alternates(meta.page)}
   <meta property="og:url" content="${canonical}">
   <meta property="og:locale" content="${ogLocale(meta.locale)}">
   ${alternateLocales}
-  <meta property="og:image" content="${ogImage}">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="${escapeHtml(title)}">
-  <meta name="twitter:card" content="summary_large_image">
+${ogImageTags}
   <meta name="twitter:title" content="${escapeHtml(title)}">
   <meta name="twitter:description" content="${escapeHtml(meta.description)}">
-  <meta name="twitter:image" content="${ogImage}">
+${twitterImageTag}
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
@@ -143,11 +169,11 @@ ${alternates(meta.page)}
         <span class="brand-name">${escapeHtml(c.siteName)}</span>
       </a>
       <nav class="site-nav" aria-label="Products">
-        ${navLinks(meta.locale, meta.page, c)}
+        ${navLinks(meta.locale, sitePage, c)}
         <a href="${pagePath(meta.locale, "pricing")}"${meta.page === "pricing" ? ' aria-current="page"' : ""}>${escapeHtml(c.nav.pricing)}</a>
         <a href="${pagePath(meta.locale, "privacy")}"${meta.page === "privacy" ? ' aria-current="page"' : ""}>${escapeHtml(c.nav.privacy)}</a>
         <a href="${pagePath(meta.locale, "account")}"${meta.page === "account" ? ' aria-current="page"' : ""}>${escapeHtml(c.nav.account)}</a>
-        ${languageSwitcher(meta.locale, meta.page, c)}
+        ${languageSwitcher(meta.locale, sitePage, c)}
       </nav>
     </div>
   </header>

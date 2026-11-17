@@ -12,6 +12,9 @@ import { renderPage } from "./render/layout.js";
 import { createHash } from "node:crypto";
 import { renderAccount } from "./render/account.js";
 import { renderHome, renderPricing, renderProduct, renderPrivacy, renderTerms } from "./render/pages.js";
+import { renderCheckout } from "./render/checkout.js";
+import { renderWelcome } from "./render/welcome.js";
+import { readPaddleClientConfig } from "./paddle.js";
 import { css } from "./styles.js";
 import { renderOgSvg } from "./og.js";
 
@@ -140,6 +143,9 @@ async function rasterize(svg: string, width: number): Promise<Buffer | null> {
 }
 
 async function build(): Promise<void> {
+  // 先于一切文件操作：配置不完整就别产出半成品站点。
+  const paddle = readPaddleClientConfig();
+
   await rm(dist, { recursive: true, force: true });
   await mkdir(path.join(dist, "assets"), { recursive: true });
   await mkdir(path.join(dist, "og"), { recursive: true });
@@ -188,6 +194,21 @@ async function build(): Promise<void> {
     const file = htmlPath(entry.locale, entry.page);
     await mkdir(path.dirname(file), { recursive: true });
     await writeFile(file, html);
+  }
+
+  // 功能页：checkout / welcome 不参与多语言导航和 sitemap，单独生成。
+  // 结算页必须在根路径可访问 —— Paddle 的 default payment link 指向 /checkout。
+  for (const locale of locales) {
+    const utilityFile = (name: string) =>
+      path.join(dist, locale === "en" ? name : `${locale}/${name}`, "index.html");
+
+    const checkoutFile = utilityFile("checkout");
+    await mkdir(path.dirname(checkoutFile), { recursive: true });
+    await writeFile(checkoutFile, renderPage({ ...renderCheckout(locale, paddle), cssHref }));
+
+    const welcomeFile = utilityFile("welcome");
+    await mkdir(path.dirname(welcomeFile), { recursive: true });
+    await writeFile(welcomeFile, renderPage({ ...renderWelcome(locale), cssHref }));
   }
 
   // 账号页是功能区，不收录进站点地图，避免被索引到。

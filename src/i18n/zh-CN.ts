@@ -656,6 +656,8 @@ export const zhCN: Content = {
       failed: "无法发起结账，请重试。",
       cancelDone: "已安排取消，可用到本周期结束。",
       pricingLink: "比较两档",
+      manageBilling: "管理账单",
+      portalFailed: "无法打开账单管理页，请重试。",
       pastDue: "扣款失败 — 请在 Paddle 更新支付方式以继续同步。",
     },
     signedOut: {

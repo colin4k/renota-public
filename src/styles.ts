@@ -158,6 +158,36 @@ p { margin: 0 0 1em; }
 .plan .btn { margin-top: auto; align-self: flex-start; }
 .plan-note { margin-top: 24px; max-width: 78ch; }
 
+/* ---------- checkout ---------- */
+.checkout-section { padding-top: 56px; }
+.billing-switch {
+  display: inline-flex; gap: 4px; padding: 4px; margin: 8px 0 28px;
+  background: var(--card); border: 1px solid var(--border); border-radius: 999px;
+}
+.billing-switch button {
+  appearance: none; border: 0; background: transparent; color: var(--muted);
+  font: inherit; font-size: 0.92rem; padding: 8px 18px; border-radius: 999px; cursor: pointer;
+}
+.billing-switch button:hover { color: var(--text); }
+.billing-switch button.is-active {
+  background: linear-gradient(140deg, var(--brand), var(--brand-strong)); color: #fff;
+}
+.plan-checkout { max-width: 440px; }
+/* 两个 CTA 并排：立即订阅 + 开始试用 */
+.plan-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; }
+.plan-actions .btn { margin-top: 0; align-self: auto; }
+.plan-checkout h2 { margin: 0 0 6px; }
+.checkout-error { margin-top: 16px; color: #ff9b9b; font-size: 0.92rem; }
+.checkout-error[hidden] { display: none; }
+
+/* ---------- welcome ---------- */
+.welcome-wrap { text-align: center; }
+.welcome-mark {
+  display: inline-grid; place-items: center; width: 56px; height: 56px; margin: 8px 0 18px;
+  border-radius: 50%; background: var(--brand-soft); color: var(--ok); font-size: 1.6rem;
+}
+.welcome-wrap .cta-row { justify-content: center; }
+
 /* ---------- account: 订阅卡片 ---------- */
 .plan-row {
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
