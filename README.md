@@ -92,7 +92,10 @@ src/
 ├── serve.ts              本地预览服务器
 ├── i18n/                 语言列表、URL 规则、各语言文案
 └── render/               HTML 骨架（SEO 标签）与页面/区块
-privacy.md                隐私政策全文（构建时渲染进 /privacy/）
+privacy.md                隐私政策英文全文（/privacy/）
+privacy.zh-CN.md          隐私政策中文正式译本（/zh-CN/privacy/）
+terms.md                  服务条款英文全文（/terms/）
+terms.zh-CN.md            服务条款中文正式译本（/zh-CN/terms/）
 public/og/                已生成的社交预览图
 ```
 

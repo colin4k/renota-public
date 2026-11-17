@@ -158,8 +158,16 @@ async function build(): Promise<void> {
   await writeFile(path.join(dist, "site.webmanifest"), webmanifest());
   await writeFile(path.join(dist, "robots.txt"), robots());
 
-  const policyHtml = await loadMarkdownPage("privacy.md");
-  const termsHtml = await loadMarkdownPage("terms.md");
+  // 法律文本每种语言各有一份完整版本：中文页面不能再展示英文原文
+  // （用户要追责或对照时，两种语言都得是完整文本）。英文版仍是权威版本。
+  const policyHtml: Record<Locale, string> = {
+    en: await loadMarkdownPage("privacy.md"),
+    "zh-CN": await loadMarkdownPage("privacy.zh-CN.md"),
+  };
+  const termsHtml: Record<Locale, string> = {
+    en: await loadMarkdownPage("terms.md"),
+    "zh-CN": await loadMarkdownPage("terms.zh-CN.md"),
+  };
   const entries = localeEntries();
 
   for (const entry of entries) {
@@ -167,11 +175,11 @@ async function build(): Promise<void> {
       entry.page === "home"
         ? renderHome(entry.locale)
         : entry.page === "privacy"
-          ? renderPrivacy(entry.locale, policyHtml)
+          ? renderPrivacy(entry.locale, policyHtml[entry.locale])
           : entry.page === "account"
             ? renderAccount(entry.locale)
             : entry.page === "terms"
-              ? renderTerms(entry.locale, termsHtml)
+              ? renderTerms(entry.locale, termsHtml[entry.locale])
               : renderProduct(entry.locale, entry.page);
 
     const html = renderPage({ ...meta, cssHref });
