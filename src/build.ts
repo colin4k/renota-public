@@ -6,7 +6,7 @@ import path from "node:path";
 import MarkdownIt from "markdown-it";
 
 import { site } from "./site.js";
-import { locales, pagePath, pages, type Locale, type PageKey } from "./i18n/locales.js";
+import { defaultLocale, locales, pagePath, pages, type Locale, type PageKey } from "./i18n/locales.js";
 import { content } from "./i18n/index.js";
 import { renderPage } from "./render/layout.js";
 import { createHash } from "node:crypto";
@@ -34,17 +34,18 @@ function htmlPath(locale: Locale, page: PageKey): string {
   return path.join(dist, p.replace(/^\//, ""), "index.html");
 }
 
-function sitemap(localePages: Array<{ path: string; lastmod: string }>): string {
-  const byPage = new Map<string, Map<Locale, string>>();
-  for (const entry of localeEntries()) {
-    const list = byPage.get(entry.page) ?? new Map<Locale, string>();
-    list.set(entry.locale, `${site.url}${entry.path}`);
+function sitemap(entries: LocaleEntry[]): string {
+  // alternates 按「页面」聚合：每种语言都不能只看到自己那条，否则 hreflang 就失效了。
+  const byPage = new Map<PageKey, Array<[Locale, string]>>();
+  for (const entry of entries) {
+    const list = byPage.get(entry.page) ?? [];
+    list.push([entry.locale, `${site.url}${entry.path}`]);
     byPage.set(entry.page, list);
   }
 
-  const urls = localeEntries()
+  const urls = entries
     .map((entry) => {
-      const alternates = [...(byPage.get(entry.page)?.entries() ?? [])]
+      const alternates = (byPage.get(entry.page) ?? [])
         .map(([altLocale, href]) => `    <xhtml:link rel="alternate" hreflang="${altLocale}" href="${href}"/>`)
         .join("\n");
       const xDefault = `    <xhtml:link rel="alternate" hreflang="x-default" href="${site.url}${entry.defaultPath}"/>`;
@@ -84,7 +85,7 @@ function localeEntries(): LocaleEntry[] {
         locale,
         page,
         path: pagePath(locale, page),
-        defaultPath: pagePath(locales[0] ?? "en", page),
+        defaultPath: pagePath(defaultLocale, page),
         lastmod,
       });
     }
@@ -164,16 +165,20 @@ async function build(): Promise<void> {
   await writeFile(path.join(dist, "site.webmanifest"), webmanifest());
   await writeFile(path.join(dist, "robots.txt"), robots());
 
-  // 法律文本每种语言各有一份完整版本：中文页面不能再展示英文原文
+  // 法律文本每种语言各有一份完整版本：日文页面不能再展示英文原文
   // （用户要追责或对照时，两种语言都得是完整文本）。英文版仍是权威版本。
-  const policyHtml: Record<Locale, string> = {
-    en: await loadMarkdownPage("privacy.md"),
-    "zh-CN": await loadMarkdownPage("privacy.zh-CN.md"),
+  // 文件约定与 URL 一致：英文是 privacy.md，其余是 privacy.<locale>.md。
+  const legalDocs = async (kind: "privacy" | "terms"): Promise<Record<Locale, string>> => {
+    const entries = await Promise.all(
+      locales.map(async (locale) => {
+        const file = locale === defaultLocale ? `${kind}.md` : `${kind}.${locale}.md`;
+        return [locale, await loadMarkdownPage(file)] as const;
+      }),
+    );
+    return Object.fromEntries(entries) as Record<Locale, string>;
   };
-  const termsHtml: Record<Locale, string> = {
-    en: await loadMarkdownPage("terms.md"),
-    "zh-CN": await loadMarkdownPage("terms.zh-CN.md"),
-  };
+  const policyHtml = await legalDocs("privacy");
+  const termsHtml = await legalDocs("terms");
   const entries = localeEntries();
 
   for (const entry of entries) {
@@ -214,7 +219,7 @@ async function build(): Promise<void> {
   // 账号页是功能区，不收录进站点地图，避免被索引到。
   await writeFile(
     path.join(dist, "sitemap.xml"),
-    sitemap(entries.filter((e) => e.page !== "account").map((e) => ({ path: e.path, lastmod: e.lastmod }))),
+    sitemap(entries.filter((e) => e.page !== "account")),
   );
 
   // 社交预览图：优先复用 public/og/ 里已生成好的 PNG（提交进仓库），

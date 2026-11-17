@@ -39,6 +39,8 @@ export const zhCN: Content = {
     onThisPage: "本页内容",
     backToHome: "返回首页",
     languageLabel: "语言",
+    skipToContent: "跳到正文",
+    productsNav: "产品",
     free: "免费",
     byoKey: "自带 API Key",
     localFirst: "本地优先",
@@ -222,7 +224,7 @@ export const zhCN: Content = {
         },
         {
           q: "支持哪些语言？",
-          a: "界面提供英文和简体中文，并可切换到其它常见语言。助手按你要求的语言回答。",
+          a: "界面提供简体中文、繁體中文、英语、日语、韩语、法语、德语、西班牙语、葡萄牙语和俄语十种语言，且全部为完整翻译。助手按你要求的语言回答。",
         },
         {
           q: "能把知识库接到 Claude Code 或 Cursor 吗？",
@@ -283,7 +285,7 @@ export const zhCN: Content = {
           },
           {
             title: "十种界面语言",
-            body: "可以手动选择，也可以跟随浏览器。英文和简体中文是完整翻译。",
+            body: "可以手动选择，也可以跟随浏览器。十种语言全部完整翻译，连法律条款也不例外。",
           },
         ],
       },
@@ -625,6 +627,17 @@ export const zhCN: Content = {
     ctaBody: "先登录一次，然后在账号页选择 Pro。",
   },
 
+  // 结算页上的 Pro 套餐卡片。价格与 price id 在 paddle.ts，文案在这里。
+  plan: {
+    description: "Chrome 扩展、Zotero 插件和安卓端的全部功能。",
+    features: [
+      "原文与笔记不限量保存",
+      "在自己的知识库上提问",
+      "在 Chrome、Zotero 和安卓之间同步",
+      "3 天免费试用，随时取消",
+    ],
+  },
+
   privacy: {
     title: "隐私政策",
     intro: "这一页说明睿记保存了什么、什么会离开你的设备，以及怎么删除。",
@@ -746,5 +759,30 @@ export const zhCN: Content = {
     },
     welcome: "已登录。这台设备现在关联到你的账号。",
     backHome: "返回首页",
+  },
+
+  // 功能页文案：结算页与欢迎页不进索引，但用户会真的看到 —— 十种语言都得有。
+  checkout: {
+    heading: "选择你的套餐",
+    lede: "3 天免费试用。需要绑定支付方式，试用结束后自动按所选周期扣费；不想续订的话随时取消。",
+    monthly: "按月",
+    yearly: "按年",
+    perMonth: "/月",
+    perYear: "/年",
+    subscribeNow: "立即订阅",
+    startTrial: "开始 3 天试用",
+    billingPeriod: "计费周期",
+    perMonthNote: "标价为税前金额。税费由 Paddle 在结算时按你的所在地计算，最终以结账页显示的总额为准。",
+    localized: "价格已按你的所在地显示，最终金额在结算时确认。",
+    pricesFailed: "价格加载失败，请刷新页面重试。",
+    checkoutFailed: "无法打开结算窗口，请稍后重试或联系支持。",
+  },
+
+  welcome: {
+    heading: "订阅已生效",
+    lede: "感谢订阅 Renota Pro。收据会由 Paddle 发到你的邮箱，随时可以在这里管理订阅。",
+    accountCta: "前往账户页",
+    homeCta: "返回首页",
+    note: "如果几分钟内没有收到确认邮件，请检查垃圾邮件目录，或联系 support@werenota.com。",
   },
 };

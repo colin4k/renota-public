@@ -4,7 +4,7 @@
 // cookie 设在 .werenota.com 域下，所以两个子域共享同一个会话。
 
 import { content } from "../i18n/index.js";
-import { pagePath, type Locale } from "../i18n/locales.js";
+import { defaultLocale, pagePath, type Locale } from "../i18n/locales.js";
 import { site } from "../site.js";
 import { escapeHtml, type PageMeta } from "./layout.js";
 
@@ -19,7 +19,7 @@ export function renderAccount(locale: Locale): PageMeta {
   const c = content(locale);
   const a = c.account;
   // 结账只有一个入口：站点自己的 /checkout 页面（Paddle.js 直连 priceId）。
-  const checkoutHref = locale === "en" ? "/checkout/" : `/${locale}/checkout/`;
+  const checkoutHref = locale === defaultLocale ? "/checkout/" : `/${locale}/checkout/`;
 
   const body = `
     <section class="hero account-hero">

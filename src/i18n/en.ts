@@ -38,6 +38,8 @@ export const en = {
     onThisPage: "On this page",
     backToHome: "Back to home",
     languageLabel: "Language",
+    skipToContent: "Skip to content",
+    productsNav: "Products",
     free: "Free",
     byoKey: "Your own API key",
     localFirst: "Local-first",
@@ -225,7 +227,7 @@ export const en = {
         },
         {
           q: "Which languages are supported?",
-          a: "The interface ships with English and Simplified Chinese, with the other common languages selectable. The assistant answers in whatever language you ask it to.",
+          a: "The interface ships in ten languages — English, Simplified Chinese, Traditional Chinese, Japanese, Korean, French, German, Spanish, Portuguese and Russian — and all of them are fully translated. The assistant answers in whatever language you ask it to.",
         },
         {
           q: "Can I connect my knowledge base to Claude Code or Cursor?",
@@ -286,7 +288,7 @@ export const en = {
           },
           {
             title: "Ten interface languages",
-            body: "Pick a language or follow the browser. English and Simplified Chinese are fully translated.",
+            body: "Pick a language or follow the browser. All ten are fully translated, down to the legal pages.",
           },
         ],
       },
@@ -628,6 +630,17 @@ export const en = {
     ctaBody: "Sign in once, then choose Pro on the account page.",
   },
 
+  // 结算页上的 Pro 套餐卡片。价格与 price id 在 paddle.ts，文案在这里。
+  plan: {
+    description: "Full access across Chrome, Zotero and Android.",
+    features: [
+      "Save original text and your own notes, without limits",
+      "Ask questions across your own library",
+      "Sync between Chrome, Zotero and Android",
+      "3-day free trial, cancel anytime",
+    ],
+  },
+
   privacy: {
     title: "Privacy policy",
     intro: "This page explains what Renota stores, what leaves your device, and how to delete it.",
@@ -751,6 +764,32 @@ export const en = {
     },
     welcome: "Signed in. This device is now linked to your account.",
     backHome: "Back to home",
+  },
+
+  // 功能页文案：结算页与欢迎页不进索引，但用户会真的看到 —— 十种语言都得有。
+  checkout: {
+    heading: "Choose your plan",
+    lede: "3-day free trial. A payment method is required — we charge automatically when the trial ends. Cancel anytime before then.",
+    monthly: "Monthly",
+    yearly: "Yearly",
+    perMonth: "/month",
+    perYear: "/year",
+    subscribeNow: "Subscribe now",
+    startTrial: "Start 3-day trial",
+    billingPeriod: "Billing period",
+    perMonthNote:
+      "Prices exclude tax. Paddle calculates applicable tax for your location at checkout, and the checkout total is final.",
+    localized: "Prices are shown for your location; the final amount is confirmed at checkout.",
+    pricesFailed: "Could not load prices. Please refresh and try again.",
+    checkoutFailed: "Could not open checkout. Please try again or contact support.",
+  },
+
+  welcome: {
+    heading: "You're all set",
+    lede: "Thanks for subscribing to Renota Pro. Paddle will email your receipt, and you can manage the subscription any time.",
+    accountCta: "Go to your account",
+    homeCta: "Back to home",
+    note: "If the confirmation email doesn't arrive within a few minutes, check your spam folder or email support@werenota.com.",
   },
 };
 

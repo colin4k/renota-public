@@ -256,12 +256,13 @@ background: linear-gradient(160deg, rgba(255, 255, 255, 0.17) 0%, rgba(255, 255,
 
 ## Typography
 
-**Inter** 一个字族走完全站，中文回落 `PingFang SC` / `Hiragino Sans GB` / `Microsoft YaHei`。代码与端点用 **JetBrains Mono**。
+**Inter** 负责拉丁与西里尔字母，CJK 按 `<html lang>` 切到对应语言的系统字体：简体中文 `PingFang SC`、繁体中文 `PingFang TC`、日语 `Hiragino Sans`、韩语 `Apple SD Gothic Neo`，各自再带 Noto 与 Windows 侧同类字体兜底。这不是可选项 —— 日文汉字与繁体字形和简体不同（`直`、`骨`、`步` 的写法都不一样），用中文字体渲染日文页会被读者一眼看穿。代码与端点用 **JetBrains Mono**。
 
 - **阶梯**：{typography.display-lg} 48px 只给首屏主张；{typography.headline-lg} 36px 给章节标题；{typography.headline-md} 24px 给卡片标题；{typography.body-lg} 18px 给导语；{typography.body-md} 16px 是正文默认。
 - **玻璃上要加一档字重**。背景有位移的彩色，Regular 在雾面玻璃上会显脏；正文用 400 但配 `line-height` 1.6，卡片标题用 600 而不是 500。
 - **Kicker** {typography.label-sm}：12px / 600 / 0.08em 字距 / 全大写，只用 tertiary 色。它是每个区块唯一的"技术感"来源，一屏不超过两个。
-- **中文行高不低于 1.6**。西文 26px 的行高在 16px 中文上会挤，中文段落一律取 1.65–1.7。
+- **指标说明整句不折行**。首页 3 / 0 / 10 三个数字下面的说明是完整一句话，不设 `max-width`：十种语言里最长的一条（葡语、德语）约 300px，限宽会把中文、德文断成两行，三个数字的底边就对不齐了。放不下时由整条 `flex-wrap` 换到下一排，绝不把一句话切成两截；只在 760px 以下允许说明内部折行。
+- **中文行高不低于 1.6**。西文 26px 的行高在 16px 中文上会挤，中文段落一律取 1.65–1.7。日文与韩文同样取 1.7：假名和谚文的字面比汉字矮，行高给不够会显得行间距忽大忽小。
 - **不用斜体、不用 800 以上字重、不用下划线做强调**。层级只靠字号、字重、颜色三个维度，最多同时用两个。
 - 大字号（≥ 36px）配负字距 `-0.02em` 到 `-0.03em`；小字号（≤ 14px）配正字距 `0.02em` 起。
 

@@ -2,7 +2,16 @@
 
 import { site } from "../site.js";
 import { content, htmlLang, ogLocale, type Content } from "../i18n/index.js";
-import { defaultLocale, locales, pages, pagePath, pageUrl, type Locale, type PageKey } from "../i18n/locales.js";
+import {
+  defaultLocale,
+  localeLabels,
+  locales,
+  pages,
+  pagePath,
+  pageUrl,
+  type Locale,
+  type PageKey,
+} from "../i18n/locales.js";
 
 /**
  * 功能页：没有导航项、不进 sitemap、不参与 hreflang。
@@ -74,14 +83,16 @@ function languageSwitcher(locale: Locale, current: PageKey | null, c: Content): 
   // 功能页不参与语言互跳：结算页的文案由 Paddle 自己的本地化负责。
   if (current === null) return "";
   if (locales.length < 2) return "";
+  // 语言名一律用它自己的写法（日本語、Français），不随界面语言变化 ——
+  // 一个看不懂当前界面语言的用户，也能在这些原生名里找到自己那一行。
   const links = locales
     .filter((l) => l !== locale)
     .map((l) => {
-      const label = l === "zh-CN" ? "简体中文" : "English";
+      const label = localeLabels[l];
       return `<a href="${pagePath(l, current)}" hreflang="${l}" lang="${l}">${escapeHtml(label)}</a>`;
     })
     .join("");
-  const currentLabel = locale === "zh-CN" ? "简体中文" : "English";
+  const currentLabel = localeLabels[locale];
   return `<details class="lang">
     <summary aria-label="${escapeHtml(c.nav.language)}">${escapeHtml(currentLabel)}</summary>
     <div class="lang-menu">${links}</div>
@@ -162,14 +173,14 @@ ${twitterImageTag}
 </head>
 <body>
   <div class="aurora" aria-hidden="true"><i class="a1"></i><i class="a2"></i><i class="a3"></i></div>
-  <a class="skip" href="#main">Skip to content</a>
+  <a class="skip" href="#main">${escapeHtml(c.common.skipToContent)}</a>
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="brand" href="${pagePath(meta.locale, "home")}">
         <span class="brand-mark" aria-hidden="true">R</span>
         <span class="brand-name">${escapeHtml(c.siteName)}</span>
       </a>
-      <nav class="site-nav" aria-label="Products">
+      <nav class="site-nav" aria-label="${escapeHtml(c.common.productsNav)}">
         ${navLinks(meta.locale, sitePage, c)}
         <a href="${pagePath(meta.locale, "pricing")}"${meta.page === "pricing" ? ' aria-current="page"' : ""}>${escapeHtml(c.nav.pricing)}</a>
         <a href="${pagePath(meta.locale, "privacy")}"${meta.page === "privacy" ? ' aria-current="page"' : ""}>${escapeHtml(c.nav.privacy)}</a>

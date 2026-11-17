@@ -2,8 +2,9 @@
 
 产品宣传站。三个产品各有一个独立落地页，全站静态预渲染，面向搜索引擎和分享抓取优化。
 
-- 中文名 **睿记**，其余语言一律 **Renota**
-- 当前语言：`en`（根路径）、`zh-CN`（`/zh-CN/`）
+- 简体中文名 **睿记**，繁体中文名 **睿記**，其余语言一律 **Renota**
+- 语言：`en`（根路径）、`zh-CN`、`zh-TW`、`ja`、`ko`、`fr`、`de`、`es`、`pt`、`ru`（其余九种在 `/<locale>/` 下），十种全部完整翻译，含法律全文
+- 语种清单与顺序对标 `../contextflow` 扩展的设置页语言列表
 - 页面：首页、Chrome 扩展、Zotero 插件、安卓版、价格、隐私政策、服务条款、账号 —— 每页每语言一个 HTML
 
 ## 本地开发
@@ -88,14 +89,18 @@ Paddle.Checkout.open({items:[{priceId}], settings:{displayMode:'overlay', varian
 1. 复制 `src/i18n/zh-CN.ts` 为新语言文件，翻译内容（类型来自 `en.ts`，漏字段会编译失败）
 2. 在 `src/i18n/index.ts` 的 `dictionaries` 里登记
 3. 在 `src/i18n/locales.ts` 的 `locales` 和 `localeLabels` 里加一行
+4. 从 `privacy.md` / `terms.md` 译出 `privacy.<locale>.md` 与 `terms.<locale>.md`，缺一份构建会当场报错
+5. 删掉 `public/og/*-<locale>.png`（如果有）再本地构建，让十种语言用同一版布局重新出图
 
-页面、`hreflang`、`sitemap`、语言切换器、OG 图都会自动生成。
+页面、`hreflang`、`sitemap`、语言切换器、OG 图、`og:locale` 都会自动生成。
+
+> 结算页（`/checkout/`）与欢迎页只维护英文和简体中文两版，其余语言回退英文：支付界面本身由 Paddle 按其区域设置本地化，这两页也不进索引。
 
 > 只给**真正翻译过**的语言加页面。把英文复制到多语言路径下会被搜索引擎判定为重复内容。
 
 ## 改文案 / 加页面
 
-- 文案：`src/i18n/en.ts`（结构源头）与 `src/i18n/zh-CN.ts`
+- 文案：`src/i18n/en.ts`（结构源头）与另外九份字典；改一条要十处同步，`npm run typecheck` 会把漏掉的字段全部点出来
 - 页面骨架：`src/render/pages.ts`；可复用区块在 `src/render/ui.ts`
 - 样式：`src/styles.ts`（单文件，无 CSS 框架）
 - 视觉规范：`DESIGN.md`（色板/字号/间距/玻璃层配方，改样式前先改它，`npm run design:lint` 把关）
@@ -104,7 +109,7 @@ Paddle.Checkout.open({items:[{priceId}], settings:{displayMode:'overlay', varian
 
 `src/og.ts` 生成 SVG，再用 `@resvg/resvg-js` 渲染成 PNG。
 
-生成好的 PNG 已提交在 `public/og/`，构建时优先复用 —— 因为中文标题需要构建机上有中文字体，而 CI 镜像不一定有。改了标题文案想重新出图时，删掉对应的 `public/og/*.png` 再 `npm run build`（本地跑，字体齐全）。
+生成好的 PNG 已提交在 `public/og/`（十种语言 × 六个页面），构建时优先复用 —— 因为标题里的中日韩与俄文字形需要构建机上有对应字体，而 CI 镜像不一定有。`src/og.ts` 会按语言挑字体栈（`PingFang SC/TC`、`Hiragino Sans`、`Apple SD Gothic Neo`，其余走 Noto 与 Helvetica 兜底）。改了标题文案想重新出图时，删掉对应的 `public/og/*.png` 再 `npm run build`（本地跑，字体齐全）。
 
 ## 目录
 
@@ -117,10 +122,9 @@ src/
 ├── serve.ts              本地预览服务器
 ├── i18n/                 语言列表、URL 规则、各语言文案（含 pricing）
 └── render/               HTML 骨架（SEO 标签）与页面/区块
-privacy.md                隐私政策英文全文（/privacy/）
-privacy.zh-CN.md          隐私政策中文正式译本（/zh-CN/privacy/）
-terms.md                  服务条款英文全文（/terms/）
-terms.zh-CN.md            服务条款中文正式译本（/zh-CN/terms/）
+privacy.md                隐私政策英文全文（/privacy/，权威版本）
+privacy.<locale>.md       其余九种语言的正式译本（zh-CN 沿用整语种代码作文件名）
+terms.md / terms.<locale>.md  服务条款同上
 public/og/                已生成的社交预览图
 ```
 

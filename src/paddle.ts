@@ -5,16 +5,18 @@
 // 2. 环境绝不设默认值 —— 读不到 PADDLE_ENVIRONMENT 就直接抛错。
 //    默认值一旦写错，沙箱和线上会长得一模一样，出错时才发现就晚了。
 
-export type Localized<T> = { en: T; "zh-CN": T };
 
-/** 试用天数。Paddle 侧的 price 已经按这个值配置，改这里的同时要改 Paddle。 */
+
+/**
+ * 试用天数。Paddle 侧的 price 已经按这个值配置，改这里的同时要改 Paddle。
+ * 注意：结算页的「N 天免费试用」文案在 i18n 字典的 `plan.features` 里，
+ * 改这个常量要连带改十份字面量，否则两个数字会对不上。
+ */
 export const TRIAL_DAYS = 3;
 
 export interface Tier {
-  /** 套餐名，同时用于页面上展示 */
+  /** 套餐名，同时用于页面上展示（`Pro` 不翻译） */
   name: string;
-  description: Localized<string>;
-  features: Localized<string[]>;
   /**
    * 每档在 Paddle 侧有四个价：同一金额、同一周期，差别只在有没有试用。
    * 试用是绑在 price 上的，没法在结账时开关，所以「订阅」和「试用」
@@ -36,25 +38,8 @@ export type BillingPeriod = "month" | "year";
 export const tiers: Tier[] = [
   {
     name: "Pro",
-    description: {
-      en: "Full access across Chrome, Zotero and Android.",
-      "zh-CN": "Chrome 扩展、Zotero 插件和安卓端的全部功能。",
-    },
-    features: {
-      // 产品只保存原文和笔记，不提供高亮/划线功能 —— 别再写 highlights。
-      en: [
-        `Save original text and your own notes, without limits`,
-        "Ask questions across your own library",
-        "Sync between Chrome, Zotero and Android",
-        `${TRIAL_DAYS}-day free trial, cancel anytime`,
-      ],
-      "zh-CN": [
-        "原文与笔记不限量保存",
-        "在自己的知识库上提问",
-        "在 Chrome、Zotero 和安卓之间同步",
-        `${TRIAL_DAYS} 天免费试用，随时取消`,
-      ],
-    },
+    // 套餐卡片的描述与功能清单在 i18n 字典的 `plan` 段 —— 十种语言都要有，
+    // 放在这里就得跟着语言表一起长。
     priceId: {
       // 试用版（试用结束自动扣费）
       month: "pri_01m7m2w8hefs183bfmtfscqqfh",

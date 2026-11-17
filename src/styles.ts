@@ -64,6 +64,23 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* CJK 字形不统一：日文汉字、繁体字形与简体不同，按 <html lang> 换掉回退段。
+   Inter 依旧排在最前，它只覆盖拉丁与西里尔，缺字形时才落到后面的语言字体。 */
+html:lang(ja) body {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+    "Yu Gothic", "Noto Sans JP", "Apple SD Gothic Neo", sans-serif;
+  line-height: 1.7;
+}
+html:lang(ko) body {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic",
+    "Noto Sans KR", sans-serif;
+  line-height: 1.7;
+}
+html:lang(zh-TW) body {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Hiragino Sans CNS",
+    "Microsoft JhengHei", "Noto Sans TC", sans-serif;
+}
+
 a { color: var(--link); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
@@ -117,6 +134,8 @@ p { margin: 0 0 1em; }
 .lang-menu {
   position: absolute; right: 0; top: calc(100% + 8px); background: rgba(16, 23, 40, 0.92);
   border: 1px solid var(--border); border-radius: 12px; padding: 6px; min-width: 140px;
+  /* 十种语言一列排下来比菜单还高：限高并让它自己滚，别把页面撑出滚动条。 */
+  max-height: min(70vh, 420px); overflow-y: auto;
   box-shadow: var(--shadow-glass); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
 }
 .lang-menu a { display: block; padding: 6px 10px; border-radius: 6px; color: var(--text); }
@@ -167,10 +186,13 @@ p { margin: 0 0 1em; }
 .btn.primary.btn-static:hover { background: var(--primary); transform: none; }
 
 /* ---------- stats ---------- */
+/* 三项指标各占一条，数字在上、说明在下。
+   说明不设 max-width：十种语言的长短差一倍以上，硬限宽会把中文/德文/俄文断成两行，
+   而折行后三个色块的底边就对不齐了。整条换行交给 flex-wrap。 */
 .stats { display: flex; gap: 40px; justify-content: center; list-style: none; padding: 0; margin: 40px 0 0; flex-wrap: wrap; }
 .stats li { display: flex; flex-direction: column; align-items: center; }
 .stats strong { font-size: 1.75rem; font-weight: 700; color: var(--text); letter-spacing: -0.02em; }
-.stats span { color: var(--muted); font-size: 0.86rem; max-width: 20ch; text-align: center; }
+.stats span { color: var(--muted); font-size: 0.86rem; text-align: center; white-space: nowrap; }
 
 /* ---------- sections ---------- */
 .section { padding: 80px 0; border-top: 1px solid var(--hairline); }
@@ -531,6 +553,8 @@ p { margin: 0 0 1em; }
   .brand-name { font-size: 1rem; }
   .lede { max-width: none; }
   .stats { gap: 28px 32px; }
+  /* 手机上没有横向余量：长语言（德/俄）的说明留给折行，别撑破视口 */
+  .stats span { white-space: normal; max-width: 24ch; }
   .section { padding: 56px 0; }
 }
 

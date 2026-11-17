@@ -241,49 +241,20 @@ const CHECKOUT_SCRIPT = String.raw`
 
 function copyFor(locale: Locale) {
   const c = content(locale);
-  if (locale === "zh-CN") {
-    return {
-      heading: "选择你的套餐",
-      lede: "3 天免费试用。需要绑定支付方式，试用结束后自动按所选周期扣费；不想续订的话随时取消。",
-      monthly: "按月",
-      yearly: "按年",
-      perMonth: "/月",
-      perYear: "/年",
-      subscribeNow: "立即订阅",
-      perMonthNote: "标价为税前金额。税费由 Paddle 在结算时按你的所在地计算，最终以结账页显示的总额为准。",
-      localized: "价格已按你的所在地显示，最终金额在结算时确认。",
-      pricesFailed: "价格加载失败，请刷新页面重试。",
-      checkoutFailed: "无法打开结算窗口，请稍后重试或联系支持。",
-      startTrial: "开始 3 天试用",
-      backHome: c.nav.home,
-    };
-  }
-  return {
-    heading: "Choose your plan",
-    lede: "3-day free trial. A payment method is required — we charge automatically when the trial ends. Cancel anytime before then.",
-    monthly: "Monthly",
-    yearly: "Yearly",
-    perMonth: "/month",
-    perYear: "/year",
-    subscribeNow: "Subscribe now",
-    perMonthNote: "Prices exclude tax. Paddle calculates applicable tax for your location at checkout, and the checkout total is final.",
-    localized: "Prices are shown for your location; the final amount is confirmed at checkout.",
-    pricesFailed: "Could not load prices. Please refresh and try again.",
-    checkoutFailed: "Could not open checkout. Please try again or contact support.",
-    startTrial: "Start 3-day trial",
-    backHome: c.nav.home,
-  };
+  // 文案在各自的字典里，回退链由 content() 保证 —— 这里不再有语言分支。
+  return { ...c.checkout, backHome: c.nav.home };
 }
 
 export function renderCheckout(locale: Locale, paddle: PaddleClientConfig): PageMeta {
+  const c = content(locale);
   const t = copyFor(locale);
 
   const plans = tiers
     .map((tier) => {
-      const features = tier.features[locale].map((f) => `<li>${escapeHtml(f)}</li>`).join("\n          ");
+      const features = c.plan.features.map((f) => `<li>${escapeHtml(f)}</li>`).join("\n          ");
       return `<article class="plan featured plan-checkout">
         <h2>${escapeHtml(tier.name)}</h2>
-        <p class="plan-summary">${escapeHtml(tier.description[locale])}</p>
+        <p class="plan-summary">${escapeHtml(c.plan.description)}</p>
         <p class="plan-price">
           <strong data-amount aria-live="polite"></strong>
           <span data-cadence>${escapeHtml(t.perMonth)}</span>
@@ -312,7 +283,7 @@ export function renderCheckout(locale: Locale, paddle: PaddleClientConfig): Page
     <div class="wrap">
       <h1>${escapeHtml(t.heading)}</h1>
       <p class="section-lede">${escapeHtml(t.lede)}</p>
-      <div class="billing-switch" role="group" aria-label="Billing period">
+      <div class="billing-switch" role="group" aria-label="${escapeHtml(t.billingPeriod)}">
         <button type="button" data-period="month" aria-pressed="true" class="is-active">${escapeHtml(t.monthly)}</button>
         <button type="button" data-period="year" aria-pressed="false">${escapeHtml(t.yearly)}</button>
       </div>

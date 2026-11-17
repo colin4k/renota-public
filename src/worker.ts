@@ -16,6 +16,17 @@ interface Env {
 /** Cloudflare 用它表示「未知」和「Tor 出口」，都不能当国家码发给 Paddle。 */
 const NON_COUNTRY_VALUES = new Set(["XX", "T1", ""]);
 
+/**
+ * 结算页在根路径和每一种语言的 /<locale>/checkout/ 下各有一份
+ * （见 build.ts 的功能页生成）。这里只按 URL 形状匹配，不维护语言清单：
+ * 多一种语言不需要回来改这个 Worker。
+ */
+const CHECKOUT_PATH = /^\/(?:[A-Za-z]{2,3}(?:-[A-Za-z]{2,4})?\/)?checkout\/?$/;
+
+function isCheckoutPath(pathname: string): boolean {
+  return CHECKOUT_PATH.test(pathname);
+}
+
 function isRealCountryOf(value: string | null): value is string {
   if (!value) return false;
   const normalized = value.trim().toUpperCase();
@@ -26,7 +37,7 @@ function isRealCountryOf(value: string | null): value is string {
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
-    const isCheckoutPage = /^\/(zh-CN\/)?checkout\/?$/.test(url.pathname);
+    const isCheckoutPage = isCheckoutPath(url.pathname);
 
     const response = await env.ASSETS.fetch(request);
 
