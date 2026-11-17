@@ -114,6 +114,10 @@ p { margin: 0 0 1em; }
 .btn:hover { text-decoration: none; border-color: var(--brand); }
 .btn.primary { background: linear-gradient(140deg, var(--brand), var(--brand-strong)); border-color: transparent; color: #fff; }
 .btn.primary:hover { filter: brightness(1.08); }
+/* 还是按钮的样子，但没有链接：不给 hover 反馈，光标也不变手型 */
+.btn-static, .btn-static:hover { cursor: default; }
+.btn-static:hover { border-color: var(--border); }
+.btn.primary.btn-static:hover { filter: none; }
 
 /* ---------- stats ---------- */
 .stats { display: flex; gap: 40px; justify-content: center; list-style: none; padding: 0; margin: 40px 0 0; flex-wrap: wrap; }

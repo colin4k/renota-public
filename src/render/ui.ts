@@ -158,9 +158,19 @@ export function illustration(kind: IllustrationKind, label: string): string {
 </svg>`;
 }
 
-export function ctaRow(primary: { label: string; href: string }, secondary: { label: string; href: string }): string {
+/**
+ * 主/次两个按钮。主按钮可以没有 href：还没上架的产品先留着位置与文案，
+ * 但不给跳转 —— 渲染成 span，辅助技术也知道它暂时不可用。
+ */
+export function ctaRow(
+  primary: { label: string; href?: string },
+  secondary: { label: string; href: string },
+): string {
+  const primaryHtml = primary.href
+    ? `<a class="btn primary" href="${escapeHtml(primary.href)}">${escapeHtml(primary.label)}</a>`
+    : `<span class="btn primary btn-static" aria-disabled="true">${escapeHtml(primary.label)}</span>`;
   return `<div class="cta-row">
-      <a class="btn primary" href="${escapeHtml(primary.href)}">${escapeHtml(primary.label)}</a>
+      ${primaryHtml}
       <a class="btn" href="${escapeHtml(secondary.href)}" rel="noopener">${escapeHtml(secondary.label)}</a>
     </div>`;
 }

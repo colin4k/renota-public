@@ -49,7 +49,8 @@ function softwareJsonLd(
   description: string,
   category: string,
   os: string,
-  downloadUrl: string,
+  /** 没有可点下载入口时不给 downloadUrl，免得结构化数据与页面说法不一致。 */
+  downloadUrl?: string,
 ): unknown {
   return {
     "@context": "https://schema.org",
@@ -59,7 +60,7 @@ function softwareJsonLd(
     applicationCategory: category,
     operatingSystem: os,
     url: pageUrl(locale, page),
-    downloadUrl,
+    ...(downloadUrl ? { downloadUrl } : {}),
     inLanguage: locale,
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
     publisher: { "@type": "Organization", name: site.name, url: site.url },
@@ -159,6 +160,14 @@ export function renderHome(locale: Locale): PageMeta {
   };
 }
 
+/**
+ * 安装按钮暂时不给链接的产品。
+ *
+ * 这两个还只在 GitHub 发版、没进应用商店，落地页先不挂跳转（避免把人引到
+ * 一个还没准备好的下载页）；按钮位置与文案保留，上架后从这里删掉即可恢复。
+ */
+const INSTALL_LINK_PENDING: ReadonlySet<ProductKey> = new Set<ProductKey>(["chrome", "android"]);
+
 const PRODUCT_META: Record<ProductKey, { category: string; os: string; download: string }> = {
   chrome: { category: "BrowserApplication", os: "Chrome", download: site.links.chromeStore || site.github.chrome },
   zotero: { category: "ReferenceApplication", os: "Zotero", download: site.links.zoteroXpi },
@@ -171,6 +180,8 @@ export function renderProduct(locale: Locale, page: ProductKey): PageMeta {
   const seo = c.seo[page];
   const meta = PRODUCT_META[page];
   const primaryHref = meta.download;
+  /** 有值才会渲染成可点的按钮。 */
+  const installHref = INSTALL_LINK_PENDING.has(page) ? undefined : primaryHref;
   const primaryLabel = p.install.primary.label;
   const primaryNote = p.install.primary.note;
 
@@ -185,7 +196,7 @@ export function renderProduct(locale: Locale, page: ProductKey): PageMeta {
           <p class="lede">${escapeHtml(p.tagline)}</p>
           <p class="body-text">${escapeHtml(p.intro)}</p>
           ${ctaRow(
-            { label: primaryLabel, href: primaryHref },
+            { label: primaryLabel, href: installHref },
             { label: c.common.learnMore, href: "#features" },
           )}
         </div>
@@ -209,7 +220,11 @@ export function renderProduct(locale: Locale, page: ProductKey): PageMeta {
       <div class="card install-card">
         <h3>${escapeHtml(primaryLabel)}</h3>
         <p class="muted">${escapeHtml(primaryNote)}</p>
-        <a class="btn primary" href="${escapeHtml(primaryHref)}" rel="noopener">${escapeHtml(c.common.install)}</a>
+        ${
+          installHref
+            ? `<a class="btn primary" href="${escapeHtml(installHref)}" rel="noopener">${escapeHtml(c.common.install)}</a>`
+            : `<span class="btn primary btn-static" aria-disabled="true">${escapeHtml(c.common.install)}</span>`
+        }
       </div>
       <p class="muted small"><strong>${escapeHtml(c.common.requirements)}:</strong> ${escapeHtml(p.install.requirements)}</p>`,
       { id: "install" },
@@ -224,7 +239,7 @@ export function renderProduct(locale: Locale, page: ProductKey): PageMeta {
     description: seo.description,
     body,
     jsonLd: [
-      softwareJsonLd(locale, page, p.name, seo.description, meta.category, meta.os, meta.download),
+      softwareJsonLd(locale, page, p.name, seo.description, meta.category, meta.os, installHref),
       breadcrumbJsonLd(locale, page, p.name),
       faqJsonLd(p.faq.items),
     ],
