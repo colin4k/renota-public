@@ -79,7 +79,7 @@ Renota includes an **opt-in** anonymous telemetry feature. Telemetry is **disabl
 
 ### 4.1 What is sent
 
-When telemetry is enabled, the Extension sends the following fields to `https://telemetry.werenota.com/v1/events`:
+When telemetry is enabled, the Extension sends the following fields to the telemetry site:
 
 - `event` — a string from a fixed enum (e.g., `knowledge_saved`, `ai_generation_completed`, `extension_installed`)
 - `installId` — a randomly generated UUID v4 stored locally; **not** derived from any user identity
@@ -107,7 +107,7 @@ You can disable telemetry at any time:
 2. Go to **Settings → Privacy**.
 3. Toggle **"Share anonymous usage data"** off.
 
-When disabled, no requests are sent to `telemetry.contextflow.app`. Uninstalling the Extension also stops all telemetry.
+When disabled, no requests are sent to the telemetry site. Uninstalling the Extension also stops all telemetry.
 
 ---
 
@@ -120,7 +120,7 @@ The current list of supported providers is:
 | Provider | Endpoint | Privacy Policy |
 |----------|----------|----------------|
 | **OpenAI** | `https://api.openai.com/v1` | https://openai.com/policies/privacy-policy |
-| **DeepSeek** | `https://api.deepseek.com` | https://www.deepseek.com/privacy |
+| **DeepSeek** | `https://api.deepseek.com` | https://cdn.deepseek.com/policies/en-US/deepseek-privacy-policy.html |
 | **OpenRouter** | `https://openrouter.ai/api/v1` | https://openrouter.ai/privacy |
 
 Renota's servers are **not** in this data path. Your API key, prompts, and responses flow only between your browser and the LLM provider you selected.
@@ -205,7 +205,7 @@ If you are a California resident, you have the right to know, delete, correct, a
 
 - **Local data** (IndexedDB / `chrome.storage.local`): retained until you clear it or uninstall the Extension.
 - **Cloud sync data**: retained while your account exists. Delete markers are purged after 90 days. Deleting your account removes all entries, devices and login records.
-- **Telemetry events** on `telemetry.contextflow.app`: retained for up to **90 days** in aggregate form, then deleted. They are never linked to an individual.
+- **Telemetry events**: retained for up to **90 days** in aggregate form, then deleted. They are never linked to an individual.
 - **LLM prompts and responses**: handled by the third-party provider you configured. Please refer to their retention policies (Section 5).
 
 ---

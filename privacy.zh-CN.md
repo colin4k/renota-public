@@ -79,7 +79,7 @@ Renota 包含一项**按需开启**的匿名遥测功能。遥测**默认关闭*
 
 ### 4.1 发送的内容
 
-开启遥测后，扩展会向 `https://telemetry.werenota.com/v1/events` 发送以下字段：
+开启遥测后，扩展会向遥测网站发送以下字段：
 
 - `event` —— 来自固定枚举的字符串（例如 `knowledge_saved`、`ai_generation_completed`、`extension_installed`）
 - `installId` —— 本地随机生成的 UUID v4；**不**由任何用户身份推导而来
@@ -107,7 +107,7 @@ Renota 包含一项**按需开启**的匿名遥测功能。遥测**默认关闭*
 2. 进入 **设置 → 隐私**。
 3. 关闭 **"分享匿名使用数据"**。
 
-关闭后，不会再向 `telemetry.contextflow.app` 发送任何请求。卸载扩展也会停止全部遥测。
+关闭后，不会再向遥测网站发送任何请求。卸载扩展也会停止全部遥测。
 
 ---
 
@@ -120,7 +120,7 @@ Renota 不内置 AI 模型。你自行提供服务商与 API Key（BYOK）。当
 | 服务商 | 端点 | 隐私政策 |
 |----------|----------|----------------|
 | **OpenAI** | `https://api.openai.com/v1` | https://openai.com/policies/privacy-policy |
-| **DeepSeek** | `https://api.deepseek.com` | https://www.deepseek.com/privacy |
+| **DeepSeek** | `https://api.deepseek.com` | https://cdn.deepseek.com/policies/zh-CN/deepseek-privacy-policy.html |
 | **OpenRouter** | `https://openrouter.ai/api/v1` | https://openrouter.ai/privacy |
 
 Renota 的服务器**不**在这条数据链路中。你的 API Key、提示词与响应只在你所用浏览器与你选择的大模型服务商之间流动。
@@ -205,7 +205,7 @@ Chrome 要求我们声明所使用的权限。以下是我们使用每项权限�
 
 - **本地数据**（IndexedDB / `chrome.storage.local`）：保留至你清除数据或卸载扩展。
 - **云同步数据**：在你的账号存在期间保留。删除标记在 90 天后清除。删除账号会移除全部条目、设备与登录记录。
-- **遥测事件**（`telemetry.contextflow.app`）：以聚合形式最多保留 **90 天**，之后删除。它们永远不会与个人关联。
+- **遥测事件**：以聚合形式最多保留 **90 天**，之后删除。它们永远不会与个人关联。
 - **大模型提示词与响应**：由你配置的第三方服务商处理。请参阅其保留政策（第 5 节）。
 
 ---
