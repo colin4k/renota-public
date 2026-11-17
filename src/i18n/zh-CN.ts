@@ -341,7 +341,7 @@ export const zhCN: Content = {
       install: {
         title: "获取扩展",
         body: "Chrome 应用商店上架准备中，目前源码在 GitHub 上。",
-        primary: { label: "在 GitHub 查看", note: "Chrome 应用商店上架准备中" },
+        primary: { label: "获取", note: "Chrome 应用商店上架准备中" },
         requirements: "Chrome 120 或更新版本，以及任意兼容 OpenAI 服务商的 API Key。",
       },
     },
@@ -463,7 +463,7 @@ export const zhCN: Content = {
       highlights: [
         {
           title: "任意 app 上都能用",
-          body: "框选一块区域，或者整屏。无障碍服务只在你主动触发时截屏。",
+          body: "框选一块区域，或者整屏进行截屏。",
         },
         {
           title: "离线中文 OCR",
@@ -557,7 +557,7 @@ export const zhCN: Content = {
       install: {
         title: "获取应用",
         body: "从发布页下载 APK 安装。需要允许你的浏览器或文件管理器安装应用。",
-        primary: { label: "下载 APK", note: "最新版本" },
+        primary: { label: "获取", note: "最新版本" },
         requirements: "Android 11 或更新版本，以及兼容 OpenAI 或 Anthropic 接口的 API Key。",
       },
     },

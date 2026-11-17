@@ -230,7 +230,7 @@ export function renderProduct(locale: Locale, page: ProductKey): PageMeta {
       p.install.title,
       `<p class="body-text">${escapeHtml(p.install.body)}</p>
       <div class="card install-card">
-        <h3>${escapeHtml(primaryLabel)}</h3>
+        <h3>${escapeHtml(p.install.title)}</h3>
         <p class="muted">${escapeHtml(primaryNote)}</p>
         ${
           installHref

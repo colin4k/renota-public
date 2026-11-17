@@ -344,7 +344,7 @@ export const en = {
       install: {
         title: "Get the extension",
         body: "The Chrome Web Store listing is in preparation. Until then, the source lives on GitHub.",
-        primary: { label: "View on GitHub", note: "Chrome Web Store listing in preparation" },
+        primary: { label: "Get it", note: "Chrome Web Store listing in preparation" },
         requirements: "Chrome 120 or newer. An API key from any OpenAI-compatible provider.",
       },
     },
@@ -466,7 +466,7 @@ export const en = {
       highlights: [
         {
           title: "Works over any app",
-          body: "Frame a region or the whole screen. The accessibility service only captures when you ask it to.",
+          body: "Frame a region, or capture the whole screen.",
         },
         {
           title: "Offline Chinese OCR",
@@ -560,7 +560,7 @@ export const en = {
       install: {
         title: "Get the app",
         body: "Download the APK from the releases page and install it. You will need to allow installs from your browser or file manager.",
-        primary: { label: "Download APK", note: "Latest release" },
+        primary: { label: "Get it", note: "Latest release" },
         requirements: "Android 11 or newer. An API key from any OpenAI-compatible provider, or Anthropic.",
       },
     },
