@@ -19,10 +19,10 @@ export const site = {
   },
   email: "support@werenota.com",
   /**
-   * 社区频道（Discord）。深链指向 #社区-support 频道：
-   * 未加入服务器的人会先落到邀请/加入页，已加入的直接进频道。
+   * 社区邀请链接（Discord）。
+   * 用邀请链接而不是频道深链：没加入的人也能直接进来，进来后自然停在支持频道。
    */
-  discord: "https://discord.com/channels/1572220924869083206/1572221083614978138",
+  discord: "https://discord.gg/wx3NGRDu6Z",
   github: {
     chrome: "https://github.com/colin4k/contextflow",
     zotero: "https://github.com/colin4k/contextflow-zotero",
