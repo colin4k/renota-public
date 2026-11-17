@@ -18,6 +18,11 @@ export const site = {
     "zh-CN": "读任何东西，留下有用的，然后问自己的笔记。",
   },
   email: "support@werenota.com",
+  /**
+   * 社区频道（Discord）。深链指向 #社区-support 频道：
+   * 未加入服务器的人会先落到邀请/加入页，已加入的直接进频道。
+   */
+  discord: "https://discord.com/channels/1572220924869083206/1572221083614978138",
   github: {
     chrome: "https://github.com/colin4k/contextflow",
     zotero: "https://github.com/colin4k/contextflow-zotero",

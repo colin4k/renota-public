@@ -202,6 +202,7 @@ ${meta.body}
         <h2 class="footer-title">${escapeHtml(c.footer.resources)}</h2>
         <ul>
           <li><a href="mailto:${site.email}">${escapeHtml(site.email)}</a></li>
+          <li><a href="${site.discord}" rel="noopener">${escapeHtml(c.footer.discord)}</a></li>
         </ul>
       </div>
       <div>

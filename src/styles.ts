@@ -316,6 +316,47 @@ p { margin: 0 0 1em; }
 .device-empty { padding: 14px; border-radius: 10px; border: 1px dashed var(--border);
   color: var(--muted); font-size: 0.88rem; }
 
+/* API 密钥：给 agent 用的只读凭据 */
+.keys-section { padding-top: 26px; border-top: 1px solid var(--border); margin-top: 22px; }
+.keys-intro { margin: 0 0 14px; color: var(--muted); font-size: 0.86rem; line-height: 1.65; }
+.keys-locked { margin: 0 0 14px; padding: 10px 13px; border-radius: 10px; font-size: 0.84rem;
+  border: 1px solid rgba(139, 124, 246, 0.35); background: rgba(139, 124, 246, 0.08); color: #c7bcff; }
+.key-create-row { display: flex; gap: 10px; }
+.key-create-row input { flex: 1 1 auto; min-width: 0; padding: 11px 13px; border-radius: 10px;
+  border: 1px solid var(--border); background: var(--bg); color: inherit; font: inherit; font-size: 0.9rem; }
+.key-create-row input::placeholder { color: #5a5a70; }
+.key-create-row input:focus { outline: 2px solid var(--brand); outline-offset: 1px; border-color: transparent; }
+.key-create-row .btn { flex: 0 0 auto; white-space: nowrap; font-size: 0.9rem; }
+.key-create-row input:disabled, .key-create-row .btn:disabled { opacity: 0.55; cursor: not-allowed; }
+
+.key-created { margin-top: 14px; padding: 14px; border-radius: 12px;
+  border: 1px solid rgba(110, 231, 183, 0.35); background: rgba(110, 231, 183, 0.06); }
+.key-created code { display: block; font-size: 0.82rem; word-break: break-all; color: #d8fff0; }
+.key-created .btn { margin-top: 10px; font-size: 0.84rem; }
+.key-created p { margin: 8px 0 0; }
+
+.key-list { list-style: none; padding: 0; margin: 14px 0 0; display: grid; gap: 8px; }
+.key-row { display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  padding: 11px 14px; border-radius: 10px; background: var(--bg); border: 1px solid var(--border); }
+.key-main { min-width: 0; display: grid; gap: 3px; }
+.key-name { font-size: 0.92rem; overflow-wrap: anywhere; }
+.key-meta { font-size: 0.78rem; color: var(--muted); overflow-wrap: anywhere; }
+.key-revoke { flex: 0 0 auto; font-size: 0.8rem; padding: 6px 12px; }
+.key-empty { padding: 14px; border-radius: 10px; border: 1px dashed var(--border);
+  color: var(--muted); font-size: 0.88rem; }
+
+.mcp-box { margin-top: 20px; padding: 16px; border-radius: 12px;
+  border: 1px solid var(--border); background: var(--bg); }
+.mcp-label { margin: 0 0 8px; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.mcp-url { display: block; font-size: 0.84rem; word-break: break-all; color: #c7bcff; }
+.mcp-box .small { margin: 8px 0 0; }
+.mcp-config { margin-top: 10px; }
+.mcp-config summary { cursor: pointer; font-size: 0.84rem; color: var(--muted); }
+.mcp-config summary:hover { color: var(--fg); }
+.mcp-config pre { margin: 10px 0 0; padding: 12px; border-radius: 10px; overflow-x: auto;
+  background: var(--bg-soft); border: 1px solid var(--border);
+  font-size: 0.78rem; line-height: 1.55; }
+
 /* 操作区 */
 .account-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px;
   padding-top: 20px; border-top: 1px solid var(--border); }
@@ -336,6 +377,9 @@ p { margin: 0 0 1em; }
   .account-stats > div.wide { grid-column: auto; }
   .auth-input-row { flex-direction: column; }
   .auth-input-row .btn { width: 100%; }
+  .key-create-row { flex-direction: column; }
+  .key-create-row .btn { width: 100%; }
+  .key-row { flex-direction: column; align-items: flex-start; }
 }
 
 .cta-band { padding: 72px 0; text-align: center; background: linear-gradient(180deg, var(--bg-soft), var(--bg)); border-top: 1px solid var(--border); }

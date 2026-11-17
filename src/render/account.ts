@@ -102,6 +102,37 @@ export function renderAccount(locale: Locale): PageMeta {
             </div>
           </section>
 
+          <section class="account-section keys-section">
+            <h3>${escapeHtml(a.keys.label)}</h3>
+            <p class="keys-intro">${escapeHtml(a.keys.intro)}</p>
+            <p id="keys-locked" class="keys-locked" hidden>${escapeHtml(a.keys.requiresPro)}</p>
+
+            <div class="key-create-row">
+              <input id="key-name" type="text" maxlength="60" autocomplete="off" spellcheck="false"
+                     placeholder="${escapeHtml(a.keys.namePlaceholder)}" />
+              <button type="button" class="btn primary" id="key-create">${escapeHtml(a.keys.create)}</button>
+            </div>
+            <p id="key-note" class="auth-note" hidden></p>
+
+            <div id="key-created" class="key-created" hidden>
+              <code id="key-created-value"></code>
+              <button type="button" class="btn" id="key-copy">${escapeHtml(a.keys.copy)}</button>
+              <p class="muted small">${escapeHtml(a.keys.createdHint)}</p>
+            </div>
+
+            <ul id="key-list" class="key-list"></ul>
+
+            <div class="mcp-box">
+              <p class="mcp-label">${escapeHtml(a.keys.mcpTitle)}</p>
+              <code class="mcp-url" id="mcp-url">${escapeHtml(API_BASE)}/mcp</code>
+              <p class="muted small">${escapeHtml(a.keys.mcpHint)}</p>
+              <details class="mcp-config">
+                <summary>${escapeHtml(a.keys.configTitle)}</summary>
+                <pre id="mcp-snippet"></pre>
+              </details>
+            </div>
+          </section>
+
           <div class="account-actions">
             <button type="button" class="btn" id="sign-out">${escapeHtml(a.signedIn.signOut)}</button>
             <button type="button" class="btn" id="sign-out-all">${escapeHtml(a.signedIn.signOutAll)}</button>
@@ -129,6 +160,7 @@ export function renderAccount(locale: Locale): PageMeta {
       welcome: a.welcome,
       errors: a.errors,
       plan: a.plan,
+      keys: a.keys,
     })}</script>
     <script>${ACCOUNT_SCRIPT.replace("__API_BASE__", API_BASE)}</script>`;
 
@@ -282,6 +314,182 @@ const ACCOUNT_SCRIPT = String.raw`
       });
   }
 
+  // ---------- API 密钥 / MCP ----------
+
+  var keyCache = { mcpUrl: "", available: false };
+
+  function showKeyNote(message, kind) {
+    var el = document.getElementById("key-note");
+    if (!message) { el.hidden = true; return; }
+    el.textContent = message;
+    el.className = "auth-note" + (kind ? " " + kind : "");
+    el.hidden = false;
+  }
+
+  function renderMcp() {
+    var target = document.getElementById("mcp-url");
+    if (target && keyCache.mcpUrl) target.textContent = keyCache.mcpUrl;
+    var snippet = document.getElementById("mcp-snippet");
+    if (!snippet) return;
+    var url = keyCache.mcpUrl || (API + "/mcp");
+    snippet.textContent = JSON.stringify({
+      mcpServers: {
+        renota: {
+          type: "http",
+          url: url,
+          headers: { Authorization: "Bearer <your API key>" }
+        }
+      }
+    }, null, 2);
+  }
+
+  function renderKeyList(keys) {
+    var list = document.getElementById("key-list");
+    list.textContent = "";
+
+    if (!keys || keys.length === 0) {
+      var empty = document.createElement("li");
+      empty.className = "key-empty";
+      empty.textContent = dict.keys.empty;
+      list.appendChild(empty);
+      return;
+    }
+
+    keys.forEach(function (item) {
+      var li = document.createElement("li");
+      li.className = "key-row";
+
+      var main = document.createElement("div");
+      main.className = "key-main";
+
+      var name = document.createElement("span");
+      name.className = "key-name";
+      name.textContent = item.name;
+
+      var meta = document.createElement("span");
+      meta.className = "key-meta";
+      var used = item.lastUsedAt ? dict.keys.lastUsed + " " + formatDay(item.lastUsedAt) : dict.keys.never;
+      meta.textContent = item.prefix + " · " + dict.keys.created + " " + formatDay(item.createdAt) + " · " + used;
+
+      main.appendChild(name);
+      main.appendChild(meta);
+
+      var revoke = document.createElement("button");
+      revoke.type = "button";
+      revoke.className = "btn key-revoke";
+      revoke.textContent = dict.keys.revoke;
+      revoke.addEventListener("click", function () { revokeKey(item.id, revoke); });
+
+      li.appendChild(main);
+      li.appendChild(revoke);
+      list.appendChild(li);
+    });
+  }
+
+  function loadKeys() {
+    return api("/v1/api-keys", { method: "GET" })
+      .then(function (res) {
+        if (!res.ok) throw new Error("keys_failed");
+        return res.json();
+      })
+      .then(function (data) {
+        keyCache.mcpUrl = data.mcp && data.mcp.url ? data.mcp.url : API + "/mcp";
+        keyCache.available = !!data.mcpAvailable;
+        renderKeyList(data.keys || []);
+        renderMcp();
+
+        document.getElementById("keys-locked").hidden = keyCache.available;
+        document.getElementById("key-create").disabled = !keyCache.available;
+        document.getElementById("key-name").disabled = !keyCache.available;
+        return data;
+      })
+      .catch(function () {
+        showKeyNote(dict.keys.loadFailed, "err");
+        renderMcp();
+      });
+  }
+
+  function keyErrorMessage(code) {
+    if (code === "duplicate_name") return dict.keys.nameTaken;
+    if (code === "too_many_keys") return dict.keys.limitReached;
+    if (code === "invalid_name") return dict.keys.nameRequired;
+    return dict.keys.createFailed;
+  }
+
+  function createKey() {
+    var input = document.getElementById("key-name");
+    var button = document.getElementById("key-create");
+    var name = input.value.trim();
+    if (!name) { showKeyNote(dict.keys.nameRequired, "err"); return; }
+
+    button.disabled = true;
+    button.textContent = dict.keys.creating;
+
+    api("/v1/api-keys", { method: "POST", body: JSON.stringify({ name: name }) })
+      .then(function (res) {
+        return res.json().then(function (body) { return { ok: res.ok, code: body && body.code, body: body }; });
+      })
+      .then(function (result) {
+        if (!result.ok) {
+          showKeyNote(keyErrorMessage(result.code), "err");
+          return null;
+        }
+        input.value = "";
+        document.getElementById("key-created").hidden = false;
+        document.getElementById("key-created-value").textContent = result.body.key;
+        showKeyNote("", "");
+        return loadKeys();
+      })
+      .catch(function () { showKeyNote(dict.keys.createFailed, "err"); })
+      .then(function () {
+        button.disabled = !keyCache.available;
+        button.textContent = dict.keys.create;
+      });
+  }
+
+  function copyCreatedKey() {
+    var value = document.getElementById("key-created-value").textContent || "";
+    if (!value) return;
+    var button = document.getElementById("key-copy");
+    var done = function () {
+      button.textContent = dict.keys.copied;
+      setTimeout(function () { button.textContent = dict.keys.copy; }, 1600);
+    };
+    var fallback = function () {
+      var area = document.createElement("textarea");
+      area.value = value;
+      area.setAttribute("readonly", "");
+      area.style.position = "fixed";
+      area.style.opacity = "0";
+      document.body.appendChild(area);
+      area.select();
+      try { document.execCommand("copy"); done(); } catch (e) { /* 让用户手动选 */ }
+      document.body.removeChild(area);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(value).then(done).catch(fallback);
+    } else {
+      fallback();
+    }
+  }
+
+  function revokeKey(id, button) {
+    button.disabled = true;
+    button.textContent = dict.keys.revoking;
+    api("/v1/api-keys/" + encodeURIComponent(id), { method: "DELETE" })
+      .then(function (res) {
+        if (!res.ok) throw new Error("revoke_failed");
+        document.getElementById("key-created").hidden = true;
+        showKeyNote(dict.keys.revokedNotice, "ok");
+        return loadKeys();
+      })
+      .catch(function () {
+        button.disabled = false;
+        button.textContent = dict.keys.revoke;
+        showKeyNote(dict.errors.generic, "err");
+      });
+  }
+
   // 默认状态已经是「未登录」，脚本把已登录的卡片换上来即可
 
   function renderSignedIn(data) {
@@ -293,6 +501,7 @@ const ACCOUNT_SCRIPT = String.raw`
 
     renderPlan(data.plan, data.planExpiresAt);
     refreshBilling().then(function () { renderPlan(data.plan, data.planExpiresAt); });
+    loadKeys();
 
     var list = document.getElementById("device-list");
     list.textContent = "";
@@ -384,6 +593,11 @@ const ACCOUNT_SCRIPT = String.raw`
 
   document.getElementById("plan-cancel").addEventListener("click", cancelPlan);
   document.getElementById("plan-portal").addEventListener("click", openPortal);
+  document.getElementById("key-create").addEventListener("click", createKey);
+  document.getElementById("key-copy").addEventListener("click", copyCreatedKey);
+  document.getElementById("key-name").addEventListener("keydown", function (event) {
+    if (event.key === "Enter") { event.preventDefault(); createKey(); }
+  });
 
   document.getElementById("sign-out").addEventListener("click", function () {
     api("/v1/auth/logout", { method: "POST", body: "{}" }).then(function () {
