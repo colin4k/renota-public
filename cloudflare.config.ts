@@ -6,6 +6,7 @@ export default defineConfig({
     name: "renota-public",
     compatibilityDate: "2026-09-21",
     observability: { enabled: true },
-    domains: ["www.werenota.com"],
+    // 裸域与 www 同时绑定到同一个 Worker：两边都能直接打开，canonical 仍统一指向 www。
+    domains: ["www.werenota.com", "werenota.com"],
   },
 });
