@@ -194,6 +194,20 @@ export const en = {
       ],
     },
 
+    mcp: {
+      title: "Your knowledge base, as a tool for agents",
+      lede: "Beyond cloud sync, the same material can be read by other programs.",
+      body:
+        "Claude Code, Cursor, or a small script you wrote yourself can search your clips, highlights and notes over MCP — no more pasting passages into the prompt by hand.",
+      points: [
+        "Read-only: an agent can find and quote your entries, never change or delete them.",
+        "Chinese queries work too — it uses the same index as the apps.",
+        "Needs an account on the Pro plan: create an API key on the account page and put it in your agent's config.",
+      ],
+      endpointLabel: "MCP endpoint",
+      cta: "Create an API key on the account page",
+    },
+
     faq: {
       title: "Questions people ask",
       items: [
@@ -212,6 +226,10 @@ export const en = {
         {
           q: "Which languages are supported?",
           a: "The interface ships with English and Simplified Chinese, with the other common languages selectable. The assistant answers in whatever language you ask it to.",
+        },
+        {
+          q: "Can I connect my knowledge base to Claude Code or Cursor?",
+          a: "Yes. Create an API key on the account page, then point your agent at the MCP endpoint with that key. It is part of the Pro plan and read-only: an agent can read your entries, not change them.",
         },
       ],
     },
@@ -577,6 +595,7 @@ export const en = {
         "The same clips in the browser, in Zotero and on your phone",
         "Sign in on a new device and keep reading, keep asking",
         "Deletions sync too, so nothing reappears on another device",
+        "Give Claude Code, Cursor and other agents read access over MCP",
       ],
       cta: "Subscribe",
     },

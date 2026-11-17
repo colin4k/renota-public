@@ -145,6 +145,18 @@ p { margin: 0 0 1em; }
 .card h3 { margin-bottom: 8px; }
 .card p { margin: 0; color: var(--muted); font-size: 0.94rem; }
 
+/* ---------- MCP block ---------- */
+.mcp-endpoint {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 16px;
+  margin: 26px 0 0; padding: 14px 18px; border-radius: 12px;
+  border: 1px solid var(--border); background: var(--card);
+}
+.mcp-endpoint-label {
+  font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted);
+}
+.mcp-endpoint code { font-size: 0.92rem; overflow-wrap: anywhere; }
+.mcp-link { margin: 14px 0 0; font-size: 0.92rem; }
+
 /* ---------- pricing ---------- */
 .grid.plans { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); align-items: stretch; }
 .plan { display: flex; flex-direction: column; gap: 10px; padding: 28px; }

@@ -191,6 +191,20 @@ export const zhCN: Content = {
       ],
     },
 
+    mcp: {
+      title: "你的知识库，也是 agent 的工具",
+      lede: "除了云同步，同一份内容还能被别的程序读懂。",
+      body:
+        "Claude Code、Cursor，或者你自己写的小脚本，都能通过 MCP 直接检索你存下的摘录、批注和笔记 —— 不用再一段段复制进提示词。",
+      points: [
+        "只读：agent 能找到并引用你的条目，不能修改或删除。",
+        "中文照样搜得到 —— 用的是和应用内同一套索引。",
+        "需要账号与 Pro 订阅：在账号页创建一把 API 密钥，填进 agent 的配置即可。",
+      ],
+      endpointLabel: "MCP 地址",
+      cta: "在账号页创建 API 密钥",
+    },
+
     faq: {
       title: "经常被问到",
       items: [
@@ -209,6 +223,10 @@ export const zhCN: Content = {
         {
           q: "支持哪些语言？",
           a: "界面提供英文和简体中文，并可切换到其它常见语言。助手按你要求的语言回答。",
+        },
+        {
+          q: "能把知识库接到 Claude Code 或 Cursor 吗？",
+          a: "可以。在账号页创建一把 API 密钥，把 MCP 地址和密钥填进 agent 的配置，它就能检索你的条目。这个能力包含在 Pro 订阅里，而且只读 —— agent 读得到，改不了。",
         },
       ],
     },
@@ -574,6 +592,7 @@ export const zhCN: Content = {
         "浏览器、Zotero 和手机看到同一批摘录",
         "换一台设备登录，接着读、接着问",
         "删除也会同步，不会在另一台设备上冒出来",
+        "用 MCP 把知识库接给 Claude Code、Cursor 等 agent",
       ],
       cta: "订阅 Pro",
     },

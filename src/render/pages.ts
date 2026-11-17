@@ -118,6 +118,18 @@ export function renderHome(locale: Locale): PageMeta {
       alt: true,
     })}
 
+    ${section(
+      d.mcp.title,
+      `<p class="body-text">${escapeHtml(d.mcp.body)}</p>
+      ${checklist(d.mcp.points)}
+      <div class="mcp-endpoint">
+        <span class="mcp-endpoint-label">${escapeHtml(d.mcp.endpointLabel)}</span>
+        <code>${escapeHtml(`${site.apiBase}/mcp`)}</code>
+      </div>
+      <p class="mcp-link"><a href="${pagePath(locale, "account")}">${escapeHtml(d.mcp.cta)} →</a></p>`,
+      { id: "mcp", lede: d.mcp.lede },
+    )}
+
     ${section(d.faq.title, faqList(d.faq.items))}
 
     <section class="cta-band">
