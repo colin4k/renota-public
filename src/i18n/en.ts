@@ -18,12 +18,10 @@ export const en = {
   footer: {
     tagline: "One private knowledge base across the browser, Zotero and your phone.",
     products: "Products",
-    resources: "Resources",
+    resources: "Support",
     legal: "Legal",
     privacy: "Privacy policy",
     terms: "Terms of service",
-    source: "Source code",
-    cloud: "Sync service",
     copyright: "Renota. Bring your own API key.",
     madeFor: "Made for people who read a lot.",
   },

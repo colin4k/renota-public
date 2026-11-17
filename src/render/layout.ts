@@ -173,8 +173,6 @@ ${meta.body}
       <div>
         <h2 class="footer-title">${escapeHtml(c.footer.resources)}</h2>
         <ul>
-          <li><a href="${site.github.chrome}" rel="noopener">${escapeHtml(c.footer.source)}</a></li>
-          <li><a href="${site.github.cloud}" rel="noopener">${escapeHtml(c.footer.cloud)}</a></li>
           <li><a href="mailto:${site.email}">${escapeHtml(site.email)}</a></li>
         </ul>
       </div>

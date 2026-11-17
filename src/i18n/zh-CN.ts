@@ -19,12 +19,10 @@ export const zhCN: Content = {
   footer: {
     tagline: "浏览器、Zotero 和手机共用一份私有知识库。",
     products: "产品",
-    resources: "资源",
+    resources: "支持",
     legal: "法律",
     privacy: "隐私政策",
     terms: "服务条款",
-    source: "源代码",
-    cloud: "同步服务",
     copyright: "睿记 Renota。自带 API Key。",
     madeFor: "为读得多的人做的。",
   },
