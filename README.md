@@ -98,6 +98,7 @@ Paddle.Checkout.open({items:[{priceId}], settings:{displayMode:'overlay', varian
 - 文案：`src/i18n/en.ts`（结构源头）与 `src/i18n/zh-CN.ts`
 - 页面骨架：`src/render/pages.ts`；可复用区块在 `src/render/ui.ts`
 - 样式：`src/styles.ts`（单文件，无 CSS 框架）
+- 视觉规范：`DESIGN.md`（色板/字号/间距/玻璃层配方，改样式前先改它，`npm run design:lint` 把关）
 
 ## 社交预览图
 

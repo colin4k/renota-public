@@ -8,9 +8,12 @@
     "build": "tsx src/build.ts",
     "dev": "tsx src/build.ts --serve",
     "preview": "tsx src/build.ts --serve",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "design:lint": "designmd lint DESIGN.md",
+    "design:tokens": "designmd export --format css-vars --prefix rn DESIGN.md"
   },
   "devDependencies": {
+    "@google/design.md": "^0.4.0",
     "@resvg/resvg-js": "^2.6.2",
     "@types/markdown-it": "^14.1.2",
     "@types/node": "^22.10.2",

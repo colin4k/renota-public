@@ -11,3 +11,6 @@ dist/
 # 环境配置备份（含密钥，永不提交）
 .env*backup*
 *.sandbox-backup
+
+# 设计规范的一次性预览产物（本地核对用，不进仓库）
+.design-preview/

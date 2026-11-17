@@ -161,6 +161,7 @@ ${twitterImageTag}
   ${jsonLd}
 </head>
 <body>
+  <div class="aurora" aria-hidden="true"><i class="a1"></i><i class="a2"></i><i class="a3"></i></div>
   <a class="skip" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="wrap header-inner">
