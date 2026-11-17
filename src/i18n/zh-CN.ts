@@ -9,6 +9,7 @@ export const zhCN: Content = {
     chrome: "Chrome 扩展",
     zotero: "Zotero 插件",
     android: "安卓版",
+    pricing: "价格",
     privacy: "隐私",
     account: "账号",
     github: "GitHub",
@@ -76,6 +77,10 @@ export const zhCN: Content = {
     privacy: {
       title: "隐私政策",
       description: "睿记在你的设备上存了什么、什么会离开设备、开启云同步时会上传什么，以及如何删除。",
+    },
+    pricing: {
+      title: "价格 — 应用免费，云同步按月订阅",
+      description: "睿记三个应用自带 API Key 就能免费使用。浏览器、Zotero 与手机之间的云同步每月 9.90 美元，随时可以取消。",
     },
   },
 
@@ -538,6 +543,67 @@ export const zhCN: Content = {
     },
   },
 
+  pricing: {
+    title: "价格",
+    intro:
+      "三个应用都免费，自带 API Key 就能用。只有云同步收费 —— 一份按月订阅，让同一份知识库在浏览器、Zotero 和手机之间保持一致。",
+    badge: "随时取消",
+    plansTitle: "两档，一份知识库",
+    free: {
+      name: "免费",
+      price: "$0",
+      period: "长期",
+      summary: "在自己的设备上，用自己的 API Key 使用三个应用。",
+      features: [
+        "Chrome 扩展、Zotero 插件、安卓 app 全部可用",
+        "自带 API Key，模型调用由你的服务商计费",
+        "摘录、批注、洞见都存在你的设备上",
+        "不需要注册就能开始用",
+      ],
+      cta: "获取应用",
+    },
+    pro: {
+      name: "Pro",
+      price: "$9.90",
+      period: "每月",
+      summary: "开启云同步，让同一份知识库跟着你的每一台设备走。",
+      features: [
+        "包含免费档的全部功能",
+        "浏览器、Zotero 和手机看到同一批摘录",
+        "换一台设备登录，接着读、接着问",
+        "删除也会同步，不会在另一台设备上冒出来",
+      ],
+      cta: "订阅 Pro",
+    },
+    note:
+      "价格为美元，通过 Paddle 按月预付。API Key 从不离开你的设备 —— 订阅费用只涵盖云同步。随时可以取消，取消后仍可使用到已付费周期的最后一刻。",
+    faqTitle: "关于订阅",
+    faq: [
+      {
+        q: "订阅之后还要另付模型费用吗？",
+        a: "需要。订阅只包含云同步。模型调用直接发给你配置的服务商，由他们计费，不经过我们。",
+      },
+      {
+        q: "取消之后会怎样？",
+        a: "知识库会继续同步，直到你已经付费的那个周期结束。之后账号回到免费档，只保留本地知识库，设备上的内容一件不少。",
+      },
+      {
+        q: "不订阅能用吗？",
+        a: "能。三个应用在自己的设备上都能完整使用，只要自备 API Key。只有跨设备同步需要订阅。",
+      },
+      {
+        q: "怎么付款？",
+        a: "结账由 Paddle 处理（我们的收款方）。根据你的账单国家，支持信用卡、PayPal 和当地支付方式。",
+      },
+      {
+        q: "我的支付信息存在哪？",
+        a: "存在 Paddle 那边，不在我们这里。我们只拿到订阅状态和账号邮箱。",
+      },
+    ],
+    ctaTitle: "准备同步了吗？",
+    ctaBody: "先登录一次，然后在账号页选择 Pro。",
+  },
+
   privacy: {
     title: "隐私政策",
     intro: "这一页说明睿记保存了什么、什么会离开你的设备，以及怎么删除。",
@@ -574,6 +640,24 @@ export const zhCN: Content = {
   account: {
     title: "账号",
     intro: "云同步需要一个账号。登录一次，同一份知识库就会跟着你的浏览器、Zotero 和手机走。",
+    plan: {
+      label: "订阅",
+      free: "免费档 — 本地知识库",
+      pro: "Pro — 云同步已开启",
+      upgrade: "订阅后即可开启云同步",
+      checkout: "订阅 Pro",
+      cancel: "取消订阅",
+      cancelHint: "取消后仍可使用到你已付费周期的最后一刻。",
+      renewsOn: "下次续费",
+      until: "可用至",
+      canceledUntil: "已取消 — 可用至",
+      price: "每月 9.90 美元",
+      notAvailable: "订阅暂未开放。",
+      failed: "无法发起结账，请重试。",
+      cancelDone: "已安排取消，可用到本周期结束。",
+      pricingLink: "比较两档",
+      pastDue: "扣款失败 — 请在 Paddle 更新支付方式以继续同步。",
+    },
     signedOut: {
       heading: "登录或创建账号",
       google: "使用 Google 账号继续",

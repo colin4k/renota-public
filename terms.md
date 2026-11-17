@@ -76,9 +76,17 @@ Where practical, we give notice of changes that materially reduce functionality 
 
 ---
 
-## 7. Fees
+## 7. Fees, subscriptions and refunds
 
-The Service is currently free. If we introduce paid tiers, we will state the price and terms before you incur any charge, and existing free functionality will be described clearly at that time. You are always responsible for your own model provider costs, which are separate and are never billed by us.
+The apps are free to use on your own devices with your own API key. Cloud sync is an optional paid subscription at **US$9.90 per month**, charged in advance through our payment provider, Paddle. Depending on your billing country, sales tax or VAT may be added.
+
+Subscriptions renew automatically every month until cancelled. You can cancel at any time from the account page; your access continues until the end of the period you have already paid for, and cancelling stops all future charges.
+
+If you believe you were charged in error — or if the paid service was unavailable for a sustained period for reasons within our control — contact **support@werenota.com** within 14 days of the charge and we will refund it.
+
+Model provider costs are separate and are never billed by us.
+
+Paddle acts as our merchant of record for subscriptions. Your payment details are handled by Paddle and its payment partners, not by us, and are never stored on our servers.
 
 ---
 

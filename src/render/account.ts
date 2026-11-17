@@ -84,6 +84,21 @@ export function renderAccount(locale: Locale): PageMeta {
             <ul id="device-list" class="device-list"></ul>
           </section>
 
+          <section class="account-section plan-section">
+            <h3>${escapeHtml(a.plan.label)}</h3>
+            <div id="plan-row" class="plan-row" hidden>
+              <div>
+                <span class="plan-badge" id="plan-name">—</span>
+                <div class="plan-when" id="plan-when"></div>
+              </div>
+              <div class="plan-actions">
+                <button type="button" class="btn primary" id="plan-subscribe" hidden>${escapeHtml(a.plan.checkout)}</button>
+                <button type="button" class="btn" id="plan-cancel" hidden>${escapeHtml(a.plan.cancel)}</button>
+                <a class="btn" href="${pagePath(locale, "pricing")}">${escapeHtml(a.plan.pricingLink)}</a>
+              </div>
+            </div>
+          </section>
+
           <div class="account-actions">
             <button type="button" class="btn" id="sign-out">${escapeHtml(a.signedIn.signOut)}</button>
             <button type="button" class="btn" id="sign-out-all">${escapeHtml(a.signedIn.signOutAll)}</button>
@@ -110,6 +125,7 @@ export function renderAccount(locale: Locale): PageMeta {
       deleting: a.signedIn.deleting,
       welcome: a.welcome,
       errors: a.errors,
+      plan: a.plan,
     })}</script>
     <script>${ACCOUNT_SCRIPT.replace("__API_BASE__", API_BASE)}</script>`;
 
@@ -161,6 +177,130 @@ const ACCOUNT_SCRIPT = String.raw`
     inEl.hidden = true;
   }
 
+  // ---------- 订阅 ----------
+
+  var billingCache = null;
+  var paddleLoading = null;
+
+  function formatDay(ts) {
+    if (!ts) return "";
+    var d = new Date(ts);
+    var pad = function (n) { return n < 10 ? "0" + n : String(n); };
+    return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
+  }
+
+  function loadPaddle() {
+    if (window.Paddle) return Promise.resolve(window.Paddle);
+    if (paddleLoading) return paddleLoading;
+    paddleLoading = new Promise(function (resolve, reject) {
+      var script = document.createElement("script");
+      script.src = "https://cdn.paddle.com/paddle/v2/paddle.js";
+      script.onload = function () { resolve(window.Paddle); };
+      script.onerror = function () { reject(new Error("paddle_unavailable")); };
+      document.head.appendChild(script);
+    });
+    return paddleLoading;
+  }
+
+  function renderPlan(plan, planExpiresAt) {
+    var row = document.getElementById("plan-row");
+    if (!row) return;
+    row.hidden = false;
+
+    var nameEl = document.getElementById("plan-name");
+    var whenEl = document.getElementById("plan-when");
+    var subscribeEl = document.getElementById("plan-subscribe");
+    var cancelEl = document.getElementById("plan-cancel");
+    var p = dict.plan;
+
+    var isPro = plan === "pro";
+    nameEl.textContent = isPro ? p.pro : p.free;
+    nameEl.className = "plan-badge" + (isPro ? " pro" : "");
+
+    var sub = billingCache && billingCache.subscription;
+    if (isPro && sub) {
+      if (sub.cancelAtPeriodEnd) {
+        whenEl.textContent = p.canceledUntil + " " + formatDay(sub.currentPeriodEnd);
+        cancelEl.hidden = true;
+      } else {
+        whenEl.textContent = p.renewsOn + " " + formatDay(sub.currentPeriodEnd);
+        cancelEl.hidden = false;
+      }
+      if (sub.status === "past_due") whenEl.textContent = p.pastDue;
+    } else if (isPro) {
+      whenEl.textContent = planExpiresAt ? p.until + " " + formatDay(planExpiresAt) : "";
+      cancelEl.hidden = true;
+    } else {
+      whenEl.textContent = p.upgrade + (p.price ? " · " + p.price : "");
+      cancelEl.hidden = true;
+    }
+
+    var available = !!(billingCache && billingCache.available);
+    subscribeEl.hidden = isPro || !available;
+  }
+
+  function refreshBilling() {
+    return fetch(API + "/v1/billing/status", { credentials: "include", headers: { "content-type": "application/json" } })
+      .then(function (res) { return res.ok ? res.json() : null; })
+      .then(function (data) {
+        billingCache = data;
+        return data;
+      })
+      .catch(function () { return null; });
+  }
+
+  function startCheckout() {
+    var button = document.getElementById("plan-subscribe");
+    button.disabled = true;
+
+    api("/v1/billing/checkout", { method: "POST", body: "{}" })
+      .then(function (res) {
+        return res.json().then(function (body) {
+          if (!res.ok) throw new Error(body.code || "checkout_failed");
+          return body;
+        });
+      })
+      .then(function (order) {
+        return loadPaddle().then(function (Paddle) {
+          Paddle.Environment.set(order.environment === "production" ? "production" : "sandbox");
+          Paddle.Initialize({
+            token: order.clientToken,
+            eventCallback: function (event) {
+              if (event && event.name === "checkout.completed") {
+                // webhook 落库有几百毫秒延迟，等一会儿再拉状态
+                setTimeout(function () { refresh().then(function () {}); location.reload(); }, 2500);
+              }
+            },
+          });
+          Paddle.Checkout.open({ transactionId: order.transactionId });
+        });
+      })
+      .catch(function () {
+        showStatus(dict.plan.failed, "err");
+      })
+      .finally(function () {
+        button.disabled = false;
+        button.textContent = dict.plan.checkout;
+      });
+  }
+
+  function cancelPlan() {
+    if (!window.confirm(dict.plan.cancelHint)) return;
+    var button = document.getElementById("plan-cancel");
+    button.disabled = true;
+    api("/v1/billing/cancel", { method: "POST", body: "{}" })
+      .then(function (res) {
+        if (!res.ok) throw new Error("cancel_failed");
+        showStatus(dict.plan.cancelDone, "ok");
+        return refreshBilling();
+      })
+      .then(function () { return refresh(); })
+      .catch(function () { showStatus(dict.errors.generic, "err"); })
+      .finally(function () {
+        button.disabled = false;
+      });
+  }
+
   // 默认状态已经是「未登录」，脚本把已登录的卡片换上来即可
 
   function renderSignedIn(data) {
@@ -169,6 +309,9 @@ const ACCOUNT_SCRIPT = String.raw`
     document.getElementById("fact-email").textContent = data.user.email;
     document.getElementById("fact-clips").textContent = String(data.clipCount);
     document.getElementById("fact-sessions").textContent = String(data.sessionCount);
+
+    renderPlan(data.plan, data.planExpiresAt);
+    refreshBilling().then(function () { renderPlan(data.plan, data.planExpiresAt); });
 
     var list = document.getElementById("device-list");
     list.textContent = "";
@@ -219,6 +362,7 @@ const ACCOUNT_SCRIPT = String.raw`
 
   // 邮件链接跳回来时带的结果参数
   var params = new URLSearchParams(location.search);
+  var wantsSubscribe = params.get("subscribe") === "1";
   if (params.get("welcome")) showStatus(dict.welcome, "ok");
   if (params.get("error")) showStatus(errorText(params.get("error")), "err");
   if (params.toString()) {
@@ -257,6 +401,9 @@ const ACCOUNT_SCRIPT = String.raw`
       });
   });
 
+  document.getElementById("plan-subscribe").addEventListener("click", startCheckout);
+  document.getElementById("plan-cancel").addEventListener("click", cancelPlan);
+
   document.getElementById("sign-out").addEventListener("click", function () {
     api("/v1/auth/logout", { method: "POST", body: "{}" }).then(function () {
       location.reload();
@@ -285,8 +432,12 @@ const ACCOUNT_SCRIPT = String.raw`
   });
 
   loadProviders();
-  refresh().catch(function () {
-    renderSignedOut();
-  });
+  refresh()
+    .then(function () {
+      if (wantsSubscribe && !inEl.hidden) startCheckout();
+    })
+    .catch(function () {
+      renderSignedOut();
+    });
 })();
 `;

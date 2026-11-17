@@ -141,6 +141,37 @@ p { margin: 0 0 1em; }
 .card h3 { margin-bottom: 8px; }
 .card p { margin: 0; color: var(--muted); font-size: 0.94rem; }
 
+/* ---------- pricing ---------- */
+.grid.plans { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); align-items: stretch; }
+.plan { display: flex; flex-direction: column; gap: 10px; padding: 28px; }
+.plan.featured {
+  border-color: rgba(139, 124, 246, 0.55);
+  box-shadow: 0 0 0 1px rgba(139, 124, 246, 0.22), 0 22px 48px -30px rgba(139, 124, 246, 0.85);
+}
+.plan h3 { margin: 0; color: var(--brand); font-size: 0.92rem; letter-spacing: 0.09em; text-transform: uppercase; }
+.plan-price { display: flex; align-items: baseline; gap: 8px; margin: 0; }
+.plan-price strong { font-size: 2.1rem; font-weight: 800; color: var(--text); }
+.plan-price span { color: var(--muted); font-size: 0.9rem; }
+.plan-summary { margin: 0; color: var(--muted); font-size: 0.95rem; }
+.plan-features { margin: 6px 0 18px; }
+.plan-features li { font-size: 0.92rem; }
+.plan .btn { margin-top: auto; align-self: flex-start; }
+.plan-note { margin-top: 24px; max-width: 78ch; }
+
+/* ---------- account: 订阅卡片 ---------- */
+.plan-row {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  flex-wrap: wrap; padding: 16px 18px; border: 1px solid var(--border); border-radius: var(--radius);
+  background: var(--panel); margin: 22px 0 8px;
+}
+.plan-row .plan-badge {
+  display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 0.92rem;
+}
+.plan-row .plan-badge.pro { color: var(--brand); }
+.plan-row .plan-when { color: var(--muted); font-size: 0.86rem; }
+.plan-row .plan-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.plan-row .plan-actions .btn { font-size: 0.9rem; }
+
 .product-card {
   display: flex; flex-direction: column; gap: 6px; padding: 24px;
   background: linear-gradient(180deg, var(--panel), var(--bg-soft));
@@ -345,6 +376,7 @@ p { margin: 0 0 1em; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .product-card { transition: none; }
+
+.product-card { transition: none; }
 }
 `;

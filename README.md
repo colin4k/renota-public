@@ -4,7 +4,7 @@
 
 - 中文名 **睿记**，其余语言一律 **Renota**
 - 当前语言：`en`（根路径）、`zh-CN`（`/zh-CN/`）
-- 页面：首页、Chrome 扩展、Zotero 插件、安卓版、隐私政策 —— 每页每语言一个 HTML
+- 页面：首页、Chrome 扩展、Zotero 插件、安卓版、价格、隐私政策、服务条款、账号 —— 每页每语言一个 HTML
 
 ## 本地开发
 
@@ -59,6 +59,29 @@ src/site.ts  →  site.url
 
 全站没有客户端 JS，首屏就是最终 HTML，抓取和分享预览不依赖渲染。
 
+## 订阅与结账
+
+定价页 `/pricing/` 是**纯静态**的：两档对比、FAQ，按钮只是跳到账号页
+`/account/?subscribe=1`。所有 Paddle 相关的 JS 都只在账号页加载，因为：
+
+- Paddle Checkout 必须在网页环境跑，Chrome 扩展里加载不了（也违反 Paddle 条款）
+- 搜索引擎要能无 JS 抓到定价内容
+- 结账前必须先有网站登录态，账号页本来就有
+
+账号页的流程：
+
+```
+POST /v1/billing/checkout  →  {transactionId, environment, clientToken}
+Paddle.Initialize({token}); Paddle.Checkout.open({transactionId})
+```
+
+金额由服务端的 price id 决定，前端拿不到、也改不了价格。
+付款结果不靠前端回调，而是 `cloud.werenota.com/v1/billing/webhook` 落库，
+账号页再 `GET /v1/billing/status` 读真实状态。
+
+后台配置（Paddle product / price / webhook）在
+[`../renota-cloud/docs/paddle-setup.md`](../renota-cloud/docs/paddle-setup.md)。
+
 ## 加一门语言
 
 1. 复制 `src/i18n/zh-CN.ts` 为新语言文件，翻译内容（类型来自 `en.ts`，漏字段会编译失败）
@@ -90,7 +113,7 @@ src/
 ├── og.ts                 社交预览图 SVG
 ├── styles.ts             全站 CSS
 ├── serve.ts              本地预览服务器
-├── i18n/                 语言列表、URL 规则、各语言文案
+├── i18n/                 语言列表、URL 规则、各语言文案（含 pricing）
 └── render/               HTML 骨架（SEO 标签）与页面/区块
 privacy.md                隐私政策英文全文（/privacy/）
 privacy.zh-CN.md          隐私政策中文正式译本（/zh-CN/privacy/）

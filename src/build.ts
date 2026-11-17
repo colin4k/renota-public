@@ -11,7 +11,7 @@ import { content } from "./i18n/index.js";
 import { renderPage } from "./render/layout.js";
 import { createHash } from "node:crypto";
 import { renderAccount } from "./render/account.js";
-import { renderHome, renderProduct, renderPrivacy, renderTerms } from "./render/pages.js";
+import { renderHome, renderPricing, renderProduct, renderPrivacy, renderTerms } from "./render/pages.js";
 import { css } from "./styles.js";
 import { renderOgSvg } from "./og.js";
 
@@ -180,7 +180,9 @@ async function build(): Promise<void> {
             ? renderAccount(entry.locale)
             : entry.page === "terms"
               ? renderTerms(entry.locale, termsHtml[entry.locale])
-              : renderProduct(entry.locale, entry.page);
+              : entry.page === "pricing"
+                ? renderPricing(entry.locale)
+                : renderProduct(entry.locale, entry.page);
 
     const html = renderPage({ ...meta, cssHref });
     const file = htmlPath(entry.locale, entry.page);
@@ -210,13 +212,17 @@ async function build(): Promise<void> {
           ? c.home.hero.title
           : page === "privacy"
             ? c.privacy.title
-            : c.product[page].name;
+            : page === "pricing"
+              ? c.pricing.title
+              : c.product[page].name;
       const subtitle =
         page === "home"
           ? c.seo.home.description
           : page === "privacy"
             ? c.privacy.summaryTitle
-            : c.product[page].tagline;
+            : page === "pricing"
+              ? c.pricing.pro.summary
+              : c.product[page].tagline;
 
       const svg = renderOgSvg({ title, subtitle, brand: c.siteName, locale });
       const png = await rasterize(svg, 1200);

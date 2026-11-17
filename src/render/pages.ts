@@ -30,7 +30,7 @@ function faqJsonLd(items: Array<{ q: string; a: string }>): unknown {
   };
 }
 
-function breadcrumbJsonLd(locale: Locale, page: ProductKey | "privacy" | "terms", label: string): unknown {
+function breadcrumbJsonLd(locale: Locale, page: ProductKey | "privacy" | "terms" | "pricing", label: string): unknown {
   const home = content(locale).nav.home;
   return {
     "@context": "https://schema.org",
@@ -347,5 +347,74 @@ export function renderPrivacy(locale: Locale, policyHtml: string): PageMeta {
       },
       breadcrumbJsonLd(locale, "privacy", d.title),
     ],
+  };
+}
+
+/**
+ * 定价页。
+ *
+ * 刻意保持纯静态：结账按钮只把用户带到账号页（`?subscribe=1`），
+ * Paddle.js 只在账号页加载 —— 这样定价页仍然可被搜索引擎无 JS 抓取。
+ */
+export function renderPricing(locale: Locale): PageMeta {
+  const c = content(locale);
+  const d = c.pricing;
+
+  function planCard(plan: typeof d.free, options: { featured?: boolean; href: string }): string {
+    return `<div class="card plan${options.featured ? " featured" : ""}">
+        <h3>${escapeHtml(plan.name)}</h3>
+        <p class="plan-price"><strong>${escapeHtml(plan.price)}</strong> <span>${escapeHtml(plan.period)}</span></p>
+        <p class="plan-summary">${escapeHtml(plan.summary)}</p>
+        ${checklist(plan.features, "plan-features")}
+        <a class="btn${options.featured ? " primary" : ""}" href="${options.href}">${escapeHtml(plan.cta)}</a>
+      </div>`;
+  }
+
+  const accountHref = `${pagePath(locale, "account")}?subscribe=1`;
+
+  const body = `
+    ${breadcrumbs(pagePath(locale, "home"), c.nav.home, d.title)}
+
+    <section class="hero plain">
+      <div class="wrap">
+        <span class="badge">${escapeHtml(d.badge)}</span>
+        <h1>${escapeHtml(d.title)}</h1>
+        <p class="lede">${escapeHtml(d.intro)}</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <h2>${escapeHtml(d.plansTitle)}</h2>
+        <div class="grid plans">
+          ${planCard(d.free, { href: pagePath(locale, "home") })}
+          ${planCard(d.pro, { featured: true, href: accountHref })}
+        </div>
+        <p class="muted small plan-note">${escapeHtml(d.note)}</p>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="wrap">
+        <h2>${escapeHtml(d.faqTitle)}</h2>
+        ${faqList(d.faq)}
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap center">
+        <h2>${escapeHtml(d.ctaTitle)}</h2>
+        <p class="lede">${escapeHtml(d.ctaBody)}</p>
+        <div class="cta-row"><a class="btn primary" href="${accountHref}">${escapeHtml(d.pro.cta)}</a></div>
+      </div>
+    </section>`;
+
+  return {
+    locale,
+    page: "pricing",
+    title: c.seo.pricing.title,
+    description: c.seo.pricing.description,
+    body,
+    jsonLd: [faqJsonLd(d.faq), breadcrumbJsonLd(locale, "pricing", d.title)],
   };
 }

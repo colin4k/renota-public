@@ -8,6 +8,7 @@ export const en = {
     chrome: "Chrome",
     zotero: "Zotero",
     android: "Android",
+    pricing: "Pricing",
     privacy: "Privacy",
     account: "Account",
     github: "GitHub",
@@ -77,6 +78,11 @@ export const en = {
       title: "Privacy policy",
       description:
         "What Renota stores on your device, what leaves it, when cloud sync uploads anything, and how to delete it.",
+    },
+    pricing: {
+      title: "Pricing — free apps, paid cloud sync",
+      description:
+        "Renota is free with your own API key. Cloud sync across the browser, Zotero and your phone is US$9.90 per month. Cancel anytime.",
     },
   },
 
@@ -540,6 +546,67 @@ export const en = {
     },
   },
 
+  pricing: {
+    title: "Pricing",
+    intro:
+      "All three apps are free with your own API key. Cloud sync is the only paid feature — one flat monthly subscription that keeps a single knowledge base in step across your browser, Zotero and your phone.",
+    badge: "Cancel anytime",
+    plansTitle: "Two plans, one knowledge base",
+    free: {
+      name: "Free",
+      price: "$0",
+      period: "forever",
+      summary: "Use every app on your own device with your own API key.",
+      features: [
+        "Chrome extension, Zotero plugin and Android app",
+        "Bring your own API key — model usage is billed by your provider",
+        "Clips, highlights and notes stay on your device",
+        "No account needed to start",
+      ],
+      cta: "Get the apps",
+    },
+    pro: {
+      name: "Pro",
+      price: "$9.90",
+      period: "per month",
+      summary: "Turn on cloud sync so the same knowledge base follows every device.",
+      features: [
+        "Everything in Free",
+        "The same clips in the browser, in Zotero and on your phone",
+        "Sign in on a new device and keep reading, keep asking",
+        "Deletions sync too, so nothing reappears on another device",
+      ],
+      cta: "Subscribe",
+    },
+    note:
+      "Prices are in US dollars, billed monthly in advance through Paddle. Your API key never leaves your device — the subscription covers cloud sync only. Cancel anytime; access continues to the end of the period you already paid for.",
+    faqTitle: "Subscription questions",
+    faq: [
+      {
+        q: "Do I still pay for model usage?",
+        a: "Yes. The subscription covers cloud sync only. Model calls go straight to the provider you configured and are billed by them, never by us.",
+      },
+      {
+        q: "What happens if I cancel?",
+        a: "Your knowledge base keeps syncing until the end of the period you already paid for. After that the account drops back to the free plan and stays local-only, without losing anything on your devices.",
+      },
+      {
+        q: "Can I use the apps without subscribing?",
+        a: "Yes. All three apps work fully on your own device with your own API key. Only syncing between devices needs a subscription.",
+      },
+      {
+        q: "How do I pay?",
+        a: "Checkout is handled by Paddle, our merchant of record. Cards, PayPal and local payment methods are available depending on your billing country.",
+      },
+      {
+        q: "Where is my payment information stored?",
+        a: "With Paddle, never with us. We only receive a subscription status and the email address on the account.",
+      },
+    ],
+    ctaTitle: "Ready to sync?",
+    ctaBody: "Sign in once, then choose Pro on the account page.",
+  },
+
   privacy: {
     title: "Privacy policy",
     intro: "This page explains what Renota stores, what leaves your device, and how to delete it.",
@@ -578,6 +645,24 @@ export const en = {
   account: {
     title: "Account",
     intro: "Cloud sync needs an account. Sign in once and the same knowledge base follows you across the browser, Zotero and your phone.",
+    plan: {
+      label: "Plan",
+      free: "Free — local knowledge base",
+      pro: "Pro — cloud sync on",
+      upgrade: "Subscribe to turn on cloud sync",
+      checkout: "Subscribe",
+      cancel: "Cancel subscription",
+      cancelHint: "You keep access until the end of the period you already paid for.",
+      renewsOn: "Renews on",
+      until: "Access until",
+      canceledUntil: "Cancelled — access until",
+      price: "$9.90 / month",
+      notAvailable: "Subscription is not available right now.",
+      failed: "Could not start checkout. Please try again.",
+      cancelDone: "Cancellation scheduled. Access continues until the period ends.",
+      pricingLink: "Compare plans",
+      pastDue: "Payment failed — update your card with Paddle to keep syncing.",
+    },
     signedOut: {
       heading: "Sign in or create an account",
       google: "Continue with Google",

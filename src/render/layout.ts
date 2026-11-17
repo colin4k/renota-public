@@ -144,6 +144,7 @@ ${alternates(meta.page)}
       </a>
       <nav class="site-nav" aria-label="Products">
         ${navLinks(meta.locale, meta.page, c)}
+        <a href="${pagePath(meta.locale, "pricing")}"${meta.page === "pricing" ? ' aria-current="page"' : ""}>${escapeHtml(c.nav.pricing)}</a>
         <a href="${pagePath(meta.locale, "privacy")}"${meta.page === "privacy" ? ' aria-current="page"' : ""}>${escapeHtml(c.nav.privacy)}</a>
         <a href="${pagePath(meta.locale, "account")}"${meta.page === "account" ? ' aria-current="page"' : ""}>${escapeHtml(c.nav.account)}</a>
         ${languageSwitcher(meta.locale, meta.page, c)}
@@ -168,6 +169,7 @@ ${meta.body}
           <li><a href="${pagePath(meta.locale, "chrome")}">${escapeHtml(c.nav.chrome)}</a></li>
           <li><a href="${pagePath(meta.locale, "zotero")}">${escapeHtml(c.nav.zotero)}</a></li>
           <li><a href="${pagePath(meta.locale, "android")}">${escapeHtml(c.nav.android)}</a></li>
+          <li><a href="${pagePath(meta.locale, "pricing")}">${escapeHtml(c.nav.pricing)}</a></li>
         </ul>
       </div>
       <div>
