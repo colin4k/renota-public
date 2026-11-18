@@ -134,4 +134,3 @@ Preguntas sobre estas Condiciones:
 
 - Correo electrónico: [support@werenota.com](mailto:support@werenota.com)
 - Cuestiones de privacidad: consulte la [Política de privacidad](https://www.werenota.com/privacy/)
-- Código fuente: [github.com/colin4k](https://github.com/colin4k)

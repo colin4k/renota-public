@@ -134,4 +134,3 @@ Paddle은 구독과 관련해 당사의 기록상 판매자 역할을 합니다.
 
 - 이메일: [support@werenota.com](mailto:support@werenota.com)
 - 개인정보 관련: [개인정보 처리방침](https://www.werenota.com/privacy/) 참고
-- 소스 코드: [github.com/colin4k](https://github.com/colin4k)

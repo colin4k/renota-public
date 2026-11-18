@@ -134,4 +134,3 @@ Renota 采用自带密钥（BYOK）模式：
 
 - 邮箱：[support@werenota.com](mailto:support@werenota.com)
 - 隐私相关事项：见[隐私政策](https://www.werenota.com/privacy/)
-- 源代码：[github.com/colin4k](https://github.com/colin4k)

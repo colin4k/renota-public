@@ -220,7 +220,7 @@ export const es: Content = {
         },
         {
           q: "¿Es gratis?",
-          a: "Las apps son gratis y de código abierto. Pagas directamente al proveedor del modelo por el uso de la API, y el coste depende del modelo que elijas.",
+          a: "Las apps son gratis. Pagas directamente al proveedor del modelo por el uso de la API, y el coste depende del modelo que elijas.",
         },
         {
           q: "¿A dónde van mis datos?",

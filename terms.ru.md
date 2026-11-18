@@ -134,4 +134,3 @@ Paddle выступает нашим мерчантом, отвечающим з
 
 - Электронная почта: [support@werenota.com](mailto:support@werenota.com)
 - Вопросы конфиденциальности: см. [Политику конфиденциальности](https://www.werenota.com/privacy/)
-- Исходный код: [github.com/colin4k](https://github.com/colin4k)

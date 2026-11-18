@@ -134,4 +134,3 @@ Questions about these Terms:
 
 - Email: [support@werenota.com](mailto:support@werenota.com)
 - Privacy matters: see the [Privacy Policy](https://www.werenota.com/privacy/)
-- Source code: [github.com/colin4k](https://github.com/colin4k)

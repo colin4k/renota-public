@@ -134,4 +134,3 @@ Paddle 是本訂閱的登記商家（merchant of record）。你的付款資訊�
 
 - 電子郵件：[support@werenota.com](mailto:support@werenota.com)
 - 隱私相關事項：見[隱私權政策](https://www.werenota.com/privacy/)
-- 原始碼：[github.com/colin4k](https://github.com/colin4k)

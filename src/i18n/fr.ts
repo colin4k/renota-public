@@ -220,7 +220,7 @@ export const fr: Content = {
         },
         {
           q: "Est-ce gratuit ?",
-          a: "Les applis sont gratuites et open source. Vous payez directement votre fournisseur de modèle pour l'usage de l'API — le coût dépend du modèle choisi.",
+          a: "Les applis sont gratuites. Vous payez directement votre fournisseur de modèle pour l'usage de l'API — le coût dépend du modèle choisi.",
         },
         {
           q: "Où vont mes données ?",

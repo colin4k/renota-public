@@ -134,4 +134,3 @@ Renota は BYOK（bring-your-own-key）方式です。
 
 - メール：[support@werenota.com](mailto:support@werenota.com)
 - プライバシーに関する事項：[プライバシーポリシー](https://www.werenota.com/privacy/) を参照してください
-- ソースコード：[github.com/colin4k](https://github.com/colin4k)

@@ -219,7 +219,7 @@ export const en = {
         },
         {
           q: "Is it free?",
-          a: "The apps are free and open source. You pay your model provider directly for API usage — the cost depends on which model you choose.",
+          a: "The apps are free. You pay your model provider directly for API usage — the cost depends on which model you choose.",
         },
         {
           q: "Where does my data go?",
