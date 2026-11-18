@@ -220,7 +220,7 @@ export const pt: Content = {
         },
         {
           q: "É grátis?",
-          a: "Os apps são grátis. Você paga o provedor de modelo diretamente pelo uso da API — o custo depende do modelo que escolher.",
+          a: "Os apps são grátis. A sincronização na nuvem é o único recurso pago e custa US$9.90 por mês. Você paga o provedor de modelo diretamente pelo uso da API — o custo depende do modelo que escolher.",
         },
         {
           q: "Para onde vão meus dados?",

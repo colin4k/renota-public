@@ -220,7 +220,7 @@ export const de: Content = {
         },
         {
           q: "Ist es kostenlos?",
-          a: "Die Apps sind kostenlos. Die API-Nutzung zahlen Sie direkt bei Ihrem Modellanbieter — die Kosten hängen davon ab, welches Modell Sie wählen.",
+          a: "Die Apps sind kostenlos; die einzige kostenpflichtige Funktion ist die Cloud-Synchronisierung (US$9.90 pro Monat). Die API-Nutzung zahlen Sie direkt bei Ihrem Modellanbieter — die Kosten hängen davon ab, welches Modell Sie wählen.",
         },
         {
           q: "Wohin gehen meine Daten?",

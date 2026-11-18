@@ -220,7 +220,7 @@ export const fr: Content = {
         },
         {
           q: "Est-ce gratuit ?",
-          a: "Les applis sont gratuites. Vous payez directement votre fournisseur de modèle pour l'usage de l'API — le coût dépend du modèle choisi.",
+          a: "Les applis sont gratuites. La synchronisation cloud est la seule fonction payante, US$9.90 par mois. Vous payez directement votre fournisseur de modèle pour l'usage de l'API — le coût dépend du modèle choisi.",
         },
         {
           q: "Où vont mes données ?",
