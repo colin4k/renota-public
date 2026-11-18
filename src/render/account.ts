@@ -147,7 +147,7 @@ export function renderAccount(locale: Locale): PageMeta {
           </details>
         </div>
 
-        <p class="account-back"><a href="${pagePath(locale, "home")}">← ${escapeHtml(a.backHome)}</a></p>
+        <p class="account-back"><a href="${pagePath(locale, "home")}">${escapeHtml(a.backHome)}</a></p>
       </div>
     </section>
 

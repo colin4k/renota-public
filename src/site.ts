@@ -23,17 +23,14 @@ export const site = {
    * 用邀请链接而不是频道深链：没加入的人也能直接进来，进来后自然停在支持频道。
    */
   discord: "https://discord.gg/wx3NGRDu6Z",
-  github: {
-    chrome: "https://github.com/colin4k/contextflow",
-    zotero: "https://github.com/colin4k/contextflow-zotero",
-    android: "https://github.com/colin4k/FloatReader",
-    cloud: "https://github.com/colin4k/renota-cloud",
-  },
-  /** 安装/下载入口。上架后把 store 链接填进来即可，页面不用改。 */
+  /**
+   * 安装/下载入口。上架后把商店或发行页地址填进来即可，页面不用改；
+   * 留空时对应的安装按钮只显示文案、不挂跳转。
+   */
   links: {
     chromeStore: "",
-    zoteroXpi: "https://github.com/colin4k/contextflow-zotero/releases/latest",
-    androidApk: "https://github.com/colin4k/FloatReader/releases/latest",
+    zoteroXpi: "",
+    androidApk: "",
   },
 } as const;
 

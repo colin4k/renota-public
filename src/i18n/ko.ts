@@ -12,7 +12,7 @@ export const ko: Content = {
     pricing: "요금",
     privacy: "개인정보",
     account: "계정",
-    github: "GitHub",
+    menu: "메뉴",
     language: "언어",
     home: "홈",
   },
@@ -33,7 +33,6 @@ export const ko: Content = {
   common: {
     learnMore: "자세히 보기",
     install: "받기",
-    viewOnGithub: "GitHub에서 보기",
     readMore: "더 보기",
     faq: "자주 묻는 질문",
     onThisPage: "이 페이지의 목차",
@@ -104,6 +103,17 @@ export const ko: Content = {
         { value: "0", label: "우리 서버에 저장되는 API 키" },
         { value: "10", label: "개 인터페이스 언어" },
       ],
+
+      /* 首屏与产品页里那台「正在阅读的窗口」的示例内容。
+         书名与段落是虚构的示例，不引用任何真实作品。 */
+      preview: {
+        prompt: "이 문단 설명",
+        book: "주의력 노트",
+        lead: "주의력은 타고나는 재능이 아니다.",
+        marked: "한 페이지씩 쌓는 습관이다.",
+        answer: "집중은 주어지는 것이 아니라 훈련하는 것이라는 뜻입니다. 그래서 한 구절을 저장해 두면 다음 질문이 쉬워집니다.",
+        source: "3장 · 41쪽",
+      },
     },
 
     products: {
@@ -346,7 +356,7 @@ export const ko: Content = {
       },
       install: {
         title: "확장 프로그램 받기",
-        body: "Chrome 웹 스토어 등록을 준비 중입니다. 그때까지는 소스가 GitHub에 있습니다.",
+        body: "Chrome 웹 스토어 등록을 준비 중입니다.",
         primary: { label: "받기", note: "Chrome 웹 스토어 등록 준비 중" },
         requirements: "Chrome 120 이상. OpenAI 호환 제공자의 API 키.",
       },

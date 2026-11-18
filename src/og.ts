@@ -136,38 +136,25 @@ export function renderOgSvg(input: OgInput): string {
 
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${WIDTH}" height="${HEIGHT}" viewBox="0 0 ${WIDTH} ${HEIGHT}">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#14141f"/>
-      <stop offset="1" stop-color="#0d0d14"/>
-    </linearGradient>
-    <radialGradient id="glow" cx="0.82" cy="0.1" r="0.7">
-      <stop offset="0" stop-color="#8b7cf6" stop-opacity="0.42"/>
-      <stop offset="1" stop-color="#8b7cf6" stop-opacity="0"/>
-    </radialGradient>
-    <linearGradient id="mark" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#8b7cf6"/>
-      <stop offset="1" stop-color="#4f3fd0"/>
-    </linearGradient>
     <style>
-      .title { fill: #f4f4fa; font-family: ${fontStack}; font-size: ${titleSize}px; font-weight: 700; letter-spacing: -1px; }
-      .subtitle { fill: #9a9ab0; font-family: ${fontStack}; font-size: ${subtitleSize}px; font-weight: 400; }
-      .brand { fill: #ececf3; font-family: ${fontStack}; font-size: 30px; font-weight: 700; }
-      .host { fill: #6f6f88; font-family: ${fontStack}; font-size: 22px; }
-      .markletter { fill: #ffffff; font-family: ${fontStack}; font-size: 34px; font-weight: 700; }
+      .title { fill: #eef0f5; font-family: ${fontStack}; font-size: ${titleSize}px; font-weight: 500; letter-spacing: -1px; }
+      .subtitle { fill: #a3a9b8; font-family: ${fontStack}; font-size: ${subtitleSize}px; font-weight: 400; }
+      .brand { fill: #eef0f5; font-family: ${fontStack}; font-size: 30px; font-weight: 500; }
+      .host { fill: #838b9e; font-family: ${fontStack}; font-size: 22px; }
+      .markletter { fill: #e0a24a; font-family: ${fontStack}; font-size: 30px; font-weight: 500; }
     </style>
   </defs>
 
-  <rect width="${WIDTH}" height="${HEIGHT}" fill="url(#bg)"/>
-  <rect width="${WIDTH}" height="${HEIGHT}" fill="url(#glow)"/>
+  <rect width="${WIDTH}" height="${HEIGHT}" fill="#0b0c0f"/>
 
-  <rect x="${padding}" y="${padding - 8}" width="58" height="58" rx="16" fill="url(#mark)"/>
+  <rect x="${padding}" y="${padding - 8}" width="58" height="58" rx="10" fill="#0b0c0f" stroke="#e0a24a" stroke-opacity="0.42"/>
   <text x="${padding + 29}" y="${padding + 31}" class="markletter" text-anchor="middle">R</text>
   <text x="${padding + 76}" y="${padding + 32}" class="brand">${escapeXml(input.brand)}</text>
 
   ${titleSpans}
   ${subtitleSpans}
 
-  <rect x="${padding}" y="${HEIGHT - 96}" width="64" height="4" rx="2" fill="#8b7cf6"/>
+  <rect x="${padding}" y="${HEIGHT - 96}" width="64" height="3" rx="1.5" fill="#e0a24a"/>
   <text x="${padding}" y="${HEIGHT - 52}" class="host">renota.app · ${escapeXml(input.locale)}</text>
 </svg>`;
 }

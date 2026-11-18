@@ -12,7 +12,7 @@ export const ru: Content = {
     pricing: "Цены",
     privacy: "Конфиденциальность",
     account: "Аккаунт",
-    github: "GitHub",
+    menu: "Меню",
     language: "Язык",
     home: "Главная",
   },
@@ -33,7 +33,6 @@ export const ru: Content = {
   common: {
     learnMore: "Подробнее",
     install: "Получить",
-    viewOnGithub: "Открыть на GitHub",
     readMore: "Читать далее",
     faq: "Частые вопросы",
     onThisPage: "На этой странице",
@@ -104,6 +103,17 @@ export const ru: Content = {
         { value: "0", label: "API-ключей хранится на наших серверах" },
         { value: "10", label: "языков интерфейса" },
       ],
+
+      /* 首屏与产品页里那台「正在阅读的窗口」的示例内容。
+         书名与段落是虚构的示例，不引用任何真实作品。 */
+      preview: {
+        prompt: "Объяснить этот абзац",
+        book: "Заметки о внимании",
+        lead: "Внимание — не дар, с которым рождаются.",
+        marked: "Это практика, которую держат страница за страницей.",
+        answer: "Смысл в том, что сосредоточенность тренируют, а не получают, — поэтому сохранённый фрагмент облегчает следующий вопрос.",
+        source: "Глава 3, с. 41",
+      },
     },
 
     products: {
@@ -346,7 +356,7 @@ export const ru: Content = {
       },
       install: {
         title: "Получить расширение",
-        body: "Страница в Chrome Web Store готовится. Пока исходный код доступен на GitHub.",
+        body: "Страница в Chrome Web Store готовится.",
         primary: { label: "Получить", note: "Страница в Chrome Web Store готовится" },
         requirements: "Chrome 120 или новее. API-ключ любого провайдера, совместимого с OpenAI.",
       },

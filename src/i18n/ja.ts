@@ -12,7 +12,7 @@ export const ja: Content = {
     pricing: "料金",
     privacy: "プライバシー",
     account: "アカウント",
-    github: "GitHub",
+    menu: "メニュー",
     language: "言語",
     home: "ホーム",
   },
@@ -33,7 +33,6 @@ export const ja: Content = {
   common: {
     learnMore: "詳しく見る",
     install: "入手する",
-    viewOnGithub: "GitHub で見る",
     readMore: "続きを読む",
     faq: "よくある質問",
     onThisPage: "このページの内容",
@@ -104,6 +103,17 @@ export const ja: Content = {
         { value: "0", label: "API キーが当社のサーバーに保存される" },
         { value: "10", label: "言語のインターフェース" },
       ],
+
+      /* 首屏与产品页里那台「正在阅读的窗口」的示例内容。
+         书名与段落是虚构的示例，不引用任何真实作品。 */
+      preview: {
+        prompt: "この段落を説明",
+        book: "注意のノート",
+        lead: "注意力は生まれつきの才能ではない。",
+        marked: "一ページずつ積み上げる習慣だ。",
+        answer: "集中は与えられるものではなく、訓練するものだという主張です。だから一節を残しておくと、次の問いが立てやすくなります。",
+        source: "第3章・41ページ",
+      },
     },
 
     products: {
@@ -346,7 +356,7 @@ export const ja: Content = {
       },
       install: {
         title: "拡張機能を入手する",
-        body: "Chrome ウェブストアへの掲載は準備中です。それまでは、ソースが GitHub にあります。",
+        body: "Chrome ウェブストアへの掲載は準備中です。",
         primary: { label: "入手する", note: "Chrome ウェブストアへの掲載は準備中" },
         requirements: "Chrome 120 以降。OpenAI 互換プロバイダーの API キー。",
       },

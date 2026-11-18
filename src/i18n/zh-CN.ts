@@ -12,7 +12,7 @@ export const zhCN: Content = {
     pricing: "价格",
     privacy: "隐私",
     account: "账号",
-    github: "GitHub",
+    menu: "菜单",
     language: "语言",
     home: "首页",
   },
@@ -33,7 +33,6 @@ export const zhCN: Content = {
   common: {
     learnMore: "了解详情",
     install: "获取",
-    viewOnGithub: "在 GitHub 查看",
     readMore: "继续阅读",
     faq: "常见问题",
     onThisPage: "本页内容",
@@ -101,6 +100,17 @@ export const zhCN: Content = {
         { value: "0", label: "API Key 存在我们服务器上" },
         { value: "10", label: "种界面语言" },
       ],
+
+      /* 首屏与产品页里那台「正在阅读的窗口」的示例内容。
+         书名与段落是虚构的示例，不引用任何真实作品。 */
+      preview: {
+        prompt: "解释这段",
+        book: "注意力笔记",
+        lead: "注意力不是与生俱来的东西。",
+        marked: "它是一页一页练出来的习惯。",
+        answer: "这句话说的是：专注靠训练，不靠天赋——所以你存下一段原文，下一个问题才问得出来。",
+        source: "第三章 · 第 41 页",
+      },
     },
 
     products: {
@@ -342,7 +352,7 @@ export const zhCN: Content = {
       },
       install: {
         title: "获取扩展",
-        body: "Chrome 应用商店上架准备中，目前源码在 GitHub 上。",
+        body: "Chrome 应用商店上架准备中。",
         primary: { label: "获取", note: "Chrome 应用商店上架准备中" },
         requirements: "Chrome 120 或更新版本，以及任意兼容 OpenAI 服务商的 API Key。",
       },

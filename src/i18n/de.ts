@@ -12,7 +12,7 @@ export const de: Content = {
     pricing: "Preise",
     privacy: "Datenschutz",
     account: "Konto",
-    github: "GitHub",
+    menu: "Menü",
     language: "Sprache",
     home: "Start",
   },
@@ -33,7 +33,6 @@ export const de: Content = {
   common: {
     learnMore: "Mehr erfahren",
     install: "Jetzt holen",
-    viewOnGithub: "Auf GitHub ansehen",
     readMore: "Weiterlesen",
     faq: "Häufige Fragen",
     onThisPage: "Auf dieser Seite",
@@ -104,6 +103,17 @@ export const de: Content = {
         { value: "0", label: "API-Schlüssel auf unseren Servern gespeichert" },
         { value: "10", label: "Oberflächensprachen" },
       ],
+
+      /* 首屏与产品页里那台「正在阅读的窗口」的示例内容。
+         书名与段落是虚构的示例，不引用任何真实作品。 */
+      preview: {
+        prompt: "Diese Stelle erklären",
+        book: "Notizen zur Aufmerksamkeit",
+        lead: "Aufmerksamkeit ist keine Gabe, mit der man geboren wird.",
+        marked: "Sie ist eine Übung, die man Seite für Seite beibehält.",
+        answer: "Der Punkt ist, dass sich Konzentration trainieren lässt, statt gegeben zu sein – deshalb erleichtert eine gespeicherte Passage die nächste Frage.",
+        source: "Kapitel 3, S. 41",
+      },
     },
 
     products: {
@@ -346,7 +356,7 @@ export const de: Content = {
       },
       install: {
         title: "Die Erweiterung holen",
-        body: "Der Eintrag im Chrome Web Store ist in Vorbereitung. Bis dahin liegt der Quellcode auf GitHub.",
+        body: "Der Eintrag im Chrome Web Store ist in Vorbereitung.",
         primary: { label: "Jetzt holen", note: "Chrome-Web-Store-Eintrag in Vorbereitung" },
         requirements: "Chrome 120 oder neuer. Ein API-Schlüssel von einem beliebigen OpenAI-kompatiblen Anbieter.",
       },

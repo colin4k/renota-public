@@ -10,7 +10,7 @@ import {
   ctaRow,
   faqList,
   featureGrid,
-  illustration,
+  readingPreview,
   section,
   stats,
   steps,
@@ -83,22 +83,25 @@ export function renderHome(locale: Locale): PageMeta {
         <ul class="mini-list">
             ${points}
         </ul>
-        <span class="product-link">${escapeHtml(card.cta)} →</span>
+        <span class="product-link">${escapeHtml(card.cta)}</span>
       </a>`;
     })
     .join("\n      ");
 
   const body = `
     <section class="hero home">
-      <div class="wrap">
-        <p class="badge">${escapeHtml(d.hero.badge)}</p>
-        <h1>${escapeHtml(d.hero.title)}</h1>
-        <p class="lede">${escapeHtml(d.hero.subtitle)}</p>
-        ${ctaRow(
-          { label: d.hero.primary, href: "#products" },
-          { label: d.hero.secondary, href: pagePath(locale, "privacy") },
-        )}
-        ${stats(d.hero.stats)}
+      <div class="wrap hero-split">
+        <div class="hero-copy">
+          <p class="badge">${escapeHtml(d.hero.badge)}</p>
+          <h1>${escapeHtml(d.hero.title)}</h1>
+          <p class="lede">${escapeHtml(d.hero.subtitle)}</p>
+          ${ctaRow(
+            { label: d.hero.primary, href: "#products" },
+            { label: d.hero.secondary, href: pagePath(locale, "privacy") },
+          )}
+          ${stats(d.hero.stats)}
+        </div>
+        <div class="hero-visual">${readingPreview("home", d.hero.preview)}</div>
       </div>
     </section>
 
@@ -126,7 +129,7 @@ export function renderHome(locale: Locale): PageMeta {
         <span class="mcp-endpoint-label">${escapeHtml(d.mcp.endpointLabel)}</span>
         <code>${escapeHtml(`${site.apiBase}/mcp`)}</code>
       </div>
-      <p class="mcp-link"><a href="${pagePath(locale, "account")}">${escapeHtml(d.mcp.cta)} →</a></p>`,
+      <p class="mcp-link"><a href="${pagePath(locale, "account")}">${escapeHtml(d.mcp.cta)}</a></p>`,
       { id: "mcp", lede: d.mcp.lede },
     )}
 
@@ -165,7 +168,6 @@ export function renderHome(locale: Locale): PageMeta {
         name: site.name,
         url: site.url,
         email: site.email,
-        sameAs: [site.github.chrome, site.github.zotero, site.github.android],
       },
       faqJsonLd(d.faq.items),
     ],
@@ -173,15 +175,11 @@ export function renderHome(locale: Locale): PageMeta {
 }
 
 /**
- * 安装按钮暂时不给链接的产品。
- *
- * 这两个还只在 GitHub 发版、没进应用商店，落地页先不挂跳转（避免把人引到
- * 一个还没准备好的下载页）；按钮位置与文案保留，上架后从这里删掉即可恢复。
+ * 安装入口还没上架，落地页先不挂跳转，按钮位置与文案保留。
+ * 上架后在 site.links 填对应地址即可恢复成可点按钮。
  */
-const INSTALL_LINK_PENDING: ReadonlySet<ProductKey> = new Set<ProductKey>(["chrome", "android"]);
-
 const PRODUCT_META: Record<ProductKey, { category: string; os: string; download: string }> = {
-  chrome: { category: "BrowserApplication", os: "Chrome", download: site.links.chromeStore || site.github.chrome },
+  chrome: { category: "BrowserApplication", os: "Chrome", download: site.links.chromeStore },
   zotero: { category: "ReferenceApplication", os: "Zotero", download: site.links.zoteroXpi },
   android: { category: "ReferenceApplication", os: "Android", download: site.links.androidApk },
 };
@@ -191,9 +189,8 @@ export function renderProduct(locale: Locale, page: ProductKey): PageMeta {
   const p = c.product[page];
   const seo = c.seo[page];
   const meta = PRODUCT_META[page];
-  const primaryHref = meta.download;
   /** 有值才会渲染成可点的按钮。 */
-  const installHref = INSTALL_LINK_PENDING.has(page) ? undefined : primaryHref;
+  const installHref = meta.download || undefined;
   const primaryLabel = p.install.primary.label;
   const primaryNote = p.install.primary.note;
 
@@ -212,7 +209,7 @@ export function renderProduct(locale: Locale, page: ProductKey): PageMeta {
             { label: c.common.learnMore, href: "#features" },
           )}
         </div>
-        <div class="hero-art">${illustration(page, p.name)}</div>
+        <div class="hero-art">${readingPreview(page, c.home.hero.preview)}</div>
       </div>
     </section>
 

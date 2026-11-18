@@ -186,3 +186,66 @@ export function stats(items: Array<{ value: string; label: string }>): string {
     .join("\n      ");
   return `<ul class="stats">\n      ${list}\n    </ul>`;
 }
+
+/* ------------------------------------------------------------------
+ * 首屏与产品页里那台「正在阅读的窗口」。
+ *
+ * 它是这一版视觉的核心：一个真实的阅读界面、一句被划线的原文、一张浮出来
+ * 的回答卡，卡上带一个连回原文的引用角标。示例文案来自字典（十语种同步），
+ * 书名与段落是虚构的，不引用任何真实作品。
+ * ------------------------------------------------------------------ */
+
+export interface PreviewText {
+  prompt: string;
+  book: string;
+  lead: string;
+  marked: string;
+  answer: string;
+  source: string;
+}
+
+export type PreviewKind = "home" | "chrome" | "zotero" | "android";
+
+/** 窗口顶栏：三点 + 书名。chrome 与 zotero 另有各自的界面饰件。 */
+function previewBar(t: PreviewText): string {
+  return `<div class="preview-bar">
+        <span class="preview-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="preview-book">${escapeHtml(t.book)}</span>
+      </div>`;
+}
+
+/** 工具栏：五个动作各一枚 16px 图标，第一个（解释）是当前选中的那个。 */
+function previewToolbar(): string {
+  const tools = ["message", "search", "pen", "globe", "link"];
+  const items = tools
+    .map(
+      (name, i) =>
+        `<span class="preview-tool${i === 0 ? " is-on" : ""}" aria-hidden="true"><i class="pv-${name}"></i></span>`,
+    )
+    .join("");
+  return `<div class="preview-toolbar">${items}</div>`;
+}
+
+export function readingPreview(kind: PreviewKind, t: PreviewText): string {
+  const chrome = kind === "chrome" ? previewToolbar() : "";
+  const spine = kind === "zotero" ? `<span class="preview-spine" aria-hidden="true">EPUB</span>` : "";
+  const ball = kind === "android" ? `<span class="preview-ball" aria-hidden="true">R</span>` : "";
+
+  return `<figure class="preview preview--${kind}">
+      <div class="preview-window">
+        ${previewBar(t)}
+        ${chrome}
+        <div class="preview-page">
+          ${spine}
+          <p class="preview-lead">${escapeHtml(t.lead)}</p>
+          <p class="preview-marked"><span>${escapeHtml(t.marked)}</span><sup class="cite">1</sup></p>
+        </div>
+        ${ball}
+      </div>
+      <div class="preview-card">
+        <p class="preview-prompt"><span>${escapeHtml(t.prompt)}</span><span class="preview-mark" aria-hidden="true">R</span></p>
+        <p class="preview-answer">${escapeHtml(t.answer)}</p>
+        <p class="preview-source"><span>${escapeHtml(t.book)} · ${escapeHtml(t.source)}</span><sup class="cite">1</sup></p>
+      </div>
+    </figure>`;
+}

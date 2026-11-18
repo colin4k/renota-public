@@ -103,7 +103,7 @@ Paddle.Checkout.open({items:[{priceId}], settings:{displayMode:'overlay', varian
 - 文案：`src/i18n/en.ts`（结构源头）与另外九份字典；改一条要十处同步，`npm run typecheck` 会把漏掉的字段全部点出来
 - 页面骨架：`src/render/pages.ts`；可复用区块在 `src/render/ui.ts`
 - 样式：`src/styles.ts`（单文件，无 CSS 框架）
-- 视觉规范：`DESIGN.md`（色板/字号/间距/玻璃层配方，改样式前先改它，`npm run design:lint` 把关）
+- 视觉规范：`DESIGN.md`（色板/字号/间距/表面台阶，改样式前先改它，`npm run design:lint` 把关）
 
 ## 社交预览图
 
@@ -115,7 +115,7 @@ Paddle.Checkout.open({items:[{priceId}], settings:{displayMode:'overlay', varian
 
 ```
 src/
-├── site.ts               域名、GitHub、下载链接（上架后填 store 地址）
+├── site.ts               域名、联系邮箱、社区与下载链接（上架后填 store 地址）
 ├── build.ts              遍历语言 × 页面 → dist/，生成 sitemap/robots/OG
 ├── og.ts                 社交预览图 SVG
 ├── styles.ts             全站 CSS

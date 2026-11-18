@@ -4,7 +4,7 @@
 
 ## 先做什么
 
-**改任何视觉之前，读 [DESIGN.md](DESIGN.md)。** 它定义本站的视觉契约：色板、字号阶梯、间距、玻璃层配方、组件外观。DESIGN.md 是唯一来源，`src/styles.ts` 是它的实现。
+**改任何视觉之前，读 [DESIGN.md](DESIGN.md)。** 它定义本站的视觉契约：色板、字号阶梯、间距、表面台阶、组件外观。DESIGN.md 是唯一来源，`src/styles.ts` 是它的实现。
 
 改视觉的顺序固定：
 
@@ -36,27 +36,28 @@ npm run design:tokens  # 按 DESIGN.md 导出 CSS 变量，供人工核对，不
 
 ## 样式落地规则
 
-DESIGN.md 的颜色 token 记录的是**合成后的观感色**（不透明），`src/styles.ts` 里要用 `rgba()` 表达玻璃，因为 `backdrop-filter` 需要底色带 alpha 才透光。
+DESIGN.md 的颜色 token 记录的是**合成之后的观感色**（不透明），`src/styles.ts` 用同名 CSS 变量实现。
+两边不是字面相等，而是视觉等效：token 是"看起来是什么色"，变量是"怎么算出来"。改其中一边，另一边必须同步。
 
-两边不是字面相等，而是视觉等效：
+全站只有三层表面，层级靠明度，不靠阴影与模糊：
 
-```css
-/* token: surface-container-high #252d3e —— 在 #0a1020 底上叠白玻璃的观感 */
-.card {
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.09);
-}
+```
+L1 页底    #0b0c0f
+L2 面板    #171a21  + 1px rgba(238,240,245,0.09) 发丝线
+L3 抬起    #1f232b  （悬停、输入、选中）
 ```
 
-改其中一边时，另一边必须同步；如果观感变了，重跑 `design:lint` 确认对比度仍然达标。
+**这个站点没有 `backdrop-filter`，也没有色相渐变、光晕和模糊色团。** 旧版的「极光 + 毛玻璃」已经整体移除：
+模糊层在深色页上只会让内容读不清，而且滚动时每帧都要重算。需要"更亮"就提到上一档表面，不要加光。
 
-**玻璃背后必须有形状。** `backdrop-filter` 只有在背后有可模糊的内容时才看得出效果。本站的做法是三个 `position: fixed` 的模糊色团（见 DESIGN.md 的 Colors 章节）。如果你把某块区域的背景简化成纯色，那里的玻璃就会退化成一块半透明色块 —— 这不是 bug，是缺了折射对象。
+强调色只有 {colors.secondary} 琥珀，见 DESIGN.md 的 Colors 章节列出的五处用途；**它不进按钮底色**。
 
 ## 已知坑
 
-- 极光层 `.aurora` 由 `src/render/layout.ts` 注入三个 `<i>` 色团。删掉它们，全站玻璃会立刻退化成半透明色块——`backdrop-filter` 没有可模糊的对象了。
+- 字体是**自托管**的：`public/assets/fonts/*.woff2`（Inter 四个子集 + JetBrains Mono），`src/styles.ts` 顶部的 `@font-face` 按 `unicode-range` 分片。删掉这些文件，拉丁字母会掉回系统字体，排版控制立刻失效。
 - `public/og/*.png` 是提交进仓库的。改标题文案后要**本地**删掉对应 PNG 再 `npm run build` 重新出图（CI 镜像可能没有中文字体）。
+- 改色板会影响 60 张 OG 图，它们不会自动重出。
 - `dist/` 被 gitignore，部署走 `npx cf deploy`（见记忆/README），不要提交构建产物。
+- `npm run build` 需要 `PADDLE_ENVIRONMENT` 与 `PADDLE_CLIENT_TOKEN`：`set -a && . ./.env && set +a && npm run build`。
+- 首屏与三个产品页右栏的视觉是 `readingPreview()`（`src/render/ui.ts`），示例文案在字典 `home.hero.preview`。**书名与段落是虚构的**，别换成真实作品；改一个字要改十个语言文件。
+- 移动端导航折叠靠"同一组链接渲染两次 + CSS 互斥"，不是 JS。改导航请同时看 `navLinks()` 与 `.nav-menu` 的样式，否则窄屏会出现两套导航或一套都没有。

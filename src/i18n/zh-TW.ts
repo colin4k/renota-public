@@ -12,7 +12,7 @@ export const zhTW: Content = {
     pricing: "價格",
     privacy: "隱私權",
     account: "帳號",
-    github: "GitHub",
+    menu: "選單",
     language: "語言",
     home: "首頁",
   },
@@ -33,7 +33,6 @@ export const zhTW: Content = {
   common: {
     learnMore: "瞭解詳情",
     install: "取得",
-    viewOnGithub: "在 GitHub 檢視",
     readMore: "繼續閱讀",
     faq: "常見問題",
     onThisPage: "本頁內容",
@@ -102,6 +101,17 @@ export const zhTW: Content = {
         { value: "0", label: "API Key 存在我們的伺服器上" },
         { value: "10", label: "種介面語言" },
       ],
+
+      /* 首屏与产品页里那台「正在阅读的窗口」的示例内容。
+         书名与段落是虚构的示例，不引用任何真实作品。 */
+      preview: {
+        prompt: "解釋這段",
+        book: "注意力筆記",
+        lead: "注意力不是與生俱來的東西。",
+        marked: "它是一頁一頁練出來的習慣。",
+        answer: "這句話說的是：專注靠訓練，不靠天賦——所以你存下一段原文，下一個問題才問得出來。",
+        source: "第三章 · 第 41 頁",
+      },
     },
 
     products: {
@@ -344,7 +354,7 @@ export const zhTW: Content = {
       },
       install: {
         title: "取得擴充功能",
-        body: "Chrome 線上應用程式商店上架準備中，目前原始碼在 GitHub 上。",
+        body: "Chrome 線上應用程式商店上架準備中。",
         primary: { label: "取得", note: "Chrome 線上應用程式商店上架準備中" },
         requirements: "Chrome 120 或更新版本，以及任一相容 OpenAI 服務商的 API Key。",
       },

@@ -11,7 +11,7 @@ export const en = {
     pricing: "Pricing",
     privacy: "Privacy",
     account: "Account",
-    github: "GitHub",
+    menu: "Menu",
     language: "Language",
     home: "Home",
   },
@@ -32,7 +32,6 @@ export const en = {
   common: {
     learnMore: "Learn more",
     install: "Get it",
-    viewOnGithub: "View on GitHub",
     readMore: "Read more",
     faq: "Frequently asked",
     onThisPage: "On this page",
@@ -103,6 +102,17 @@ export const en = {
         { value: "0", label: "API keys stored on our servers" },
         { value: "10", label: "interface languages" },
       ],
+
+      /* 首屏与产品页里那台「正在阅读的窗口」的示例内容。
+         书名与段落是虚构的示例，不引用任何真实作品。 */
+      preview: {
+        prompt: "Explain this passage",
+        book: "Notes on Attention",
+        lead: "Attention is not something you are born with.",
+        marked: "It is a practice you keep, one page at a time.",
+        answer: "The claim is that focus is trained, not given — which is why saving a passage makes the next question easier to ask.",
+        source: "Chapter 3, p. 41",
+      },
     },
 
     products: {
@@ -345,7 +355,7 @@ export const en = {
       },
       install: {
         title: "Get the extension",
-        body: "The Chrome Web Store listing is in preparation. Until then, the source lives on GitHub.",
+        body: "The Chrome Web Store listing is in preparation.",
         primary: { label: "Get it", note: "Chrome Web Store listing in preparation" },
         requirements: "Chrome 120 or newer. An API key from any OpenAI-compatible provider.",
       },

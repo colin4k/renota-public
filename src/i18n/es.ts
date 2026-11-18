@@ -12,7 +12,7 @@ export const es: Content = {
     pricing: "Precios",
     privacy: "Privacidad",
     account: "Cuenta",
-    github: "GitHub",
+    menu: "Menú",
     language: "Idioma",
     home: "Inicio",
   },
@@ -33,7 +33,6 @@ export const es: Content = {
   common: {
     learnMore: "Saber más",
     install: "Consíguelo",
-    viewOnGithub: "Ver en GitHub",
     readMore: "Leer más",
     faq: "Preguntas frecuentes",
     onThisPage: "En esta página",
@@ -104,6 +103,17 @@ export const es: Content = {
         { value: "0", label: "claves API guardadas en nuestros servidores" },
         { value: "10", label: "idiomas de interfaz" },
       ],
+
+      /* 首屏与产品页里那台「正在阅读的窗口」的示例内容。
+         书名与段落是虚构的示例，不引用任何真实作品。 */
+      preview: {
+        prompt: "Explicar este pasaje",
+        book: "Notas sobre la atención",
+        lead: "La atención no es un don con el que se nace.",
+        marked: "Es una práctica que se mantiene página a página.",
+        answer: "La idea es que la concentración se entrena en vez de recibirse; por eso guardar un pasaje facilita la siguiente pregunta.",
+        source: "Capítulo 3, pág. 41",
+      },
     },
 
     products: {
@@ -346,7 +356,7 @@ export const es: Content = {
       },
       install: {
         title: "Consigue la extensión",
-        body: "La ficha en Chrome Web Store está en preparación. Mientras tanto, el código está en GitHub.",
+        body: "La ficha en Chrome Web Store está en preparación.",
         primary: { label: "Consíguelo", note: "Ficha en Chrome Web Store en preparación" },
         requirements: "Chrome 120 o posterior. Una clave API de cualquier proveedor compatible con OpenAI.",
       },

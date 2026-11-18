@@ -64,11 +64,19 @@ function abs(path: string): string {
   return `${site.url}${path}`;
 }
 
+/**
+ * 六个页面链接。渲染两次：一次给桌面导航，一次给移动端折叠菜单。
+ * 两份是同一组 href，SSR 静态站里没有副作用，换来的是纯 CSS 的两态切换
+ * （内容页不允许加客户端 JS）。
+ */
 function navLinks(locale: Locale, current: PageKey | null, c: Content): string {
   const items: Array<[PageKey, string]> = [
     ["chrome", c.nav.chrome],
     ["zotero", c.nav.zotero],
     ["android", c.nav.android],
+    ["pricing", c.nav.pricing],
+    ["privacy", c.nav.privacy],
+    ["account", c.nav.account],
   ];
   const links = items
     .map(([key, label]) => {
@@ -152,7 +160,7 @@ export function renderPage(meta: PageMeta): string {
   <link rel="canonical" href="${canonical}">
 ${hreflangTags}
   <meta name="robots" content="${indexable ? "index, follow" : "noindex, follow"}">
-  <meta name="theme-color" content="#12121a">
+  <meta name="theme-color" content="#0c0d10">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="${escapeHtml(c.siteName)}">
   <meta property="og:title" content="${escapeHtml(title)}">
@@ -167,12 +175,12 @@ ${twitterImageTag}
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
+  <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="${escapeHtml(meta.cssHref ?? DEFAULT_CSS_HREF)}" as="style">
   <link rel="stylesheet" href="${escapeHtml(meta.cssHref ?? DEFAULT_CSS_HREF)}">
   ${jsonLd}
 </head>
 <body>
-  <div class="aurora" aria-hidden="true"><i class="a1"></i><i class="a2"></i><i class="a3"></i></div>
   <a class="skip" href="#main">${escapeHtml(c.common.skipToContent)}</a>
   <header class="site-header">
     <div class="wrap header-inner">
@@ -182,11 +190,14 @@ ${twitterImageTag}
       </a>
       <nav class="site-nav" aria-label="${escapeHtml(c.common.productsNav)}">
         ${navLinks(meta.locale, sitePage, c)}
-        <a href="${pagePath(meta.locale, "pricing")}"${meta.page === "pricing" ? ' aria-current="page"' : ""}>${escapeHtml(c.nav.pricing)}</a>
-        <a href="${pagePath(meta.locale, "privacy")}"${meta.page === "privacy" ? ' aria-current="page"' : ""}>${escapeHtml(c.nav.privacy)}</a>
-        <a href="${pagePath(meta.locale, "account")}"${meta.page === "account" ? ' aria-current="page"' : ""}>${escapeHtml(c.nav.account)}</a>
-        ${languageSwitcher(meta.locale, sitePage, c)}
       </nav>
+      <div class="header-actions">
+        <details class="nav-menu">
+          <summary aria-label="${escapeHtml(c.nav.menu)}"><span class="nav-menu-icon" aria-hidden="true"></span></summary>
+          <div class="nav-menu-panel">${navLinks(meta.locale, sitePage, c)}</div>
+        </details>
+        ${languageSwitcher(meta.locale, sitePage, c)}
+      </div>
     </div>
   </header>
 
