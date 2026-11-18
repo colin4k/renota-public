@@ -216,11 +216,11 @@ export const es: Content = {
       items: [
         {
           q: "¿Necesito una cuenta?",
-          a: "No. Cada app funciona sin cuenta. La cuenta solo se usa para la sincronización en la nube opcional entre dispositivos.",
+          a: "No. Cada app funciona sin cuenta. Solo la necesitas para las dos funciones de pago: la sincronización en la nube y el acceso MCP.",
         },
         {
           q: "¿Es gratis?",
-          a: "Las apps son gratis. La sincronización en la nube es la única función de pago, US$9.90 al mes. Pagas directamente al proveedor del modelo por el uso de la API, y el coste depende del modelo que elijas.",
+          a: "Las apps son gratis. La sincronización en la nube y el acceso MCP son las funciones de pago, incluidas en la suscripción Pro de US$9.90 al mes. Las llamadas a la API las pagas directamente al proveedor del modelo, y el coste depende del modelo que elijas.",
         },
         {
           q: "¿A dónde van mis datos?",
@@ -572,7 +572,7 @@ export const es: Content = {
   pricing: {
     title: "Precios",
     intro:
-      "Las tres apps son gratis con tu propia clave API. La sincronización en la nube es la única función de pago: una suscripción mensual de precio fijo que mantiene una misma base de conocimiento al día en el navegador, Zotero y el teléfono.",
+      "Las tres apps son gratis con tu propia clave API. La suscripción Pro, de US$9.90 al mes, cubre las dos funciones de pago: la sincronización en la nube que mantiene una misma base de conocimiento al día en el navegador, Zotero y el teléfono, y el acceso de lectura a esa base por MCP.",
     badge: "Cancela cuando quieras",
     plansTitle: "Dos planes, una base de conocimiento",
     free: {
@@ -603,12 +603,12 @@ export const es: Content = {
       cta: "Suscribirse",
     },
     note:
-      "Los precios están en dólares estadounidenses y se facturan por adelantado cada mes a través de Paddle. Tu clave API nunca sale de tu dispositivo: la suscripción solo cubre la sincronización en la nube. Cancela cuando quieras; el acceso continúa hasta el final del periodo que ya has pagado.",
+      "Los precios están en dólares estadounidenses y se facturan por adelantado cada mes a través de Paddle. Tu clave API nunca sale de tu dispositivo: la suscripción cubre la sincronización en la nube y el acceso MCP. Cancela cuando quieras; el acceso continúa hasta el final del periodo que ya has pagado.",
     faqTitle: "Preguntas sobre la suscripción",
     faq: [
       {
         q: "¿Sigo pagando por el uso del modelo?",
-        a: "Sí. La suscripción solo cubre la sincronización en la nube. Las llamadas al modelo van directamente al proveedor que hayas configurado y te las factura él, nunca nosotros.",
+        a: "Sí. La suscripción cubre la sincronización en la nube y el acceso MCP. Las llamadas al modelo van directamente al proveedor que hayas configurado y te las factura él, nunca nosotros.",
       },
       {
         q: "¿Qué pasa si cancelo?",
@@ -616,7 +616,7 @@ export const es: Content = {
       },
       {
         q: "¿Puedo usar las apps sin suscribirme?",
-        a: "Sí. Las tres apps funcionan por completo en tu propio dispositivo con tu propia clave API. Solo la sincronización entre dispositivos requiere una suscripción.",
+        a: "Sí. Las tres apps funcionan por completo en tu propio dispositivo con tu propia clave API. Solo la sincronización en la nube y el acceso MCP necesitan una suscripción.",
       },
       {
         q: "¿Cómo pago?",
@@ -746,7 +746,7 @@ export const es: Content = {
       limitReached: "Has alcanzado el límite de claves activas. Revoca una que ya no uses.",
       loadFailed: "No se pudieron cargar tus claves API.",
       createFailed: "No se pudo crear la clave. Inténtalo de nuevo.",
-      requiresPro: "El acceso por MCP forma parte de la sincronización en la nube. Suscríbete para conectar un agente.",
+      requiresPro: "El acceso MCP es una de las funciones de pago. Suscríbete para conectar un agente.",
       mcpTitle: "Punto de conexión MCP",
       mcpHint: "Apunta tu agente a esta URL y envía la clave como token bearer.",
       configTitle: "Configuración del cliente",

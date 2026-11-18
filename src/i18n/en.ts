@@ -215,11 +215,11 @@ export const en = {
       items: [
         {
           q: "Do I need an account?",
-          a: "No. Each app works without one. An account is only used for optional cloud sync between devices.",
+          a: "No. Each app works without one. An account is only needed for the two paid features — cloud sync and MCP access.",
         },
         {
           q: "Is it free?",
-          a: "The apps are free. Cloud sync is the paid feature, US$9.90 per month. You pay your model provider directly for API usage — the cost depends on which model you choose.",
+          a: "The apps are free. Cloud sync and MCP access are the paid features, and both come with the Pro subscription at US$9.90 per month. You pay your model provider directly for API usage — the cost depends on which model you choose.",
         },
         {
           q: "Where does my data go?",
@@ -571,7 +571,7 @@ export const en = {
   pricing: {
     title: "Pricing",
     intro:
-      "All three apps are free with your own API key. Cloud sync is the only paid feature — one flat monthly subscription that keeps a single knowledge base in step across your browser, Zotero and your phone.",
+      "All three apps are free with your own API key. What you pay for is one Pro subscription — US$9.90 a month, covering cloud sync across the browser, Zotero and your phone and read access to your knowledge base over MCP.",
     badge: "Cancel anytime",
     plansTitle: "Two plans, one knowledge base",
     free: {
@@ -602,12 +602,12 @@ export const en = {
       cta: "Subscribe",
     },
     note:
-      "Prices are in US dollars, billed monthly in advance through Paddle. Your API key never leaves your device — the subscription covers cloud sync only. Cancel anytime; access continues to the end of the period you already paid for.",
+      "Prices are in US dollars, billed monthly in advance through Paddle. Your API key never leaves your device — the subscription covers cloud sync and MCP access. Cancel anytime; access continues to the end of the period you already paid for.",
     faqTitle: "Subscription questions",
     faq: [
       {
         q: "Do I still pay for model usage?",
-        a: "Yes. The subscription covers cloud sync only. Model calls go straight to the provider you configured and are billed by them, never by us.",
+        a: "Yes. The subscription covers cloud sync and MCP access. Model calls go straight to the provider you configured and are billed by them, never by us.",
       },
       {
         q: "What happens if I cancel?",
@@ -615,7 +615,7 @@ export const en = {
       },
       {
         q: "Can I use the apps without subscribing?",
-        a: "Yes. All three apps work fully on your own device with your own API key. Only syncing between devices needs a subscription.",
+        a: "Yes. All three apps work fully on your own device with your own API key. Only cloud sync and MCP access need a subscription.",
       },
       {
         q: "How do I pay?",
@@ -746,7 +746,7 @@ export const en = {
       limitReached: "You have reached the limit of active keys. Revoke one you no longer use.",
       loadFailed: "Could not load your API keys.",
       createFailed: "Could not create the key. Please try again.",
-      requiresPro: "MCP access is part of cloud sync. Subscribe to connect an agent.",
+      requiresPro: "MCP access is one of the paid features. Subscribe to connect an agent.",
       mcpTitle: "MCP endpoint",
       mcpHint: "Point your agent at this URL and send the key as a bearer token.",
       configTitle: "Client config",

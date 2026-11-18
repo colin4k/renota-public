@@ -216,11 +216,11 @@ export const fr: Content = {
       items: [
         {
           q: "Ai-je besoin d'un compte ?",
-          a: "Non. Chaque appli fonctionne sans compte. Le compte ne sert qu'à la synchronisation cloud facultative entre appareils.",
+          a: "Non. Chaque appli fonctionne sans compte. Un compte n'est nécessaire que pour les deux fonctions payantes : la synchronisation cloud et l'accès MCP.",
         },
         {
           q: "Est-ce gratuit ?",
-          a: "Les applis sont gratuites. La synchronisation cloud est la seule fonction payante, US$9.90 par mois. Vous payez directement votre fournisseur de modèle pour l'usage de l'API — le coût dépend du modèle choisi.",
+          a: "Les applis sont gratuites. La synchronisation cloud et l'accès MCP sont les fonctions payantes : les deux sont incluses dans l'abonnement Pro à US$9.90 par mois. Vous payez directement votre fournisseur de modèle pour l'usage de l'API — le coût dépend du modèle choisi.",
         },
         {
           q: "Où vont mes données ?",
@@ -572,7 +572,7 @@ export const fr: Content = {
   pricing: {
     title: "Tarifs",
     intro:
-      "Les trois applis sont gratuites avec votre propre clé API. La synchronisation cloud est la seule fonction payante — un abonnement mensuel unique qui garde une seule base de connaissances à jour entre votre navigateur, Zotero et votre téléphone.",
+      "Les trois applis sont gratuites avec votre propre clé API. Ce que vous payez, c'est un seul abonnement Pro — US$9.90 par mois, qui couvre la synchronisation cloud entre le navigateur, Zotero et votre téléphone, ainsi que l'accès en lecture à votre base de connaissances via MCP.",
     badge: "Résiliable à tout moment",
     plansTitle: "Deux forfaits, une base de connaissances",
     free: {
@@ -603,12 +603,12 @@ export const fr: Content = {
       cta: "S'abonner",
     },
     note:
-      "Les prix sont en dollars américains, facturés mensuellement d'avance par Paddle. Votre clé API ne quitte jamais votre appareil — l'abonnement ne couvre que la synchronisation cloud. Résiliable à tout moment ; l'accès se poursuit jusqu'à la fin de la période déjà payée.",
+      "Les prix sont en dollars américains, facturés mensuellement d'avance par Paddle. Votre clé API ne quitte jamais votre appareil — l'abonnement couvre la synchronisation cloud et l'accès MCP. Résiliable à tout moment ; l'accès se poursuit jusqu'à la fin de la période déjà payée.",
     faqTitle: "Questions sur l'abonnement",
     faq: [
       {
         q: "Est-ce que je paie toujours l'usage du modèle ?",
-        a: "Oui. L'abonnement ne couvre que la synchronisation cloud. Les appels au modèle vont directement au fournisseur que vous avez configuré et sont facturés par lui, jamais par nous.",
+        a: "Oui. L'abonnement couvre la synchronisation cloud et l'accès MCP. Les appels au modèle vont directement au fournisseur que vous avez configuré et sont facturés par lui, jamais par nous.",
       },
       {
         q: "Que se passe-t-il si je résilie ?",
@@ -616,7 +616,7 @@ export const fr: Content = {
       },
       {
         q: "Puis-je utiliser les applis sans abonnement ?",
-        a: "Oui. Les trois applis fonctionnent pleinement sur votre appareil avec votre propre clé API. Seule la synchronisation entre appareils demande un abonnement.",
+        a: "Oui. Les trois applis fonctionnent pleinement sur votre appareil avec votre propre clé API. Seules la synchronisation cloud et l'accès MCP demandent un abonnement.",
       },
       {
         q: "Comment payer ?",
@@ -746,7 +746,7 @@ export const fr: Content = {
       limitReached: "Vous avez atteint la limite de clés actives. Révoquez-en une que vous n'utilisez plus.",
       loadFailed: "Impossible de charger vos clés API.",
       createFailed: "Impossible de créer la clé. Veuillez réessayer.",
-      requiresPro: "L'accès MCP fait partie de la synchronisation cloud. Abonnez-vous pour connecter un agent.",
+      requiresPro: "L'accès MCP est l'une des fonctions payantes. Abonnez-vous pour connecter un agent.",
       mcpTitle: "Point d'accès MCP",
       mcpHint: "Pointez votre agent vers cette URL et envoyez la clé comme jeton bearer.",
       configTitle: "Configuration du client",

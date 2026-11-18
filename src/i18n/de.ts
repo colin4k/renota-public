@@ -216,11 +216,11 @@ export const de: Content = {
       items: [
         {
           q: "Brauche ich ein Konto?",
-          a: "Nein. Jede App funktioniert ohne. Ein Konto dient nur der optionalen Cloud-Synchronisierung zwischen Geräten.",
+          a: "Nein. Jede App funktioniert ohne Konto. Ein Konto brauchen Sie nur für die beiden kostenpflichtigen Funktionen: Cloud-Synchronisierung und MCP-Zugriff.",
         },
         {
           q: "Ist es kostenlos?",
-          a: "Die Apps sind kostenlos; die einzige kostenpflichtige Funktion ist die Cloud-Synchronisierung (US$9.90 pro Monat). Die API-Nutzung zahlen Sie direkt bei Ihrem Modellanbieter — die Kosten hängen davon ab, welches Modell Sie wählen.",
+          a: "Die Apps sind kostenlos. Kostenpflichtig sind die Cloud-Synchronisierung und der MCP-Zugriff; beides ist im Pro-Abo für US$9.90 pro Monat enthalten. Die API-Nutzung zahlen Sie direkt bei Ihrem Modellanbieter — die Kosten hängen davon ab, welches Modell Sie wählen.",
         },
         {
           q: "Wohin gehen meine Daten?",
@@ -572,7 +572,7 @@ export const de: Content = {
   pricing: {
     title: "Preise",
     intro:
-      "Alle drei Apps sind kostenlos, mit Ihrem eigenen API-Schlüssel. Die Cloud-Synchronisierung ist das einzige kostenpflichtige Angebot — ein monatliches Abo, das eine einzige Wissensdatenbank über Browser, Zotero und Smartphone hinweg auf demselben Stand hält.",
+      "Alle drei Apps sind kostenlos, mit Ihrem eigenen API-Schlüssel. Das Pro-Abo für US$9.90 pro Monat umfasst die Cloud-Synchronisierung, die eine einzige Wissensdatenbank über Browser, Zotero und Smartphone hinweg auf demselben Stand hält, sowie den Lesezugriff über MCP für Claude Code, Cursor und andere Agenten. Modellaufrufe rechnen Sie direkt mit Ihrem Anbieter ab.",
     badge: "Jederzeit kündbar",
     plansTitle: "Zwei Tarife, eine Wissensdatenbank",
     free: {
@@ -603,12 +603,12 @@ export const de: Content = {
       cta: "Abonnieren",
     },
     note:
-      "Die Preise sind in US-Dollar, monatlich im Voraus über Paddle abgerechnet. Ihr API-Schlüssel verlässt Ihr Gerät nie — das Abo umfasst nur die Cloud-Synchronisierung. Jederzeit kündbar; der Zugang läuft bis zum Ende des bereits bezahlten Zeitraums weiter.",
+      "Die Preise sind in US-Dollar, monatlich im Voraus über Paddle abgerechnet. Ihr API-Schlüssel verlässt Ihr Gerät nie — das Abo umfasst die Cloud-Synchronisierung und den MCP-Zugriff. Jederzeit kündbar; der Zugang läuft bis zum Ende des bereits bezahlten Zeitraums weiter.",
     faqTitle: "Fragen zum Abo",
     faq: [
       {
         q: "Zahle ich weiterhin für die Modellnutzung?",
-        a: "Ja. Das Abo umfasst nur die Cloud-Synchronisierung. Modellaufrufe gehen direkt an den von Ihnen konfigurierten Anbieter und werden von ihm abgerechnet, nie von uns.",
+        a: "Ja. Das Abo umfasst die Cloud-Synchronisierung und den MCP-Zugriff; Modellaufrufe sind darin nicht enthalten. Sie gehen direkt an den von Ihnen konfigurierten Anbieter und werden von ihm abgerechnet, nie von uns.",
       },
       {
         q: "Was passiert, wenn ich kündige?",
@@ -616,7 +616,7 @@ export const de: Content = {
       },
       {
         q: "Kann ich die Apps ohne Abo nutzen?",
-        a: "Ja. Alle drei Apps funktionieren vollständig auf Ihrem eigenen Gerät mit Ihrem eigenen API-Schlüssel. Nur die Synchronisierung zwischen Geräten braucht ein Abo.",
+        a: "Ja. Alle drei Apps funktionieren vollständig auf Ihrem eigenen Gerät mit Ihrem eigenen API-Schlüssel. Nur die Cloud-Synchronisierung und der MCP-Zugriff brauchen ein Abo.",
       },
       {
         q: "Wie bezahle ich?",
@@ -745,7 +745,7 @@ export const de: Content = {
       limitReached: "Sie haben die Grenze aktiver Schlüssel erreicht. Widerrufen Sie einen, den Sie nicht mehr brauchen.",
       loadFailed: "Ihre API-Schlüssel konnten nicht geladen werden.",
       createFailed: "Der Schlüssel konnte nicht erstellt werden. Bitte versuchen Sie es erneut.",
-      requiresPro: "Der MCP-Zugang gehört zur Cloud-Synchronisierung. Abonnieren Sie, um einen Agenten zu verbinden.",
+      requiresPro: "Der MCP-Zugriff ist eine der kostenpflichtigen Funktionen. Abonnieren Sie, um einen Agenten zu verbinden.",
       mcpTitle: "MCP-Endpunkt",
       mcpHint: "Richten Sie Ihren Agenten auf diese URL und senden Sie den Schlüssel als Bearer-Token.",
       configTitle: "Client-Konfiguration",

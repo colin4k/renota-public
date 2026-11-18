@@ -216,11 +216,11 @@ export const pt: Content = {
       items: [
         {
           q: "Preciso de uma conta?",
-          a: "Não. Cada app funciona sem conta. A conta serve apenas para a sincronização na nuvem opcional entre dispositivos.",
+          a: "Não. Cada app funciona sem conta. A conta só é necessária para os dois recursos pagos: sincronização na nuvem e acesso MCP.",
         },
         {
           q: "É grátis?",
-          a: "Os apps são grátis. A sincronização na nuvem é o único recurso pago e custa US$9.90 por mês. Você paga o provedor de modelo diretamente pelo uso da API — o custo depende do modelo que escolher.",
+          a: "Os apps são grátis. A sincronização na nuvem e o acesso MCP são os recursos pagos: os dois entram na assinatura Pro de US$9.90 por mês. O uso da API é pago diretamente ao provedor de modelo que você escolher, e o custo depende do modelo.",
         },
         {
           q: "Para onde vão meus dados?",
@@ -572,7 +572,7 @@ export const pt: Content = {
   pricing: {
     title: "Preços",
     intro:
-      "Os três apps são grátis com a sua própria chave de API. A sincronização na nuvem é o único recurso pago — uma assinatura mensal única que mantém a mesma base de conhecimento em dia no navegador, no Zotero e no celular.",
+      "Os três apps são grátis com a sua própria chave de API. O que você paga é a assinatura Pro, uma mensalidade única que cobre a sincronização na nuvem — mantendo a mesma base de conhecimento em dia no navegador, no Zotero e no celular — e o acesso de leitura via MCP para agentes como Claude Code e Cursor.",
     badge: "Cancele quando quiser",
     plansTitle: "Dois planos, uma base de conhecimento",
     free: {
@@ -603,12 +603,12 @@ export const pt: Content = {
       cta: "Assinar",
     },
     note:
-      "Os preços são em dólares americanos, cobrados mensalmente e adiantado pela Paddle. Sua chave de API nunca sai do seu dispositivo — a assinatura cobre apenas a sincronização na nuvem. Cancele quando quiser; o acesso continua até o fim do período que você já pagou.",
+      "Os preços são em dólares americanos, cobrados mensalmente e adiantado pela Paddle. Sua chave de API nunca sai do seu dispositivo — a assinatura cobre a sincronização na nuvem e o acesso MCP. Cancele quando quiser; o acesso continua até o fim do período que você já pagou.",
     faqTitle: "Perguntas sobre a assinatura",
     faq: [
       {
         q: "Ainda pago pelo uso do modelo?",
-        a: "Sim. A assinatura cobre apenas a sincronização na nuvem. As chamadas ao modelo vão direto para o provedor que você configurou e são cobradas por ele, nunca por nós.",
+        a: "Sim. A assinatura cobre a sincronização na nuvem e o acesso MCP. As chamadas ao modelo vão direto para o provedor que você configurou e são cobradas por ele, nunca por nós.",
       },
       {
         q: "O que acontece se eu cancelar?",
@@ -616,7 +616,7 @@ export const pt: Content = {
       },
       {
         q: "Posso usar os apps sem assinar?",
-        a: "Sim. Os três apps funcionam plenamente no seu próprio dispositivo com a sua própria chave de API. Só a sincronização entre dispositivos exige assinatura.",
+        a: "Sim. Os três apps funcionam plenamente no seu próprio dispositivo com a sua própria chave de API. Só a sincronização na nuvem e o acesso MCP exigem assinatura.",
       },
       {
         q: "Como eu pago?",
@@ -746,7 +746,7 @@ export const pt: Content = {
       limitReached: "Você atingiu o limite de chaves ativas. Revogue uma que não usa mais.",
       loadFailed: "Não foi possível carregar suas chaves de API.",
       createFailed: "Não foi possível criar a chave. Tente novamente.",
-      requiresPro: "O acesso via MCP faz parte da sincronização na nuvem. Assine para conectar um agente.",
+      requiresPro: "O acesso MCP é um dos recursos pagos. Assine para conectar um agente.",
       mcpTitle: "Endpoint MCP",
       mcpHint: "Aponte seu agente para esta URL e envie a chave como bearer token.",
       configTitle: "Configuração do cliente",
