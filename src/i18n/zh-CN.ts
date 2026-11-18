@@ -24,7 +24,7 @@ export const zhCN: Content = {
     legal: "法律",
     privacy: "隐私政策",
     terms: "服务条款",
-    copyright: "睿记 Renota。自带 API Key。",
+    copyright: "睿记 Renota",
     discord: "Discord",
     mail: "邮件",
     madeFor: "为读得多的人做的。",

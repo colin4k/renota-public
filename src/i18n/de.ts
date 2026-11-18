@@ -24,7 +24,7 @@ export const de: Content = {
     legal: "Rechtliches",
     privacy: "Datenschutzerklärung",
     terms: "Nutzungsbedingungen",
-    copyright: "Renota. Mit eigenem API-Schlüssel.",
+    copyright: "Renota",
     discord: "Discord",
     mail: "E-Mail",
     madeFor: "Für Menschen, die viel lesen.",

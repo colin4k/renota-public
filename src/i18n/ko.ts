@@ -24,7 +24,7 @@ export const ko: Content = {
     legal: "법적 고지",
     privacy: "개인정보 처리방침",
     terms: "서비스 약관",
-    copyright: "Renota. 자체 API 키를 사용합니다.",
+    copyright: "Renota",
     discord: "Discord",
     mail: "메일",
     madeFor: "읽는 양이 많은 사람을 위해 만들었습니다.",

@@ -24,7 +24,7 @@ export const es: Content = {
     legal: "Legal",
     privacy: "Política de privacidad",
     terms: "Condiciones del servicio",
-    copyright: "Renota. Con tu propia clave API.",
+    copyright: "Renota",
     discord: "Discord",
     mail: "Correo",
     madeFor: "Hecho para quien lee mucho.",

@@ -24,7 +24,7 @@ export const ja: Content = {
     legal: "法務",
     privacy: "プライバシーポリシー",
     terms: "利用規約",
-    copyright: "Renota。API キーはお使いのものを。",
+    copyright: "Renota",
     discord: "Discord",
     mail: "メール",
     madeFor: "たくさん読む人のために作りました。",

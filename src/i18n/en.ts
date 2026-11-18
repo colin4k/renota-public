@@ -23,7 +23,7 @@ export const en = {
     legal: "Legal",
     privacy: "Privacy policy",
     terms: "Terms of service",
-    copyright: "Renota. Bring your own API key.",
+    copyright: "Renota",
     discord: "Discord",
     mail: "Mail",
     madeFor: "Made for people who read a lot.",

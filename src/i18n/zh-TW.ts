@@ -24,7 +24,7 @@ export const zhTW: Content = {
     legal: "法律",
     privacy: "隱私權政策",
     terms: "服務條款",
-    copyright: "睿記 Renota。自備 API Key。",
+    copyright: "睿記 Renota",
     discord: "Discord",
     mail: "郵件",
     madeFor: "為讀得多的人而做。",
