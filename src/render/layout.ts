@@ -160,7 +160,7 @@ export function renderPage(meta: PageMeta): string {
   <link rel="canonical" href="${canonical}">
 ${hreflangTags}
   <meta name="robots" content="${indexable ? "index, follow" : "noindex, follow"}">
-  <meta name="theme-color" content="#0c0d10">
+  <meta name="theme-color" content="#0b0c0f">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="${escapeHtml(c.siteName)}">
   <meta property="og:title" content="${escapeHtml(title)}">
