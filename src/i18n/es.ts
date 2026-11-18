@@ -592,7 +592,7 @@ export const es: Content = {
       name: "Pro",
       price: "$9.90",
       period: "al mes",
-      summary: "Activa la sincronización en la nube para que la misma base de conocimiento siga a todos tus dispositivos.",
+      summary: "Activa la sincronización en la nube para que la misma base de conocimiento siga a todos tus dispositivos — y deja que los agentes la lean por MCP.",
       features: [
         "Todo lo del plan Gratis",
         "Los mismos fragmentos en el navegador, en Zotero y en el teléfono",

@@ -590,7 +590,7 @@ export const zhTW: Content = {
       name: "Pro",
       price: "$9.90",
       period: "每月",
-      summary: "開啟雲端同步，讓同一份知識庫跟著你的每一台裝置走。",
+      summary: "開啟雲端同步，讓同一份知識庫跟著你的每一台裝置走，也讓 agent 透過 MCP 讀取它。",
       features: [
         "包含免費方案的所有功能",
         "瀏覽器、Zotero 和手機看到同一批片段",

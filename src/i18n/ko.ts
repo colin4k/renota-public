@@ -592,7 +592,7 @@ export const ko: Content = {
       name: "Pro",
       price: "$9.90",
       period: "월",
-      summary: "클라우드 동기화를 켜면 같은 지식 베이스가 모든 기기를 따라옵니다.",
+      summary: "클라우드 동기화를 켜면 같은 지식 베이스가 모든 기기를 따라오며, 에이전트가 MCP를 통해 읽을 수 있습니다.",
       features: [
         "무료 플랜의 모든 것",
         "브라우저와 Zotero, 스마트폰에서 같은 클립",

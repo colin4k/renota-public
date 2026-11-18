@@ -592,7 +592,7 @@ export const fr: Content = {
       name: "Pro",
       price: "$9.90",
       period: "par mois",
-      summary: "Activez la synchronisation cloud pour que la même base de connaissances suive chaque appareil.",
+      summary: "Activez la synchronisation cloud pour que la même base de connaissances suive chaque appareil — et laissez les agents la lire via MCP.",
       features: [
         "Tout ce qui est inclus dans Gratuit",
         "Les mêmes extraits dans le navigateur, dans Zotero et sur votre téléphone",

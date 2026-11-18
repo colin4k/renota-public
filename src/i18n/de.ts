@@ -592,7 +592,7 @@ export const de: Content = {
       name: "Pro",
       price: "$9.90",
       period: "pro Monat",
-      summary: "Cloud-Synchronisierung einschalten, damit dieselbe Wissensdatenbank jedem Gerät folgt.",
+      summary: "Cloud-Synchronisierung einschalten, damit dieselbe Wissensdatenbank jedem Gerät folgt — und Agenten sie über MCP lesen können.",
       features: [
         "Alles aus Kostenlos",
         "Dieselben Clips im Browser, in Zotero und auf dem Smartphone",

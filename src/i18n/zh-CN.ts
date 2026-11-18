@@ -588,7 +588,7 @@ export const zhCN: Content = {
       name: "Pro",
       price: "$9.90",
       period: "每月",
-      summary: "开启云同步，让同一份知识库跟着你的每一台设备走。",
+      summary: "开启云同步，让同一份知识库跟着你的每一台设备走；同时让 agent 通过 MCP 读取它。",
       features: [
         "包含免费档的全部功能",
         "浏览器、Zotero 和手机看到同一批摘录",

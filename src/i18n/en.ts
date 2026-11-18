@@ -591,7 +591,7 @@ export const en = {
       name: "Pro",
       price: "$9.90",
       period: "per month",
-      summary: "Turn on cloud sync so the same knowledge base follows every device.",
+      summary: "Turn on cloud sync so the same knowledge base follows every device — and let agents read it over MCP.",
       features: [
         "Everything in Free",
         "The same clips in the browser, in Zotero and on your phone",

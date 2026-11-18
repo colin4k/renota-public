@@ -592,7 +592,7 @@ export const pt: Content = {
       name: "Pro",
       price: "$9.90",
       period: "por mês",
-      summary: "Ative a sincronização na nuvem para a mesma base de conhecimento acompanhar todos os dispositivos.",
+      summary: "Ative a sincronização na nuvem para a mesma base de conhecimento acompanhar todos os dispositivos — e para que agentes possam lê-la via MCP.",
       features: [
         "Tudo do Grátis",
         "Os mesmos trechos no navegador, no Zotero e no celular",
