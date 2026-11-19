@@ -109,8 +109,8 @@ function webmanifest(): string {
       description: "Read anything. Keep what matters. Ask your own notes.",
       start_url: "/",
       display: "standalone",
-      background_color: "#0d0d14",
-      theme_color: "#8b7cf6",
+      background_color: "#0b0c0f",
+      theme_color: "#0b0c0f",
       icons: [
         { src: "/favicon.svg", sizes: "any", type: "image/svg+xml" },
         { src: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
@@ -121,12 +121,17 @@ function webmanifest(): string {
   );
 }
 
+/** 品牌标记的字母轮廓：站点图标与 apple-touch-icon 共用同一笔画，换尺寸不换形。 */
+const brandR =
+  "M22 46V18h12.5c6 0 9.5 3.2 9.5 8.2 0 4.1-2.4 6.9-6.3 7.8L45 46h-7.4l-6.4-11.2h-3V46H22Zm6.2-16h5.6c2.6 0 4.2-1.3 4.2-3.5 0-2.2-1.6-3.5-4.2-3.5h-5.6V30Z";
+
+/**
+ * 站点图标：1px 描边方片 + 实心琥珀字母，没有渐变、没有内高光（DESIGN.md 品牌标记）。
+ * 16px 标签页里描边会淡到近乎消失，这是有意的 —— 它与发丝线同重，不该抢字母。
+ */
 const faviconSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-    <stop offset="0" stop-color="#8b7cf6"/><stop offset="1" stop-color="#4f3fd0"/>
-  </linearGradient></defs>
-  <rect width="64" height="64" rx="16" fill="url(#g)"/>
-  <path d="M22 46V18h12.5c6 0 9.5 3.2 9.5 8.2 0 4.1-2.4 6.9-6.3 7.8L45 46h-7.4l-6.4-11.2h-3V46H22Zm6.2-16h5.6c2.6 0 4.2-1.3 4.2-3.5 0-2.2-1.6-3.5-4.2-3.5h-5.6V30Z" fill="#fff"/>
+  <rect x="0.5" y="0.5" width="63" height="63" rx="13.5" fill="#171a21" stroke="rgba(238,240,245,0.18)" stroke-width="1"/>
+  <g transform="translate(-16,-13.8) scale(1.43)"><path d="${brandR}" fill="#e0a24a" stroke="#e0a24a" stroke-width="0.45"/></g>
 </svg>`;
 
 /**
@@ -257,13 +262,10 @@ async function build(): Promise<void> {
   }
 
   // apple-touch-icon 从首页 OG 图裁不了，单独渲染一个方形图标
+  // 与 favicon 同形，只是放大到 180。iOS 自己裁圆角，铺满底色不留透明边。
   const iconSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180">
-  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-    <stop offset="0" stop-color="#8b7cf6"/><stop offset="1" stop-color="#4f3fd0"/>
-  </linearGradient></defs>
-  <rect width="180" height="180" rx="40" fill="url(#g)"/>
-  <text x="90" y="120" font-family="Helvetica, Arial, sans-serif" font-size="96" font-weight="700"
-        fill="#ffffff" text-anchor="middle">R</text>
+  <rect width="180" height="180" fill="#171a21"/>
+  <g transform="translate(-45,-38.6) scale(4.02)"><path d="${brandR}" fill="#e0a24a" stroke="#e0a24a" stroke-width="0.16"/></g>
 </svg>`;
   const iconPng = await rasterize(iconSvg, 180);
   if (iconPng) await writeFile(path.join(dist, "apple-touch-icon.png"), iconPng);
