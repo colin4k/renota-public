@@ -277,5 +277,3 @@ For full transparency, here is the complete list of telemetry event names that m
 - `knowledge_loop_completed`
 - `editor_write_success`
 - `editor_write_fallback`
-- `markdown_import_completed`
-- `semantic_search_enabled`

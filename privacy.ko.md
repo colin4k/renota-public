@@ -277,5 +277,3 @@ Renota는 중국에서 운영됩니다. 확장 프로그램을 사용함으로�
 - `knowledge_loop_completed`
 - `editor_write_success`
 - `editor_write_fallback`
-- `markdown_import_completed`
-- `semantic_search_enabled`

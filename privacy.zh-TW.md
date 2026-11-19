@@ -277,5 +277,3 @@ Renota 在中國營運。使用本擴充功能，即表示你了解：你選擇�
 - `knowledge_loop_completed`
 - `editor_write_success`
 - `editor_write_fallback`
-- `markdown_import_completed`
-- `semantic_search_enabled`

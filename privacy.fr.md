@@ -277,5 +277,3 @@ Par souci de transparence totale, voici la liste complète des noms d'événemen
 - `knowledge_loop_completed`
 - `editor_write_success`
 - `editor_write_fallback`
-- `markdown_import_completed`
-- `semantic_search_enabled`

@@ -277,5 +277,3 @@ Renota は中国から運営されています。拡張機能を利用するこ�
 - `knowledge_loop_completed`
 - `editor_write_success`
 - `editor_write_fallback`
-- `markdown_import_completed`
-- `semantic_search_enabled`

@@ -277,5 +277,3 @@ Zur vollständigen Transparenz hier die komplette Liste der Telemetrie-Ereignisn
 - `knowledge_loop_completed`
 - `editor_write_success`
 - `editor_write_fallback`
-- `markdown_import_completed`
-- `semantic_search_enabled`
