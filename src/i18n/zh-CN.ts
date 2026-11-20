@@ -601,6 +601,7 @@ export const zhCN: Content = {
       summary: "开启云同步，让同一份知识库跟着你的每一台设备走；同时让 agent 通过 MCP 读取它。",
       features: [
         "包含免费档的全部功能",
+        "200 MB 云端存储空间，用来存放知识库",
         "浏览器、Zotero 和手机看到同一批摘录",
         "换一台设备登录，接着读、接着问",
         "删除也会同步，不会在另一台设备上冒出来",
@@ -642,6 +643,7 @@ export const zhCN: Content = {
     description: "Chrome 扩展、Zotero 插件和安卓端的全部功能。",
     features: [
       "原文与笔记不限量保存",
+      "200 MB 云端存储空间，用来存放同步的条目",
       "在自己的知识库上提问",
       "在 Chrome、Zotero 和安卓之间同步",
       "3 天免费试用，随时取消",
@@ -702,6 +704,13 @@ export const zhCN: Content = {
       manageBilling: "管理账单",
       portalFailed: "无法打开账单管理页，请重试。",
       pastDue: "扣款失败 — 请在 Paddle 更新支付方式以继续同步。",
+    },
+    storage: {
+      label: "云端存储",
+      used: "已用",
+      limit: "上限",
+      full: "存储已满",
+      freeHint: "云端存储是 Pro 档的功能。",
     },
     signedOut: {
       heading: "登录或创建账号",

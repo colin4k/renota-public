@@ -604,6 +604,7 @@ export const en = {
       summary: "Turn on cloud sync so the same knowledge base follows every device — and let agents read it over MCP.",
       features: [
         "Everything in Free",
+        "200 MB of cloud storage for your knowledge base",
         "The same clips in the browser, in Zotero and on your phone",
         "Sign in on a new device and keep reading, keep asking",
         "Deletions sync too, so nothing reappears on another device",
@@ -645,6 +646,7 @@ export const en = {
     description: "Full access across Chrome, Zotero and Android.",
     features: [
       "Save original text and your own notes, without limits",
+      "200 MB of cloud storage for synced entries",
       "Ask questions across your own library",
       "Sync between Chrome, Zotero and Android",
       "3-day free trial, cancel anytime",
@@ -707,6 +709,13 @@ export const en = {
       manageBilling: "Manage billing",
       portalFailed: "Could not open the billing portal. Please try again.",
       pastDue: "Payment failed — update your card with Paddle to keep syncing.",
+    },
+    storage: {
+      label: "Cloud storage",
+      used: "Used",
+      limit: "Limit",
+      full: "Storage full",
+      freeHint: "Cloud storage is part of Pro.",
     },
     signedOut: {
       heading: "Sign in or create an account",

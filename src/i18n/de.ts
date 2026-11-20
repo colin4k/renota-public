@@ -605,6 +605,7 @@ export const de: Content = {
       summary: "Cloud-Synchronisierung einschalten, damit dieselbe Wissensdatenbank jedem Gerät folgt — und Agenten sie über MCP lesen können.",
       features: [
         "Alles aus Kostenlos",
+        "200 MB Cloud-Speicher für Ihre Wissensdatenbank",
         "Dieselben Clips im Browser, in Zotero und auf dem Smartphone",
         "Auf einem neuen Gerät anmelden und weiterlesen, weiterfragen",
         "Löschungen werden mit synchronisiert, damit auf einem anderen Gerät nichts wieder auftaucht",
@@ -645,6 +646,7 @@ export const de: Content = {
     description: "Alle Funktionen in Chrome, Zotero und Android.",
     features: [
       "Originaltext und eigene Notizen unbegrenzt speichern",
+      "200 MB Cloud-Speicher für synchronisierte Einträge",
       "Die eigene Bibliothek befragen",
       "Zwischen Chrome, Zotero und Android synchronisieren",
       "3 Tage kostenlose Testphase, jederzeit kündbar",
@@ -706,6 +708,13 @@ export const de: Content = {
       manageBilling: "Abrechnung verwalten",
       portalFailed: "Das Abrechnungsportal konnte nicht geöffnet werden. Bitte versuchen Sie es erneut.",
       pastDue: "Zahlung fehlgeschlagen — aktualisieren Sie Ihre Karte bei Paddle, um weiter zu synchronisieren.",
+    },
+    storage: {
+      label: "Cloud-Speicher",
+      used: "Belegt",
+      limit: "Limit",
+      full: "Speicher voll",
+      freeHint: "Cloud-Speicher gehört zu Pro.",
     },
     signedOut: {
       heading: "Anmelden oder Konto erstellen",

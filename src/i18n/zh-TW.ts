@@ -603,6 +603,7 @@ export const zhTW: Content = {
       summary: "開啟雲端同步，讓同一份知識庫跟著你的每一台裝置走，也讓 agent 透過 MCP 讀取它。",
       features: [
         "包含免費方案的所有功能",
+        "200 MB 雲端儲存空間，用來存放知識庫",
         "瀏覽器、Zotero 和手機看到同一批片段",
         "換一台裝置登入，接著讀、接著問",
         "刪除也會同步，不會在另一台裝置上冒出來",
@@ -643,6 +644,7 @@ export const zhTW: Content = {
     description: "Chrome 擴充功能、Zotero 外掛與 Android 版的全部功能。",
     features: [
       "原文與筆記不限量儲存",
+      "200 MB 雲端儲存空間，用來存放同步的條目",
       "在自己的知識庫上提問",
       "在 Chrome、Zotero 和 Android 之間同步",
       "3 天免費試用，隨時取消",
@@ -702,6 +704,13 @@ export const zhTW: Content = {
       manageBilling: "管理帳單",
       portalFailed: "無法開啟帳單管理頁面，請重試。",
       pastDue: "扣款失敗 — 請在 Paddle 更新付款方式以繼續同步。",
+    },
+    storage: {
+      label: "雲端儲存",
+      used: "已用",
+      limit: "上限",
+      full: "儲存空間已滿",
+      freeHint: "雲端儲存是 Pro 檔的功能。",
     },
     signedOut: {
       heading: "登入或建立帳號",

@@ -605,6 +605,7 @@ export const ko: Content = {
       summary: "클라우드 동기화를 켜면 같은 지식 베이스가 모든 기기를 따라오며, 에이전트가 MCP를 통해 읽을 수 있습니다.",
       features: [
         "무료 플랜의 모든 것",
+        "지식 베이스를 위한 클라우드 저장 공간 200 MB",
         "브라우저와 Zotero, 스마트폰에서 같은 클립",
         "새 기기에서 로그인하고 계속 읽고 계속 질문",
         "삭제도 함께 동기화되어 다른 기기에서 되살아나지 않습니다",
@@ -645,6 +646,7 @@ export const ko: Content = {
     description: "Chrome, Zotero, Android 전반의 모든 기능을 사용할 수 있습니다.",
     features: [
       "원문과 내 노트를 제한 없이 저장",
+      "동기화된 항목을 위한 클라우드 저장 공간 200 MB",
       "내 지식 베이스 전체에 질문",
       "Chrome, Zotero, Android 간 동기화",
       "3일 무료 체험, 언제든지 해지",
@@ -707,6 +709,13 @@ export const ko: Content = {
       manageBilling: "결제 관리",
       portalFailed: "결제 포털을 열지 못했습니다. 다시 시도해 주세요.",
       pastDue: "결제에 실패했습니다 — 동기화를 계속하려면 Paddle에서 카드를 갱신하세요.",
+    },
+    storage: {
+      label: "클라우드 저장 공간",
+      used: "사용량",
+      limit: "한도",
+      full: "저장 공간이 가득 찼습니다",
+      freeHint: "클라우드 저장 공간은 Pro 기능입니다.",
     },
     signedOut: {
       heading: "로그인 또는 계정 만들기",

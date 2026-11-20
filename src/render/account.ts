@@ -102,6 +102,16 @@ export function renderAccount(locale: Locale): PageMeta {
             </div>
           </section>
 
+          <section class="account-section" id="storage-section" hidden>
+            <h3>${escapeHtml(a.storage.label)}</h3>
+            <div class="plan-row storage-row">
+              <div>
+                <span class="plan-badge" id="storage-value">—</span>
+                <div class="plan-when" id="storage-note" hidden></div>
+              </div>
+            </div>
+          </section>
+
           <section class="account-section keys-section">
             <h3>${escapeHtml(a.keys.label)}</h3>
             <p class="keys-intro">${escapeHtml(a.keys.intro)}</p>
@@ -160,6 +170,7 @@ export function renderAccount(locale: Locale): PageMeta {
       welcome: a.welcome,
       errors: a.errors,
       plan: a.plan,
+      storage: a.storage,
       keys: a.keys,
     })}</script>
     <script>${ACCOUNT_SCRIPT.replace("__API_BASE__", API_BASE)}</script>`;
@@ -261,6 +272,58 @@ const ACCOUNT_SCRIPT = String.raw`
     subscribeEl.hidden = isPro || !available;
     // 有订阅才有 Paddle customer，自助改卡/开发票才有意义。
     if (portalEl) portalEl.hidden = !isPro || !available;
+  }
+
+  // ---------- 云端存储用量 ----------
+
+  // 上限与已用都由接口给出（200 MB 是 Pro 档的额度，别写死在页面里）。
+  // 用量用 1024 进制换算：limitBytes 209715200 正好是 200 MB。
+  function formatBytes(bytes) {
+    var b = Number(bytes);
+    if (!isFinite(b) || b <= 0) return "0 MB";
+    var mb = b / 1048576;
+    if (mb >= 10) return Math.round(mb) + " MB";
+    if (mb >= 1) {
+      var v = Math.round(mb * 10) / 10;
+      return (v % 1 === 0 ? String(v) : v.toFixed(1)) + " MB";
+    }
+    return Math.round(b / 1024) + " KB";
+  }
+
+  // 老部署的 /v1/web/account 还没有 storage 字段：缺了就整块不显示，
+  // 不要拿 0 去猜用户用了多少。
+  // 免费档没有云存储（同步接口返回 402），但仍把上限显示出来，
+  // 外加一句「云端存储是 Pro 档的功能」，避免误以为现在就能用满 200 MB。
+  function renderStorage(storage, plan) {
+    var section = document.getElementById("storage-section");
+    if (!section) return;
+    var limit = storage && Number(storage.limitBytes);
+    if (!storage || !isFinite(limit) || limit <= 0) {
+      section.hidden = true;
+      return;
+    }
+    var used = Number(storage.usedBytes);
+    if (!isFinite(used) || used < 0) used = 0;
+    var s = dict.storage;
+
+    document.getElementById("storage-value").textContent =
+      s.used + " " + formatBytes(used) + " / " + s.limit + " " + formatBytes(limit);
+
+    var note = document.getElementById("storage-note");
+    if (used >= limit) {
+      note.textContent = s.full;
+      note.className = "plan-when storage-full";
+      note.hidden = false;
+    } else if (plan !== "pro") {
+      note.textContent = s.freeHint;
+      note.className = "plan-when";
+      note.hidden = false;
+    } else {
+      note.textContent = "";
+      note.className = "plan-when";
+      note.hidden = true;
+    }
+    section.hidden = false;
   }
 
   function refreshBilling() {
@@ -500,6 +563,7 @@ const ACCOUNT_SCRIPT = String.raw`
     document.getElementById("fact-sessions").textContent = String(data.sessionCount);
 
     renderPlan(data.plan, data.planExpiresAt);
+    renderStorage(data.storage, data.plan);
     refreshBilling().then(function () { renderPlan(data.plan, data.planExpiresAt); });
     loadKeys();
 

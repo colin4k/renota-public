@@ -605,6 +605,7 @@ export const pt: Content = {
       summary: "Ative a sincronização na nuvem para a mesma base de conhecimento acompanhar todos os dispositivos — e para que agentes possam lê-la via MCP.",
       features: [
         "Tudo do Grátis",
+        "200 MB de armazenamento na nuvem para a sua base de conhecimento",
         "Os mesmos trechos no navegador, no Zotero e no celular",
         "Entre em um novo dispositivo e continue lendo, continue perguntando",
         "Exclusões também sincronizam, então nada reaparece em outro dispositivo",
@@ -645,6 +646,7 @@ export const pt: Content = {
     description: "Acesso completo no Chrome, no Zotero e no Android.",
     features: [
       "Salve texto original e suas próprias notas, sem limites",
+      "200 MB de armazenamento na nuvem para os itens sincronizados",
       "Faça perguntas na sua própria base de conhecimento",
       "Sincronize entre Chrome, Zotero e Android",
       "Teste grátis de 3 dias, cancele quando quiser",
@@ -707,6 +709,13 @@ export const pt: Content = {
       manageBilling: "Gerenciar cobrança",
       portalFailed: "Não foi possível abrir o portal de cobrança. Tente novamente.",
       pastDue: "O pagamento falhou — atualize seu cartão na Paddle para continuar sincronizando.",
+    },
+    storage: {
+      label: "Armazenamento na nuvem",
+      used: "Usado",
+      limit: "Limite",
+      full: "Armazenamento cheio",
+      freeHint: "O armazenamento na nuvem faz parte do Pro.",
     },
     signedOut: {
       heading: "Entre ou crie uma conta",

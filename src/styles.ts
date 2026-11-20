@@ -497,6 +497,11 @@ code, pre, kbd { font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Me
 .plan-row .plan-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 .plan-row .plan-actions .btn { font-size: 0.875rem; min-height: 40px; padding: 0 16px; }
 
+/* 云端存储用量：沿用订阅行的外观，只把数字排成等宽；没有任何新色。 */
+.storage-row { margin-top: 0; }
+.storage-row .plan-badge { font-variant-numeric: tabular-nums; }
+.storage-row .plan-when.storage-full { color: var(--danger); }
+
 .product-card {
   display: flex; flex-direction: column; gap: 8px; padding: 24px;
   background: var(--surface); border: 1px solid var(--hairline); border-radius: var(--radius-card); color: var(--text);

@@ -605,6 +605,7 @@ export const fr: Content = {
       summary: "Activez la synchronisation cloud pour que la même base de connaissances suive chaque appareil — et laissez les agents la lire via MCP.",
       features: [
         "Tout ce qui est inclus dans Gratuit",
+        "200 MB de stockage cloud pour votre base de connaissances",
         "Les mêmes extraits dans le navigateur, dans Zotero et sur votre téléphone",
         "Connectez-vous sur un nouvel appareil et continuez à lire, à interroger",
         "Les suppressions sont synchronisées aussi : rien ne réapparaît sur un autre appareil",
@@ -645,6 +646,7 @@ export const fr: Content = {
     description: "Accès complet sur Chrome, Zotero et Android.",
     features: [
       "Enregistrez sans limite le texte d'origine et vos propres notes",
+      "200 MB de stockage cloud pour les entrées synchronisées",
       "Posez vos questions sur votre propre bibliothèque",
       "Synchronisez entre Chrome, Zotero et Android",
       "Essai gratuit de 3 jours, résiliable à tout moment",
@@ -707,6 +709,13 @@ export const fr: Content = {
       manageBilling: "Gérer la facturation",
       portalFailed: "Impossible d'ouvrir le portail de facturation. Veuillez réessayer.",
       pastDue: "Paiement échoué — mettez à jour votre carte chez Paddle pour continuer à synchroniser.",
+    },
+    storage: {
+      label: "Stockage cloud",
+      used: "Utilisé",
+      limit: "Limite",
+      full: "Stockage plein",
+      freeHint: "Le stockage cloud fait partie de l'offre Pro.",
     },
     signedOut: {
       heading: "Connectez-vous ou créez un compte",
