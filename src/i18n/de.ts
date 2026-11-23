@@ -614,7 +614,7 @@ export const de: Content = {
       cta: "Abonnieren",
     },
     note:
-      "Die Preise sind in US-Dollar, monatlich im Voraus über Paddle abgerechnet. Ihr API-Schlüssel verlässt Ihr Gerät nie — das Abo umfasst die Cloud-Synchronisierung und den MCP-Zugriff. Jederzeit kündbar; der Zugang läuft bis zum Ende des bereits bezahlten Zeitraums weiter.",
+      "Die Preise sind in US-Dollar, monatlich im Voraus abgerechnet. Ihr API-Schlüssel verlässt Ihr Gerät nie — das Abo umfasst die Cloud-Synchronisierung und den MCP-Zugriff. Jederzeit kündbar; der Zugang läuft bis zum Ende des bereits bezahlten Zeitraums weiter.",
     faqTitle: "Fragen zum Abo",
     faq: [
       {
@@ -631,11 +631,11 @@ export const de: Content = {
       },
       {
         q: "Wie bezahle ich?",
-        a: "Die Abwicklung übernimmt Paddle, unser Merchant of Record. Karten, PayPal und lokale Zahlungsmethoden sind je nach Rechnungsland verfügbar.",
+        a: "Die Abwicklung übernimmt unser Zahlungsanbieter. Karten, PayPal und lokale Zahlungsmethoden sind je nach Rechnungsland verfügbar.",
       },
       {
         q: "Wo werden meine Zahlungsdaten gespeichert?",
-        a: "Bei Paddle, nie bei uns. Wir erhalten nur einen Abo-Status und die E-Mail-Adresse des Kontos.",
+        a: "Bei unserem Zahlungsanbieter, nie bei uns. Wir erhalten nur einen Abo-Status und die E-Mail-Adresse des Kontos.",
       },
     ],
     ctaTitle: "Bereit zu synchronisieren?",
@@ -707,7 +707,7 @@ export const de: Content = {
       pricingLink: "Tarife vergleichen",
       manageBilling: "Abrechnung verwalten",
       portalFailed: "Das Abrechnungsportal konnte nicht geöffnet werden. Bitte versuchen Sie es erneut.",
-      pastDue: "Zahlung fehlgeschlagen — aktualisieren Sie Ihre Karte bei Paddle, um weiter zu synchronisieren.",
+      pastDue: "Zahlung fehlgeschlagen — aktualisieren Sie Ihre Zahlungsmethode, um weiter zu synchronisieren.",
     },
     storage: {
       label: "Cloud-Speicher",
@@ -795,15 +795,16 @@ export const de: Content = {
     startTrial: "3 Tage Testphase starten",
     billingPeriod: "Abrechnungszeitraum",
     perMonthNote:
-      "Preise ohne Steuern. Paddle berechnet die für Ihren Standort geltenden Steuern im Bezahlvorgang; der dort angezeigte Gesamtbetrag ist maßgeblich.",
+      "Preise ohne Steuern. Die für Ihren Standort geltenden Steuern werden im Bezahlvorgang berechnet; der dort angezeigte Gesamtbetrag ist maßgeblich.",
     localized: "Die Preise werden für Ihren Standort angezeigt; der endgültige Betrag wird im Bezahlvorgang bestätigt.",
     pricesFailed: "Die Preise konnten nicht geladen werden. Bitte laden Sie die Seite neu und versuchen Sie es erneut.",
     checkoutFailed: "Der Bezahlvorgang konnte nicht geöffnet werden. Bitte versuchen Sie es erneut oder kontaktieren Sie den Support.",
+    signinRequired: "Bitte melden Sie sich zuerst an — danach geht es mit dem Bezahlvorgang weiter.",
   },
 
   welcome: {
     heading: "Alles bereit",
-    lede: "Danke für Ihr Abonnement von Renota Pro. Paddle sendet Ihnen den Beleg per E-Mail, und Sie können das Abo jederzeit verwalten.",
+    lede: "Danke für Ihr Abonnement von Renota Pro. Der Beleg kommt per E-Mail, und Sie können das Abo jederzeit verwalten.",
     accountCta: "Zu Ihrem Konto",
     homeCta: "Zurück zur Startseite",
     note: "Wenn die Bestätigungs-E-Mail nicht innerhalb weniger Minuten ankommt, prüfen Sie Ihren Spam-Ordner oder schreiben Sie an support@werenota.com.",

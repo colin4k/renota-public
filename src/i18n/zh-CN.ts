@@ -610,7 +610,7 @@ export const zhCN: Content = {
       cta: "订阅 Pro",
     },
     note:
-      "价格为美元，通过 Paddle 按月预付。API Key 从不离开你的设备 —— 订阅费用涵盖云同步与 MCP 访问。随时可以取消，取消后仍可使用到已付费周期的最后一刻。",
+      "价格为美元，按月预付。API Key 从不离开你的设备 —— 订阅费用涵盖云同步与 MCP 访问。随时可以取消，取消后仍可使用到已付费周期的最后一刻。",
     faqTitle: "关于订阅",
     faq: [
       {
@@ -627,11 +627,11 @@ export const zhCN: Content = {
       },
       {
         q: "怎么付款？",
-        a: "结账由 Paddle 处理（我们的收款方）。根据你的账单国家，支持信用卡、PayPal 和当地支付方式。",
+        a: "结账由我们的支付服务商处理。根据你的账单国家，支持信用卡、PayPal 和当地支付方式。",
       },
       {
         q: "我的支付信息存在哪？",
-        a: "存在 Paddle 那边，不在我们这里。我们只拿到订阅状态和账号邮箱。",
+        a: "存在支付服务商那边，不在我们这里。我们只拿到订阅状态和账号邮箱。",
       },
     ],
     ctaTitle: "准备同步了吗？",
@@ -703,7 +703,7 @@ export const zhCN: Content = {
       pricingLink: "比较两档",
       manageBilling: "管理账单",
       portalFailed: "无法打开账单管理页，请重试。",
-      pastDue: "扣款失败 — 请在 Paddle 更新支付方式以继续同步。",
+      pastDue: "扣款失败 — 请更新支付方式以继续同步。",
     },
     storage: {
       label: "云端存储",
@@ -791,15 +791,16 @@ export const zhCN: Content = {
     subscribeNow: "立即订阅",
     startTrial: "开始 3 天试用",
     billingPeriod: "计费周期",
-    perMonthNote: "标价为税前金额。税费由 Paddle 在结算时按你的所在地计算，最终以结账页显示的总额为准。",
+    perMonthNote: "标价为税前金额。税费在结算时按你的所在地计算，最终以结账页显示的总额为准。",
     localized: "价格已按你的所在地显示，最终金额在结算时确认。",
     pricesFailed: "价格加载失败，请刷新页面重试。",
     checkoutFailed: "无法打开结算窗口，请稍后重试或联系支持。",
+    signinRequired: "请先登录，登录后会接着完成订阅。",
   },
 
   welcome: {
     heading: "订阅已生效",
-    lede: "感谢订阅 Renota Pro。收据会由 Paddle 发到你的邮箱，随时可以在这里管理订阅。",
+    lede: "感谢订阅 Renota Pro。收据会发到你的邮箱，随时可以在这里管理订阅。",
     accountCta: "前往账户页",
     homeCta: "返回首页",
     note: "如果几分钟内没有收到确认邮件，请检查垃圾邮件目录，或联系 support@werenota.com。",

@@ -614,7 +614,7 @@ export const fr: Content = {
       cta: "S'abonner",
     },
     note:
-      "Les prix sont en dollars américains, facturés mensuellement d'avance par Paddle. Votre clé API ne quitte jamais votre appareil — l'abonnement couvre la synchronisation cloud et l'accès MCP. Résiliable à tout moment ; l'accès se poursuit jusqu'à la fin de la période déjà payée.",
+      "Les prix sont en dollars américains, facturés mensuellement d'avance. Votre clé API ne quitte jamais votre appareil — l'abonnement couvre la synchronisation cloud et l'accès MCP. Résiliable à tout moment ; l'accès se poursuit jusqu'à la fin de la période déjà payée.",
     faqTitle: "Questions sur l'abonnement",
     faq: [
       {
@@ -631,11 +631,11 @@ export const fr: Content = {
       },
       {
         q: "Comment payer ?",
-        a: "Le paiement est géré par Paddle, notre marchand de référence. Cartes, PayPal et moyens de paiement locaux sont disponibles selon votre pays de facturation.",
+        a: "Le paiement est géré par notre prestataire de paiement. Cartes, PayPal et moyens de paiement locaux sont disponibles selon votre pays de facturation.",
       },
       {
         q: "Où sont stockées mes informations de paiement ?",
-        a: "Chez Paddle, jamais chez nous. Nous ne recevons qu'un statut d'abonnement et l'adresse e-mail du compte.",
+        a: "Chez notre prestataire de paiement, jamais chez nous. Nous ne recevons qu'un statut d'abonnement et l'adresse e-mail du compte.",
       },
     ],
     ctaTitle: "Prêt à synchroniser ?",
@@ -708,7 +708,7 @@ export const fr: Content = {
       pricingLink: "Comparer les forfaits",
       manageBilling: "Gérer la facturation",
       portalFailed: "Impossible d'ouvrir le portail de facturation. Veuillez réessayer.",
-      pastDue: "Paiement échoué — mettez à jour votre carte chez Paddle pour continuer à synchroniser.",
+      pastDue: "Paiement échoué — mettez à jour votre moyen de paiement pour continuer à synchroniser.",
     },
     storage: {
       label: "Stockage cloud",
@@ -796,15 +796,16 @@ export const fr: Content = {
     startTrial: "Démarrer l'essai de 3 jours",
     billingPeriod: "Période de facturation",
     perMonthNote:
-      "Les prix s'entendent hors taxes. Paddle calcule les taxes applicables à votre lieu de résidence lors du paiement, et le total affiché au paiement fait foi.",
+      "Les prix s'entendent hors taxes. Les taxes applicables à votre lieu de résidence sont calculées au moment du paiement, et le total affiché fait foi.",
     localized: "Les prix sont affichés pour votre lieu de résidence ; le montant final est confirmé au moment du paiement.",
     pricesFailed: "Impossible de charger les prix. Veuillez actualiser la page et réessayer.",
     checkoutFailed: "Impossible d'ouvrir le paiement. Veuillez réessayer ou contacter l'assistance.",
+    signinRequired: "Connectez-vous d'abord : le paiement se poursuit sur votre compte.",
   },
 
   welcome: {
     heading: "Tout est prêt",
-    lede: "Merci d'avoir souscrit à Renota Pro. Paddle vous enverra le reçu par e-mail, et vous pouvez gérer l'abonnement à tout moment.",
+    lede: "Merci d'avoir souscrit à Renota Pro. Le reçu arrive dans votre boîte mail, et vous pouvez gérer l'abonnement à tout moment.",
     accountCta: "Aller à votre compte",
     homeCta: "Retour à l'accueil",
     note: "Si l'e-mail de confirmation n'arrive pas dans les minutes qui suivent, vérifiez votre dossier de spam ou écrivez à support@werenota.com.",

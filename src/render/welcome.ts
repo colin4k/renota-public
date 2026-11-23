@@ -1,4 +1,4 @@
-// 结算成功后的落地页。Paddle 完成扣款后把用户送到这里。
+// 结算成功后的落地页。Paddle 与 Waffo 都会把用户送回这里。
 
 import { content } from "../i18n/index.js";
 import { pagePath, type Locale } from "../i18n/locales.js";

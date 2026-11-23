@@ -78,7 +78,7 @@ Where practical, we give notice of changes that materially reduce functionality 
 
 ## 7. Fees, subscriptions and refunds
 
-The apps are free to use on your own devices with your own API key. Cloud sync is an optional paid subscription at **US$9.90 per month**, charged in advance through our payment provider, Paddle. Depending on your billing country, sales tax or VAT may be added.
+The apps are free to use on your own devices with your own API key. Cloud sync is an optional paid subscription at **US$9.90 per month**, charged in advance through our payment provider. Depending on your billing country, sales tax or VAT may be added.
 
 Subscriptions renew automatically every month until cancelled. You can cancel at any time from the account page; your access continues until the end of the period you have already paid for, and cancelling stops all future charges.
 
@@ -86,7 +86,7 @@ If you believe you were charged in error — or if the paid service was unavaila
 
 Model provider costs are separate and are never billed by us.
 
-Paddle acts as our merchant of record for subscriptions. Your payment details are handled by Paddle and its payment partners, not by us, and are never stored on our servers.
+Our payment provider acts as merchant of record for subscriptions. Your payment details are handled by it and its payment partners, not by us, and are never stored on our servers.
 
 ---
 

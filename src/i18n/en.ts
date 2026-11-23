@@ -613,7 +613,7 @@ export const en = {
       cta: "Subscribe",
     },
     note:
-      "Prices are in US dollars, billed monthly in advance through Paddle. Your API key never leaves your device — the subscription covers cloud sync and MCP access. Cancel anytime; access continues to the end of the period you already paid for.",
+      "Prices are in US dollars, billed monthly in advance. Your API key never leaves your device — the subscription covers cloud sync and MCP access. Cancel anytime; access continues to the end of the period you already paid for.",
     faqTitle: "Subscription questions",
     faq: [
       {
@@ -630,11 +630,11 @@ export const en = {
       },
       {
         q: "How do I pay?",
-        a: "Checkout is handled by Paddle, our merchant of record. Cards, PayPal and local payment methods are available depending on your billing country.",
+        a: "Checkout is handled by our payment provider. Cards, PayPal and local payment methods are available depending on your billing country.",
       },
       {
         q: "Where is my payment information stored?",
-        a: "With Paddle, never with us. We only receive a subscription status and the email address on the account.",
+        a: "With our payment provider, never with us. We only receive a subscription status and the email address on the account.",
       },
     ],
     ctaTitle: "Ready to sync?",
@@ -708,7 +708,7 @@ export const en = {
       pricingLink: "Compare plans",
       manageBilling: "Manage billing",
       portalFailed: "Could not open the billing portal. Please try again.",
-      pastDue: "Payment failed — update your card with Paddle to keep syncing.",
+      pastDue: "Payment failed — update your payment method to keep syncing.",
     },
     storage: {
       label: "Cloud storage",
@@ -797,15 +797,16 @@ export const en = {
     startTrial: "Start 3-day trial",
     billingPeriod: "Billing period",
     perMonthNote:
-      "Prices exclude tax. Paddle calculates applicable tax for your location at checkout, and the checkout total is final.",
+      "Prices exclude tax. Your location's tax is calculated at checkout, and the total shown there is final.",
     localized: "Prices are shown for your location; the final amount is confirmed at checkout.",
     pricesFailed: "Could not load prices. Please refresh and try again.",
     checkoutFailed: "Could not open checkout. Please try again or contact support.",
+    signinRequired: "Please sign in first — checkout continues on your account.",
   },
 
   welcome: {
     heading: "You're all set",
-    lede: "Thanks for subscribing to Renota Pro. Paddle will email your receipt, and you can manage the subscription any time.",
+    lede: "Thanks for subscribing to Renota Pro. Your receipt is on its way to your inbox, and you can manage the subscription any time.",
     accountCta: "Go to your account",
     homeCta: "Back to home",
     note: "If the confirmation email doesn't arrive within a few minutes, check your spam folder or email support@werenota.com.",

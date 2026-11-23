@@ -78,7 +78,7 @@ Siempre que sea posible, avisamos de los cambios que reduzcan sustancialmente la
 
 ## 7. Tarifas, suscripciones y reembolsos
 
-Las apps son gratis en sus propios dispositivos con su propia clave API. La sincronización en la nube es una suscripción opcional de pago de **US$9.90 al mes**, cobrada por adelantado a través de nuestro proveedor de pagos, Paddle. Según su país de facturación, pueden aplicarse impuestos sobre ventas o IVA.
+Las apps son gratis en sus propios dispositivos con su propia clave API. La sincronización en la nube es una suscripción opcional de pago de **US$9.90 al mes**, cobrada por adelantado a través de nuestro proveedor de pagos. Según su país de facturación, pueden aplicarse impuestos sobre ventas o IVA.
 
 Las suscripciones se renuevan automáticamente cada mes hasta que se cancelen. Puede cancelar en cualquier momento desde la página de la cuenta; su acceso continúa hasta el final del periodo que ya haya pagado, y la cancelación detiene todos los cargos futuros.
 
@@ -86,7 +86,7 @@ Si cree que se le ha cobrado por error, o si el servicio de pago no ha estado di
 
 Los costes del proveedor de modelo son independientes y nunca los facturamos nosotros.
 
-Paddle actúa como nuestro comerciante registrado para las suscripciones. Sus datos de pago los gestionan Paddle y sus socios de pago, no nosotros, y nunca se almacenan en nuestros servidores.
+Nuestro proveedor de pagos actúa como comerciante registrado para las suscripciones. Sus datos de pago los gestiona él y sus socios de pago, no nosotros, y nunca se almacenan en nuestros servidores.
 
 ---
 

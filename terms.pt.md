@@ -78,7 +78,7 @@ Quando possível, avisamos sobre mudanças que reduzam materialmente a funcional
 
 ## 7. Preços, assinaturas e reembolsos
 
-Os apps são gratuitos para uso nos seus próprios dispositivos com a sua própria chave de API. A sincronização na nuvem é uma assinatura paga opcional de **US$9.90 por mês**, cobrada antecipadamente pelo nosso provedor de pagamentos, a Paddle. Dependendo do seu país de cobrança, podem ser acrescentados impostos sobre vendas ou IVA.
+Os apps são gratuitos para uso nos seus próprios dispositivos com a sua própria chave de API. A sincronização na nuvem é uma assinatura paga opcional de **US$9.90 por mês**, cobrada antecipadamente pelo nosso provedor de pagamentos. Dependendo do seu país de cobrança, podem ser acrescentados impostos sobre vendas ou IVA.
 
 As assinaturas são renovadas automaticamente todo mês até o cancelamento. Você pode cancelar a qualquer momento na página da conta; o acesso continua até o fim do período que você já pagou, e o cancelamento interrompe todas as cobranças futuras.
 
@@ -86,7 +86,7 @@ Se você acredita que foi cobrado por engano — ou se o serviço pago ficou ind
 
 Os custos do provedor de modelo são separados e nunca são cobrados por nós.
 
-A Paddle atua como nosso comerciante registrado (merchant of record) nas assinaturas. Os dados do seu pagamento são tratados pela Paddle e pelos parceiros de pagamento dela, não por nós, e nunca são armazenados nos nossos servidores.
+Nosso provedor de pagamentos atua como comerciante registrado (merchant of record) nas assinaturas. Os dados do seu pagamento são tratados por ele e pelos parceiros de pagamento dele, não por nós, e nunca são armazenados nos nossos servidores.
 
 ---
 

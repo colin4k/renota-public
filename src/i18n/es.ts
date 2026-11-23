@@ -614,7 +614,7 @@ export const es: Content = {
       cta: "Suscribirse",
     },
     note:
-      "Los precios están en dólares estadounidenses y se facturan por adelantado cada mes a través de Paddle. Tu clave API nunca sale de tu dispositivo: la suscripción cubre la sincronización en la nube y el acceso MCP. Cancela cuando quieras; el acceso continúa hasta el final del periodo que ya has pagado.",
+      "Los precios están en dólares estadounidenses y se facturan por adelantado cada mes. Tu clave API nunca sale de tu dispositivo: la suscripción cubre la sincronización en la nube y el acceso MCP. Cancela cuando quieras; el acceso continúa hasta el final del periodo que ya has pagado.",
     faqTitle: "Preguntas sobre la suscripción",
     faq: [
       {
@@ -631,11 +631,11 @@ export const es: Content = {
       },
       {
         q: "¿Cómo pago?",
-        a: "El pago lo gestiona Paddle, nuestro comerciante registrado. Hay tarjetas, PayPal y métodos de pago locales según tu país de facturación.",
+        a: "El pago lo gestiona nuestro proveedor de pagos. Hay tarjetas, PayPal y métodos de pago locales según tu país de facturación.",
       },
       {
         q: "¿Dónde se guarda mi información de pago?",
-        a: "En Paddle, nunca con nosotros. Solo recibimos el estado de la suscripción y la dirección de correo de la cuenta.",
+        a: "En nuestro proveedor de pagos, nunca con nosotros. Solo recibimos el estado de la suscripción y la dirección de correo de la cuenta.",
       },
     ],
     ctaTitle: "¿Listo para sincronizar?",
@@ -708,7 +708,7 @@ export const es: Content = {
       pricingLink: "Comparar planes",
       manageBilling: "Gestionar la facturación",
       portalFailed: "No se pudo abrir el portal de facturación. Inténtalo de nuevo.",
-      pastDue: "El pago ha fallado. Actualiza tu tarjeta en Paddle para seguir sincronizando.",
+      pastDue: "El pago ha fallado. Actualiza tu método de pago para seguir sincronizando.",
     },
     storage: {
       label: "Almacenamiento en la nube",
@@ -796,15 +796,16 @@ export const es: Content = {
     startTrial: "Iniciar la prueba de 3 días",
     billingPeriod: "Periodo de facturación",
     perMonthNote:
-      "Los precios no incluyen impuestos. Paddle calcula los impuestos aplicables según tu ubicación al pagar, y el total que muestra el pago es el definitivo.",
+      "Los precios no incluyen impuestos. Los impuestos de tu ubicación se calculan al pagar, y el total que muestra el pago es el definitivo.",
     localized: "Los precios se muestran según tu ubicación; el importe final se confirma al pagar.",
     pricesFailed: "No se pudieron cargar los precios. Actualiza la página e inténtalo de nuevo.",
     checkoutFailed: "No se pudo abrir el pago. Inténtalo de nuevo o escribe a soporte.",
+    signinRequired: "Inicia sesión primero: el pago continúa en tu cuenta.",
   },
 
   welcome: {
     heading: "Todo listo",
-    lede: "Gracias por suscribirte a Renota Pro. Paddle te enviará el recibo por correo y podrás gestionar la suscripción cuando quieras.",
+    lede: "Gracias por suscribirte a Renota Pro. El recibo llegará a tu correo y podrás gestionar la suscripción cuando quieras.",
     accountCta: "Ir a tu cuenta",
     homeCta: "Volver al inicio",
     note: "Si el correo de confirmación no llega en unos minutos, revisa la carpeta de spam o escribe a support@werenota.com.",

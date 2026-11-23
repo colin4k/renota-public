@@ -78,7 +78,7 @@ Chaque fois que cela est possible, nous vous informons des changements qui rédu
 
 ## 7. Frais, abonnements et remboursements
 
-Les applis sont gratuites sur vos propres appareils avec votre propre clé API. La synchronisation cloud est un abonnement payant facultatif à **US$9.90 par mois**, facturé d'avance via notre prestataire de paiement, Paddle. Selon votre pays de facturation, une taxe sur les ventes ou une TVA peut s'ajouter.
+Les applis sont gratuites sur vos propres appareils avec votre propre clé API. La synchronisation cloud est un abonnement payant facultatif à **US$9.90 par mois**, facturé d'avance via notre prestataire de paiement. Selon votre pays de facturation, une taxe sur les ventes ou une TVA peut s'ajouter.
 
 Les abonnements se renouvellent automatiquement chaque mois jusqu'à résiliation. Vous pouvez résilier à tout moment depuis la page du compte ; votre accès se poursuit jusqu'à la fin de la période déjà payée, et la résiliation arrête tous les prélèvements futurs.
 
@@ -86,7 +86,7 @@ Si vous estimez avoir été débité par erreur — ou si le service payant a é
 
 Les coûts du fournisseur de modèle sont distincts et ne sont jamais facturés par nous.
 
-Paddle agit comme marchand de référence pour les abonnements. Vos informations de paiement sont traitées par Paddle et ses partenaires de paiement, et non par nous, et ne sont jamais stockées sur nos serveurs.
+Notre prestataire de paiement agit comme marchand de référence pour les abonnements. Vos informations de paiement sont traitées par lui et ses partenaires de paiement, et non par nous, et ne sont jamais stockées sur nos serveurs.
 
 ---
 

@@ -614,7 +614,7 @@ export const pt: Content = {
       cta: "Assinar",
     },
     note:
-      "Os preços são em dólares americanos, cobrados mensalmente e adiantado pela Paddle. Sua chave de API nunca sai do seu dispositivo — a assinatura cobre a sincronização na nuvem e o acesso MCP. Cancele quando quiser; o acesso continua até o fim do período que você já pagou.",
+      "Os preços são em dólares americanos, cobrados mensalmente e adiantado. Sua chave de API nunca sai do seu dispositivo — a assinatura cobre a sincronização na nuvem e o acesso MCP. Cancele quando quiser; o acesso continua até o fim do período que você já pagou.",
     faqTitle: "Perguntas sobre a assinatura",
     faq: [
       {
@@ -631,11 +631,11 @@ export const pt: Content = {
       },
       {
         q: "Como eu pago?",
-        a: "O checkout é feito pela Paddle, nosso comerciante registrado (merchant of record). Cartões, PayPal e métodos de pagamento locais estão disponíveis conforme o seu país de cobrança.",
+        a: "O checkout é feito pelo nosso provedor de pagamentos. Cartões, PayPal e métodos de pagamento locais estão disponíveis conforme o seu país de cobrança.",
       },
       {
         q: "Onde ficam as informações do meu pagamento?",
-        a: "Com a Paddle, nunca com a gente. Nós só recebemos o status da assinatura e o endereço de e-mail da conta.",
+        a: "Com o nosso provedor de pagamentos, nunca com a gente. Nós só recebemos o status da assinatura e o endereço de e-mail da conta.",
       },
     ],
     ctaTitle: "Pronto para sincronizar?",
@@ -708,7 +708,7 @@ export const pt: Content = {
       pricingLink: "Comparar planos",
       manageBilling: "Gerenciar cobrança",
       portalFailed: "Não foi possível abrir o portal de cobrança. Tente novamente.",
-      pastDue: "O pagamento falhou — atualize seu cartão na Paddle para continuar sincronizando.",
+      pastDue: "O pagamento falhou — atualize sua forma de pagamento para continuar sincronizando.",
     },
     storage: {
       label: "Armazenamento na nuvem",
@@ -796,15 +796,16 @@ export const pt: Content = {
     startTrial: "Começar teste de 3 dias",
     billingPeriod: "Período de cobrança",
     perMonthNote:
-      "Os preços não incluem impostos. A Paddle calcula os impostos aplicáveis à sua localização no checkout, e o total do checkout é o valor final.",
+      "Os preços não incluem impostos. Os impostos da sua localização são calculados no checkout, e o total do checkout é o valor final.",
     localized: "Os preços são exibidos para a sua localização; o valor final é confirmado no checkout.",
     pricesFailed: "Não foi possível carregar os preços. Atualize a página e tente novamente.",
     checkoutFailed: "Não foi possível abrir o checkout. Tente novamente ou fale com o suporte.",
+    signinRequired: "Entre na sua conta primeiro: o checkout continua nela.",
   },
 
   welcome: {
     heading: "Tudo pronto",
-    lede: "Obrigado por assinar o Renota Pro. A Paddle envia o recibo por e-mail, e você pode gerenciar a assinatura a qualquer momento.",
+    lede: "Obrigado por assinar o Renota Pro. O recibo chega por e-mail, e você pode gerenciar a assinatura a qualquer momento.",
     accountCta: "Ir para a sua conta",
     homeCta: "Voltar ao início",
     note: "Se o e-mail de confirmação não chegar em alguns minutos, verifique a pasta de spam ou escreva para support@werenota.com.",

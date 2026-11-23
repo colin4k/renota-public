@@ -612,7 +612,7 @@ export const zhTW: Content = {
       cta: "訂閱 Pro",
     },
     note:
-      "價格為美元，透過 Paddle 按月預付。API Key 從不離開你的裝置 —— 訂閱涵蓋雲端同步與 MCP 存取。隨時可以取消，取消後仍可使用到已付費週期的最後一刻。",
+      "價格為美元，按月預付。API Key 從不離開你的裝置 —— 訂閱涵蓋雲端同步與 MCP 存取。隨時可以取消，取消後仍可使用到已付費週期的最後一刻。",
     faqTitle: "關於訂閱",
     faq: [
       {
@@ -629,11 +629,11 @@ export const zhTW: Content = {
       },
       {
         q: "怎麼付款？",
-        a: "結帳由 Paddle 處理（我們的收款方）。依你的帳單國家，支援信用卡、PayPal 和當地付款方式。",
+        a: "結帳由我們的支付服務商處理。依你的帳單國家，支援信用卡、PayPal 和當地付款方式。",
       },
       {
         q: "我的付款資訊存在哪裡？",
-        a: "存在 Paddle 那邊，不在我們這裡。我們只會取得訂閱狀態和帳號的電子郵件地址。",
+        a: "存在支付服務商那邊，不在我們這裡。我們只會取得訂閱狀態和帳號的電子郵件地址。",
       },
     ],
     ctaTitle: "準備好同步了嗎？",
@@ -703,7 +703,7 @@ export const zhTW: Content = {
       pricingLink: "比較方案",
       manageBilling: "管理帳單",
       portalFailed: "無法開啟帳單管理頁面，請重試。",
-      pastDue: "扣款失敗 — 請在 Paddle 更新付款方式以繼續同步。",
+      pastDue: "扣款失敗 — 請更新付款方式以繼續同步。",
     },
     storage: {
       label: "雲端儲存",
@@ -791,15 +791,16 @@ export const zhTW: Content = {
     startTrial: "開始 3 天試用",
     billingPeriod: "計費週期",
     perMonthNote:
-      "標價為稅前金額。稅金由 Paddle 在結帳時依你的所在地計算，最終以結帳頁顯示的總額為準。",
+      "標價為稅前金額。稅金在結帳時依你的所在地計算，最終以結帳頁顯示的總額為準。",
     localized: "價格已依你的所在地顯示，最終金額在結帳時確認。",
     pricesFailed: "價格載入失敗，請重新整理頁面後再試。",
     checkoutFailed: "無法開啟結帳視窗，請稍後再試或聯絡支援。",
+    signinRequired: "請先登入，登入後會接著完成訂閱。",
   },
 
   welcome: {
     heading: "訂閱已生效",
-    lede: "感謝訂閱 Renota Pro。收據會由 Paddle 寄到你的電子郵件，隨時可以在這裡管理訂閱。",
+    lede: "感謝訂閱 Renota Pro。收據會寄到你的電子郵件，隨時可以在這裡管理訂閱。",
     accountCta: "前往帳號頁",
     homeCta: "返回首頁",
     note: "如果幾分鐘內沒有收到確認郵件，請檢查垃圾郵件資料夾，或寄信到 support@werenota.com。",

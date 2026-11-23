@@ -78,7 +78,7 @@ Wo es praktikabel ist, kündigen wir Änderungen an, die den Funktionsumfang erh
 
 ## 7. Entgelte, Abonnements und Erstattungen
 
-Die Apps sind auf Ihren eigenen Geräten mit Ihrem eigenen API-Schlüssel kostenlos nutzbar. Die Cloud-Synchronisierung ist ein optionales kostenpflichtiges Abonnement zu **US$9.90 pro Monat**, im Voraus über unseren Zahlungsanbieter Paddle abgerechnet. Je nach Rechnungsland können Umsatzsteuer oder Mehrwertsteuer hinzukommen.
+Die Apps sind auf Ihren eigenen Geräten mit Ihrem eigenen API-Schlüssel kostenlos nutzbar. Die Cloud-Synchronisierung ist ein optionales kostenpflichtiges Abonnement zu **US$9.90 pro Monat**, im Voraus über unseren Zahlungsanbieter abgerechnet. Je nach Rechnungsland können Umsatzsteuer oder Mehrwertsteuer hinzukommen.
 
 Abonnements verlängern sich automatisch jeden Monat, bis sie gekündigt werden. Sie können jederzeit über die Kontoseite kündigen; Ihr Zugang läuft bis zum Ende des bereits bezahlten Zeitraums weiter, und die Kündigung beendet alle künftigen Belastungen.
 
@@ -86,7 +86,7 @@ Wenn Sie glauben, dass Ihnen fälschlich etwas berechnet wurde — oder wenn der
 
 Kosten für Modellanbieter sind davon getrennt und werden nie von uns abgerechnet.
 
-Paddle handelt für Abonnements als unser Merchant of Record. Ihre Zahlungsdaten werden von Paddle und dessen Zahlungspartnern verarbeitet, nicht von uns, und werden nie auf unseren Servern gespeichert.
+Unser Zahlungsanbieter handelt für Abonnements als Merchant of Record. Ihre Zahlungsdaten werden von ihm und seinen Zahlungspartnern verarbeitet, nicht von uns, und werden nie auf unseren Servern gespeichert.
 
 ---
 
