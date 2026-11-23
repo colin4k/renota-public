@@ -75,7 +75,7 @@ La sincronización en la nube mantiene su base de conocimiento coherente entre l
 
 ## 4. Telemetría anónima
 
-Renota incluye una función de telemetría anónima **opcional**. La telemetría está **desactivada por defecto** y solo se envía después de que usted dé su consentimiento en el panel de ajustes de la extensión.
+Renota incluye una función de telemetría anónima. Está **activada por defecto** y puede **desactivarla en cualquier momento** en el panel de ajustes de la extensión; una vez desactivada, no se envía nada más.
 
 ### 4.1 Qué se envía
 
@@ -104,15 +104,15 @@ La telemetría nos ayuda a saber qué funciones se usan y cuáles no, para poder
 Puede desactivar la telemetría en cualquier momento:
 
 1. Abra el panel lateral de Renota.
-2. Vaya a **Ajustes → Privacidad**.
-3. Desactive **«Compartir datos de uso anónimos»**.
+2. Vaya a **Ajustes → Estadísticas de uso anónimas**.
+3. Desactive **Estadísticas de uso anónimas**.
 
 Cuando está desactivada, no se envía ninguna solicitud al sitio de telemetría. Desinstalar la extensión también detiene toda la telemetría.
 
 
 ### 4.5 Analítica del sitio web
 
-Nuestro sitio web en werenota.com utiliza el mismo servicio de analítica respetuoso con la privacidad para contar las visitas a las páginas. No establece cookies, no escribe nada en su dispositivo y no registra direcciones IP junto con los eventos. Como no puede identificarle y solo se usa para medir el tráfico agregado, no requiere un banner de consentimiento. Esto es independiente de la telemetría opcional descrita arriba, que se aplica únicamente a la Extensión.
+Nuestro sitio web en werenota.com utiliza el mismo servicio de analítica respetuoso con la privacidad para contar las visitas a las páginas. No establece cookies, no escribe nada en su dispositivo y no registra direcciones IP junto con los eventos. Como no puede identificarle y solo se usa para medir el tráfico agregado, no requiere un banner de consentimiento. Esto es independiente de la telemetría descrita arriba, que se aplica únicamente a la Extensión.
 ---
 
 ## 5. Servicios de terceros que usted elige

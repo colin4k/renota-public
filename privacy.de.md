@@ -75,7 +75,7 @@ Die Cloud-Synchronisierung hält Ihre Wissensdatenbank über die Chrome-Erweiter
 
 ## 4. Anonyme Telemetrie
 
-Renota enthält eine **optionale** anonyme Telemetriefunktion. Telemetrie ist **standardmäßig deaktiviert** und wird erst gesendet, nachdem Sie im Einstellungsfenster der Erweiterung zugestimmt haben.
+Renota enthält eine anonyme Telemetriefunktion. Sie ist **standardmäßig aktiviert** und lässt sich **jederzeit im Einstellungsfenster der Erweiterung deaktivieren**; nach dem Deaktivieren werden keine Daten mehr gesendet.
 
 ### 4.1 Was gesendet wird
 
@@ -104,15 +104,15 @@ Telemetrie hilft uns zu verstehen, welche Funktionen genutzt werden und welche n
 Sie können die Telemetrie jederzeit deaktivieren:
 
 1. Öffnen Sie das Renota-Seitenpanel.
-2. Gehen Sie zu **Einstellungen → Datenschutz**.
-3. Schalten Sie **„Anonyme Nutzungsdaten teilen“** aus.
+2. Gehen Sie zu **Einstellungen → Anonyme Nutzungsstatistik**.
+3. Schalten Sie **Anonyme Nutzungsstatistik** aus.
 
 Wenn sie deaktiviert ist, werden keine Anfragen an die Telemetrie-Seite gesendet. Die Deinstallation der Erweiterung beendet ebenfalls jede Telemetrie.
 
 
 ### 4.5 Website-Analyse
 
-Unsere Website unter werenota.com verwendet denselben datenschutzfreundlichen Analysedienst, um Seitenaufrufe zu zählen. Er setzt keine Cookies, schreibt nichts auf Ihr Gerät und speichert keine IP-Adresse zusammen mit Ereignissen. Da er Sie nicht identifizieren kann und nur zur Messung aggregierter Zugriffe dient, ist kein Cookie-Banner erforderlich. Dies ist unabhängig von der oben beschriebenen, freiwilligen Telemetrie, die nur die Erweiterung betrifft.
+Unsere Website unter werenota.com verwendet denselben datenschutzfreundlichen Analysedienst, um Seitenaufrufe zu zählen. Er setzt keine Cookies, schreibt nichts auf Ihr Gerät und speichert keine IP-Adresse zusammen mit Ereignissen. Da er Sie nicht identifizieren kann und nur zur Messung aggregierter Zugriffe dient, ist kein Cookie-Banner erforderlich. Dies ist unabhängig von der oben beschriebenen Telemetrie, die nur die Erweiterung betrifft.
 ---
 
 ## 5. Dienste Dritter, die Sie wählen

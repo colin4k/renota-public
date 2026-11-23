@@ -75,7 +75,7 @@ Cloud Sync keeps your knowledge base consistent across the Chrome extension, the
 
 ## 4. Anonymous Telemetry
 
-Renota includes an **opt-in** anonymous telemetry feature. Telemetry is **disabled by default** and is only sent after you grant consent in the Extension's settings panel.
+Renota includes an anonymous telemetry feature. Telemetry is **enabled by default** and can be **switched off at any time** in the Extension's settings panel; once you turn it off, nothing further is sent.
 
 ### 4.1 What is sent
 
@@ -104,15 +104,15 @@ Telemetry helps us understand which features are used and which are not, so we c
 You can disable telemetry at any time:
 
 1. Open the Renota side panel.
-2. Go to **Settings → Privacy**.
-3. Toggle **"Share anonymous usage data"** off.
+2. Go to **Settings → Anonymous Analytics**.
+3. Toggle **Anonymous Analytics** off.
 
 When disabled, no requests are sent to the telemetry site. Uninstalling the Extension also stops all telemetry.
 
 
 ### 4.5 Website analytics
 
-Our website at werenota.com uses the same privacy-friendly analytics service to count page views. It sets no cookies, writes nothing to your device, and records no IP address alongside events. Because it cannot identify you and is used only to measure aggregate traffic, it needs no consent banner. This is separate from the opt-in telemetry above, which applies only to the Extension.
+Our website at werenota.com uses the same privacy-friendly analytics service to count page views. It sets no cookies, writes nothing to your device, and records no IP address alongside events. Because it cannot identify you and is used only to measure aggregate traffic, it needs no consent banner. This is separate from the telemetry described above, which applies only to the Extension.
 ---
 
 ## 5. Third-Party Services You Choose

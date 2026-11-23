@@ -75,7 +75,7 @@ A Sincronização na Nuvem mantém sua base de conhecimento consistente entre a 
 
 ## 4. Telemetria anônima
 
-O Renota inclui um recurso de telemetria anônima **opcional**. A telemetria vem **desativada por padrão** e só é enviada depois que você dá o consentimento no painel de configurações da Extensão.
+O Renota inclui um recurso de telemetria anônima. Ele vem **ativado por padrão** e pode ser **desativado a qualquer momento** no painel de configurações da Extensão; depois de desativado, nada mais é enviado.
 
 ### 4.1 O que é enviado
 
@@ -104,15 +104,15 @@ A telemetria nos ajuda a entender quais recursos são usados e quais não são, 
 Você pode desativar a telemetria a qualquer momento:
 
 1. Abra o painel lateral do Renota.
-2. Vá em **Configurações → Privacidade**.
-3. Desligue **“Compartilhar dados anônimos de uso”**.
+2. Vá em **Configurações → Estatísticas de uso anônimas**.
+3. Desligue **Estatísticas de uso anônimas**.
 
 Quando desativada, nenhuma requisição é enviada ao site de telemetria. Desinstalar a Extensão também interrompe toda a telemetria.
 
 
 ### 4.5 Análise do site
 
-O nosso site em werenota.com utiliza o mesmo serviço de análise respeitador da privacidade para contar visualizações de página. Não define cookies, não escreve nada no seu dispositivo e não associa endereços IP aos eventos. Como não o consegue identificar e serve apenas para medir tráfego agregado, não requer um banner de consentimento. Isto é independente da telemetria opcional descrita acima, que se aplica apenas à Extensão.
+O nosso site em werenota.com utiliza o mesmo serviço de análise respeitador da privacidade para contar visualizações de página. Não define cookies, não escreve nada no seu dispositivo e não associa endereços IP aos eventos. Como não o consegue identificar e serve apenas para medir tráfego agregado, não requer um banner de consentimento. Isto é independente da telemetria descrita acima, que se aplica apenas à Extensão.
 ---
 
 ## 5. Serviços de terceiros que você escolhe
