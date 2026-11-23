@@ -85,7 +85,7 @@ Bei aktivierter Telemetrie sendet die Erweiterung die folgenden Felder an die Te
 - `installId` — eine zufällig erzeugte, lokal gespeicherte UUID v4; **nicht** aus einer Nutzeridentität abgeleitet
 - `appVersion` — die Version der Erweiterung (z. B. `"1.0.0"`)
 - `productStage` — eine zur Build-Zeit festgelegte Konstante (`"mvp0"` oder `"mvp1"`)
-- `timestamp` — Unix-Zeitstempel in Millisekunden
+- `language` — die UI-Sprache der Erweiterung (z. B. `"zh-CN"`)
 
 ### 4.2 Was NIE gesendet wird
 

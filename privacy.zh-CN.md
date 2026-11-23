@@ -85,7 +85,7 @@ Renota 包含一项**按需开启**的匿名遥测功能。遥测**默认关闭*
 - `installId` —— 本地随机生成的 UUID v4；**不**由任何用户身份推导而来
 - `appVersion` —— 扩展版本（例如 `"1.0.0"`）
 - `productStage` —— 构建期常量（`"mvp0"` 或 `"mvp1"`）
-- `timestamp` —— Unix 纪元毫秒数
+- `language` —— 扩展的界面语言（例如 `"zh-CN"`）
 
 ### 4.2 **绝不**发送的内容
 

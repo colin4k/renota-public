@@ -85,7 +85,7 @@ When telemetry is enabled, the Extension sends the following fields to the telem
 - `installId` — a randomly generated UUID v4 stored locally; **not** derived from any user identity
 - `appVersion` — the Extension version (e.g., `"1.0.0"`)
 - `productStage` — a build-time constant (`"mvp0"` or `"mvp1"`)
-- `timestamp` — Unix epoch milliseconds
+- `language` — the Extension's UI language (e.g., `"zh-CN"`)
 
 ### 4.2 What is NEVER sent
 

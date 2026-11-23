@@ -85,7 +85,7 @@ Quando a telemetria está ativada, a Extensão envia os seguintes campos ao site
 - `installId` — um UUID v4 gerado aleatoriamente e armazenado localmente; **não** derivado de nenhuma identidade de usuário
 - `appVersion` — a versão da Extensão (por exemplo, `"1.0.0"`)
 - `productStage` — uma constante de build (`"mvp0"` ou `"mvp1"`)
-- `timestamp` — milissegundos desde a época Unix
+- `language` — o idioma da interface da Extensão (por exemplo, `"zh-CN"`)
 
 ### 4.2 O que NUNCA é enviado
 
