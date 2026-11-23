@@ -1,4 +1,9 @@
-// 结算页：价格由 Paddle 的 PricePreview 现算，前端不做任何金额运算。
+// 结算页：两个收款渠道共用一个入口。
+//
+// 点订阅时先问服务端「我该去哪个渠道」（POST /v1/billing/checkout）：
+// - provider=paddle → 用 Paddle.js 打开 overlay，价格由 PricePreview 现算
+// - provider=waffo  → 服务端铸好结账会话，整页跳过去
+// 分流比例只在服务端算一次，前端不参与判断，否则两边分桶会对不上。
 //
 // 关键约束：
 // - 页面上出现的金额只能来自 formattedTotals，不拼字符串、不四舍五入、不本地化。
@@ -25,7 +30,7 @@ function jsonForScript(value: unknown): string {
 const CHECKOUT_SCRIPT = String.raw`
 (function () {
   var CONFIG = __CONFIG__;
-  var state = { period: "month", prices: {}, country: null, ready: false };
+  var state = { period: "month", prices: {}, country: null, ready: false, initError: null, debug: /[?&]debug=1(?:&|$)/.test(location.search) };
   var paddlePromise = null;
 
   var amountEl = document.querySelector("[data-amount]");
@@ -155,30 +160,61 @@ const CHECKOUT_SCRIPT = String.raw`
       .catch(function () { return { email: null, userId: null }; });
   }
 
-  function subscribe(mode) {
+  // 两条收款渠道由服务端决定走哪条：这里只问一次「我该去哪」，
+  // 不自己判断比例 —— 否则前后端各算一遍，分桶必然对不上。
+  function requestProvider(mode) {
+    return fetch(CONFIG.apiBase + "/v1/billing/checkout", {
+      method: "POST",
+      credentials: "include",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ interval: state.period, withTrial: mode === "trial" }),
+    }).then(function (response) {
+      if (!response.ok) throw new Error("checkout_unavailable");
+      return response.json();
+    });
+  }
+
+  function openPaddle(mode) {
     var tier = CONFIG.tiers[0];
     var priceId = priceFor(tier, state.period, mode === "trial" ? "trial" : "immediate");
-    if (!priceId || !state.ready) return;
+    if (!priceId) return;
+
+    return loadPaddle().then(function (Paddle) {
+      return prefillCustomer().then(function (who) {
+        var options = {
+          items: [{ priceId: priceId, quantity: 1 }],
+          settings: {
+            displayMode: "overlay",
+            variant: "one-page",
+            successUrl: CONFIG.successUrl,
+            theme: "dark",
+          },
+        };
+        // 只有确实登录了才预填，否则留给 Paddle 自己的输入框。
+        if (who.email) options.customer = { email: who.email };
+        if (who.userId) options.customData = { user_id: who.userId };
+        Paddle.Checkout.open(options);
+      });
+    });
+  }
+
+  function subscribe(mode) {
+    if (!state.ready) return;
 
     setActionsDisabled(true);
 
-    loadPaddle()
-      .then(function (Paddle) {
-        return prefillCustomer().then(function (who) {
-          var options = {
-            items: [{ priceId: priceId, quantity: 1 }],
-            settings: {
-              displayMode: "overlay",
-              variant: "one-page",
-              successUrl: CONFIG.successUrl,
-              theme: "dark",
-            },
-          };
-          // 只有确实登录了才预填，否则留给 Paddle 自己的输入框。
-          if (who.email) options.customer = { email: who.email };
-          if (who.userId) options.customData = { user_id: who.userId };
-          Paddle.Checkout.open(options);
-        });
+    requestProvider(mode)
+      .then(function (result) {
+        // Waffo 的订单必须挂在账号上：先登录，回来再点一次。
+        if (result && result.signinRequired) {
+          showError(CONFIG.copy.signinRequired);
+          return;
+        }
+        if (result && result.provider === "waffo" && result.url) {
+          window.location.href = result.url;
+          return;
+        }
+        return openPaddle(mode);
       })
       .catch(function () {
         showError(CONFIG.copy.checkoutFailed);
@@ -223,8 +259,10 @@ const CHECKOUT_SCRIPT = String.raw`
           }
         })
         .then(function () {
-          return Promise.resolve(Paddle.Initialize({ token: CONFIG.clientToken })).catch(function () {
-            // 重复初始化会抛错，这里不是失败情形
+          return Promise.resolve(Paddle.Initialize({ token: CONFIG.clientToken })).catch(function (error) {
+            // 重复初始化会抛错，这里不是失败情形；但如果是 token 本身的问题，
+            // 后面 PricePreview 必然 403，把原始错误留着一起报出去。
+            state.initError = error;
           });
         })
         .then(function () {
@@ -233,8 +271,17 @@ const CHECKOUT_SCRIPT = String.raw`
     })
     .catch(function (error) {
       // 具体原因只进控制台：页面上给用户看原始报错既没用也泄露实现细节。
-      if (window.console && window.console.error) window.console.error("[checkout] price preview failed", error);
-      showError(CONFIG.copy.pricesFailed);
+      // 但要看得出「初始化就没成功」和「预览被拒」的区别，否则 403 只能靠猜。
+      if (window.console && window.console.error) {
+        window.console.error("[checkout] price preview failed", {
+          previewError: error,
+          initError: state.initError,
+          clientTokenPrefix: String(CONFIG.clientToken || "").split("_")[0],
+          environment: CONFIG.environment,
+        });
+      }
+      // 页面上给一句能自己动手的话，比「刷新试试」有用：这种失败几乎都不是网络的锅。
+      showError(CONFIG.copy.pricesFailed + "  support@werenota.com");
     });
 })();
 `;
