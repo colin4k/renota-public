@@ -109,6 +109,10 @@ Você pode desativar a telemetria a qualquer momento:
 
 Quando desativada, nenhuma requisição é enviada ao site de telemetria. Desinstalar a Extensão também interrompe toda a telemetria.
 
+
+### 4.5 Análise do site
+
+O nosso site em werenota.com utiliza o mesmo serviço de análise respeitador da privacidade para contar visualizações de página. Não define cookies, não escreve nada no seu dispositivo e não associa endereços IP aos eventos. Como não o consegue identificar e serve apenas para medir tráfego agregado, não requer um banner de consentimento. Isto é independente da telemetria opcional descrita acima, que se aplica apenas à Extensão.
 ---
 
 ## 5. Serviços de terceiros que você escolhe

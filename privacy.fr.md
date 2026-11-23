@@ -109,6 +109,10 @@ Vous pouvez désactiver la télémétrie à tout moment :
 
 Lorsqu'elle est désactivée, aucune requête n'est envoyée au site de télémétrie. Désinstaller l'extension arrête également toute télémétrie.
 
+
+### 4.5 Mesure d'audience du site
+
+Notre site web à l'adresse werenota.com utilise le même service de mesure respectueux de la vie privée pour compter les pages vues. Il ne dépose aucun cookie, n'écrit rien sur votre appareil et n'enregistre aucune adresse IP avec les événements. Comme il ne permet pas de vous identifier et ne sert qu'à mesurer un trafic agrégé, il ne nécessite pas de bandeau de consentement. Cela est indépendant de la télémétrie facultative décrite ci-dessus, qui ne concerne que l'Extension.
 ---
 
 ## 5. Services tiers que vous choisissez

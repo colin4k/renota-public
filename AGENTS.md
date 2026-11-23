@@ -28,7 +28,7 @@ npm run design:tokens  # 按 DESIGN.md 导出 CSS 变量，供人工核对，不
 ## 硬性约束
 
 - **不引入 CSS 框架**。全站样式是 `src/styles.ts` 里一个模板字符串，这是刻意选择：无构建步骤、可长缓存、首屏无 JS。
-- **不加客户端 JS 到内容页**。唯一允许有 JS 的是账号页与结账页（Paddle 要求），以及 `src/serve.ts`（仅本地预览）。
+- **内容页只允许一个统计脚本**。全站唯一的客户端 JS 是 `src/render/layout.ts` 里 `analyticsTag()` 输出的 Umami tracker（`defer`，不进首屏关键路径，配置缺失时整段不输出），外加账号页与结账页本来就要的 Paddle/登录脚本，以及 `src/serve.ts`（仅本地预览）。除此之外不要往内容页加任何客户端 JS —— 首屏无 JS 是刻意选择，加之前先问。
 - **文案必须十语言同步**。`src/i18n/en.ts` 是结构源头，`Content` 类型挂在 `en` 上，九份译文都标 `: Content` —— 任何一份漏字段或结构走样，`npm run typecheck` 会直接失败。改一条文案就是改十个文件。
 - **产品名**：简体中文「睿记」，繁体中文「睿記」，其余语言一律 `Renota`。
 - **法律全文也是内容**：`privacy.md` / `terms.md` 有九份正式译本，构建时按 `privacy.<locale>.md` 加载，缺文件即失败 —— 不要用英文兜底糊过去。

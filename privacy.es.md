@@ -109,6 +109,10 @@ Puede desactivar la telemetría en cualquier momento:
 
 Cuando está desactivada, no se envía ninguna solicitud al sitio de telemetría. Desinstalar la extensión también detiene toda la telemetría.
 
+
+### 4.5 Analítica del sitio web
+
+Nuestro sitio web en werenota.com utiliza el mismo servicio de analítica respetuoso con la privacidad para contar las visitas a las páginas. No establece cookies, no escribe nada en su dispositivo y no registra direcciones IP junto con los eventos. Como no puede identificarle y solo se usa para medir el tráfico agregado, no requiere un banner de consentimiento. Esto es independiente de la telemetría opcional descrita arriba, que se aplica únicamente a la Extensión.
 ---
 
 ## 5. Servicios de terceros que usted elige

@@ -74,13 +74,39 @@ function abs(path: string): string {
  * 后果是「首页 → 定价页」的曝光拿不到数，只能看到「进入账号页 → 进入结账页 → 付款」
  * 这一段。要补前面那段，得先改 AGENTS.md 那条约束。
  */
-const ANALYTICS_PAGES: ReadonlySet<AnyPageKey> = new Set(["account", "checkout", "welcome"]);
+/**
+ * 有独立漏斗意义的页面额外发一个页面级事件。
+ * 用事件而不是 URL 路径，是因为路径带十种语言前缀（/zh-CN/account/ 等），
+ * 而 Umami 的漏斗 path 步骤是精确匹配 —— 按路径建漏斗等于每种语言各建一条。
+ */
+const PAGE_EVENTS: Partial<Record<AnyPageKey, string>> = {
+  account: "account_page",
+  checkout: "checkout_page",
+  welcome: "welcome_page",
+};
 
-/** Umami tracker。两项配置缺一就不输出，本地构建产物里不会出现任何外部脚本。 */
+/**
+ * Umami tracker，全站页面都挂。两项配置缺一就不输出 ——
+ * 本地构建产物里不会出现任何外部请求。
+ * 脚本是 defer 的，不进首屏关键路径，也不阻塞渲染。
+ */
 function analyticsTag(page: AnyPageKey): string {
   const { src, websiteId } = site.umami;
-  if (!src || !websiteId || !ANALYTICS_PAGES.has(page)) return "";
-  return `  <script defer src="${escapeHtml(src)}/script.js" data-website-id="${escapeHtml(websiteId)}"></script>`;
+  if (!src || !websiteId) return "";
+
+  const parts = [
+    `  <script defer src="${escapeHtml(src)}/script.js" data-website-id="${escapeHtml(websiteId)}"></script>`,
+  ];
+
+  const event = PAGE_EVENTS[page];
+  if (event) {
+    // 等 load 再发，确保 defer 的 tracker 已执行、window.umami 已就绪。
+    parts.push(
+      `  <script>window.addEventListener("load",function(){var u=window.umami;if(u)u.track("${event}")});</script>`,
+    );
+  }
+
+  return parts.join("\n");
 }
 
 

@@ -109,6 +109,10 @@ Sie können die Telemetrie jederzeit deaktivieren:
 
 Wenn sie deaktiviert ist, werden keine Anfragen an die Telemetrie-Seite gesendet. Die Deinstallation der Erweiterung beendet ebenfalls jede Telemetrie.
 
+
+### 4.5 Website-Analyse
+
+Unsere Website unter werenota.com verwendet denselben datenschutzfreundlichen Analysedienst, um Seitenaufrufe zu zählen. Er setzt keine Cookies, schreibt nichts auf Ihr Gerät und speichert keine IP-Adresse zusammen mit Ereignissen. Da er Sie nicht identifizieren kann und nur zur Messung aggregierter Zugriffe dient, ist kein Cookie-Banner erforderlich. Dies ist unabhängig von der oben beschriebenen, freiwilligen Telemetrie, die nur die Erweiterung betrifft.
 ---
 
 ## 5. Dienste Dritter, die Sie wählen

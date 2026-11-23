@@ -109,6 +109,10 @@ You can disable telemetry at any time:
 
 When disabled, no requests are sent to the telemetry site. Uninstalling the Extension also stops all telemetry.
 
+
+### 4.5 Website analytics
+
+Our website at werenota.com uses the same privacy-friendly analytics service to count page views. It sets no cookies, writes nothing to your device, and records no IP address alongside events. Because it cannot identify you and is used only to measure aggregate traffic, it needs no consent banner. This is separate from the opt-in telemetry above, which applies only to the Extension.
 ---
 
 ## 5. Third-Party Services You Choose
