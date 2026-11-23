@@ -65,6 +65,26 @@ function abs(path: string): string {
 }
 
 /**
+ * 允许出现第三方统计脚本的页面。
+ *
+ * AGENTS.md 的硬性约束是「内容页不加客户端 JS」，所以这里刻意只列账号页与结账页 ——
+ * 这两页本来就为 Paddle / 登录流程带了内联脚本，再挂一个 defer 的 tracker
+ * 既不改变首屏渲染路径，也不破坏「内容页零 JS」的承诺。
+ *
+ * 后果是「首页 → 定价页」的曝光拿不到数，只能看到「进入账号页 → 进入结账页 → 付款」
+ * 这一段。要补前面那段，得先改 AGENTS.md 那条约束。
+ */
+const ANALYTICS_PAGES: ReadonlySet<AnyPageKey> = new Set(["account", "checkout", "welcome"]);
+
+/** Umami tracker。两项配置缺一就不输出，本地构建产物里不会出现任何外部脚本。 */
+function analyticsTag(page: AnyPageKey): string {
+  const { src, websiteId } = site.umami;
+  if (!src || !websiteId || !ANALYTICS_PAGES.has(page)) return "";
+  return `  <script defer src="${escapeHtml(src)}/script.js" data-website-id="${escapeHtml(websiteId)}"></script>`;
+}
+
+
+/**
  * 六个页面链接。渲染两次：一次给桌面导航，一次给移动端折叠菜单。
  * 两份是同一组 href，SSR 静态站里没有副作用，换来的是纯 CSS 的两态切换
  * （内容页不允许加客户端 JS）。
@@ -179,6 +199,7 @@ ${twitterImageTag}
   <link rel="preload" href="${escapeHtml(meta.cssHref ?? DEFAULT_CSS_HREF)}" as="style">
   <link rel="stylesheet" href="${escapeHtml(meta.cssHref ?? DEFAULT_CSS_HREF)}">
   ${jsonLd}
+${analyticsTag(meta.page)}
 </head>
 <body>
   <a class="skip" href="#main">${escapeHtml(c.common.skipToContent)}</a>

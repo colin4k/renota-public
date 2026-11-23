@@ -32,6 +32,17 @@ export const site = {
     zoteroXpi: "",
     androidApk: "",
   },
+  /**
+   * 自建 Umami 的页面统计。两者都为空时页面里不会出现任何脚本 ——
+   * 本地预览、没有配置的构建产物依然是纯静态站。
+   *
+   * 构建期从环境变量读（`UMAMI_SRC` / `UMAMI_WEBSITE_ID`），不写死在仓库里：
+   * 站点 id 不是秘密，但换实例时不该改代码。
+   */
+  umami: {
+    src: (process.env.UMAMI_SRC ?? "").replace(/\/+$/, ""),
+    websiteId: process.env.UMAMI_WEBSITE_ID ?? "",
+  },
 } as const;
 
 export type ProductKey = "chrome" | "zotero" | "android";
