@@ -16,3 +16,9 @@
   x-content-type-options: nosniff
   referrer-policy: strict-origin-when-cross-origin
   x-frame-options: SAMEORIGIN
+
+# Zotero 插件的 .xpi 是给 Zotero 用的，不是 Firefox 扩展。
+# 静态资源按后缀给它 application/x-xpinstall，Firefox 见了会走「安装附加组件」
+# 流程并报「似乎已损坏」；强制成附件下载，浏览器只负责存文件。
+/downloads/*.xpi
+  content-disposition: attachment
