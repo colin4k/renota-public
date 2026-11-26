@@ -1,0 +1,17 @@
+{
+  "addons": {
+    "renota@colin4k.github.io": {
+      "updates": [
+        {
+          "version": "1.1.0",
+          "update_link": "https://www.werenota.com/downloads/renota-zotero-1.1.0.xpi",
+          "applications": {
+            "zotero": {
+              "strict_min_version": "6.999"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
