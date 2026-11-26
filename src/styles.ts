@@ -575,6 +575,35 @@ code, pre, kbd { font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Me
 .install-card { display: flex; flex-direction: column; gap: 12px; margin: 24px 0; max-width: 420px; }
 .install-card .btn { align-self: flex-start; margin-top: auto; }
 
+/* ---------- 「获取方式」浮层 ----------
+   零 JS：主按钮指向 #chrome-get，:target 命中时浮层出现；遮罩与关闭链接回到 #install，
+   地址栏锚点一变即关闭。深度靠一层中性阴影 + 明度台阶，不用模糊（全站无 backdrop-filter）。 */
+.get-dialog { display: none; position: fixed; inset: 0; z-index: 60; }
+.get-dialog:target { display: grid; place-items: center; padding: 24px; }
+/* 遮罩盖满视口，点它任何空白处都回安装区 */
+.get-dialog-scrim { position: absolute; inset: 0; background: rgba(6, 7, 10, 0.72); }
+.get-dialog-panel {
+  position: relative; width: min(100%, 420px); padding: 24px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-panel);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+}
+.get-dialog-panel h3 { margin: 0 0 16px; font-size: 1.0625rem; font-weight: 500; color: var(--text); }
+.get-option {
+  display: flex; flex-direction: column; gap: 4px; padding: 14px 16px;
+  border: 1px solid var(--hairline); border-radius: var(--radius-card); background: var(--surface-low);
+  text-decoration: none;
+  transition: background-color var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease);
+}
+.get-option + .get-option { margin-top: 10px; }
+.get-option:hover { background: var(--surface-2); border-color: var(--border-strong); text-decoration: none; }
+.get-option-label { color: var(--text); font-weight: 500; font-size: 0.9375rem; }
+.get-option-note { color: var(--muted); font-size: 0.8125rem; line-height: 1.5; }
+.get-dialog-close {
+  display: block; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--hairline);
+  color: var(--muted); font-size: 0.75rem; text-align: center; text-decoration: none;
+}
+.get-dialog-close:hover { color: var(--text); text-decoration: none; }
+
 /* ---------- 账号页 ---------- */
 .account-hero { padding: 72px 0 16px; }
 .account-hero h1 { font-size: 2rem; margin: 0 0 12px; }
@@ -809,6 +838,8 @@ code, pre, kbd { font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Me
   .hero.home .cta-row .btn { width: 100%; }
   .hero { padding: 48px 0 32px; }
   .hero.home { padding: 56px 0 40px; }
+  .get-dialog:target { padding: 16px; }
+  .get-dialog-panel { padding: 20px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

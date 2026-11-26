@@ -1,7 +1,7 @@
 // 页面组装：把字典内容拼成各页的 <main>，并给出标题、描述与结构化数据。
 
 import { site, type ProductKey } from "../site.js";
-import { content } from "../i18n/index.js";
+import { content, type Content } from "../i18n/index.js";
 import { pagePath, pageUrl, type Locale } from "../i18n/locales.js";
 import { escapeHtml, type PageMeta } from "./layout.js";
 import {
@@ -75,9 +75,11 @@ export function renderHome(locale: Locale): PageMeta {
   const cards = (["chrome", "zotero", "android"] as ProductKey[])
     .map((key) => {
       const card = d.products[key];
+      /** 卡片上的状态跟着 site.released 走：上架写「可用」，未上架仍写「即将推出」。 */
+      const statusLabel = site.released[key] ? c.common.available : c.common.comingSoon;
       const points = card.points.map((p) => `<li>${escapeHtml(p)}</li>`).join("\n            ");
       return `<a class="product-card" href="${productPath(key)}">
-        <span class="kicker">${escapeHtml(card.kicker)}</span>
+        <span class="kicker">${escapeHtml(card.kicker)} · ${escapeHtml(statusLabel)}</span>
         <h3>${escapeHtml(card.name)}</h3>
         <p class="product-tagline">${escapeHtml(card.tagline)}</p>
         <ul class="mini-list">
@@ -133,7 +135,7 @@ export function renderHome(locale: Locale): PageMeta {
       { id: "mcp", lede: d.mcp.lede },
     )}
 
-    ${section(d.faq.title, faqList(d.faq.items))}
+    ${section(d.faq.title, `<p class="badge">${escapeHtml(c.common.comingSoonNote)}</p>${faqList(d.faq.items)}`)}
 
     <section class="cta-band">
       <div class="wrap">
@@ -175,8 +177,8 @@ export function renderHome(locale: Locale): PageMeta {
 }
 
 /**
- * 安装入口还没上架，落地页先不挂跳转，按钮位置与文案保留。
- * 上架后在 site.links 填对应地址即可恢复成可点按钮。
+ * 每个产品的对外入口。`download` 是上架后要挂的地址：
+ * Chrome 指向商店（真正的安装入口），Zotero / Android 指向各自的下载。
  */
 const PRODUCT_META: Record<ProductKey, { category: string; os: string; download: string }> = {
   chrome: { category: "BrowserApplication", os: "Chrome", download: site.links.chromeStore },
@@ -184,15 +186,55 @@ const PRODUCT_META: Record<ProductKey, { category: string; os: string; download:
   android: { category: "ReferenceApplication", os: "Android", download: site.links.androidApk },
 };
 
+/**
+ * 「获取方式」浮层：已上架的 Chrome 扩展给两条真实入口 —— 商店与自托管 .crx。
+ *
+ * 为什么是一层浮层而不是两个按钮：安装区的主按钮只能有一个（DESIGN.md 的动作元素），
+ * 而商店与离线包是并列的两个入口，塞进一行反而让主行动变得含糊。
+ *
+ * 内容页零 JS，所以打开与关闭都靠 `:target`：
+ * 主按钮指向 `#chrome-get`，遮罩与关闭链接指回安装区的 `#install`。
+ */
+function getInstallDialog(d: Content["product"]["chrome"]["install"]): string {
+  const t = d.dialog;
+  return `<div class="get-dialog" id="chrome-get" role="dialog" aria-modal="true" aria-labelledby="chrome-get-title">
+      <a class="get-dialog-scrim" href="#install" aria-label="${escapeHtml(t.close)}" tabindex="-1"></a>
+      <div class="get-dialog-panel">
+        <h3 id="chrome-get-title">${escapeHtml(t.title)}</h3>
+        <a class="get-option" href="${escapeHtml(site.links.chromeStore)}" rel="noopener">
+          <span class="get-option-label">${escapeHtml(t.store.label)}</span>
+          <span class="get-option-note">${escapeHtml(t.store.note)}</span>
+        </a>
+        <a class="get-option" href="${escapeHtml(site.links.chromeCrx)}" download>
+          <span class="get-option-label">${escapeHtml(t.crx.label)}</span>
+          <span class="get-option-note">${escapeHtml(t.crx.note)}</span>
+        </a>
+        <a class="get-dialog-close" href="#install">${escapeHtml(t.close)}</a>
+      </div>
+    </div>`;
+}
+
 export function renderProduct(locale: Locale, page: ProductKey): PageMeta {
   const c = content(locale);
   const p = c.product[page];
   const seo = c.seo[page];
   const meta = PRODUCT_META[page];
-  /** 有值才会渲染成可点的按钮。 */
-  const installHref = meta.download || undefined;
+  const released = site.released[page];
+  /**
+   * 已上架才挂真实入口：Chrome 的主按钮打开浮层（商店 / .crx 两条链接），
+   * 其余产品上架后直接指向下载地址；未上架仍是不可点的占位按钮。
+   */
+  const installHref = released ? (page === "chrome" ? "#chrome-get" : meta.download || undefined) : undefined;
   const primaryLabel = p.install.primary.label;
   const primaryNote = p.install.primary.note;
+  /** 顶部的状态行：上架后写「可用」，未上架仍写「即将推出」。 */
+  const statusLabel = released ? c.common.available : c.common.comingSoon;
+  /** 结构化数据里的下载地址：Chrome 用自托管 .crx 的绝对地址，其余用各自的下载入口。 */
+  const downloadUrl = released
+    ? page === "chrome"
+      ? `${site.url}${site.links.chromeCrx}`
+      : meta.download || undefined
+    : undefined;
 
   const body = `
     ${breadcrumbs(pagePath(locale, "home"), c.nav.home, p.name)}
@@ -203,6 +245,7 @@ export function renderProduct(locale: Locale, page: ProductKey): PageMeta {
           <p class="kicker">${escapeHtml(p.kicker)}</p>
           <h1>${escapeHtml(p.name)}</h1>
           <p class="lede">${escapeHtml(p.tagline)}</p>
+          <p class="badge">${escapeHtml(statusLabel)}</p>
           <p class="body-text">${escapeHtml(p.intro)}</p>
           ${ctaRow(
             { label: primaryLabel, href: installHref },
@@ -231,15 +274,17 @@ export function renderProduct(locale: Locale, page: ProductKey): PageMeta {
         <p class="muted">${escapeHtml(primaryNote)}</p>
         ${
           installHref
-            ? `<a class="btn primary" href="${escapeHtml(installHref)}" rel="noopener">${escapeHtml(c.common.install)}</a>`
-            : `<span class="btn primary btn-static" aria-disabled="true">${escapeHtml(c.common.install)}</span>`
+            ? `<a class="btn primary" href="${escapeHtml(installHref)}"${installHref.startsWith("http") ? ' rel="noopener"' : ""}>${escapeHtml(primaryLabel)}</a>`
+            : `<span class="btn primary btn-static" aria-disabled="true">${escapeHtml(primaryLabel)}</span>`
         }
       </div>
       <p class="muted small"><strong>${escapeHtml(c.common.requirements)}:</strong> ${escapeHtml(p.install.requirements)}</p>`,
       { id: "install" },
     )}
 
-    ${section(p.faq.title, faqList(p.faq.items))}`;
+    ${section(p.faq.title, faqList(p.faq.items))}
+
+    ${page === "chrome" && released ? getInstallDialog(c.product.chrome.install) : ""}`;
 
   return {
     locale,
@@ -248,7 +293,7 @@ export function renderProduct(locale: Locale, page: ProductKey): PageMeta {
     description: seo.description,
     body,
     jsonLd: [
-      softwareJsonLd(locale, page, p.name, seo.description, meta.category, meta.os, installHref),
+      softwareJsonLd(locale, page, p.name, seo.description, meta.category, meta.os, downloadUrl),
       breadcrumbJsonLd(locale, page, p.name),
       faqJsonLd(p.faq.items),
     ],
@@ -404,6 +449,7 @@ export function renderPricing(locale: Locale): PageMeta {
         <span class="badge">${escapeHtml(d.badge)}</span>
         <h1>${escapeHtml(d.title)}</h1>
         <p class="lede">${escapeHtml(d.intro)}</p>
+        <p class="badge">${escapeHtml(c.common.comingSoonNote)}</p>
       </div>
     </section>
 

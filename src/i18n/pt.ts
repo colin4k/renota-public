@@ -50,6 +50,9 @@ export const pt: Content = {
     requirements: "Requisitos",
     note: "Observação",
     status: "Status",
+    comingSoon: "Em breve",
+    comingSoonNote: "Ainda não lançado — avisaremos aqui e por e-mail.",
+    available: "Disponível",
   },
 
   seo: {
@@ -356,8 +359,14 @@ export const pt: Content = {
       },
       install: {
         title: "Obtenha a extensão",
-        body: "A página da Chrome Web Store está em preparação.",
-        primary: { label: "Baixar", note: "Página na Chrome Web Store em preparação" },
+        body: "Já está na Chrome Web Store, ou baixe o .crx para instalar offline.",
+        primary: { label: "Obter", note: "Dois caminhos: a loja ou o download direto do .crx." },
+        dialog: {
+          title: "Obtenha o Renota para Chrome",
+          store: { label: "Chrome Web Store", note: "Recomendado. Instala e atualiza sozinho." },
+          crx: { label: "Baixar o arquivo .crx", note: "Para instalação offline ou gerenciada. As atualizações são manuais." },
+          close: "Fechar",
+        },
         requirements: "Chrome 120 ou mais recente. Uma chave de API de qualquer provedor compatível com OpenAI.",
       },
     },
@@ -464,8 +473,8 @@ export const pt: Content = {
       },
       install: {
         title: "Obtenha o plugin",
-        body: "Baixe o .xpi na página de versões e instale pelo gerenciador de plugins do Zotero.",
-        primary: { label: "Baixar .xpi", note: "Versão mais recente" },
+        body: "O plugin do Zotero ainda não foi lançado. Esta página vai oferecer o .xpi assim que ele for publicado.",
+        primary: { label: "Em breve", note: "Ainda não lançado — avisaremos aqui e por e-mail." },
         requirements: "Zotero 7 ou mais recente. Uma chave de API de qualquer provedor compatível com OpenAI, ou da Anthropic.",
       },
     },
@@ -572,8 +581,8 @@ export const pt: Content = {
       },
       install: {
         title: "Obtenha o app",
-        body: "Baixe o APK na página de versões e instale. Você vai precisar permitir instalações pelo navegador ou pelo gerenciador de arquivos.",
-        primary: { label: "Baixar", note: "Versão mais recente" },
+        body: "O app para Android ainda não foi lançado. Esta página vai oferecer o download assim que ele for publicado.",
+        primary: { label: "Em breve", note: "Ainda não lançado — avisaremos aqui e por e-mail." },
         requirements: "Android 11 ou mais recente. Uma chave de API de qualquer provedor compatível com OpenAI, ou da Anthropic.",
       },
     },

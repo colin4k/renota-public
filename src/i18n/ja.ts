@@ -50,6 +50,9 @@ export const ja: Content = {
     requirements: "動作環境",
     note: "補足",
     status: "状態",
+    comingSoon: "近日公開",
+    comingSoonNote: "まだ公開されていません。公開時はこのページとメールでお知らせします。",
+    available: "公開中",
   },
 
   seo: {
@@ -356,8 +359,14 @@ export const ja: Content = {
       },
       install: {
         title: "拡張機能を入手する",
-        body: "Chrome ウェブストアへの掲載は準備中です。",
-        primary: { label: "入手する", note: "Chrome ウェブストアへの掲載は準備中" },
+        body: "Chrome ウェブストアで公開中です。.crx を直接ダウンロードしてオフラインでインストールすることもできます。",
+        primary: { label: "入手", note: "ストアから、または .crx を直接ダウンロードしてインストールできます。" },
+        dialog: {
+          title: "Chrome 版 Renota を入手",
+          store: { label: "Chrome ウェブストア", note: "おすすめ。インストールと更新は自動です。" },
+          crx: { label: ".crx ファイルをダウンロード", note: "オフラインまたは管理された環境向け。更新は手動です。" },
+          close: "閉じる",
+        },
         requirements: "Chrome 120 以降。OpenAI 互換プロバイダーの API キー。",
       },
     },
@@ -464,8 +473,8 @@ export const ja: Content = {
       },
       install: {
         title: "プラグインを入手する",
-        body: "リリースページから .xpi をダウンロードし、Zotero のプラグインマネージャーからインストールします。",
-        primary: { label: ".xpi をダウンロード", note: "最新リリース" },
+        body: "Zotero プラグインはまだ公開されていません。公開後、このページから .xpi をダウンロードできます。",
+        primary: { label: "近日公開", note: "まだ公開されていません。公開時はこのページとメールでお知らせします。" },
         requirements: "Zotero 7 以降。OpenAI 互換プロバイダーまたは Anthropic の API キー。",
       },
     },
@@ -572,8 +581,8 @@ export const ja: Content = {
       },
       install: {
         title: "アプリを入手する",
-        body: "リリースページから APK をダウンロードしてインストールします。ブラウザまたはファイルマネージャーからのインストールを許可する必要があります。",
-        primary: { label: "入手する", note: "最新リリース" },
+        body: "Android アプリはまだ公開されていません。公開後、このページからダウンロードできます。",
+        primary: { label: "近日公開", note: "まだ公開されていません。公開時はこのページとメールでお知らせします。" },
         requirements: "Android 11 以降。OpenAI 互換プロバイダーまたは Anthropic の API キー。",
       },
     },

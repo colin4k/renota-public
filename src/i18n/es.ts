@@ -50,6 +50,9 @@ export const es: Content = {
     requirements: "Requisitos",
     note: "Nota",
     status: "Estado",
+    comingSoon: "Próximamente",
+    comingSoonNote: "Aún no disponible: lo anunciaremos aquí y por correo.",
+    available: "Disponible",
   },
 
   seo: {
@@ -356,8 +359,14 @@ export const es: Content = {
       },
       install: {
         title: "Consigue la extensión",
-        body: "La ficha en Chrome Web Store está en preparación.",
-        primary: { label: "Consíguelo", note: "Ficha en Chrome Web Store en preparación" },
+        body: "Ya está en Chrome Web Store, o descarga el .crx para instalarla sin conexión.",
+        primary: { label: "Obtener", note: "Dos vías: la tienda o la descarga directa del .crx." },
+        dialog: {
+          title: "Obtén Renota para Chrome",
+          store: { label: "Chrome Web Store", note: "Recomendado. Se instala y actualiza solo." },
+          crx: { label: "Descargar el archivo .crx", note: "Para instalaciones sin conexión o gestionadas. Las actualizaciones son manuales." },
+          close: "Cerrar",
+        },
         requirements: "Chrome 120 o posterior. Una clave API de cualquier proveedor compatible con OpenAI.",
       },
     },
@@ -464,8 +473,8 @@ export const es: Content = {
       },
       install: {
         title: "Consigue el plugin",
-        body: "Descarga el .xpi desde la página de versiones y luego instálalo desde el gestor de plugins de Zotero.",
-        primary: { label: "Descargar .xpi", note: "Última versión" },
+        body: "El plugin de Zotero aún no está disponible. Esta página ofrecerá el .xpi cuando se publique.",
+        primary: { label: "Próximamente", note: "Aún no disponible: lo anunciaremos aquí y por correo." },
         requirements: "Zotero 7 o posterior. Una clave API de cualquier proveedor compatible con OpenAI, o Anthropic.",
       },
     },
@@ -572,8 +581,8 @@ export const es: Content = {
       },
       install: {
         title: "Consigue la app",
-        body: "Descarga el APK desde la página de versiones e instálalo. Tendrás que permitir instalaciones desde tu navegador o tu gestor de archivos.",
-        primary: { label: "Consíguelo", note: "Última versión" },
+        body: "La app de Android aún no está disponible. Esta página ofrecerá la descarga cuando se publique.",
+        primary: { label: "Próximamente", note: "Aún no disponible: lo anunciaremos aquí y por correo." },
         requirements: "Android 11 o posterior. Una clave API de cualquier proveedor compatible con OpenAI, o Anthropic.",
       },
     },

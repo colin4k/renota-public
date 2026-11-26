@@ -50,6 +50,9 @@ export const zhCN: Content = {
     requirements: "环境要求",
     note: "说明",
     status: "状态",
+    comingSoon: "即将推出",
+    comingSoonNote: "尚未发布，上线时会在本页和邮件里通知。",
+    available: "已上架",
   },
 
   seo: {
@@ -352,8 +355,14 @@ export const zhCN: Content = {
       },
       install: {
         title: "获取扩展",
-        body: "Chrome 应用商店上架准备中。",
-        primary: { label: "获取", note: "Chrome 应用商店上架准备中" },
+        body: "已在 Chrome 应用商店上架；也可以直接下载 .crx 离线安装。",
+        primary: { label: "获取", note: "两种方式：商店安装，或直接下载 .crx。" },
+        dialog: {
+          title: "获取 Chrome 扩展",
+          store: { label: "Chrome 应用商店", note: "推荐。自动安装与更新。" },
+          crx: { label: "下载 .crx 文件", note: "用于离线或企业分发，更新需手动。" },
+          close: "关闭",
+        },
         requirements: "Chrome 120 或更新版本，以及任意兼容 OpenAI 服务商的 API Key。",
       },
     },
@@ -460,8 +469,8 @@ export const zhCN: Content = {
       },
       install: {
         title: "获取插件",
-        body: "从发布页下载 .xpi，然后在 Zotero 的插件管理器里安装。",
-        primary: { label: "下载 .xpi", note: "最新版本" },
+        body: "Zotero 插件尚未发布。发布后本页会提供 .xpi 下载。",
+        primary: { label: "即将推出", note: "尚未发布，上线时会在本页和邮件里通知。" },
         requirements: "Zotero 7 或更新版本，以及兼容 OpenAI 或 Anthropic 接口的 API Key。",
       },
     },
@@ -568,8 +577,8 @@ export const zhCN: Content = {
       },
       install: {
         title: "获取应用",
-        body: "从发布页下载 APK 安装。需要允许你的浏览器或文件管理器安装应用。",
-        primary: { label: "获取", note: "最新版本" },
+        body: "Android 应用尚未发布。发布后本页会提供下载。",
+        primary: { label: "即将推出", note: "尚未发布，上线时会在本页和邮件里通知。" },
         requirements: "Android 11 或更新版本，以及兼容 OpenAI 或 Anthropic 接口的 API Key。",
       },
     },

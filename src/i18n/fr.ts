@@ -50,6 +50,9 @@ export const fr: Content = {
     requirements: "Prérequis",
     note: "Remarque",
     status: "État",
+    comingSoon: "Bientôt disponible",
+    comingSoonNote: "Pas encore disponible — nous l'annoncerons ici et par e-mail.",
+    available: "Disponible",
   },
 
   seo: {
@@ -356,8 +359,14 @@ export const fr: Content = {
       },
       install: {
         title: "Obtenir l'extension",
-        body: "La fiche Chrome Web Store est en préparation.",
-        primary: { label: "Obtenir", note: "Fiche Chrome Web Store en préparation" },
+        body: "Disponible sur le Chrome Web Store, ou téléchargez le .crx pour une installation hors ligne.",
+        primary: { label: "Obtenir", note: "Deux chemins : le Chrome Web Store, ou le fichier .crx à télécharger." },
+        dialog: {
+          title: "Obtenir Renota pour Chrome",
+          store: { label: "Chrome Web Store", note: "Recommandé. Installation et mises à jour automatiques." },
+          crx: { label: "Télécharger le fichier .crx", note: "Pour une installation hors ligne ou gérée. Mises à jour manuelles." },
+          close: "Fermer",
+        },
         requirements: "Chrome 120 ou plus récent. Une clé API d'un fournisseur compatible OpenAI.",
       },
     },
@@ -464,8 +473,8 @@ export const fr: Content = {
       },
       install: {
         title: "Obtenir l'extension",
-        body: "Téléchargez le .xpi depuis la page des versions, puis installez-le depuis le gestionnaire d'extensions de Zotero.",
-        primary: { label: "Télécharger le .xpi", note: "Dernière version" },
+        body: "Le plugin Zotero n'est pas encore disponible. Cette page proposera le .xpi dès sa publication.",
+        primary: { label: "Bientôt disponible", note: "Pas encore disponible — nous l'annoncerons ici et par e-mail." },
         requirements: "Zotero 7 ou plus récent. Une clé API d'un fournisseur compatible OpenAI, ou Anthropic.",
       },
     },
@@ -572,8 +581,8 @@ export const fr: Content = {
       },
       install: {
         title: "Obtenir l'appli",
-        body: "Téléchargez l'APK depuis la page des versions et installez-le. Vous devrez autoriser les installations depuis votre navigateur ou votre gestionnaire de fichiers.",
-        primary: { label: "Obtenir", note: "Dernière version" },
+        body: "L'appli Android n'est pas encore disponible. Cette page proposera le téléchargement dès sa publication.",
+        primary: { label: "Bientôt disponible", note: "Pas encore disponible — nous l'annoncerons ici et par e-mail." },
         requirements: "Android 11 ou plus récent. Une clé API d'un fournisseur compatible OpenAI, ou Anthropic.",
       },
     },

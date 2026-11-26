@@ -309,6 +309,16 @@ components:
 
 没有链接的按钮（未上架产品）保持外观但去掉悬停反馈与手型光标——看起来还能点，但不给假承诺。
 
+### 获取方式浮层
+
+已上架的产品点「Get」时展开的选择层，给两条真实入口（商店 / 自托管 .crx）。它是浮层，所以允许 Elevation 章节里那一层中性阴影，除此之外不加任何光。
+
+- **遮罩**：72% 墨色（`rgba(6, 7, 10, 0.72)`），不做模糊。遮罩本身是可点的关闭链接。
+- **面板**：{colors.surface-container} + 1px 发丝线 + {rounded.xl} + 24px 内距，宽 `min(100%, 420px)`，垂直水平居中，两侧留 24px；窄屏收到 16px（面板内距同时收到 20px），免得在 320px 宽的屏上被两侧挤扁。
+- **选项行**：{colors.surface-container-low} 底（与 `input-field` 同一档）+ 发丝线 + {rounded.md}，14–16px 内距；上行是入口名，下行是 12px {colors.on-surface-variant} 的说明。悬停抬到 {colors.surface-container-high}，不位移。
+- **关闭**：面板底部一行 12px 文字链接，和右上角的选项行对齐。
+- **打开方式**：内容页零 JS，用 `:target` 打开、用指向安装区的锚点关闭。收起后停在本页安装区，不跳走。
+
 ### 输入与表格
 
 `input-field`：最暗一档 {colors.surface-container-low} + 1px 发丝线 + {rounded.md}。聚焦时用 2px {colors.secondary} 描边，不换底色、不加阴影。占位符用 `#6b7180`，不能用 outline 色（太浅会读成禁用态）。

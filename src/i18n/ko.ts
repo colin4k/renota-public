@@ -50,6 +50,9 @@ export const ko: Content = {
     requirements: "요구 사항",
     note: "참고",
     status: "상태",
+    comingSoon: "출시 예정",
+    comingSoonNote: "아직 출시되지 않았습니다. 출시되면 이 페이지와 이메일로 알려 드립니다.",
+    available: "출시됨",
   },
 
   seo: {
@@ -356,8 +359,14 @@ export const ko: Content = {
       },
       install: {
         title: "확장 프로그램 받기",
-        body: "Chrome 웹 스토어 등록을 준비 중입니다.",
-        primary: { label: "받기", note: "Chrome 웹 스토어 등록 준비 중" },
+        body: "Chrome 웹 스토어에 출시되었습니다. .crx 파일을 직접 내려받아 오프라인으로 설치할 수도 있습니다.",
+        primary: { label: "받기", note: "스토어에서 설치하거나 .crx 파일을 직접 내려받을 수 있습니다." },
+        dialog: {
+          title: "Chrome용 Renota 받기",
+          store: { label: "Chrome 웹 스토어", note: "권장. 설치와 업데이트가 자동으로 이루어집니다." },
+          crx: { label: ".crx 파일 다운로드", note: "오프라인 또는 관리 환경용. 업데이트는 직접 해야 합니다." },
+          close: "닫기",
+        },
         requirements: "Chrome 120 이상. OpenAI 호환 제공자의 API 키.",
       },
     },
@@ -464,8 +473,8 @@ export const ko: Content = {
       },
       install: {
         title: "플러그인 받기",
-        body: "릴리스 페이지에서 .xpi를 내려받은 뒤 Zotero 플러그인 관리자에서 설치합니다.",
-        primary: { label: ".xpi 내려받기", note: "최신 릴리스" },
+        body: "Zotero 플러그인은 아직 출시되지 않았습니다. 출시되면 이 페이지에서 .xpi를 내려받을 수 있습니다.",
+        primary: { label: "출시 예정", note: "아직 출시되지 않았습니다. 출시되면 이 페이지와 이메일로 알려 드립니다." },
         requirements: "Zotero 7 이상. OpenAI 호환 제공자 또는 Anthropic의 API 키.",
       },
     },
@@ -572,8 +581,8 @@ export const ko: Content = {
       },
       install: {
         title: "앱 받기",
-        body: "릴리스 페이지에서 APK를 내려받아 설치합니다. 브라우저나 파일 관리자에서 설치를 허용해야 합니다.",
-        primary: { label: "받기", note: "최신 릴리스" },
+        body: "Android 앱은 아직 출시되지 않았습니다. 출시되면 이 페이지에서 내려받을 수 있습니다.",
+        primary: { label: "출시 예정", note: "아직 출시되지 않았습니다. 출시되면 이 페이지와 이메일로 알려 드립니다." },
         requirements: "Android 11 이상. OpenAI 호환 제공자 또는 Anthropic의 API 키.",
       },
     },

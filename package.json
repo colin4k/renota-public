@@ -10,7 +10,8 @@
     "preview": "tsx src/build.ts --serve",
     "typecheck": "tsc --noEmit",
     "design:lint": "designmd lint DESIGN.md",
-    "design:tokens": "designmd export --format css-vars --prefix rn DESIGN.md"
+    "design:tokens": "designmd export --format css-vars --prefix rn DESIGN.md",
+    "crx:sync": "node scripts/sync-crx.mjs"
   },
   "devDependencies": {
     "@google/design.md": "^0.4.0",

@@ -50,6 +50,9 @@ export const de: Content = {
     requirements: "Voraussetzungen",
     note: "Hinweis",
     status: "Status",
+    comingSoon: "Demnächst verfügbar",
+    comingSoonNote: "Noch nicht veröffentlicht — wir kündigen es hier und per E-Mail an.",
+    available: "Verfügbar",
   },
 
   seo: {
@@ -356,8 +359,14 @@ export const de: Content = {
       },
       install: {
         title: "Die Erweiterung holen",
-        body: "Der Eintrag im Chrome Web Store ist in Vorbereitung.",
-        primary: { label: "Jetzt holen", note: "Chrome-Web-Store-Eintrag in Vorbereitung" },
+        body: "Jetzt im Chrome Web Store verfügbar — oder die .crx direkt herunterladen und offline installieren.",
+        primary: { label: "Holen", note: "Zwei Wege: Web Store oder direkter .crx-Download." },
+        dialog: {
+          title: "Renota für Chrome holen",
+          store: { label: "Chrome Web Store", note: "Empfohlen. Installation und Updates laufen automatisch." },
+          crx: { label: ".crx-Datei herunterladen", note: "Für Offline- oder verwaltete Installationen. Updates von Hand." },
+          close: "Schließen",
+        },
         requirements: "Chrome 120 oder neuer. Ein API-Schlüssel von einem beliebigen OpenAI-kompatiblen Anbieter.",
       },
     },
@@ -464,8 +473,8 @@ export const de: Content = {
       },
       install: {
         title: "Das Plugin holen",
-        body: "Laden Sie das .xpi von der Release-Seite herunter und installieren Sie es über Zoteros Plugin-Manager.",
-        primary: { label: ".xpi herunterladen", note: "Neueste Version" },
+        body: "Das Zotero-Plugin ist noch nicht veröffentlicht. Sobald es erscheint, lässt sich das .xpi hier herunterladen.",
+        primary: { label: "Demnächst verfügbar", note: "Noch nicht veröffentlicht — wir kündigen es hier und per E-Mail an." },
         requirements: "Zotero 7 oder neuer. Ein API-Schlüssel von einem beliebigen OpenAI-kompatiblen Anbieter oder von Anthropic.",
       },
     },
@@ -572,8 +581,8 @@ export const de: Content = {
       },
       install: {
         title: "Die App holen",
-        body: "Laden Sie das APK von der Release-Seite herunter und installieren Sie es. Sie müssen Installationen aus Ihrem Browser oder Dateimanager erlauben.",
-        primary: { label: "Jetzt holen", note: "Neueste Version" },
+        body: "Die Android-App ist noch nicht veröffentlicht. Sobald sie erscheint, lässt sie sich hier herunterladen.",
+        primary: { label: "Demnächst verfügbar", note: "Noch nicht veröffentlicht — wir kündigen es hier und per E-Mail an." },
         requirements: "Android 11 oder neuer. Ein API-Schlüssel von einem beliebigen OpenAI-kompatiblen Anbieter oder von Anthropic.",
       },
     },

@@ -14,6 +14,7 @@ npm install
 npm run dev        # 构建 + 起预览 http://127.0.0.1:4321
 npm run build      # 只构建到 dist/
 npm run typecheck
+npm run crx:sync   # 商店发版后，把最新 .crx 拉到 public/downloads/（Chrome 页的离线下载用）
 ```
 
 ## 部署（Cloudflare Pages）

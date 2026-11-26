@@ -50,6 +50,9 @@ export const zhTW: Content = {
     requirements: "系統需求",
     note: "說明",
     status: "狀態",
+    comingSoon: "即將推出",
+    comingSoonNote: "尚未發佈，上線時會在本頁和郵件裡通知。",
+    available: "已上架",
   },
 
   seo: {
@@ -354,8 +357,14 @@ export const zhTW: Content = {
       },
       install: {
         title: "取得擴充功能",
-        body: "Chrome 線上應用程式商店上架準備中。",
-        primary: { label: "取得", note: "Chrome 線上應用程式商店上架準備中" },
+        body: "已在 Chrome 線上應用程式商店上架；也可以直接下載 .crx 離線安裝。",
+        primary: { label: "取得", note: "兩種方式：商店安裝，或直接下載 .crx。" },
+        dialog: {
+          title: "取得 Chrome 擴充功能",
+          store: { label: "Chrome 線上應用程式商店", note: "推薦。自動安裝與更新。" },
+          crx: { label: "下載 .crx 檔案", note: "供離線或企業部署使用，更新需手動。" },
+          close: "關閉",
+        },
         requirements: "Chrome 120 或更新版本，以及任一相容 OpenAI 服務商的 API Key。",
       },
     },
@@ -462,8 +471,8 @@ export const zhTW: Content = {
       },
       install: {
         title: "取得外掛",
-        body: "從發佈頁下載 .xpi，然後在 Zotero 的外掛管理員裡安裝。",
-        primary: { label: "下載 .xpi", note: "最新版本" },
+        body: "Zotero 外掛尚未發佈。發佈後本頁會提供 .xpi 下載。",
+        primary: { label: "即將推出", note: "尚未發佈，上線時會在本頁和郵件裡通知。" },
         requirements: "Zotero 7 或更新版本，以及相容 OpenAI 或 Anthropic 介面的 API Key。",
       },
     },
@@ -570,8 +579,8 @@ export const zhTW: Content = {
       },
       install: {
         title: "取得應用程式",
-        body: "從發佈頁下載 APK 安裝。需要允許你的瀏覽器或檔案管理員安裝應用程式。",
-        primary: { label: "取得", note: "最新版本" },
+        body: "Android 應用程式尚未發佈。發佈後本頁會提供下載。",
+        primary: { label: "即將推出", note: "尚未發佈，上線時會在本頁和郵件裡通知。" },
         requirements: "Android 11 或更新版本，以及相容 OpenAI 或 Anthropic 介面的 API Key。",
       },
     },

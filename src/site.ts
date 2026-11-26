@@ -4,6 +4,8 @@
 const SITE_URL = (process.env.SITE_URL ?? "https://www.werenota.com").replace(/\/+$/, "");
 const CLOUD_API = (process.env.CLOUD_API_BASE ?? "https://cloud.werenota.com").replace(/\/+$/, "");
 
+export type ProductKey = "chrome" | "zotero" | "android";
+
 export const site = {
   /** 线上域名，用于 canonical / sitemap / OG。 */
   url: SITE_URL,
@@ -26,11 +28,25 @@ export const site = {
   /**
    * 安装/下载入口。上架后把商店或发行页地址填进来即可，页面不用改；
    * 留空时对应的安装按钮只显示文案、不挂跳转。
+   *
+   * chromeCrx 是本站自托管的 .crx：必须用**商店发布的那份**（扩展 ID 与商店一致），
+   * 不要拿本地 `npm run package:crx` 的产物替换 —— 本地签名是另一把钥匙，
+   * 装出来是第二个扩展，本地数据不互通。商店每次发版后覆盖这个文件即可。
    */
   links: {
-    chromeStore: "",
+    chromeStore: "https://chromewebstore.google.com/detail/renota/iebpcobgihlbcndpbmjcjdloegoedbel",
+    chromeCrx: "/downloads/renota-extension.crx",
     zoteroXpi: "",
     androidApk: "",
+  },
+  /**
+   * 已上架的产品。为 true 时：安装按钮挂真实入口（Chrome 是打开获取方式的浮层），
+   * 页面上的状态写「可用」而不是「即将推出」。为 false 的仍是不可点的占位按钮。
+   */
+  released: {
+    chrome: true,
+    zotero: false,
+    android: false,
   },
   /**
    * 自建 Umami 的页面统计。两者都为空时页面里不会出现任何脚本 ——
@@ -44,5 +60,3 @@ export const site = {
     websiteId: process.env.UMAMI_WEBSITE_ID ?? "",
   },
 } as const;
-
-export type ProductKey = "chrome" | "zotero" | "android";

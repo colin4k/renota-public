@@ -49,6 +49,9 @@ export const en = {
     requirements: "Requirements",
     note: "Note",
     status: "Status",
+    comingSoon: "Coming soon",
+    comingSoonNote: "Not released yet — we will announce it here and by email.",
+    available: "Available",
   },
 
   seo: {
@@ -355,8 +358,14 @@ export const en = {
       },
       install: {
         title: "Get the extension",
-        body: "The Chrome Web Store listing is in preparation.",
-        primary: { label: "Get it", note: "Chrome Web Store listing in preparation" },
+        body: "Available now on the Chrome Web Store, or download the .crx to install it offline.",
+        primary: { label: "Get", note: "Two ways in: the Web Store, or a direct .crx download." },
+        dialog: {
+          title: "Get Renota for Chrome",
+          store: { label: "Chrome Web Store", note: "Recommended. Installs and updates automatically." },
+          crx: { label: "Download the .crx file", note: "For offline or managed installs. Updates are manual." },
+          close: "Close",
+        },
         requirements: "Chrome 120 or newer. An API key from any OpenAI-compatible provider.",
       },
     },
@@ -463,8 +472,8 @@ export const en = {
       },
       install: {
         title: "Get the plugin",
-        body: "Download the .xpi from the releases page, then install it from Zotero's plugin manager.",
-        primary: { label: "Download .xpi", note: "Latest release" },
+        body: "The Zotero plugin is not released yet. This page will link to the .xpi once it is published.",
+        primary: { label: "Coming soon", note: "Not released yet — we will announce it here and by email." },
         requirements: "Zotero 7 or newer. An API key from any OpenAI-compatible provider, or Anthropic.",
       },
     },
@@ -571,8 +580,8 @@ export const en = {
       },
       install: {
         title: "Get the app",
-        body: "Download the APK from the releases page and install it. You will need to allow installs from your browser or file manager.",
-        primary: { label: "Get it", note: "Latest release" },
+        body: "The Android app is not released yet. This page will link to the download once it is published.",
+        primary: { label: "Coming soon", note: "Not released yet — we will announce it here and by email." },
         requirements: "Android 11 or newer. An API key from any OpenAI-compatible provider, or Anthropic.",
       },
     },
