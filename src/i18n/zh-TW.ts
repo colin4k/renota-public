@@ -465,14 +465,14 @@ export const zhTW: Content = {
           },
           {
             q: "Chrome 擴充功能能讀這個知識庫嗎？",
-            a: "同一台機器上可以：在外掛設定裡啟用本機同步端點，用配對權杖把擴充功能接上；也可以直接用雲端同步。",
+            a: "可以：開啟雲端同步後，擴充功能和外掛用同一份知識庫；也可以讓 Claude、Cursor 這類用戶端透過 renota-mcp 直接檢索兩邊的筆記。",
           },
         ],
       },
       install: {
         title: "取得外掛",
-        body: "Zotero 外掛尚未發佈。發佈後本頁會提供 .xpi 下載。",
-        primary: { label: "即將推出", note: "尚未發佈，上線時會在本頁和郵件裡通知。" },
+        body: "已發佈 1.1.0：下載 .xpi，在 Zotero 的「工具 → 外掛」裡點右上角齒輪，選「Install Add-on From File…」安裝。",
+        primary: { label: "取得", note: "v1.1.0 · 適用於 Zotero 7 及以上" },
         requirements: "Zotero 7 或更新版本，以及相容 OpenAI 或 Anthropic 介面的 API Key。",
       },
     },

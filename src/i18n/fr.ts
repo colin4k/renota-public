@@ -467,14 +467,14 @@ export const fr: Content = {
           },
           {
             q: "L'extension Chrome peut-elle lire cette bibliothèque ?",
-            a: "Oui, sur la même machine : activez le point d'accès de synchronisation locale dans les réglages de l'extension et associez l'extension avec un jeton. Ou utilisez la synchronisation cloud.",
+            a: "Oui : avec la synchronisation cloud activée, l'extension et le plugin partagent la même bibliothèque. Vous pouvez aussi brancher Claude, Cursor et d'autres clients MCP sur renota-mcp pour interroger les deux côtés.",
           },
         ],
       },
       install: {
         title: "Obtenir l'extension",
-        body: "Le plugin Zotero n'est pas encore disponible. Cette page proposera le .xpi dès sa publication.",
-        primary: { label: "Bientôt disponible", note: "Pas encore disponible — nous l'annoncerons ici et par e-mail." },
+        body: "La version 1.1.0 est disponible : téléchargez le .xpi et installez-le depuis Outils → Modules complémentaires → menu engrenage → Installer un module depuis un fichier…",
+        primary: { label: "Obtenir", note: "v1.1.0 · compatible avec Zotero 7 et versions ultérieures" },
         requirements: "Zotero 7 ou plus récent. Une clé API d'un fournisseur compatible OpenAI, ou Anthropic.",
       },
     },

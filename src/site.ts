@@ -36,7 +36,7 @@ export const site = {
   links: {
     chromeStore: "https://chromewebstore.google.com/detail/renota/iebpcobgihlbcndpbmjcjdloegoedbel",
     chromeCrx: "/downloads/renota-extension.crx",
-    zoteroXpi: "",
+    zoteroXpi: "/downloads/renota-zotero-1.1.0.xpi",
     androidApk: "",
   },
   /**
@@ -45,7 +45,7 @@ export const site = {
    */
   released: {
     chrome: true,
-    zotero: false,
+    zotero: true,
     android: false,
   },
   /**

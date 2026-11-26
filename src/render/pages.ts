@@ -229,11 +229,16 @@ export function renderProduct(locale: Locale, page: ProductKey): PageMeta {
   const primaryNote = p.install.primary.note;
   /** 顶部的状态行：上架后写「可用」，未上架仍写「即将推出」。 */
   const statusLabel = released ? c.common.available : c.common.comingSoon;
-  /** 结构化数据里的下载地址：Chrome 用自托管 .crx 的绝对地址，其余用各自的下载入口。 */
+  /**
+   * 结构化数据里的下载地址必须是绝对 URL：站内路径补上站点域名，
+   * 外部入口（商店、发行页）原样保留。
+   */
+  const absoluteDownload = (href: string | undefined) =>
+    href ? (href.startsWith("http") ? href : `${site.url}${href}`) : undefined;
   const downloadUrl = released
     ? page === "chrome"
       ? `${site.url}${site.links.chromeCrx}`
-      : meta.download || undefined
+      : absoluteDownload(meta.download)
     : undefined;
 
   const body = `

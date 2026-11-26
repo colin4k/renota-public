@@ -466,14 +466,14 @@ export const en = {
           },
           {
             q: "Can the Chrome extension read this library?",
-            a: "Yes, on the same machine: enable the local sync endpoint in the plugin settings and pair the extension with a token. Or use cloud sync.",
+            a: "Yes: with cloud sync on, the extension and the plugin share the same knowledge base. You can also point Claude, Cursor and other MCP clients at renota-mcp to search both sides at once.",
           },
         ],
       },
       install: {
         title: "Get the plugin",
-        body: "The Zotero plugin is not released yet. This page will link to the .xpi once it is published.",
-        primary: { label: "Coming soon", note: "Not released yet — we will announce it here and by email." },
+        body: "Version 1.1.0 is out: download the .xpi and install it from Zotero's Tools → Add-ons → gear menu → Install Add-on From File…",
+        primary: { label: "Get", note: "v1.1.0 · works with Zotero 7 and later" },
         requirements: "Zotero 7 or newer. An API key from any OpenAI-compatible provider, or Anthropic.",
       },
     },

@@ -463,14 +463,14 @@ export const zhCN: Content = {
           },
           {
             q: "Chrome 扩展能读这个知识库吗？",
-            a: "同一台机器上可以：在插件设置里启用本地同步接口，用配对令牌把扩展接上；也可以直接用云同步。",
+            a: "可以：开启云同步后，扩展和插件用同一份知识库；也可以让 Claude、Cursor 这类客户端通过 renota-mcp 直接检索两边的笔记。",
           },
         ],
       },
       install: {
         title: "获取插件",
-        body: "Zotero 插件尚未发布。发布后本页会提供 .xpi 下载。",
-        primary: { label: "即将推出", note: "尚未发布，上线时会在本页和邮件里通知。" },
+        body: "已发布 1.1.0：下载 .xpi，在 Zotero 的「工具 → 插件」里点右上角齿轮，选「Install Add-on From File…」安装。",
+        primary: { label: "获取", note: "v1.1.0 · 适用于 Zotero 7 及以上" },
         requirements: "Zotero 7 或更新版本，以及兼容 OpenAI 或 Anthropic 接口的 API Key。",
       },
     },
