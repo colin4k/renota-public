@@ -99,6 +99,23 @@ const CHECKOUT_SCRIPT = String.raw`
     return request;
   }
 
+  // 拿不到 PricePreview 时的兜底金额。沙箱的 Paddle 目录里没有建这些价，
+  // 生产上万一 Paddle 不可用也不该让价格区空着 —— 以 tiers 里的标价为准。
+  function fallbackAmount(tier) {
+    var value = state.period === "year" ? tier.amount.year : tier.amount.month;
+    var locale = document.documentElement.lang || "en";
+    try {
+      return new Intl.NumberFormat(locale, {
+        style: "currency",
+        currency: tier.amount.currency,
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      }).format(value);
+    } catch (err) {
+      return tier.amount.currency === "USD" ? "$" + value.toFixed(2) : String(value);
+    }
+  }
+
   function renderPrice() {
     var tier = CONFIG.tiers[0];
     // 试用版与立即版同价，取任一即可；用试用版更贴近大多数人的默认选择。
@@ -106,13 +123,13 @@ const CHECKOUT_SCRIPT = String.raw`
     var totals = state.prices[priceId];
 
     if (!totals) {
-      if (amountEl) amountEl.textContent = "";
+      if (amountEl) amountEl.textContent = tier.amount ? fallbackAmount(tier) : "";
       return;
     }
 
     // 原样输出 Paddle 给的字符串，不做任何加工。
-    // 税外加时 total 含税，页面上展示税前小计，与定价页的「$9.90/月」保持一致；
-    // 实付总额在结账页由 Paddle 列出（小计 + 税）。
+    // price 的 tax_mode 是 external（价格不含税），所以 subtotal 就是标价，
+    // 与 Waffo 收银台展示的税前金额一致；税在结账页另行计算。
     if (amountEl) amountEl.textContent = totals.subtotal ?? totals.total;
     if (cadenceEl) cadenceEl.textContent = state.period === "month" ? CONFIG.copy.perMonth : CONFIG.copy.perYear;
   }
@@ -280,8 +297,10 @@ const CHECKOUT_SCRIPT = String.raw`
           environment: CONFIG.environment,
         });
       }
-      // 页面上给一句能自己动手的话，比「刷新试试」有用：这种失败几乎都不是网络的锅。
-      showError(CONFIG.copy.pricesFailed + "  support@werenota.com");
+      // 价格预览失败不再拦人：金额有本地兜底，而具体走哪家渠道、按什么金额收款
+      // 由服务端的 /v1/billing/checkout 决定 —— 沙箱的 Paddle 目录里本来就没建这些价，
+      // 拦下按钮只会让人以为「页面坏了」。原因留在控制台，按钮照常放行。
+      setActionsDisabled(false);
     });
 })();
 `;
@@ -322,7 +341,7 @@ export function renderCheckout(locale: Locale, paddle: PaddleClientConfig): Page
     clientToken: paddle.clientToken,
     successUrl: `${site.url}/welcome`,
     apiBase: API_BASE,
-    tiers: tiers.map((tier) => ({ name: tier.name, priceId: tier.priceId })),
+    tiers: tiers.map((tier) => ({ name: tier.name, priceId: tier.priceId, amount: tier.amount })),
     copy: t,
   };
 

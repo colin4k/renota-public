@@ -18,6 +18,11 @@ export interface Tier {
   /** 套餐名，同时用于页面上展示（`Pro` 不翻译） */
   name: string;
   /**
+   * 标价，只用于「拿不到 PricePreview 时」的兜底展示（沙箱的 Paddle 目录里没有这些价，
+   * 而 Waffo 这条主渠道的价格正是这两个数）。有 PricePreview 结果时一律以它为准。
+   */
+  amount: { currency: string; month: number; year: number };
+  /**
    * 每档在 Paddle 侧有四个价：同一金额、同一周期，差别只在有没有试用。
    * 试用是绑在 price 上的，没法在结账时开关，所以「订阅」和「试用」
    * 必须各走各的 price id。
@@ -34,10 +39,11 @@ export interface Tier {
 
 export type BillingPeriod = "month" | "year";
 
-/** 当前在售套餐。价格展示一律取 Paddle 的 formattedTotals，这里不存金额。 */
+/** 当前在售套餐。金额以 Paddle 的 formattedTotals 为准，这里的 `amount` 只在取不到时兜底。 */
 export const tiers: Tier[] = [
   {
     name: "Pro",
+    amount: { currency: "USD", month: 9.9, year: 100 },
     // 套餐卡片的描述与功能清单在 i18n 字典的 `plan` 段 —— 十种语言都要有，
     // 放在这里就得跟着语言表一起长。
     priceId: {
