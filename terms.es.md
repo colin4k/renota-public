@@ -1,7 +1,7 @@
 # Renota — Condiciones del servicio
 
-**Última actualización:** 16 de noviembre de 2026
-**Fecha de entrada en vigor:** 16 de noviembre de 2026
+**Última actualización:** 26 de noviembre de 2026
+**Fecha de entrada en vigor:** 26 de noviembre de 2026
 
 Estas Condiciones del servicio («Condiciones») regulan su uso de Renota: la extensión de Chrome, el plugin de Zotero, la app para Android, este sitio web y el servicio opcional de sincronización en la nube (conjuntamente, el «Servicio»).
 
@@ -14,6 +14,9 @@ Al instalar, iniciar sesión o utilizar el Servicio de cualquier otro modo, uste
 Renota es un conjunto de apps cliente que le ayudan a capturar el texto que lee y a usarlo como contexto personal para la escritura y el análisis asistidos por IA. Las apps se ejecutan en sus propios dispositivos. Las respuestas de la IA las produce el proveedor de modelo que **usted** configure: no operamos una infraestructura de modelo compartida en su nombre.
 
 El servicio opcional de sincronización en la nube mantiene su base de conocimiento coherente entre sus propios dispositivos.
+
+
+**Estado de publicación.** La extensión de Chrome ya está disponible en Chrome Web Store. El plugin de Zotero y la app para Android siguen en preparación. Este documento describe para qué está diseñado cada cliente.
 
 ---
 

@@ -1,7 +1,7 @@
 # Renota — Privacy Policy
 
-**Last Updated:** 2026-11-17
-**Effective Date:** 2026-11-17
+**Last Updated:** 2026-11-26
+**Effective Date:** 2026-11-26
 
 Renota ("we", "our", "the apps") is a set of apps — a Chrome extension, a Zotero plugin and an Android app — that help you capture text you read and use it as personal context for AI-assisted writing. This Privacy Policy explains what data Renota handles, how it is used, and the choices you have.
 
@@ -11,9 +11,12 @@ By installing or using Renota, you agree to this Privacy Policy. If you do not a
 
 ## 1. Scope
 
-This policy applies to all three Renota clients — the Chrome extension distributed through the Chrome Web Store, the Zotero plugin, and the Android app distributed through Google Play or as a direct download — together with the first-party infrastructure they communicate with: specifically the telemetry endpoint described in Section 4 and the optional cloud sync service described in Section 3.1. The same cloud sync service is used by all three clients, and this policy covers that service for all of them.
+This policy applies to all three Renota clients — the Chrome extension (distributed through the Chrome Web Store), the Zotero plugin, and the Android app (planned for distribution through Google Play or as a direct download) — together with the first-party infrastructure they communicate with: specifically the telemetry endpoint described in Section 4 and the optional cloud sync service described in Section 3.1. The same cloud sync service is used by all three clients, and this policy covers that service for all of them.
 
 It does **not** apply to third-party services that you choose to connect to through Renota (such as LLM providers). When you configure an LLM provider, your prompts and the response from that provider are governed by that provider's own privacy policy. Section 5 lists the providers we currently support and links to their policies.
+
+
+**Release status.** The Chrome extension is available on the Chrome Web Store. The Zotero plugin and the Android app are still in preparation. This policy describes how each client handles data.
 
 ---
 

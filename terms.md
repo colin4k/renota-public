@@ -1,7 +1,7 @@
 # Renota — Terms of Service
 
-**Last Updated:** 2026-11-16
-**Effective Date:** 2026-11-16
+**Last Updated:** 2026-11-26
+**Effective Date:** 2026-11-26
 
 These Terms of Service ("Terms") govern your use of Renota — the Chrome extension, the Zotero plugin, the Android app, this website, and the optional cloud sync service (together, the "Service").
 
@@ -14,6 +14,9 @@ By installing, signing in to, or otherwise using the Service, you agree to these
 Renota is a set of client apps that help you capture text you read and use it as personal context for AI-assisted writing and analysis. The apps run on your own devices. AI responses are produced by the model provider **you** configure — we do not operate a shared model backend on your behalf.
 
 The optional cloud sync service keeps your knowledge base consistent across your own devices.
+
+
+**Release status.** The Chrome extension is available on the Chrome Web Store. The Zotero plugin and the Android app are still in preparation. These Terms describe what each client is designed to do.
 
 ---
 

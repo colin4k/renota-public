@@ -1,7 +1,7 @@
 # Renota — Datenschutzerklärung
 
-**Zuletzt aktualisiert:** 17. November 2026
-**Inkrafttreten:** 17. November 2026
+**Zuletzt aktualisiert:** 26. November 2026
+**Inkrafttreten:** 26. November 2026
 
 Renota („wir“, „unser“, „die Apps“) ist eine Reihe von Apps — eine Chrome-Erweiterung, ein Zotero-Plugin und eine Android-App —, die Ihnen helfen, gelesenen Text zu erfassen und ihn als persönlichen Kontext für KI-gestütztes Schreiben zu nutzen. Diese Datenschutzerklärung erläutert, welche Daten Renota verarbeitet, wie sie verwendet werden und welche Wahlmöglichkeiten Sie haben.
 
@@ -11,9 +11,12 @@ Durch die Installation oder Nutzung von Renota stimmen Sie dieser Datenschutzerk
 
 ## 1. Geltungsbereich
 
-Diese Erklärung gilt für alle drei Renota-Clients — die über den Chrome Web Store vertriebene Chrome-Erweiterung, das Zotero-Plugin und die Android-App, die über Google Play oder als Direktdownload vertrieben wird — zusammen mit der Infrastruktur aus eigener Hand, mit der sie kommunizieren: konkret dem in Abschnitt 4 beschriebenen Telemetrie-Endpunkt und dem optionalen Cloud-Synchronisierungsdienst aus Abschnitt 3.1. Derselbe Cloud-Synchronisierungsdienst wird von allen drei Clients genutzt, und diese Erklärung deckt diesen Dienst für alle von ihnen ab.
+Diese Erklärung gilt für alle drei Renota-Clients — die über den Chrome Web Store vertriebene Chrome-Erweiterung, das Zotero-Plugin und die Android-App, die für den Vertrieb über Google Play oder als Direktdownload vorgesehen ist — zusammen mit der Infrastruktur aus eigener Hand, mit der sie kommunizieren: konkret dem in Abschnitt 4 beschriebenen Telemetrie-Endpunkt und dem optionalen Cloud-Synchronisierungsdienst aus Abschnitt 3.1. Derselbe Cloud-Synchronisierungsdienst wird von allen drei Clients genutzt, und diese Erklärung deckt diesen Dienst für alle von ihnen ab.
 
 Sie gilt **nicht** für Dienste Dritter, mit denen Sie sich über Renota verbinden (etwa LLM-Anbieter). Wenn Sie einen LLM-Anbieter konfigurieren, gelten für Ihre Prompts und die Antwort dieses Anbieters dessen eigene Datenschutzbestimmungen. Abschnitt 5 listet die derzeit unterstützten Anbieter auf und verlinkt auf deren Bestimmungen.
+
+
+**Veröffentlichungsstatus.** Die Chrome-Erweiterung ist im Chrome Web Store verfügbar. Das Zotero-Plugin und die Android-App befinden sich noch in Vorbereitung. Diese Richtlinie beschreibt, wie die einzelnen Clients mit Daten umgehen.
 
 ---
 

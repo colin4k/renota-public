@@ -1,7 +1,7 @@
 # Renota — Termos de Serviço
 
-**Última atualização:** 16/11/2026
-**Data de vigência:** 16/11/2026
+**Última atualização:** 26/11/2026
+**Data de vigência:** 26/11/2026
 
 Estes Termos de Serviço (“Termos”) regem o seu uso do Renota — a extensão para Chrome, o plugin para Zotero, o app para Android, este site e o serviço opcional de sincronização na nuvem (em conjunto, o “Serviço”).
 
@@ -14,6 +14,9 @@ Ao instalar, entrar no Serviço ou usá-lo de qualquer outra forma, você concor
 O Renota é um conjunto de apps clientes que ajudam você a capturar o texto que lê e a usá-lo como contexto pessoal para escrita e análise assistidas por IA. Os apps rodam nos seus próprios dispositivos. As respostas de IA são produzidas pelo provedor de modelo que **você** configura — não operamos um backend de modelo compartilhado em seu nome.
 
 O serviço opcional de sincronização na nuvem mantém sua base de conhecimento consistente entre os seus próprios dispositivos.
+
+
+**Estado de lançamento.** A extensão do Chrome já está disponível na Chrome Web Store. O plugin do Zotero e o app para Android ainda estão em preparação. Este documento descreve o que cada cliente foi projetado para fazer.
 
 ---
 

@@ -1,7 +1,7 @@
 # Renota — Política de Privacidade
 
-**Última atualização:** 17/11/2026
-**Data de vigência:** 17/11/2026
+**Última atualização:** 26/11/2026
+**Data de vigência:** 26/11/2026
 
 O Renota (“nós”, “nosso”, “os apps”) é um conjunto de apps — uma extensão para Chrome, um plugin para Zotero e um app para Android — que ajudam você a capturar o texto que lê e a usá-lo como contexto pessoal para escrita assistida por IA. Esta Política de Privacidade explica quais dados o Renota trata, como eles são usados e quais escolhas você tem.
 
@@ -11,9 +11,12 @@ Ao instalar ou usar o Renota, você concorda com esta Política de Privacidade. 
 
 ## 1. Escopo
 
-Esta política se aplica aos três clientes do Renota — a extensão para Chrome distribuída pela Chrome Web Store, o plugin para Zotero e o app para Android distribuído pelo Google Play ou como download direto — junto com a infraestrutura própria com a qual eles se comunicam: especificamente o endpoint de telemetria descrito na Seção 4 e o serviço opcional de sincronização na nuvem descrito na Seção 3.1. O mesmo serviço de sincronização na nuvem é usado pelos três clientes, e esta política cobre esse serviço para todos eles.
+Esta política se aplica aos três clientes do Renota — a extensão para Chrome, distribuída pela Chrome Web Store, o plugin para Zotero e o app para Android, com distribuição prevista pelo Google Play ou como download direto — junto com a infraestrutura própria com a qual eles se comunicam: especificamente o endpoint de telemetria descrito na Seção 4 e o serviço opcional de sincronização na nuvem descrito na Seção 3.1. O mesmo serviço de sincronização na nuvem é usado pelos três clientes, e esta política cobre esse serviço para todos eles.
 
 Ela **não** se aplica a serviços de terceiros que você escolha conectar por meio do Renota (como provedores de LLM). Quando você configura um provedor de LLM, seus prompts e a resposta desse provedor são regidos pela política de privacidade do próprio provedor. A Seção 5 lista os provedores que apoiamos atualmente e traz links para as políticas deles.
+
+
+**Estado de lançamento.** A extensão do Chrome já está disponível na Chrome Web Store. O plugin do Zotero e o app para Android ainda estão em preparação. Esta política descreve como cada cliente trata os dados.
 
 ---
 

@@ -1,7 +1,7 @@
 # Renota — Conditions d'utilisation
 
-**Dernière mise à jour :** 2026-11-16
-**Date d'entrée en vigueur :** 2026-11-16
+**Dernière mise à jour :** 2026-11-26
+**Date d'entrée en vigueur :** 2026-11-26
 
 Les présentes Conditions d'utilisation (les « Conditions ») régissent votre utilisation de Renota — l'extension Chrome, l'extension Zotero, l'appli Android, ce site web et le service facultatif de synchronisation cloud (ensemble, le « Service »).
 
@@ -14,6 +14,9 @@ En installant le Service, en vous y connectant ou en l'utilisant de toute autre 
 Renota est un ensemble d'applis clientes qui vous aident à collecter le texte que vous lisez et à l'utiliser comme contexte personnel pour une écriture et une analyse assistées par IA. Les applis s'exécutent sur vos propres appareils. Les réponses de l'IA sont produites par le fournisseur de modèle que **vous** configurez — nous n'exploitons pas de backend de modèle partagé en votre nom.
 
 Le service facultatif de synchronisation cloud maintient votre base de connaissances cohérente entre vos propres appareils.
+
+
+**État de publication.** L'extension Chrome est disponible sur le Chrome Web Store. Le plugin Zotero et l'appli Android sont encore en préparation. Ce document décrit ce que chaque client est conçu pour faire.
 
 ---
 

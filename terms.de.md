@@ -1,7 +1,7 @@
 # Renota — Nutzungsbedingungen
 
-**Zuletzt aktualisiert:** 16. November 2026
-**Inkrafttreten:** 16. November 2026
+**Zuletzt aktualisiert:** 26. November 2026
+**Inkrafttreten:** 26. November 2026
 
 Diese Nutzungsbedingungen („Bedingungen“) regeln Ihre Nutzung von Renota — der Chrome-Erweiterung, dem Zotero-Plugin, der Android-App, dieser Website und dem optionalen Cloud-Synchronisierungsdienst (zusammen der „Dienst“).
 
@@ -14,6 +14,9 @@ Durch die Installation, die Anmeldung oder sonstige Nutzung des Dienstes stimmen
 Renota ist eine Reihe von Client-Apps, die Ihnen helfen, gelesenen Text zu erfassen und ihn als persönlichen Kontext für KI-gestütztes Schreiben und Analysieren zu nutzen. Die Apps laufen auf Ihren eigenen Geräten. KI-Antworten werden von dem Modellanbieter erzeugt, den **Sie** konfigurieren — wir betreiben kein gemeinsames Modell-Backend für Sie.
 
 Der optionale Cloud-Synchronisierungsdienst hält Ihre Wissensdatenbank über Ihre eigenen Geräte hinweg konsistent.
+
+
+**Veröffentlichungsstatus.** Die Chrome-Erweiterung ist im Chrome Web Store verfügbar. Das Zotero-Plugin und die Android-App befinden sich noch in Vorbereitung. Dieses Dokument beschreibt, welche Funktionen die einzelnen Clients bieten sollen.
 
 ---
 
