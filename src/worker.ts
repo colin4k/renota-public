@@ -1,4 +1,4 @@
-// 极薄的 Worker 入口：只做一件事 —— 把访客国家写进结算页。
+// 极薄的 Worker 入口：只做两件事 —— 裸域归一到 www、把访客国家写进结算页。
 //
 // 其余请求一律直接交给静态资源，不经过这里处理逻辑，
 // 所以静态站的性能和缓存行为保持不变。
@@ -13,7 +13,18 @@ interface Env {
   };
 }
 
-/** Cloudflare 用它表示「未知」和「Tor 出口」，都不能当国家码发给 Paddle。 */
+/**
+ * 两个主机名都绑在同一个 Worker 上（见 cloudflare.config.ts）。
+ * 站点只认 www 这一个主机名：canonical / hreflang / sitemap 全部指向它，
+ * 裸域必须 301 过去，否则同一套页面在 Google 眼里是两份，裸域那份会被
+ * 判成「备用网页（有适当的规范标记）」，稀释掉本该集中的信号。
+ */
+const APEX_HOST = "werenota.com";
+const CANONICAL_HOST = "www.werenota.com";
+
+/**
+ * Cloudflare 用它表示「未知」和「Tor 出口」，都不能当国家码发给 Paddle。
+ */
 const NON_COUNTRY_VALUES = new Set(["XX", "T1", ""]);
 
 /**
@@ -34,9 +45,27 @@ function isRealCountryOf(value: string | null): value is string {
   return /^[A-Z]{2}$/.test(normalized);
 }
 
+/** 裸域 → www 的永久重定向；已经在 www 上、或本地/沙箱域名时返回 null。 */
+function apexRedirect(url: URL): Response | null {
+  if (url.hostname !== APEX_HOST) return null;
+  const target = new URL(`${url.pathname}${url.search}`, `https://${CANONICAL_HOST}`);
+  return new Response(null, {
+    status: 301,
+    headers: {
+      location: target.toString(),
+      // 301 本身就是可缓存的；显式给一年，省掉每个访客一次边缘跳转。
+      "cache-control": "public, max-age=31536000",
+    },
+  });
+}
+
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
+
+    const redirect = apexRedirect(url);
+    if (redirect) return redirect;
+
     const isCheckoutPage = isCheckoutPath(url.pathname);
 
     const response = await env.ASSETS.fetch(request);

@@ -135,7 +135,7 @@ export function renderHome(locale: Locale): PageMeta {
       { id: "mcp", lede: d.mcp.lede },
     )}
 
-    ${section(d.faq.title, `<p class="badge">${escapeHtml(c.common.comingSoonNote)}</p>${faqList(d.faq.items)}`)}
+    ${section(d.faq.title, faqList(d.faq.items))}
 
     <section class="cta-band">
       <div class="wrap">
@@ -454,7 +454,6 @@ export function renderPricing(locale: Locale): PageMeta {
         <span class="badge">${escapeHtml(d.badge)}</span>
         <h1>${escapeHtml(d.title)}</h1>
         <p class="lede">${escapeHtml(d.intro)}</p>
-        <p class="badge">${escapeHtml(c.common.comingSoonNote)}</p>
       </div>
     </section>
 

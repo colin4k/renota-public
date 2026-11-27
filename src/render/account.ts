@@ -181,6 +181,8 @@ export function renderAccount(locale: Locale): PageMeta {
     title: a.title,
     description: a.intro,
     body,
+    // 功能页：canonical 自引用（否则默认落回首页，等于告诉 Google 这页是首页副本），再靠 noindex 排除。
+    canonicalPath: "/account",
     indexable: false,
   };
 }

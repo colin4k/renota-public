@@ -24,7 +24,7 @@ export function renderWelcome(locale: Locale): PageMeta {
   return {
     locale,
     page: "welcome",
-    canonicalPath: "/welcome",
+    canonicalPath: "/welcome/",
     title: t.heading,
     description: t.lede,
     body,

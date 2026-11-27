@@ -17,3 +17,6 @@ dist/
 
 # macOS 目录索引文件
 .DS_Store
+
+# wrangler dev 的本地状态
+.wrangler/

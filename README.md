@@ -17,23 +17,25 @@ npm run typecheck
 npm run crx:sync   # 商店发版后，把最新 .crx 拉到 public/downloads/（Chrome 页的离线下载用）
 ```
 
-## 部署（Cloudflare Pages）
+## 部署（Cloudflare Workers 静态资源）
 
-推到 GitHub 后在 Cloudflare Pages 里连接仓库，构建配置：
-
-| 项 | 值 |
-|---|---|
-| Build command | `npm run build` |
-| Build output directory | `dist` |
-| Node version | 20 或更高 |
-
-或者用 CLI：
+构建与上线都由 `cf` CLI 完成，配置在 `cloudflare.config.ts`：
 
 ```bash
-npx wrangler pages deploy dist --project-name renota-public
+set -a && . ./.env && set +a   # 构建需要 PADDLE_*
+npx cf build
+npx cf deploy --prebuilt
 ```
 
-`wrangler.toml` 已声明输出目录；缓存与安全响应头在 `public/_headers`，会随构建复制到 `dist/`。
+`cf build` 把站点和 `src/worker.ts` 一起写进 `.cloudflare/output/`，`--prebuilt` 直接上传这份产物，不会再构建一次。缓存与安全响应头在 `public/_headers`，随构建复制到 `dist/`。
+
+`src/worker.ts` 只做两件事：裸域 301 到 www、把访客国家写进结算页。三条配置缺一不可，少任何一条 Worker 都不会按预期生效：
+
+| 配置 | 作用 |
+|---|---|
+| `worker.entrypoint` | 不写的话 Worker 根本不参与部署 |
+| `env: { ASSETS: { type: "assets" } }` | 不写的话 Worker 拿不到 `env.ASSETS`，无法分发静态资源 |
+| `assets.runWorkerFirst: true` | 不写的话资产层会先吃掉所有命中静态文件，Worker 永远不执行 |
 
 上线前改一处域名：
 
@@ -41,9 +43,9 @@ npx wrangler pages deploy dist --project-name renota-public
 src/site.ts  →  site.url
 ```
 
-`canonical`、`hreflang`、`sitemap.xml`、`robots.txt`、OG 图地址都由它生成，改完全站一致。
+`canonical`、`hreflang`、`sitemap.xml`、`robots.txt`、OG 图地址都由它生成，改完全站一致。`werenota.com` 与 `www.werenota.com` 都绑同一个 Worker，只有 www 是站点主机名，裸域一律 301。
 
-> Cloudflare Pages 对 `/chrome` 会自动映射到 `/chrome/index.html`，与站内使用的 `/chrome/` 形式一致，不需要额外的重写规则。
+> 静态资源层对 `/chrome` 会自动映射到 `/chrome/index.html`，与站内使用的 `/chrome/` 形式一致，不需要额外的重写规则。
 
 ## SEO 做了什么
 

@@ -366,7 +366,7 @@ export function renderCheckout(locale: Locale, paddle: PaddleClientConfig): Page
   return {
     locale,
     page: "checkout",
-    canonicalPath: "/checkout",
+    canonicalPath: "/checkout/",
     title: t.heading,
     description: t.lede,
     body,
