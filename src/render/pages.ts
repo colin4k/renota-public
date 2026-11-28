@@ -167,9 +167,19 @@ export function renderHome(locale: Locale): PageMeta {
       {
         "@context": "https://schema.org",
         "@type": "Organization",
-        name: site.name,
+        // 中文页用中文名，同时挂上英文名做别名：搜索「Renota」与「睿记」时都能对上同一个实体。
+        name: c.siteName,
+        ...(c.siteName === site.name ? {} : { alternateName: site.name }),
         url: site.url,
+        logo: {
+          "@type": "ImageObject",
+          url: `${site.url}/apple-touch-icon.png`,
+          width: 180,
+          height: 180,
+        },
         email: site.email,
+        // 商店详情页是目前唯一一个由第三方维护、可验证的品牌实体页面。
+        sameAs: [site.links.chromeStore],
       },
       faqJsonLd(d.faq.items),
     ],
@@ -266,6 +276,15 @@ export function renderProduct(locale: Locale, page: ProductKey): PageMeta {
     ${section(p.features.title, featureGrid(p.features.items), { id: "features" })}
 
     ${section(p.steps.title, steps(p.steps.items))}
+
+    ${
+      page === "zotero"
+        ? section(
+            c.zoteroGuide.title,
+            `<p class="body-text">${escapeHtml(c.zoteroGuide.intro)}</p>${featureGrid(c.zoteroGuide.items)}`,
+          )
+        : ""
+    }
 
     ${section(p.privacy.title, `<p class="body-text">${escapeHtml(p.privacy.body)}</p>${checklist(p.privacy.points)}`, {
       alt: true,

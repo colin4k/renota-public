@@ -61,9 +61,9 @@ export const en = {
         "The terms that govern your use of Renota: your content, your API keys, acceptable use, availability, and liability.",
     },
     home: {
-      title: "Renota — read anything, keep what matters, ask your own notes",
+      title: "Renota — AI reading assistant for Chrome, Zotero and Android",
       description:
-        "Renota turns what you read in the browser, in Zotero and on your phone into one private knowledge base you can ask questions to. Bring your own API key.",
+        "Renota turns what you read in Chrome, in Zotero and on Android into one private knowledge base you can ask questions to. Bring your own API key.",
     },
     chrome: {
       title: "Renota for Chrome — an AI reading assistant with your own notes",
@@ -71,9 +71,9 @@ export const en = {
         "Explain, analyze, challenge and translate any selected text, save it to your own knowledge base, and ask that library questions. Local-first, works with OpenAI, DeepSeek, OpenRouter or any compatible API.",
     },
     zotero: {
-      title: "Renota for Zotero — an AI reading assistant for EPUB and PDF books",
+      title: "Renota for Zotero — an AI plugin for reading EPUB and PDF books",
       description:
-        "Read books in Zotero with explanations, in-book search and spoiler protection. Save passages, highlight and take notes without leaving the reader, then search everything later.",
+        "A Zotero plugin that reads with you: explanations, in-book search and spoiler protection for EPUB and PDF books. Passages and notes stay in Zotero.",
     },
     android: {
       title: "Renota for Android — a floating AI reader for any app",
@@ -253,6 +253,40 @@ export const en = {
       title: "Start with the surface you already read on",
       body: "Pick the app that matches where most of your reading happens. You can add the others later — the knowledge base is shared.",
     },
+  },
+
+  /* Zotero 页专用的一段选购指南：插件这个品类里用户真正会问的问题，
+     也是「zotero plugin epub」「zotero ai plugin api key」这类长尾词的落点。 */
+  zoteroGuide: {
+    title: "How to choose a Zotero AI plugin",
+    intro:
+      "There are dozens of Zotero plugins, and several now put a model inside the reader. These are the questions worth asking before you install one.",
+    items: [
+      {
+        title: "Does it see only what you have read?",
+        body: "A plugin that sends the whole book to the model can spoil the chapter you are still on. Look for one that cuts the text at your reading position, in search results and recaps too.",
+      },
+      {
+        title: "Where does the API key live?",
+        body: "With your own key the provider bills you directly and the plugin author never sees your traffic. A subscription usually means the text passes through someone else's server.",
+      },
+      {
+        title: "Can you pick the model?",
+        body: "A plugin tied to one vendor cannot follow price changes or move to a local endpoint. An OpenAI-compatible base URL keeps that choice open.",
+      },
+      {
+        title: "Does it handle EPUB, or only PDF?",
+        body: "Most plugins only read PDF page text. EPUB needs chapter paths — which is what makes a recap of chapter 12 possible at all.",
+      },
+      {
+        title: "Do the answers go back into Zotero?",
+        body: "If explanations only live inside the plugin, you have built another notes silo. Highlight comments and reading notes keep them next to the book.",
+      },
+      {
+        title: "Does it replace Zotero, or sit beside it?",
+        body: "A plugin should add actions to the existing reader and leave your library, annotations and sync untouched.",
+      },
+    ],
   },
 
   product: {
@@ -467,6 +501,10 @@ export const en = {
           {
             q: "Can the Chrome extension read this library?",
             a: "Yes: with cloud sync on, the extension and the plugin share the same knowledge base. You can also point Claude, Cursor and other MCP clients at renota-mcp to search both sides at once.",
+          },
+          {
+            q: "Does it work alongside other Zotero plugins?",
+            a: "Yes. It registers its own menu actions and its own reading-note entry, and leaves Zotero's annotation store and sync untouched — translators, PDF previews and export plugins keep working as before.",
           },
         ],
       },

@@ -15,6 +15,8 @@ export const site = {
   name: "Renota",
   /** 中文名。 */
   nameZh: "睿记",
+  /** 繁体中文名。标题去重时要认得出它，别在「睿記 …」后面再追加英文名。 */
+  nameZhHant: "睿記",
   tagline: {
     en: "Read anything. Keep what matters. Ask your own notes.",
     "zh-CN": "读任何东西，留下有用的，然后问自己的笔记。",

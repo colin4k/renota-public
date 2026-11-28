@@ -62,9 +62,9 @@ export const es: Content = {
         "Las condiciones que rigen tu uso de Renota: tu contenido, tus claves API, el uso aceptable, la disponibilidad y la responsabilidad.",
     },
     home: {
-      title: "Renota — lee, guarda lo importante, pregunta a tus notas",
+      title: "Renota — asistente de lectura con IA para Chrome, Zotero y Android",
       description:
-        "Renota convierte lo que lees en el navegador, en Zotero y en el teléfono en una base de conocimiento privada a la que preguntar. Usa tu propia clave API.",
+        "Renota convierte lo que lees en Chrome, en Zotero y en Android en una base de conocimiento privada a la que preguntar. Usa tu propia clave API.",
     },
     chrome: {
       title: "Renota para Chrome — lectura con IA y tus propias notas",
@@ -72,9 +72,9 @@ export const es: Content = {
         "Explica, analiza, cuestiona y traduce lo que seleccionas y guárdalo en tu base de conocimiento. Primero local; con OpenAI, DeepSeek y OpenRouter.",
     },
     zotero: {
-      title: "Renota para Zotero — lectura con IA para libros EPUB y PDF",
+      title: "Renota para Zotero — un plugin con IA para leer libros EPUB y PDF",
       description:
-        "Lee libros en Zotero con explicaciones, búsqueda en el libro y protección contra spoilers. Guarda pasajes, resalta y toma notas sin salir del lector.",
+        "Un plugin de Zotero que lee contigo: explicaciones, búsqueda en el libro y protección contra spoilers. Los pasajes y las notas se quedan en Zotero.",
     },
     android: {
       title: "Renota para Android — lector flotante con IA",
@@ -254,6 +254,38 @@ export const es: Content = {
       title: "Empieza por la plataforma en la que ya lees",
       body: "Elige la app que encaje con donde ocurre la mayor parte de tu lectura. Puedes añadir las otras más adelante: la base de conocimiento es compartida.",
     },
+  },
+
+  zoteroGuide: {
+    title: "Cómo elegir un plugin de Zotero",
+    intro:
+      "Hay decenas de plugins para Zotero y varios ya meten un modelo en el lector. Estas son las preguntas que conviene hacer antes de instalar uno.",
+    items: [
+      {
+        title: "¿Solo ve lo que has leído?",
+        body: "Un plugin que manda el libro entero al modelo puede destriparte el capítulo que estás leyendo. Comprueba que corta el texto en tu posición de lectura, también en búsquedas y resúmenes.",
+      },
+      {
+        title: "¿Dónde vive la clave API?",
+        body: "Con tu propia clave, el proveedor te cobra directamente y el autor del plugin no ve tu tráfico. Una suscripción suele implicar un servidor ajeno en medio.",
+      },
+      {
+        title: "¿Puedes elegir el modelo?",
+        body: "Un plugin atado a un proveedor no puede seguir los cambios de precio ni pasar a un endpoint local. Una URL base compatible con OpenAI mantiene esa opción abierta.",
+      },
+      {
+        title: "¿Lee EPUB o solo PDF?",
+        body: "Casi todos leen solo el texto de las páginas PDF. El EPUB necesita la estructura de capítulos, y sin ella no hay resumen del capítulo 12.",
+      },
+      {
+        title: "¿Las respuestas vuelven a Zotero?",
+        body: "Si las explicaciones solo viven en el plugin, has creado otro silo de notas. Los comentarios de resaltado y las notas de lectura las dejan junto al libro.",
+      },
+      {
+        title: "¿Sustituye a Zotero o convive con él?",
+        body: "Un plugin debe añadir acciones al lector existente y no tocar tu biblioteca, tus anotaciones ni la sincronización.",
+      },
+    ],
   },
 
   product: {
@@ -468,6 +500,10 @@ export const es: Content = {
           {
             q: "¿Puede la extensión de Chrome leer esta biblioteca?",
             a: "Sí: con la sincronización en la nube activada, la extensión y el plugin comparten la misma base de conocimiento. También puedes conectar Claude, Cursor y otros clientes MCP a renota-mcp para buscar en ambos lados.",
+          },
+          {
+            q: "¿Funciona junto a otros plugins de Zotero?",
+            a: "Sí. Solo registra sus propias acciones de menú y su entrada de nota de lectura, y no toca el almacén de anotaciones ni la sincronización, así que los plugins de traducción, vista previa de PDF o exportación siguen igual.",
           },
         ],
       },

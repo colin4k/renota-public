@@ -61,9 +61,9 @@ export const zhCN: Content = {
       description: "使用睿记的服务条款：内容归属、API Key、可接受使用、服务可用性与责任范围。",
     },
     home: {
-      title: "睿记 Renota — 读任何东西，留下有用的，然后问自己的笔记",
+      title: "睿记 Renota — Chrome、Zotero 与手机的 AI 阅读助手",
       description:
-        "睿记把你在网页、Zotero 和手机上读到的东西汇成一份私有知识库，可以随时提问。自带 API Key，数据默认留在本地。",
+        "睿记把你在 Chrome、Zotero 和手机上读到的东西汇成一份私有知识库，可以随时提问。自带 API Key，数据默认留在本地。",
     },
     chrome: {
       title: "睿记 Chrome 扩展 — 带着你笔记的 AI 阅读助手",
@@ -73,7 +73,7 @@ export const zhCN: Content = {
     zotero: {
       title: "睿记 Zotero 插件 — 读 EPUB 与 PDF 书籍的 AI 助手",
       description:
-        "在 Zotero 阅读器里边读边问：解释、书内检索、防剧透、前情回顾与本章摘要。划线和笔记可存回 Zotero，也能进知识库日后检索。",
+        "这个 Zotero 插件让你在阅读器里边读边问：解释、书内检索、防剧透、前情回顾与本章摘要。划线和笔记可存回 Zotero，也能进知识库日后检索。",
     },
     android: {
       title: "睿记 安卓版 — 任意 app 上都能用的悬浮 AI 阅读器",
@@ -250,6 +250,38 @@ export const zhCN: Content = {
       title: "从你平时最常读的地方开始",
       body: "先选一个最贴合你阅读场景的应用，其它的以后再装 —— 知识库是共用的。",
     },
+  },
+
+  zoteroGuide: {
+    title: "怎么挑一个 Zotero 插件",
+    intro:
+      "Zotero 的插件有上百个，其中一批已经在阅读器里接了大模型。装之前，这几个问题值得先问清楚。",
+    items: [
+      {
+        title: "它只看到你读过的部分吗？",
+        body: "把整本书都发给模型的插件，会剧透你还没读到的章节。要看它在检索结果和回顾里，是不是也截断在你读到的位置。",
+      },
+      {
+        title: "API Key 存在哪里？",
+        body: "用自己的 Key，账单直接来自模型厂商，插件作者看不到你的请求内容。走订阅的，通常是另一台服务器在转发。",
+      },
+      {
+        title: "模型能自己换吗？",
+        body: "绑定单一厂商的插件，涨价了只能跟着走，也换不到本地端点。留一个 OpenAI 兼容的 Base URL 才有退路。",
+      },
+      {
+        title: "它支持 EPUB，还是只能读 PDF？",
+        body: "多数插件只读 PDF 的页面文字。EPUB 要靠章节结构，没有它就不可能「总结第 12 章」。",
+      },
+      {
+        title: "答案写得回 Zotero 吗？",
+        body: "解释只活在插件里，等于又多了一个笔记孤岛。能写成高亮批注或阅读笔记，才会一直跟在书旁边。",
+      },
+      {
+        title: "它是替代 Zotero，还是长在 Zotero 上？",
+        body: "插件应当只给现有阅读器加动作，你的文库、标注和同步不该被接管。",
+      },
+    ],
   },
 
   product: {
@@ -464,6 +496,10 @@ export const zhCN: Content = {
           {
             q: "Chrome 扩展能读这个知识库吗？",
             a: "可以：开启云同步后，扩展和插件用同一份知识库；也可以让 Claude、Cursor 这类客户端通过 renota-mcp 直接检索两边的笔记。",
+          },
+          {
+            q: "它会和其他 Zotero 插件冲突吗？",
+            a: "不会。它只注册自己的菜单动作和阅读笔记条目，不碰 Zotero 的标注库与同步，翻译、PDF 预览、导出这类插件照常工作。",
           },
         ],
       },

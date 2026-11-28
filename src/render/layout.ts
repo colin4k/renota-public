@@ -161,9 +161,17 @@ function alternates(page: PageKey): string {
   return tags.join("\n");
 }
 
-/** 拼接页面标题：产品页带站点名后缀，首页不加（标题本身已含品牌）。 */
+/**
+ * 拼接页面标题：产品页自带品牌名（「Renota for Zotero — …」），不再追加后缀，
+ * 否则同一页标题里品牌出现两次，白占一段会被 Google 截断的长度。
+ */
 function fullTitle(meta: PageMeta): string {
-  return meta.page === "home" ? meta.title : `${meta.title} · ${site.name}`;
+  if (meta.page === "home") return meta.title;
+  // 标题已经带了品牌（英文名或中文名）就不再追加后缀，
+  // 否则「睿记 Zotero 插件 — … · Renota」白占一段会被截断的长度。
+  const brands = [site.name, site.nameZh, site.nameZhHant];
+  if (brands.some((brand) => meta.title.includes(brand))) return meta.title;
+  return `${meta.title} · ${site.name}`;
 }
 
 export function renderPage(meta: PageMeta): string {

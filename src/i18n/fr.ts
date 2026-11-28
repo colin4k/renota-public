@@ -62,9 +62,9 @@ export const fr: Content = {
         "Les règles qui encadrent votre usage de Renota : votre contenu, vos clés API, l'usage acceptable, la disponibilité et la responsabilité.",
     },
     home: {
-      title: "Renota — lisez, gardez l'essentiel, interrogez vos notes",
+      title: "Renota — assistant de lecture IA pour Chrome, Zotero et Android",
       description:
-        "Renota réunit ce que vous lisez dans le navigateur, dans Zotero et sur votre téléphone dans une base de connaissances privée à interroger. Votre propre clé API.",
+        "Renota réunit ce que vous lisez dans Chrome, dans Zotero et sur Android dans une base de connaissances privée à interroger. Votre propre clé API.",
     },
     chrome: {
       title: "Renota pour Chrome — assistant de lecture IA avec vos notes",
@@ -72,9 +72,9 @@ export const fr: Content = {
         "Expliquez, critiquez ou traduisez le texte sélectionné, gardez-le dans votre base de connaissances et interrogez-la. Local d'abord, compatible OpenAI.",
     },
     zotero: {
-      title: "Renota pour Zotero — assistant IA pour livres EPUB et PDF",
+      title: "Renota pour Zotero — un plugin IA pour lire des livres EPUB et PDF",
       description:
-        "Lisez des livres dans Zotero avec explications, recherche interne et anti-spoiler. Sauvegardez des passages et prenez des notes sans quitter le lecteur.",
+        "Un plugin Zotero qui lit avec vous : explications, recherche interne et anti-spoiler pour les livres EPUB et PDF. Les passages et les notes restent dans Zotero.",
     },
     android: {
       title: "Renota pour Android — lecteur IA flottant pour toute appli",
@@ -254,6 +254,38 @@ export const fr: Content = {
       title: "Commencez par la surface où vous lisez déjà",
       body: "Choisissez l'appli qui correspond à l'endroit où se passe l'essentiel de vos lectures. Vous pourrez ajouter les autres plus tard — la base de connaissances est partagée.",
     },
+  },
+
+  zoteroGuide: {
+    title: "Comment choisir un plugin Zotero",
+    intro:
+      "Il existe des dizaines de plugins Zotero, et plusieurs ajoutent désormais un modèle au lecteur. Voici les questions à poser avant d'en installer un.",
+    items: [
+      {
+        title: "Voit-il seulement ce que vous avez lu ?",
+        body: "Un plugin qui envoie tout le livre au modèle peut dévoiler le chapitre en cours. Vérifiez qu'il coupe le texte à votre position de lecture, y compris dans la recherche et les résumés.",
+      },
+      {
+        title: "Où vit la clé API ?",
+        body: "Avec votre propre clé, le fournisseur vous facture directement et l'auteur du plugin ne voit pas votre trafic. Un abonnement suppose généralement un serveur intermédiaire.",
+      },
+      {
+        title: "Peut-on choisir le modèle ?",
+        body: "Un plugin lié à un seul fournisseur ne peut pas suivre les changements de prix ni passer sur un point de terminaison local. Une URL de base compatible OpenAI garde cette liberté.",
+      },
+      {
+        title: "Gère-t-il l'EPUB, ou seulement le PDF ?",
+        body: "La plupart ne lisent que le texte des pages PDF. L'EPUB demande la structure des chapitres — sans elle, pas de résumé du chapitre 12.",
+      },
+      {
+        title: "Les réponses retournent-elles dans Zotero ?",
+        body: "Si les explications restent dans le plugin, vous avez un silo de notes de plus. Les commentaires de surlignage et les notes de lecture les gardent près du livre.",
+      },
+      {
+        title: "Remplace-t-il Zotero, ou l'accompagne-t-il ?",
+        body: "Un plugin doit ajouter des actions au lecteur existant et laisser intactes votre bibliothèque, vos annotations et votre synchronisation.",
+      },
+    ],
   },
 
   product: {
@@ -468,6 +500,10 @@ export const fr: Content = {
           {
             q: "L'extension Chrome peut-elle lire cette bibliothèque ?",
             a: "Oui : avec la synchronisation cloud activée, l'extension et le plugin partagent la même bibliothèque. Vous pouvez aussi brancher Claude, Cursor et d'autres clients MCP sur renota-mcp pour interroger les deux côtés.",
+          },
+          {
+            q: "Fonctionne-t-il avec les autres plugins Zotero ?",
+            a: "Oui. Il n'enregistre que ses propres actions de menu et son entrée de note de lecture, sans toucher au stockage des annotations ni à la synchronisation — les plugins de traduction, d'aperçu PDF ou d'export continuent de fonctionner.",
           },
         ],
       },

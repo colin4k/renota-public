@@ -62,9 +62,9 @@ export const de: Content = {
         "Die Bedingungen für die Nutzung von Renota: Ihre Inhalte, Ihre API-Schlüssel, zulässige Nutzung, Verfügbarkeit und Haftung.",
     },
     home: {
-      title: "Renota — lesen, behalten, eigene Notizen befragen",
+      title: "Renota — KI-Leseassistent für Chrome, Zotero und Android",
       description:
-        "Renota macht aus dem, was Sie im Browser, in Zotero und auf dem Smartphone lesen, eine private Wissensdatenbank zum Befragen. Mit eigenem API-Schlüssel.",
+        "Renota macht aus dem, was Sie in Chrome, in Zotero und auf Android lesen, eine private Wissensdatenbank zum Befragen. Mit eigenem API-Schlüssel.",
     },
     chrome: {
       title: "Renota für Chrome — KI-Leseassistent mit eigenen Notizen",
@@ -72,9 +72,9 @@ export const de: Content = {
         "Auswahl erklären, analysieren, hinterfragen, übersetzen und in Ihre Wissensdatenbank speichern. Local-First, mit OpenAI, DeepSeek, OpenRouter oder eigener API.",
     },
     zotero: {
-      title: "Renota für Zotero — KI-Leseassistent für EPUB und PDF",
+      title: "Renota für Zotero — ein KI-Plugin zum Lesen von EPUB- und PDF-Büchern",
       description:
-        "Bücher in Zotero mit Erklärungen, Suche im Buch und Spoilerschutz lesen. Passagen speichern und markieren, ohne den Reader zu verlassen — später durchsuchen.",
+        "Ein Zotero-Plugin, das mitliest: Erklärungen, Suche im Buch und Spoilerschutz für EPUB und PDF. Passagen und Notizen bleiben in Zotero.",
     },
     android: {
       title: "Renota für Android — schwebender KI-Reader für jede App",
@@ -254,6 +254,38 @@ export const de: Content = {
       title: "Starten Sie dort, wo Sie ohnehin lesen",
       body: "Wählen Sie die App, die zu Ihrem Leseverhalten passt. Die anderen können später dazukommen — die Wissensdatenbank ist gemeinsam.",
     },
+  },
+
+  zoteroGuide: {
+    title: "Wie man ein Zotero-Plugin auswählt",
+    intro:
+      "Es gibt Dutzende Zotero-Plugins, und einige bringen inzwischen ein Modell in den Reader. Diese Fragen lohnen sich vor der Installation.",
+    items: [
+      {
+        title: "Sieht es nur, was Sie gelesen haben?",
+        body: "Ein Plugin, das das ganze Buch an das Modell schickt, kann das aktuelle Kapitel verraten. Achten Sie darauf, dass der Text an Ihrer Leseposition abgeschnitten wird — auch in Suchergebnissen und Zusammenfassungen.",
+      },
+      {
+        title: "Wo liegt der API-Schlüssel?",
+        body: "Mit eigenem Schlüssel rechnet der Anbieter direkt mit Ihnen ab, und der Plugin-Autor sieht Ihren Verkehr nicht. Ein Abo bedeutet meist einen fremden Server dazwischen.",
+      },
+      {
+        title: "Kann man das Modell wählen?",
+        body: "Ein an einen Anbieter gebundenes Plugin kann Preisänderungen nicht mitgehen und nicht auf einen lokalen Endpunkt wechseln. Eine OpenAI-kompatible Basis-URL hält die Wahl offen.",
+      },
+      {
+        title: "Kann es EPUB, oder nur PDF?",
+        body: "Die meisten Plugins lesen nur PDF-Seitentext. EPUB braucht Kapitelpfade — ohne sie ist eine Zusammenfassung von Kapitel 12 unmöglich.",
+      },
+      {
+        title: "Gehen die Antworten zurück in Zotero?",
+        body: "Bleiben Erklärungen nur im Plugin, entsteht ein weiteres Notiz-Silo. Markierungskommentare und Lesenotizen halten sie beim Buch.",
+      },
+      {
+        title: "Ersetzt es Zotero, oder steht es daneben?",
+        body: "Ein Plugin sollte dem vorhandenen Reader Aktionen hinzufügen und Bibliothek, Anmerkungen und Synchronisierung unberührt lassen.",
+      },
+    ],
   },
 
   product: {
@@ -468,6 +500,10 @@ export const de: Content = {
           {
             q: "Kann die Chrome-Erweiterung diese Bibliothek lesen?",
             a: "Ja: Mit aktivierter Cloud-Synchronisierung teilen sich Erweiterung und Plugin dieselbe Wissensdatenbank. Alternativ lassen sich Claude, Cursor und andere MCP-Clients über renota-mcp direkt auf beide Seiten ansetzen.",
+          },
+          {
+            q: "Verträgt es sich mit anderen Zotero-Plugins?",
+            a: "Ja. Es registriert nur eigene Menüaktionen und einen eigenen Lesenotiz-Eintrag und lässt Anmerkungsspeicher und Synchronisierung unberührt — Übersetzer-, PDF-Vorschau- und Export-Plugins arbeiten unverändert.",
           },
         ],
       },

@@ -62,9 +62,9 @@ export const zhTW: Content = {
         "使用睿記的服務條款：內容歸屬、API Key、可接受使用、服務可用性與責任範圍。",
     },
     home: {
-      title: "睿記 Renota — 讀任何東西，留下重要的，再問自己的筆記",
+      title: "睿記 Renota — Chrome、Zotero 與手機的 AI 閱讀助手",
       description:
-        "睿記把你用瀏覽器、Zotero 和手機讀到的內容，彙整成一份可以提問的私有知識庫。自備 API Key，資料預設留在本機。",
+        "睿記把你用 Chrome、Zotero 和手機讀到的內容，彙整成一份可以提問的私有知識庫。自備 API Key，資料預設留在本機。",
     },
     chrome: {
       title: "睿記 Chrome 擴充功能 — 帶著你筆記的 AI 閱讀助手",
@@ -74,7 +74,7 @@ export const zhTW: Content = {
     zotero: {
       title: "睿記 Zotero 外掛 — 讀 EPUB 與 PDF 書籍的 AI 助手",
       description:
-        "在 Zotero 閱讀器裡邊讀邊問：解釋、書內搜尋、防劇透、前情回顧與本章摘要。螢光標記和筆記可存回 Zotero，也能進知識庫日後檢索。",
+        "這個 Zotero 外掛讓你邊讀邊問：解釋、書內搜尋、防劇透、前情回顧與本章摘要。螢光標記和筆記可存回 Zotero，也能進知識庫日後檢索。",
     },
     android: {
       title: "睿記 Android 版 — 任何應用程式都能用的懸浮 AI 閱讀器",
@@ -252,6 +252,38 @@ export const zhTW: Content = {
       title: "從你平常讀最多的地方開始",
       body: "先挑一個最貼近你閱讀場景的應用程式，其他的之後再裝 —— 知識庫是共用的。",
     },
+  },
+
+  zoteroGuide: {
+    title: "怎麼挑一個 Zotero 外掛",
+    intro:
+      "Zotero 的外掛有上百個，其中一批已經在閱讀器裡接了大模型。安裝之前，這幾個問題值得先問清楚。",
+    items: [
+      {
+        title: "它只看到你讀過的部分嗎？",
+        body: "把整本書都送給模型的外掛，會劇透你還沒讀到的章節。要看它在搜尋結果和回顧裡，是不是也截斷在你讀到的位置。",
+      },
+      {
+        title: "API Key 存在哪裡？",
+        body: "用自己的 Key，帳單直接來自模型廠商，外掛作者看不到你的請求內容。走訂閱的，通常是另一台伺服器在轉發。",
+      },
+      {
+        title: "模型能自己換嗎？",
+        body: "綁定單一廠商的外掛，漲價了只能跟著走，也換不到本機端點。留一個 OpenAI 相容的 Base URL 才有退路。",
+      },
+      {
+        title: "它支援 EPUB，還是只能讀 PDF？",
+        body: "多數外掛只讀 PDF 的頁面文字。EPUB 要靠章節結構，沒有它就不可能「總結第 12 章」。",
+      },
+      {
+        title: "答案寫得回 Zotero 嗎？",
+        body: "解釋只活在外掛裡，等於又多了一個筆記孤島。能寫成螢光標記批註或閱讀筆記，才會一直跟在書旁邊。",
+      },
+      {
+        title: "它是取代 Zotero，還是長在 Zotero 上？",
+        body: "外掛應該只給現有閱讀器加動作，你的文獻庫、標註和同步不該被接管。",
+      },
+    ],
   },
 
   product: {
@@ -466,6 +498,10 @@ export const zhTW: Content = {
           {
             q: "Chrome 擴充功能能讀這個知識庫嗎？",
             a: "可以：開啟雲端同步後，擴充功能和外掛用同一份知識庫；也可以讓 Claude、Cursor 這類用戶端透過 renota-mcp 直接檢索兩邊的筆記。",
+          },
+          {
+            q: "它會和其他 Zotero 外掛衝突嗎？",
+            a: "不會。它只註冊自己的選單動作和閱讀筆記項目，不碰 Zotero 的標註庫與同步，翻譯、PDF 預覽、匯出這類外掛照常工作。",
           },
         ],
       },
