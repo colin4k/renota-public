@@ -792,7 +792,11 @@ code, pre, kbd { font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Me
 .site-footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
 .site-footer a { color: var(--text-2); font-size: 0.875rem; text-decoration: none; transition: color var(--t-fast) var(--ease); }
 .site-footer a:hover { color: var(--text); }
-.footer-bottom { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--hairline); color: var(--muted); font-size: 0.8125rem; }
+.footer-bottom { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--hairline); color: var(--muted); font-size: 0.8125rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
+/* 第三方收录徽章：外观由对方的内联样式决定，这里只管它在页脚底行的位置，
+   以及不要继承 .site-footer a 的悬停提亮（它是外链卡片，不是文字链接）。 */
+.footer-bottom .footer-badge { flex: none; }
+.footer-bottom .footer-badge:hover { color: inherit; }
 .muted { color: var(--text-2); }
 .small { font-size: 0.875rem; }
 

@@ -174,6 +174,18 @@ function fullTitle(meta: PageMeta): string {
   return `${meta.title} · ${site.name}`;
 }
 
+/**
+ * ShapelessAI 目录收录徽章（第三方资产，原样嵌入，深色版）。
+ *
+ * 对方靠三件事校验收录：服务端 HTML 里能搜到真实文本 "Featured on ShapelessAI"、
+ * 一条指向 shapelessai.com/ai-tools/renota 的普通外链、且没有 rel="nofollow"。
+ * 所以上面的 href、文案、内联样式都不要改写 —— 想换外观只能整体换成对方给的
+ * 另一个版本（浅色卡 / 图片条 / 纯文字链，见 https://shapelessai.com/ai-tools/badge）。
+ *
+ * 只在首页输出：校验读的是首页，多放一页就多一次到第三方的图片请求。
+ */
+const SHAPELESS_BADGE = `<a class="footer-badge" href="https://shapelessai.com/ai-tools/renota?utm_source=werenota.com" target="_blank" rel="noopener noreferrer" title="Renota - Featured on ShapelessAI" style="display:inline-flex;align-items:center;gap:12px;height:56px;padding:0 20px 0 14px;border-radius:14px;background:#14181e;border:1.5px solid rgba(100,160,248,.38);box-sizing:border-box;text-decoration:none;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif;line-height:1"><img src="https://shapelessai.com/brand/logo-mark.png" alt="" width="54" height="30" style="display:block;height:30px;width:auto;filter:brightness(2.1) saturate(.8)"><span style="display:flex;flex-direction:column;gap:4px"><span style="font-size:10px;font-weight:700;letter-spacing:.16em;color:#9aa0a8">FEATURED ON</span><span style="font-size:20px;font-weight:700;letter-spacing:-.02em;color:#f8f8f4">Shapeless<span style="color:#64a0f8">AI</span></span></span></a>`;
+
 export function renderPage(meta: PageMeta): string {
   const c = content(meta.locale);
   const title = fullTitle(meta);
@@ -184,6 +196,8 @@ export function renderPage(meta: PageMeta): string {
   // 功能页没有预渲染的社媒预览图，也不该出现在分享卡片里。
   const ogImage = sitePage ? `${site.url}/og/${sitePage}-${meta.locale}.png` : null;
   const indexable = meta.indexable !== false;
+  // 收录徽章只挂首页页脚：check 读的是首页，别让每页都向第三方要一次图。
+  const featuredBadge = meta.page === "home" ? `\n      ${SHAPELESS_BADGE}` : "";
 
   const hreflangTags = sitePage ? alternates(sitePage) : "";
   const ogImageTags = ogImage
@@ -293,7 +307,7 @@ ${meta.body}
       </div>
     </div>
     <div class="wrap footer-bottom">
-      <span>© ${new Date().getFullYear()} ${escapeHtml(c.footer.copyright)}</span>
+      <span>© ${new Date().getFullYear()} ${escapeHtml(c.footer.copyright)}</span>${featuredBadge}
     </div>
   </footer>
 </body>
