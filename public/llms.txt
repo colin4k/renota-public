@@ -1,0 +1,47 @@
+# Renota
+
+> Renota turns what you read in Chrome, in Zotero and on Android into one private knowledge base you can ask questions to. Bring your own API key.
+
+Renota is a private, local-first knowledge base for researchers, students and readers. Capture passages from any web page in Chrome, from a book in Zotero, or from any screen on Android, and ask questions about your saved material with citations back to the original text. Your API key never leaves your device. The apps are free; cloud sync and the cloud MCP endpoint are Pro features at US$9.90 per month with a 3-day trial.
+
+## The three apps
+
+- [Renota for Chrome](https://www.werenota.com/chrome/): available now on the Chrome Web Store. Side-panel assistant: select any passage on any website, ask for explanation, analysis, translation or challenges, and save what matters into your knowledge base.
+- [Renota for Zotero](https://www.werenota.com/zotero/): available now, version 1.1.0, works with Zotero 7 and later. Lives inside the Zotero reader for EPUB, PDF and web snapshots. Only text before your reading position reaches the model (no spoilers); every book is chunked and indexed locally; answers can be written back as highlight comments or reading notes.
+- [Renota for Android](https://www.werenota.com/android/): coming soon. A floating ball over any app: frame a region on screen, recognize the text on-device with offline Chinese OCR, and ask your model. Ships as a sideloaded APK (no Play Store version).
+
+## Pricing
+
+- Apps: free, with your own model key.
+- Pro: US$9.90 per month, 3-day trial. Includes cloud sync across devices and the cloud MCP endpoint.
+- Details: [Pricing](https://www.werenota.com/pricing/)
+
+## Privacy and your model key
+
+- Bring your own key: OpenAI, DeepSeek, Anthropic, OpenRouter or any OpenAI-compatible endpoint. Requests go straight from your device to the provider, never through Renota.
+- Local-first: clips, highlights and notes live on your device by default. Cloud sync is opt-in and can be switched off at any time; only knowledge entries sync, API keys never leave the device; deletions sync too.
+- Retrieval uses BM25 search with CJK tokenization, so Chinese passages are found by meaning, not only exact words. Answers cite the clips and book passages they used, with links back to the original text.
+
+## For agents (MCP)
+
+- Cloud MCP endpoint (Pro): create an API key on the account page and point an agent at https://cloud.werenota.com/mcp. Read-only.
+- Local MCP server: the free, open-source renota-mcp server runs on your own machine, reads the local library and lets Claude Code, Cursor and other agents search it with no account and nothing uploaded.
+- Which option fits: [FAQ](https://www.werenota.com/faq/) — short answers on cost, the Zotero plugin and connecting Claude Code or Cursor.
+- Details: [Account](https://www.werenota.com/account/)
+
+## Key pages
+
+- [Renota homepage](https://www.werenota.com/): what Renota does and how to start
+- [Renota for Chrome](https://www.werenota.com/chrome/)
+- [Renota for Zotero](https://www.werenota.com/zotero/)
+- [Renota for Android](https://www.werenota.com/android/)
+- [Pricing](https://www.werenota.com/pricing/)
+- [FAQ](https://www.werenota.com/faq/)
+- [Privacy policy](https://www.werenota.com/privacy/)
+- [Account](https://www.werenota.com/account/)
+
+## Elsewhere
+
+- [Renota on the Chrome Web Store](https://chromewebstore.google.com/detail/renota/iebpcobgihlbcndpbmjcjdloegoedbel)
+- [Renota on GitHub](https://github.com/colin4k/renota-public)
+- [Renota for Zotero — releases and documentation](https://github.com/colin4k/renota-zotero)

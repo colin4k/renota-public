@@ -11,7 +11,7 @@ import { content } from "./i18n/index.js";
 import { renderPage } from "./render/layout.js";
 import { createHash } from "node:crypto";
 import { renderAccount } from "./render/account.js";
-import { renderHome, renderPricing, renderProduct, renderPrivacy, renderTerms } from "./render/pages.js";
+import { renderFaq, renderHome, renderPricing, renderProduct, renderPrivacy, renderTerms } from "./render/pages.js";
 import { renderCheckout } from "./render/checkout.js";
 import { renderWelcome } from "./render/welcome.js";
 import { readPaddleClientConfig } from "./paddle.js";
@@ -198,7 +198,9 @@ async function build(): Promise<void> {
               ? renderTerms(entry.locale, termsHtml[entry.locale])
               : entry.page === "pricing"
                 ? renderPricing(entry.locale)
-                : renderProduct(entry.locale, entry.page);
+                : entry.page === "faq"
+                  ? renderFaq(entry.locale)
+                  : renderProduct(entry.locale, entry.page);
 
     const html = renderPage({ ...meta, cssHref });
     const file = htmlPath(entry.locale, entry.page);
@@ -245,7 +247,9 @@ async function build(): Promise<void> {
             ? c.privacy.title
             : page === "pricing"
               ? c.pricing.title
-              : c.product[page].name;
+              : page === "faq"
+                ? c.faq.title
+                : c.product[page].name;
       const subtitle =
         page === "home"
           ? c.seo.home.description
@@ -253,7 +257,9 @@ async function build(): Promise<void> {
             ? c.privacy.summaryTitle
             : page === "pricing"
               ? c.pricing.pro.summary
-              : c.product[page].tagline;
+              : page === "faq"
+                ? c.faq.lede
+                : c.product[page].tagline;
 
       const svg = renderOgSvg({ title, subtitle, brand: c.siteName, locale });
       const png = await rasterize(svg, 1200);

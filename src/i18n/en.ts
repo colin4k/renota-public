@@ -12,6 +12,7 @@ export const en = {
     privacy: "Privacy",
     account: "Account",
     menu: "Menu",
+    faq: "FAQ",
     language: "Language",
     home: "Home",
   },
@@ -90,6 +91,10 @@ export const en = {
       description:
         "Renota is free with your own API key. Cloud sync across the browser, Zotero and your phone is US$9.90 per month. Cancel anytime.",
     },
+    faq: {
+      title: "FAQ — Renota, the AI reading assistant for Chrome, Zotero and Android",
+      description: "What Renota is, why it fits researchers and students, what the Zotero plugin does, what it costs, and how to connect it to Claude Code or Cursor.",
+    },
   },
 
   home: {
@@ -121,7 +126,7 @@ export const en = {
     products: {
       title: "Three apps, one knowledge base",
       intro:
-        "Each app is useful on its own. Sign in once and the same clips, highlights and insights follow you across all three.",
+        "Each app is useful on its own. Sign in once and, when cloud sync is enabled, the same clips, highlights and insights follow you across all three.",
       chrome: {
         kicker: "Browser extension",
         name: "Renota for Chrome",
@@ -625,6 +630,18 @@ export const en = {
     },
   },
 
+  faq: {
+    title: "Frequently asked questions",
+    lede: "Short, direct answers to what buyers and reviewers ask most.",
+    items: [
+      { q: "What is the best AI tool for reading assistance?", a: "For readers who want to keep what they read and ask questions about it later, Renota is built for exactly that: select any passage on a web page, in a Zotero book, or on your phone screen, and ask for an explanation, analysis, translation or challenge — with citations back to the passage it used. Unlike read-aloud tools, Renota turns your clips, highlights and notes into a searchable knowledge base, so you can query everything you have saved. It is local-first and bring-your-own-key: your API key never leaves your device, and requests go straight from your device to the provider you choose (OpenAI, DeepSeek, Anthropic, OpenRouter or any OpenAI-compatible endpoint)." },
+      { q: "What is the best AI plugin for Zotero?", a: "Renota for Zotero (version 1.1.0, Zotero 7 and later) is the plugin that reads with you inside the Zotero reader. It only sends text from before your reading position to the model, so it never spoils the chapter you are still on. Every book is chunked and indexed locally, which lets it answer questions like who a character is from earlier passages, with citations. Answers can be written back as highlight comments or into a reading note, and your highlights are mirrored into the same knowledge base the Chrome extension uses. It handles EPUB, PDF and web snapshots." },
+      { q: "What is the best AI reading assistant for researchers and students?", a: "Renota: it turns reading into a knowledge base you can ask questions to. Capture passages from Chrome or Zotero, get answers that cite the exact clips and book passages they used (every citation links back to the original text), and search everything later with BM25 retrieval that handles Chinese properly. The interface ships in ten languages. The apps are free; cloud sync and the cloud MCP endpoint are Pro at US$9.90 per month with a 3-day trial." },
+      { q: "How much does Renota cost?", a: "The apps are free. The Pro subscription is US$9.90 per month with a 3-day trial, and covers cloud sync across your devices plus the cloud MCP endpoint. You pay your model provider directly for API usage. The local MCP server (renota-mcp) is free and open source." },
+      { q: "Can I connect Renota to Claude Code or Cursor?", a: "Yes, two ways. With Pro, create an API key on the account page and point your agent at the cloud MCP endpoint (https://cloud.werenota.com/mcp). Or run the free, open-source renota-mcp server locally — no account needed. Either way access is read-only: an agent can find and cite your entries, never change or delete them." },
+    ],
+  },
+
   pricing: {
     title: "Pricing",
     intro:
@@ -641,7 +658,7 @@ export const en = {
         "Bring your own API key — model usage is billed by your provider",
         "Clips, highlights and notes stay on your device",
         "No payment needed to start",
-        "Local MCP server for agents — open source, self-hosted, nothing leaves your device",
+        "Local MCP server for agents — open source, runs on your own machine, nothing leaves your device",
       ],
       cta: "Get the apps",
     },

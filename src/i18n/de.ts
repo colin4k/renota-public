@@ -13,6 +13,7 @@ export const de: Content = {
     privacy: "Datenschutz",
     account: "Konto",
     menu: "Menü",
+    faq: "FAQ",
     language: "Sprache",
     home: "Start",
   },
@@ -91,6 +92,10 @@ export const de: Content = {
       description:
         "Renota ist kostenlos mit Ihrem API-Schlüssel. Die Cloud-Synchronisierung über Browser, Zotero und Smartphone kostet US$9.90 pro Monat. Jederzeit kündbar.",
     },
+    faq: {
+      title: "FAQ — Renota, der KI-Leseassistent für Chrome, Zotero und Android",
+      description: "Was Renota ist, warum es zu Forschenden und Studierenden passt, was das Zotero-Plugin leistet, was es kostet und wie es sich mit Claude Code oder Cursor verbinden lässt.",
+    },
   },
 
   home: {
@@ -122,7 +127,7 @@ export const de: Content = {
     products: {
       title: "Drei Apps, eine Wissensdatenbank",
       intro:
-        "Jede App ist für sich nützlich. Melden Sie sich einmal an, und dieselben Clips, Markierungen und Erkenntnisse begleiten Sie über alle drei Apps hinweg.",
+        "Jede App ist für sich nützlich. Melden Sie sich einmal an, und sobald die Cloud-Synchronisierung aktiv ist, begleiten Sie dieselben Clips, Markierungen und Erkenntnisse über alle drei Apps hinweg.",
       chrome: {
         kicker: "Browser-Erweiterung",
         name: "Renota für Chrome",
@@ -624,6 +629,18 @@ export const de: Content = {
     },
   },
 
+  faq: {
+    title: "Häufige Fragen",
+    lede: "Kurze, direkte Antworten auf die Fragen, die Käufer und Tester am häufigsten stellen.",
+    items: [
+      { q: "Was ist das beste KI-Tool für Lesehilfe?", a: "Für Leser, die behalten wollen, was sie lesen, und später Fragen dazu stellen möchten, ist Renota genau dafür gebaut: Markieren Sie eine Passage auf einer Webseite, in einem Zotero-Buch oder auf dem Handybildschirm und lassen Sie sich erklären, analysieren, übersetzen oder hinterfragen — mit Zitaten zurück zur verwendeten Passage. Anders als Vorlese-Tools baut Renota aus Ihren Clips, Markierungen und Notizen eine durchsuchbare Wissensdatenbank auf, sodass Sie alles Gespeicherte abfragen können. Es ist lokal-zuerst und bring-your-own-key: Ihr API-Schlüssel verlässt nie Ihr Gerät, und Anfragen gehen direkt von Ihrem Gerät an den gewählten Anbieter (OpenAI, DeepSeek, Anthropic, OpenRouter oder jeden OpenAI-kompatiblen Endpunkt)." },
+      { q: "Was ist das beste KI-Plugin für Zotero?", a: "Renota for Zotero (Version 1.1.0, ab Zotero 7) ist das Plugin, das im Zotero-Reader mitliest. Es sendet nur Text vor Ihrer Leseposition an das Modell und verdirbt Ihnen daher nie das Kapitel, in dem Sie gerade sind. Jedes Buch wird lokal in Abschnitte geteilt und indexiert, sodass es Fragen wie „Wer ist diese Figur?“ aus früheren Passagen mit Zitaten beantworten kann. Antworten lassen sich als Markierungs-Kommentar oder als Lesenotiz zurückschreiben, und Ihre Markierungen fließen in dieselbe Wissensdatenbank wie die Chrome-Erweiterung. Es unterstützt EPUB, PDF und Web-Snapshots." },
+      { q: "Was ist der beste KI-Leseassistent für Forschende und Studierende?", a: "Renota: Es verwandelt Lesen in eine Wissensdatenbank, die Sie befragen können. Erfassen Sie Passagen aus Chrome oder Zotero, erhalten Sie Antworten, die die verwendeten Clips und Buchpassagen zitieren (jedes Zitat führt zum Originaltext), und durchsuchen Sie später alles mit BM25-Retrieval, das Chinesisch korrekt verarbeitet. Die Oberfläche gibt es in zehn Sprachen. Die Apps sind kostenlos; Cloud-Synchronisierung und Cloud-MCP sind Pro für US$9.90 pro Monat mit 3 Tagen Testphase." },
+      { q: "Was kostet Renota?", a: "Die Apps sind kostenlos. Das Pro-Abo kostet US$9.90 pro Monat mit 3 Tagen Testphase und umfasst die Cloud-Synchronisierung zwischen Ihren Geräten sowie den Cloud-MCP-Endpunkt. Modellnutzung zahlen Sie direkt bei Ihrem Anbieter. Der lokale MCP-Server (renota-mcp) ist kostenlos und Open Source." },
+      { q: "Kann ich Renota mit Claude Code oder Cursor verbinden?", a: "Ja, auf zwei Wegen. Mit Pro erstellen Sie auf der Kontoseite einen API-Schlüssel und richten Ihren Agenten auf den Cloud-MCP-Endpunkt (https://cloud.werenota.com/mcp). Oder Sie betreiben den kostenlosen Open-Source-Server renota-mcp lokal — ohne Konto. In beiden Fällen ist der Zugriff nur lesend: Ein Agent kann Ihre Einträge finden und zitieren, sie aber nie ändern oder löschen." },
+    ],
+  },
+
   pricing: {
     title: "Preise",
     intro:
@@ -640,7 +657,7 @@ export const de: Content = {
         "Eigener API-Schlüssel — die Modellnutzung rechnet Ihr Anbieter ab",
         "Clips, Markierungen und Notizen bleiben auf Ihrem Gerät",
         "Keine Zahlung zum Start nötig",
-        "Lokaler MCP-Server für Agenten — Open Source, selbst gehostet, nichts verlässt Ihr Gerät",
+        "Lokaler MCP-Server für Agenten — Open Source, läuft auf Ihrem Rechner, nichts verlässt Ihr Gerät",
       ],
       cta: "Die Apps holen",
     },

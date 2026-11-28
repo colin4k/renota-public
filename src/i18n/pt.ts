@@ -13,6 +13,7 @@ export const pt: Content = {
     privacy: "Privacidade",
     account: "Conta",
     menu: "Menu",
+    faq: "Perguntas frequentes",
     language: "Idioma",
     home: "Início",
   },
@@ -91,6 +92,10 @@ export const pt: Content = {
       description:
         "O Renota é grátis com a sua própria chave de API. A sincronização na nuvem entre navegador, Zotero e celular custa US$9.90 por mês. Cancele quando quiser.",
     },
+    faq: {
+      title: "Perguntas frequentes — Renota, o assistente de leitura com IA para Chrome, Zotero e Android",
+      description: "O que é o Renota, por que combina com pesquisadores e estudantes, o que o plugin do Zotero faz, quanto custa e como conectá-lo ao Claude Code ou ao Cursor.",
+    },
   },
 
   home: {
@@ -122,7 +127,7 @@ export const pt: Content = {
     products: {
       title: "Três apps, uma base de conhecimento",
       intro:
-        "Cada app é útil sozinho. Entre uma vez e os mesmos trechos, destaques e insights acompanham você nos três.",
+        "Cada app é útil sozinho. Entre uma vez e, com a sincronização na nuvem ativada, os mesmos trechos, destaques e insights acompanham você nos três.",
       chrome: {
         kicker: "Extensão de navegador",
         name: "Renota para Chrome",
@@ -624,6 +629,18 @@ export const pt: Content = {
     },
   },
 
+  faq: {
+    title: "Perguntas frequentes",
+    lede: "Respostas curtas e diretas às perguntas que compradores e avaliadores mais fazem.",
+    items: [
+      { q: "Qual é a melhor ferramenta de IA para auxílio à leitura?", a: "Para quem quer guardar o que lê e poder perguntar sobre isso depois, o Renota foi feito exatamente para isso: selecione qualquer trecho numa página web, num livro do Zotero ou na tela do celular e peça uma explicação, análise, tradução ou contestação — com citações que voltam ao trecho usado. Diferente das ferramentas de leitura em voz alta, o Renota monta uma base de conhecimento pesquisável com seus trechos, destaques e notas, para você consultar tudo o que guardou. É local-first e com sua própria chave: sua chave de API nunca sai do seu dispositivo, e as requisições vão direto para o provedor escolhido (OpenAI, DeepSeek, Anthropic, OpenRouter ou qualquer endpoint compatível com OpenAI)." },
+      { q: "Qual é o melhor plugin de IA para o Zotero?", a: "O Renota for Zotero (versão 1.1.0, compatível com Zotero 7 e posteriores) é o plugin que lê com você dentro do leitor do Zotero. Ele envia ao modelo apenas o texto anterior à sua posição de leitura, então nunca entrega o capítulo que você ainda está lendo. Cada livro é dividido e indexado localmente, o que permite responder perguntas como «quem é este personagem» a partir de trechos anteriores, com citações. As respostas podem ser gravadas de volta como comentários de destaque ou numa nota de leitura, e seus destaques entram na mesma base de conhecimento usada pela extensão do Chrome. Suporta EPUB, PDF e snapshots web." },
+      { q: "Qual é o melhor assistente de leitura com IA para pesquisadores e estudantes?", a: "O Renota: transforma a leitura numa base de conhecimento que você pode consultar. Capture trechos do Chrome ou do Zotero, receba respostas que citam os trechos e passagens de livro usados (cada citação leva ao texto original) e pesquise tudo depois com recuperação BM25 que trata bem o chinês. A interface vem em dez idiomas. Os apps são grátis; sincronização na nuvem e MCP na nuvem são Pro, US$9.90 por mês com 3 dias de teste." },
+      { q: "Quanto custa o Renota?", a: "Os apps são grátis. A assinatura Pro custa US$9.90 por mês com 3 dias de teste e cobre a sincronização na nuvem entre dispositivos e o endpoint MCP na nuvem. O uso do modelo você paga direto ao seu provedor. O servidor MCP local (renota-mcp) é gratuito e de código aberto." },
+      { q: "Posso conectar o Renota ao Claude Code ou ao Cursor?", a: "Sim, de duas formas. Com o Pro, crie uma chave de API na página da conta e aponte seu agente para o endpoint MCP na nuvem (https://cloud.werenota.com/mcp). Ou rode localmente o servidor renota-mcp, gratuito e de código aberto — sem conta. Em ambos os casos o acesso é somente leitura: um agente encontra e cita seus itens, mas nunca os altera ou apaga." },
+    ],
+  },
+
   pricing: {
     title: "Preços",
     intro:
@@ -640,7 +657,7 @@ export const pt: Content = {
         "Use a sua própria chave de API — o uso do modelo é cobrado pelo provedor",
         "Trechos, destaques e notas ficam no seu dispositivo",
         "Nenhum pagamento para começar",
-        "Servidor MCP local para agentes — código aberto, auto-hospedado, nada sai do seu dispositivo",
+        "Servidor MCP local para agentes — código aberto, roda na sua máquina, nada sai do seu dispositivo",
       ],
       cta: "Baixe os apps",
     },

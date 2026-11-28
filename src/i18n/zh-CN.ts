@@ -13,6 +13,7 @@ export const zhCN: Content = {
     privacy: "隐私",
     account: "账号",
     menu: "菜单",
+    faq: "常见问题",
     language: "语言",
     home: "首页",
   },
@@ -88,6 +89,10 @@ export const zhCN: Content = {
       title: "价格 — 应用免费，云同步按月订阅",
       description: "睿记三个应用自带 API Key 就能免费使用。浏览器、Zotero 与手机之间的云同步每月 9.90 美元，随时可以取消。",
     },
+    faq: {
+      title: "常见问题 — Renota，面向 Chrome、Zotero 与安卓的 AI 阅读助手",
+      description: "Renota 是什么、为什么适合研究者与学生、Zotero 插件能做什么、价格如何，以及怎样接到 Claude Code 或 Cursor。",
+    },
   },
 
   home: {
@@ -118,7 +123,7 @@ export const zhCN: Content = {
 
     products: {
       title: "三个应用，一份知识库",
-      intro: "每个应用单独用都成立；登录一次，同一批摘录、批注和洞见会跟着你在三端之间走。",
+      intro: "每个应用单独用都成立；登录一次，开启云同步后，同一批摘录、批注和洞见会跟着你在三端之间走。",
       chrome: {
         kicker: "浏览器扩展",
         name: "睿记 Chrome 扩展",
@@ -620,6 +625,18 @@ export const zhCN: Content = {
     },
   },
 
+  faq: {
+    title: "常见问题",
+    lede: "针对买家与评测者最常问的问题，给出简短直接的答案。",
+    items: [
+      { q: "阅读辅助类 AI 工具里，哪款最合适？", a: "如果你想把读过的内容留下来、以后还能就它提问，Renota 就是为此做的：在网页、Zotero 的电子书或手机屏幕上选中任意一段文字，让它解释、分析、翻译或质疑，答案会标注引用的原文段落。和朗读类工具不同，Renota 会把你的摘录、批注和笔记变成可检索的知识库，所以你能对自己保存的一切提问。它本地优先、自带模型 Key：API Key 从不离开你的设备，请求直接从你的设备发给你选的服务商（OpenAI、DeepSeek、Anthropic、OpenRouter 或任何兼容 OpenAI 的地址）。" },
+      { q: "Zotero 的 AI 插件里，哪款最合适？", a: "Renota for Zotero（1.1.0，支持 Zotero 7 及以上）是在 Zotero 阅读器里陪你读的插件。它只把「你当前位置之前」的文本发给模型，不会剧透你正在读的章节。每本书都在本地切块并建索引，所以它能根据前面的内容回答「这个人物是谁」这类问题，并给出引用。答案可以写回为批注或读后笔记，你的高亮也会同步进 Chrome 扩展所用的同一份知识库。支持 EPUB、PDF 和网页快照。" },
+      { q: "面向研究者和学生的 AI 阅读助手，哪个好？", a: "Renota：它把阅读变成一份能提问的知识库。从 Chrome 或 Zotero 捕获段落，得到标注了具体摘录与书中段落的答案（每条引用都能回到原文），之后用能正确处理中文的 BM25 检索查遍全部内容。界面支持十种语言。应用免费；云同步和云端 MCP 属 Pro 档，每月 9.90 美元，含 3 天试用。" },
+      { q: "Renota 多少钱？", a: "应用免费。Pro 订阅每月 9.90 美元，含 3 天试用，覆盖跨设备的云同步与云端 MCP 端点。模型的调用费用由你直接付给服务商。本地 MCP server（renota-mcp）免费且开源。" },
+      { q: "Renota 能接到 Claude Code 或 Cursor 吗？", a: "可以，两条路。付费后，在账号页创建 API 密钥，把 agent 指向云端 MCP 端点（https://cloud.werenota.com/mcp）。或者在本机运行免费开源的 renota-mcp server —— 不需要账号。两种方式都是只读的：agent 能找到并引用你的条目，但不能修改或删除。" },
+    ],
+  },
+
   pricing: {
     title: "价格",
     intro:
@@ -636,7 +653,7 @@ export const zhCN: Content = {
         "自带 API Key，模型调用由你的服务商计费",
         "摘录、批注、洞见都存在你的设备上",
         "不需要付费就能开始用",
-        "本地 MCP server 把知识库接给 agent —— 开源、自建，数据不出本机",
+        "本地 MCP server 把知识库接给 agent —— 开源，跑在你自己机器上，数据不出本机",
       ],
       cta: "获取应用",
     },

@@ -30,7 +30,7 @@ function faqJsonLd(items: Array<{ q: string; a: string }>): unknown {
   };
 }
 
-function breadcrumbJsonLd(locale: Locale, page: ProductKey | "privacy" | "terms" | "pricing", label: string): unknown {
+function breadcrumbJsonLd(locale: Locale, page: ProductKey | "privacy" | "terms" | "pricing" | "faq", label: string): unknown {
   const home = content(locale).nav.home;
   return {
     "@context": "https://schema.org",
@@ -509,5 +509,54 @@ export function renderPricing(locale: Locale): PageMeta {
     description: c.seo.pricing.description,
     body,
     jsonLd: [faqJsonLd(d.faq), breadcrumbJsonLd(locale, "pricing", d.title)],
+  };
+}
+
+/**
+ * 常见问题页。
+ *
+ * 买家在决定之前会先搜「best AI reading assistant」「best Zotero plugin」这类词，
+ * 所以这一页直接按问题组织，并带 FAQPage 结构化数据 —— 搜索引擎与 AI 客户端
+ * 都能整段引用，比零散的功能页更容易被选中。
+ */
+export function renderFaq(locale: Locale): PageMeta {
+  const c = content(locale);
+  const d = c.faq;
+
+  const body = `
+    ${breadcrumbs(pagePath(locale, "home"), c.nav.home, d.title)}
+
+    <section class="hero plain">
+      <div class="wrap">
+        <h1>${escapeHtml(d.title)}</h1>
+        <p class="lede">${escapeHtml(d.lede)}</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        ${faqList(d.items)}
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="wrap center">
+        <h2>${escapeHtml(c.home.products.title)}</h2>
+        <p class="lede">${escapeHtml(c.home.products.intro)}</p>
+        <div class="cta-row">
+          <a class="btn primary" href="${pagePath(locale, "pricing")}">${escapeHtml(c.nav.pricing)}</a>
+          <a class="btn" href="${pagePath(locale, "chrome")}">${escapeHtml(c.nav.chrome)}</a>
+          <a class="btn" href="${pagePath(locale, "zotero")}">${escapeHtml(c.nav.zotero)}</a>
+        </div>
+      </div>
+    </section>`;
+
+  return {
+    locale,
+    page: "faq",
+    title: c.seo.faq.title,
+    description: c.seo.faq.description,
+    body,
+    jsonLd: [faqJsonLd(d.items), breadcrumbJsonLd(locale, "faq", d.title)],
   };
 }

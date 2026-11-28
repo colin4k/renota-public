@@ -279,6 +279,7 @@ ${meta.body}
       <div>
         <h2 class="footer-title">${escapeHtml(c.footer.resources)}</h2>
         <ul>
+          <li><a href="${pagePath(meta.locale, "faq")}">${escapeHtml(c.nav.faq)}</a></li>
           <li><a href="mailto:${site.email}">${escapeHtml(c.footer.mail)}</a></li>
           <li><a href="${site.discord}" rel="noopener">${escapeHtml(c.footer.discord)}</a></li>
         </ul>

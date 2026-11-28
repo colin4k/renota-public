@@ -13,6 +13,7 @@ export const zhTW: Content = {
     privacy: "隱私權",
     account: "帳號",
     menu: "選單",
+    faq: "常見問題",
     language: "語言",
     home: "首頁",
   },
@@ -89,6 +90,10 @@ export const zhTW: Content = {
       title: "價格 — 應用程式免費，雲端同步訂閱制",
       description: "睿記三個應用程式自備 API Key 就能免費使用。瀏覽器、Zotero 與手機之間的雲端同步每月 9.90 美元，隨時可取消。",
     },
+    faq: {
+      title: "常見問題 — Renota，為 Chrome、Zotero 與 Android 打造的 AI 閱讀助手",
+      description: "Renota 是什麼、為什麼適合研究者與學生、Zotero 外掛能做什麼、價格如何，以及如何連上 Claude Code 或 Cursor。",
+    },
   },
 
   home: {
@@ -120,7 +125,7 @@ export const zhTW: Content = {
     products: {
       title: "三個應用程式，一份知識庫",
       intro:
-        "每個應用程式單獨用都成立；登入一次，同一批片段、螢光標記和洞見就會跟著你在三端之間走。",
+        "每個應用程式單獨用都成立；登入一次，開啟雲端同步後，同一批片段、螢光標記和洞見就會跟著你在三端之間走。",
       chrome: {
         kicker: "瀏覽器擴充功能",
         name: "睿記 Chrome 擴充功能",
@@ -622,6 +627,18 @@ export const zhTW: Content = {
     },
   },
 
+  faq: {
+    title: "常見問題",
+    lede: "針對買家與評測者最常問的問題，給出簡短直接的答案。",
+    items: [
+      { q: "閱讀輔助類 AI 工具，哪一款最合適？", a: "如果你想留下讀過的內容、之後還能就它提問，Renota 正是為此而做：在網頁、Zotero 的書籍或手機螢幕上選取任意段落，請它解釋、分析、翻譯或反駁，答案會標明引用的原文段落。與朗讀工具不同，Renota 會把你的片段、螢光標記與筆記變成可檢索的知識庫，讓你能對收藏的一切提問。它本機優先、自備模型金鑰：API Key 從不離開你的裝置，請求直接從你的裝置送往你選的服務商（OpenAI、DeepSeek、Anthropic、OpenRouter 或任何相容 OpenAI 的位址）。" },
+      { q: "Zotero 的 AI 外掛，哪一款最合適？", a: "Renota for Zotero（1.1.0，支援 Zotero 7 及以上）是在 Zotero 閱讀器裡陪你讀的外掛。它只把「你目前位置之前」的文字送給模型，不會劇透你正在讀的章節。每本書都在本機切塊並建立索引，因此能依前面的內容回答「這個角色是誰」這類問題，並附上引用。答案可以寫回成螢光標記的註解或閱讀筆記，你的螢光標記也會同步進 Chrome 擴充功能所用的同一份知識庫。支援 EPUB、PDF 與網頁快照。" },
+      { q: "給研究者與學生的 AI 閱讀助手，哪個好？", a: "Renota：它把閱讀變成一份可以提問的知識庫。從 Chrome 或 Zotero 擷取段落，得到標註了實際使用的片段與書中段落的答案（每條引用都能回到原文），之後再用能正確處理中文的 BM25 檢索查遍全部內容。介面支援十種語言。應用程式免費；雲端同步與雲端 MCP 屬 Pro 方案，每月 9.90 美元，含 3 天試用。" },
+      { q: "Renota 多少錢？", a: "應用程式免費。Pro 訂閱每月 9.90 美元，含 3 天試用，涵蓋跨裝置的雲端同步與雲端 MCP 端點。模型的呼叫費用由你直接付給服務商。本機 MCP server（renota-mcp）免費且開源。" },
+      { q: "Renota 能接到 Claude Code 或 Cursor 嗎？", a: "可以，兩條路。付費後，在帳號頁建立 API 金鑰，把 agent 指向雲端 MCP 端點（https://cloud.werenota.com/mcp）。或在本機執行免費開源的 renota-mcp server —— 不需要帳號。兩種方式都是唯讀的：agent 找得到並引用你的項目，但不能修改或刪除。" },
+    ],
+  },
+
   pricing: {
     title: "價格",
     intro:
@@ -638,7 +655,7 @@ export const zhTW: Content = {
         "自備 API Key，模型費用由你的服務商計費",
         "片段、螢光標記和筆記都留在你的裝置上",
         "不需要付費就能開始使用",
-        "本機 MCP server 把知識庫接給 agent —— 開源、自架，資料不出本機",
+        "本機 MCP server 把知識庫接給 agent —— 開源，跑在你自己的機器上，資料不出本機",
       ],
       cta: "取得應用程式",
     },
