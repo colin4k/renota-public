@@ -19,13 +19,23 @@ npm run crx:sync   # 商店发版后，把最新 .crx 拉到 public/downloads/�
 
 ## 部署（Cloudflare Workers 静态资源）
 
-构建与上线都由 `cf` CLI 完成，配置在 `cloudflare.config.ts`：
+一条命令搞定构建、上线和搜索引擎推送：
+
+```bash
+npm run deploy
+```
+
+展开就是下面四步（配置在 `cloudflare.config.ts`）：
 
 ```bash
 set -a && . ./.env && set +a   # 构建需要 PADDLE_*
-npx cf build
-npx cf deploy --prebuilt
+npm run build                  # 生成 dist/，public/ 的根级文件一并复制过去
+npx cf build                   # 站点 + src/worker.ts → .cloudflare/output/
+npx cf deploy --prebuilt       # 直接上传产物，不再构建一次
+npm run indexnow               # 把 sitemap 里的 URL 推给 Bing / Yandex
 ```
+
+`indexnow` 必须排在部署之后：它要求 URL 已经真正可访问。每次全量推送 sitemap（当前 80 条，IndexNow 每天上限 1 万条）——内容没变的重复提交由搜索引擎自行去重，换来的是「新页面永远不漏推」：页面 × 语言的组合由 `src/build.ts` 生成，手写 URL 清单迟早会落后。
 
 `cf build` 把站点和 `src/worker.ts` 一起写进 `.cloudflare/output/`，`--prebuilt` 直接上传这份产物，不会再构建一次。缓存与安全响应头在 `public/_headers`，随构建复制到 `dist/`。
 
@@ -58,6 +68,8 @@ src/site.ts  →  site.url
 | JSON-LD：`WebSite` / `Organization` / `SoftwareApplication` / `BreadcrumbList` / `FAQPage` | `src/render/pages.ts` |
 | `sitemap.xml`（含多语言 alternate） | `src/build.ts` |
 | `robots.txt` | 同上 |
+| IndexNow 主动推送（Bing / Yandex 即时抓取） | `npm run indexnow` → `scripts/indexnow.mjs` |
+| 站长验证文件 | `public/BingSiteAuth.xml`、`public/<key>.txt`（IndexNow key） |
 | 语义化结构：单一 `h1`、`header/nav/main/section/footer`、`details` 做 FAQ（无需 JS） | 全站 |
 | 社交预览图 1200×630，每页每语言一张 | `src/og.ts` → `public/og/` |
 

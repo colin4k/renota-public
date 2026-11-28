@@ -23,6 +23,8 @@ npm run build        # 只构建到 dist/
 npm run typecheck
 npm run design:lint  # 校验 DESIGN.md（0 error 0 warning 是底线）
 npm run design:tokens  # 按 DESIGN.md 导出 CSS 变量，供人工核对，不是构建产物
+npm run deploy       # 构建 + 上线 Cloudflare + 推送 IndexNow（见 README）
+npm run indexnow     # 只推送 sitemap 里的 URL；加 -- --dry-run 只打印不发送
 ```
 
 ## 硬性约束

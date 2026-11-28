@@ -11,7 +11,9 @@
     "typecheck": "tsc --noEmit",
     "design:lint": "designmd lint DESIGN.md",
     "design:tokens": "designmd export --format css-vars --prefix rn DESIGN.md",
-    "crx:sync": "node scripts/sync-crx.mjs"
+    "crx:sync": "node scripts/sync-crx.mjs",
+    "indexnow": "node scripts/indexnow.mjs",
+    "deploy": "if [ -f .env ]; then set -a; . ./.env; set +a; fi; npm run build && npx cf build && npx cf deploy --prebuilt && npm run indexnow"
   },
   "devDependencies": {
     "@google/design.md": "^0.4.0",
