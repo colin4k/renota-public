@@ -16,7 +16,7 @@ La présente politique s'applique aux trois clients Renota — l'extension Chrom
 Elle ne s'applique **pas** aux services tiers que vous choisissez de connecter via Renota (par exemple les fournisseurs de LLM). Lorsque vous configurez un fournisseur de LLM, vos prompts et la réponse de ce fournisseur sont régis par la politique de confidentialité propre à ce fournisseur. La section 5 liste les fournisseurs actuellement pris en charge et renvoie à leurs politiques.
 
 
-**État de publication.** L'extension Chrome est disponible sur le Chrome Web Store. Le plugin Zotero et l'appli Android sont encore en préparation. La présente politique décrit comment chaque client traite les données.
+**État de publication.** L'extension Chrome est disponible sur le Chrome Web Store, et le plugin Zotero est disponible pour Zotero 7 et versions ultérieures. L'appli Android est encore en préparation. La présente politique décrit comment chaque client traite les données.
 
 ---
 

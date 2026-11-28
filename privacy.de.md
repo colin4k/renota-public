@@ -16,7 +16,7 @@ Diese Erklärung gilt für alle drei Renota-Clients — die über den Chrome Web
 Sie gilt **nicht** für Dienste Dritter, mit denen Sie sich über Renota verbinden (etwa LLM-Anbieter). Wenn Sie einen LLM-Anbieter konfigurieren, gelten für Ihre Prompts und die Antwort dieses Anbieters dessen eigene Datenschutzbestimmungen. Abschnitt 5 listet die derzeit unterstützten Anbieter auf und verlinkt auf deren Bestimmungen.
 
 
-**Veröffentlichungsstatus.** Die Chrome-Erweiterung ist im Chrome Web Store verfügbar. Das Zotero-Plugin und die Android-App befinden sich noch in Vorbereitung. Diese Richtlinie beschreibt, wie die einzelnen Clients mit Daten umgehen.
+**Veröffentlichungsstatus.** Die Chrome-Erweiterung ist im Chrome Web Store verfügbar, und das Zotero-Plugin ist für Zotero 7 und neuer verfügbar. Die Android-App befindet sich noch in Vorbereitung. Diese Richtlinie beschreibt, wie die einzelnen Clients mit Daten umgehen.
 
 ---
 
