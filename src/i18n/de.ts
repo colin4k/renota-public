@@ -218,7 +218,7 @@ export const de: Content = {
       points: [
         "Nur lesend: Ein Agent kann Ihre Einträge finden und zitieren, sie aber nie ändern oder löschen.",
         "Auch chinesische Suchanfragen funktionieren — es ist derselbe Index wie in den Apps.",
-        "Erfordert ein Konto im Pro-Tarif: API-Schlüssel auf der Kontoseite erstellen und in die Konfiguration des Agenten eintragen.",
+        "Zwei Wege: Der Cloud-Endpunkt braucht ein Pro-Konto und einen API-Schlüssel von der Kontoseite; der lokale renota-mcp-Server ist kostenlos, quelloffen und läuft auf Ihrem eigenen Rechner.",
       ],
       endpointLabel: "MCP-Endpunkt",
       cta: "API-Schlüssel auf der Kontoseite erstellen",
@@ -229,11 +229,11 @@ export const de: Content = {
       items: [
         {
           q: "Brauche ich ein Konto?",
-          a: "Nein. Jede App funktioniert ohne Konto. Ein Konto brauchen Sie nur für die beiden kostenpflichtigen Funktionen: Cloud-Synchronisierung und MCP-Zugriff.",
+          a: "Nein. Jede App funktioniert ohne Konto. Ein Konto brauchen Sie nur für die beiden kostenpflichtigen Funktionen: Cloud-Synchronisierung und Cloud-MCP. Lokales MCP braucht gar kein Konto.",
         },
         {
           q: "Ist es kostenlos?",
-          a: "Die Apps sind kostenlos. Kostenpflichtig sind die Cloud-Synchronisierung und der MCP-Zugriff; beides ist im Pro-Abo für US$9.90 pro Monat enthalten. Die API-Nutzung zahlen Sie direkt bei Ihrem Modellanbieter — die Kosten hängen davon ab, welches Modell Sie wählen.",
+          a: "Die Apps sind kostenlos. Kostenpflichtig sind die Cloud-Synchronisierung und Cloud-MCP; beides ist im Pro-Abo für US$9.90 pro Monat enthalten. Lokales MCP — der quelloffene renota-mcp-Server, den Sie selbst betreiben — ist kostenlos. Die API-Nutzung zahlen Sie direkt bei Ihrem Modellanbieter.",
         },
         {
           q: "Wohin gehen meine Daten?",
@@ -245,7 +245,7 @@ export const de: Content = {
         },
         {
           q: "Kann ich meine Wissensdatenbank mit Claude Code oder Cursor verbinden?",
-          a: "Ja. Erstellen Sie auf der Kontoseite einen API-Schlüssel und richten Sie Ihren Agenten mit diesem Schlüssel auf den MCP-Endpunkt. Das gehört zum Pro-Tarif und ist nur lesend: Ein Agent kann Ihre Einträge lesen, nicht ändern.",
+          a: "Ja, auf zwei Wegen. Der Cloud-Endpunkt gehört zu Pro: API-Schlüssel auf der Kontoseite erstellen und den Agenten darauf richten. Oder den kostenlosen, quelloffenen renota-mcp-Server lokal starten, ganz ohne Konto. In beiden Fällen ist der Zugriff nur lesend.",
         },
       ],
     },
@@ -499,7 +499,7 @@ export const de: Content = {
           },
           {
             q: "Kann die Chrome-Erweiterung diese Bibliothek lesen?",
-            a: "Ja: Mit aktivierter Cloud-Synchronisierung teilen sich Erweiterung und Plugin dieselbe Wissensdatenbank. Alternativ lassen sich Claude, Cursor und andere MCP-Clients über renota-mcp direkt auf beide Seiten ansetzen.",
+            a: "Ja. Mit Cloud-Synchronisierung teilen sich Erweiterung und Plugin dieselbe Wissensdatenbank auf allen Geräten — dafür braucht es Pro. Daneben läuft der kostenlose renota-mcp-Server auf Ihrem Rechner, liest die lokale Bibliothek und lässt Claude, Cursor und andere Agenten beide Seiten zugleich durchsuchen — ohne Konto und ohne Upload.",
           },
           {
             q: "Verträgt es sich mit anderen Zotero-Plugins?",
@@ -627,7 +627,7 @@ export const de: Content = {
   pricing: {
     title: "Preise",
     intro:
-      "Alle drei Apps sind kostenlos, mit Ihrem eigenen API-Schlüssel. Das Pro-Abo für US$9.90 pro Monat umfasst die Cloud-Synchronisierung, die eine einzige Wissensdatenbank über Browser, Zotero und Smartphone hinweg auf demselben Stand hält, sowie den Lesezugriff über MCP für Claude Code, Cursor und andere Agenten. Modellaufrufe rechnen Sie direkt mit Ihrem Anbieter ab.",
+      "Alle drei Apps sind kostenlos, mit Ihrem eigenen API-Schlüssel. Das Pro-Abo für US$9.90 pro Monat umfasst die Cloud-Synchronisierung über Browser, Zotero und Smartphone hinweg sowie Cloud-MCP: Lesezugriff auf Ihre Wissensdatenbank von jedem Gerät aus.",
     badge: "Jederzeit kündbar",
     plansTitle: "Zwei Tarife, eine Wissensdatenbank",
     free: {
@@ -640,6 +640,7 @@ export const de: Content = {
         "Eigener API-Schlüssel — die Modellnutzung rechnet Ihr Anbieter ab",
         "Clips, Markierungen und Notizen bleiben auf Ihrem Gerät",
         "Keine Zahlung zum Start nötig",
+        "Lokaler MCP-Server für Agenten — Open Source, selbst gehostet, nichts verlässt Ihr Gerät",
       ],
       cta: "Die Apps holen",
     },
@@ -647,24 +648,24 @@ export const de: Content = {
       name: "Pro",
       price: "$9.90",
       period: "pro Monat",
-      summary: "Cloud-Synchronisierung einschalten, damit dieselbe Wissensdatenbank jedem Gerät folgt — und Agenten sie über MCP lesen können.",
+      summary: "Cloud-Synchronisierung einschalten, damit dieselbe Wissensdatenbank jedem Gerät folgt — und Agenten sie über Cloud-MCP lesen können.",
       features: [
         "Alles aus Kostenlos",
         "200 MB Cloud-Speicher für Ihre Wissensdatenbank",
         "Dieselben Clips im Browser, in Zotero und auf dem Smartphone",
         "Auf einem neuen Gerät anmelden und weiterlesen, weiterfragen",
         "Löschungen werden mit synchronisiert, damit auf einem anderen Gerät nichts wieder auftaucht",
-        "Claude Code, Cursor und anderen Agenten Lesezugriff über MCP geben",
+        "Cloud-MCP: Claude Code, Cursor und andere Agenten lesen die zwischen Ihren Geräten synchronisierte Datenbank",
       ],
       cta: "Abonnieren",
     },
     note:
-      "Die Preise sind in US-Dollar, monatlich im Voraus abgerechnet. Ihr API-Schlüssel verlässt Ihr Gerät nie — das Abo umfasst die Cloud-Synchronisierung und den MCP-Zugriff. Jederzeit kündbar; der Zugang läuft bis zum Ende des bereits bezahlten Zeitraums weiter.",
+      "Die Preise sind in US-Dollar, monatlich im Voraus abgerechnet. Ihr API-Schlüssel verlässt Ihr Gerät nie — das Abo umfasst die Cloud-Synchronisierung und Cloud-MCP. Jederzeit kündbar; der Zugang läuft bis zum Ende des bereits bezahlten Zeitraums weiter.",
     faqTitle: "Fragen zum Abo",
     faq: [
       {
         q: "Zahle ich weiterhin für die Modellnutzung?",
-        a: "Ja. Das Abo umfasst die Cloud-Synchronisierung und den MCP-Zugriff; Modellaufrufe sind darin nicht enthalten. Sie gehen direkt an den von Ihnen konfigurierten Anbieter und werden von ihm abgerechnet, nie von uns.",
+        a: "Ja. Das Abo umfasst die Cloud-Synchronisierung und Cloud-MCP; Modellaufrufe sind darin nicht enthalten. Sie gehen direkt an den von Ihnen konfigurierten Anbieter und werden von ihm abgerechnet, nie von uns.",
       },
       {
         q: "Was passiert, wenn ich kündige?",
@@ -672,7 +673,7 @@ export const de: Content = {
       },
       {
         q: "Kann ich die Apps ohne Abo nutzen?",
-        a: "Ja. Alle drei Apps funktionieren vollständig auf Ihrem eigenen Gerät mit Ihrem eigenen API-Schlüssel. Nur die Cloud-Synchronisierung und der MCP-Zugriff brauchen ein Abo.",
+        a: "Ja. Alle drei Apps funktionieren vollständig auf Ihrem eigenen Gerät mit Ihrem eigenen API-Schlüssel. Nur die Cloud-Synchronisierung und Cloud-MCP brauchen ein Abo. Lokales MCP ist kostenlos.",
       },
       {
         q: "Wie bezahle ich?",
@@ -790,7 +791,7 @@ export const de: Content = {
     keys: {
       label: "API-Schlüssel für Agenten",
       intro:
-        "Jeder KI-Agent — Claude Code, Cursor, DSH — kann Ihre Wissensdatenbank über MCP durchsuchen. Die Schlüssel sind nur lesend: Ein Agent kann finden und lesen, was Sie gespeichert haben, es aber nie ändern.",
+        "Jeder KI-Agent — Claude Code, Cursor, DSH — kann Ihre Wissensdatenbank über Cloud-MCP durchsuchen. Die Schlüssel sind nur lesend: Ein Agent kann finden und lesen, was Sie gespeichert haben, es aber nie ändern.",
       empty: "Noch keine Schlüssel.",
       namePlaceholder: "Wofür ist dieser Schlüssel? z. B. Claude Code",
       create: "Schlüssel erstellen",
@@ -809,7 +810,7 @@ export const de: Content = {
       limitReached: "Sie haben die Grenze aktiver Schlüssel erreicht. Widerrufen Sie einen, den Sie nicht mehr brauchen.",
       loadFailed: "Ihre API-Schlüssel konnten nicht geladen werden.",
       createFailed: "Der Schlüssel konnte nicht erstellt werden. Bitte versuchen Sie es erneut.",
-      requiresPro: "Der MCP-Zugriff ist eine der kostenpflichtigen Funktionen. Abonnieren Sie, um einen Agenten zu verbinden.",
+      requiresPro: "Cloud-MCP ist eine kostenpflichtige Funktion. Mit einem Abo können Sie einen Agenten verbinden — oder den kostenlosen lokalen renota-mcp-Server nutzen, der kein Konto braucht.",
       mcpTitle: "MCP-Endpunkt",
       mcpHint: "Richten Sie Ihren Agenten auf diese URL und senden Sie den Schlüssel als Bearer-Token.",
       configTitle: "Client-Konfiguration",

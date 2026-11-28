@@ -216,7 +216,7 @@ export const zhTW: Content = {
       points: [
         "唯讀：agent 找得到並引用你的條目，但不能修改或刪除。",
         "中文照樣搜得到 —— 用的是和應用程式內同一套索引。",
-        "需要帳號與 Pro 訂閱：在帳號頁建立一組 API 金鑰，填進 agent 的設定即可。",
+        "兩條路：雲端端點需要 Pro 帳號和帳號頁建立的 API 金鑰；本機的 renota-mcp server 開源免費，跑在你自己的機器上。",
       ],
       endpointLabel: "MCP 端點",
       cta: "在帳號頁建立 API 金鑰",
@@ -227,11 +227,11 @@ export const zhTW: Content = {
       items: [
         {
           q: "需要註冊帳號嗎？",
-          a: "不需要。每個應用程式不登入都能用。帳號只用在兩項付費功能：雲端同步與 MCP 存取。",
+          a: "不需要。每個應用程式不登入都能用。帳號只用在兩項付費功能：雲端同步與雲端 MCP。本機的 MCP 完全不需要帳號。",
         },
         {
           q: "要收費嗎？",
-          a: "應用程式本身免費；雲端同步與 MCP 存取是付費功能，兩者都包含在每月 9.90 美元的 Pro 訂閱裡；模型呼叫則由你自己的服務商計費，花多少取決於你選的模型。",
+          a: "應用程式本身免費。雲端同步與雲端 MCP 是付費功能，兩者都包含在每月 9.90 美元的 Pro 訂閱裡。本機的 MCP —— 你自己跑的開源 renota-mcp server —— 是免費的。模型呼叫由你自己的服務商計費，花多少取決於你選的模型。",
         },
         {
           q: "我的資料會去哪裡？",
@@ -243,7 +243,7 @@ export const zhTW: Content = {
         },
         {
           q: "可以把知識庫接到 Claude Code 或 Cursor 嗎？",
-          a: "可以。在帳號頁建立一組 API 金鑰，把 MCP 端點和金鑰填進 agent 的設定即可。這項能力包含在 Pro 訂閱裡，而且是唯讀的 —— agent 讀得到，改不了。",
+          a: "可以，兩條路。雲端端點屬於 Pro：在帳號頁建立一組 API 金鑰，填進 agent 設定即可。或者在本機跑開源的 renota-mcp server，不需要帳號。兩種方式都是唯讀的 —— agent 讀得到，改不了。",
         },
       ],
     },
@@ -497,7 +497,7 @@ export const zhTW: Content = {
           },
           {
             q: "Chrome 擴充功能能讀這個知識庫嗎？",
-            a: "可以：開啟雲端同步後，擴充功能和外掛用同一份知識庫；也可以讓 Claude、Cursor 這類用戶端透過 renota-mcp 直接檢索兩邊的筆記。",
+            a: "可以。開啟雲端同步後，擴充功能和外掛在裝置之間用同一份知識庫 —— 這部分需要 Pro。另外，免費的 renota-mcp server 跑在你自己的機器上，讀取本機資料庫，讓 Claude、Cursor 這類用戶端一次檢索兩邊的筆記，不需要帳號，也不上傳任何東西。",
           },
           {
             q: "它會和其他 Zotero 外掛衝突嗎？",
@@ -625,7 +625,7 @@ export const zhTW: Content = {
   pricing: {
     title: "價格",
     intro:
-      "三個應用程式都免費，自備 API Key 就能用。付費的是一份 Pro 訂閱 —— 每月 9.90 美元，涵蓋瀏覽器、Zotero 和手機之間的雲端同步，以及透過 MCP 讀取你的知識庫。",
+      "三個應用程式都免費，自備 API Key 就能用。付費的是一份 Pro 訂閱 —— 每月 9.90 美元，涵蓋瀏覽器、Zotero 和手機之間的雲端同步，以及雲端 MCP：讓同一份知識庫也能被 agent 從雲端讀取。",
     badge: "隨時可取消",
     plansTitle: "兩檔方案，一份知識庫",
     free: {
@@ -638,6 +638,7 @@ export const zhTW: Content = {
         "自備 API Key，模型費用由你的服務商計費",
         "片段、螢光標記和筆記都留在你的裝置上",
         "不需要付費就能開始使用",
+        "本機 MCP server 把知識庫接給 agent —— 開源、自架，資料不出本機",
       ],
       cta: "取得應用程式",
     },
@@ -645,24 +646,24 @@ export const zhTW: Content = {
       name: "Pro",
       price: "$9.90",
       period: "每月",
-      summary: "開啟雲端同步，讓同一份知識庫跟著你的每一台裝置走，也讓 agent 透過 MCP 讀取它。",
+      summary: "開啟雲端同步，讓同一份知識庫跟著你的每一台裝置走，也讓 agent 透過雲端 MCP 讀取它。",
       features: [
         "包含免費方案的所有功能",
         "200 MB 雲端儲存空間，用來存放知識庫",
         "瀏覽器、Zotero 和手機看到同一批片段",
         "換一台裝置登入，接著讀、接著問",
         "刪除也會同步，不會在另一台裝置上冒出來",
-        "用 MCP 把知識庫接給 Claude Code、Cursor 等 agent",
+        "雲端 MCP：讓 Claude Code、Cursor 等 agent 讀到跨裝置同步的知識庫",
       ],
       cta: "訂閱 Pro",
     },
     note:
-      "價格為美元，按月預付。API Key 從不離開你的裝置 —— 訂閱涵蓋雲端同步與 MCP 存取。隨時可以取消，取消後仍可使用到已付費週期的最後一刻。",
+      "價格為美元，按月預付。API Key 從不離開你的裝置 —— 訂閱涵蓋雲端同步與雲端 MCP。隨時可以取消，取消後仍可使用到已付費週期的最後一刻。",
     faqTitle: "關於訂閱",
     faq: [
       {
         q: "訂閱之後還要另付模型費用嗎？",
-        a: "要。訂閱包含雲端同步與 MCP 存取。模型呼叫直接送給你設定的服務商，由他們計費，不經過我們。",
+        a: "要。訂閱包含雲端同步與雲端 MCP。模型呼叫直接送給你設定的服務商，由他們計費，不經過我們。",
       },
       {
         q: "取消之後會怎樣？",
@@ -670,7 +671,7 @@ export const zhTW: Content = {
       },
       {
         q: "不訂閱也能用嗎？",
-        a: "能。三個應用程式在自己的裝置上都能完整使用，只要自備 API Key。只有雲端同步和 MCP 存取需要訂閱。",
+        a: "能。三個應用程式在自己的裝置上都能完整使用，只要自備 API Key。只有雲端同步和雲端 MCP 需要訂閱，本機的 MCP 是免費的。",
       },
       {
         q: "怎麼付款？",
@@ -786,7 +787,7 @@ export const zhTW: Content = {
     keys: {
       label: "Agent 用的 API 金鑰",
       intro:
-        "讓任何 AI agent（Claude Code、Cursor、DSH……）透過 MCP 檢索你的知識庫。金鑰是唯讀的：agent 找得到並讀取你存下的內容，但不能修改。",
+        "讓任何 AI agent（Claude Code、Cursor、DSH……）透過雲端 MCP 檢索你的知識庫。金鑰是唯讀的：agent 找得到並讀取你存下的內容，但不能修改。",
       empty: "還沒有金鑰。",
       namePlaceholder: "這組金鑰給誰用？例如 Claude Code",
       create: "建立金鑰",
@@ -805,7 +806,7 @@ export const zhTW: Content = {
       limitReached: "有效金鑰已達上限，請先撤銷一組不再使用的。",
       loadFailed: "無法載入 API 金鑰。",
       createFailed: "建立金鑰失敗，請重試。",
-      requiresPro: "MCP 存取是付費功能之一，訂閱後才能讓 agent 連線。",
+      requiresPro: "雲端 MCP 是付費功能，訂閱後才能讓 agent 連線；你也可以在本機跑免費的 renota-mcp server，不需要帳號。",
       mcpTitle: "MCP 端點",
       mcpHint: "把這個端點設定到 agent 裡，並把金鑰作為 Bearer 權杖送出。",
       configTitle: "用戶端設定",

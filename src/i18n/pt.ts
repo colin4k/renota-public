@@ -218,7 +218,7 @@ export const pt: Content = {
       points: [
         "Somente leitura: um agente pode encontrar e citar suas entradas, nunca alterar ou apagar.",
         "Consultas em chinês também funcionam — é o mesmo índice dos apps.",
-        "Requer uma conta no plano Pro: crie uma chave de API na página da conta e coloque na configuração do seu agente.",
+        "Dois caminhos: o endpoint na nuvem exige uma conta Pro e uma chave de API criada na página da conta; o servidor local renota-mcp é gratuito, de código aberto e roda na sua própria máquina.",
       ],
       endpointLabel: "Endpoint MCP",
       cta: "Crie uma chave de API na página da conta",
@@ -229,11 +229,11 @@ export const pt: Content = {
       items: [
         {
           q: "Preciso de uma conta?",
-          a: "Não. Cada app funciona sem conta. A conta só é necessária para os dois recursos pagos: sincronização na nuvem e acesso MCP.",
+          a: "Não. Cada app funciona sem conta. A conta só é necessária para os dois recursos pagos: sincronização na nuvem e MCP na nuvem. O MCP local não precisa de conta nenhuma.",
         },
         {
           q: "É grátis?",
-          a: "Os apps são grátis. A sincronização na nuvem e o acesso MCP são os recursos pagos: os dois entram na assinatura Pro de US$9.90 por mês. O uso da API é pago diretamente ao provedor de modelo que você escolher, e o custo depende do modelo.",
+          a: "Os apps são grátis. A sincronização na nuvem e o MCP na nuvem são os recursos pagos, incluídos na assinatura Pro de US$9.90 por mês. O MCP local — o servidor renota-mcp de código aberto que você mesmo executa — é gratuito. O uso da API é pago diretamente ao provedor de modelo.",
         },
         {
           q: "Para onde vão meus dados?",
@@ -245,7 +245,7 @@ export const pt: Content = {
         },
         {
           q: "Posso conectar minha base de conhecimento ao Claude Code ou ao Cursor?",
-          a: "Sim. Crie uma chave de API na página da conta e aponte seu agente para o endpoint MCP com essa chave. Isso faz parte do plano Pro e é somente leitura: um agente pode ler suas entradas, não alterá-las.",
+          a: "Sim, de dois jeitos. O endpoint na nuvem faz parte do Pro: crie uma chave de API na página da conta e aponte seu agente para ele. Ou rode localmente o servidor renota-mcp, gratuito e de código aberto, sem conta. Nos dois casos o acesso é somente leitura.",
         },
       ],
     },
@@ -499,7 +499,7 @@ export const pt: Content = {
           },
           {
             q: "A extensão para Chrome consegue ler esta base de conhecimento?",
-            a: "Sim: com a sincronização na nuvem ativada, a extensão e o plugin compartilham a mesma base de conhecimento. Você também pode conectar Claude, Cursor e outros clientes MCP ao renota-mcp para buscar nos dois lados.",
+            a: "Sim. Com a sincronização na nuvem, a extensão e o plugin compartilham a mesma base entre dispositivos — isso exige Pro. À parte, o servidor renota-mcp gratuito roda na sua máquina, lê a biblioteca local e permite que Claude, Cursor e outros agentes busquem nos dois lados, sem conta e sem enviar nada.",
           },
           {
             q: "Funciona junto com outros plugins do Zotero?",
@@ -627,7 +627,7 @@ export const pt: Content = {
   pricing: {
     title: "Preços",
     intro:
-      "Os três apps são grátis com a sua própria chave de API. O que você paga é a assinatura Pro, uma mensalidade única que cobre a sincronização na nuvem — mantendo a mesma base de conhecimento em dia no navegador, no Zotero e no celular — e o acesso de leitura via MCP para agentes como Claude Code e Cursor.",
+      "Os três apps são grátis com a sua própria chave de API. O que você paga é a assinatura Pro, US$9.90 por mês, que cobre a sincronização na nuvem entre navegador, Zotero e celular e o MCP na nuvem: acesso de leitura à sua base de conhecimento de qualquer dispositivo.",
     badge: "Cancele quando quiser",
     plansTitle: "Dois planos, uma base de conhecimento",
     free: {
@@ -640,6 +640,7 @@ export const pt: Content = {
         "Use a sua própria chave de API — o uso do modelo é cobrado pelo provedor",
         "Trechos, destaques e notas ficam no seu dispositivo",
         "Nenhum pagamento para começar",
+        "Servidor MCP local para agentes — código aberto, auto-hospedado, nada sai do seu dispositivo",
       ],
       cta: "Baixe os apps",
     },
@@ -647,24 +648,24 @@ export const pt: Content = {
       name: "Pro",
       price: "$9.90",
       period: "por mês",
-      summary: "Ative a sincronização na nuvem para a mesma base de conhecimento acompanhar todos os dispositivos — e para que agentes possam lê-la via MCP.",
+      summary: "Ative a sincronização na nuvem para a mesma base de conhecimento acompanhar todos os dispositivos — e para que agentes possam lê-la via MCP na nuvem.",
       features: [
         "Tudo do Grátis",
         "200 MB de armazenamento na nuvem para a sua base de conhecimento",
         "Os mesmos trechos no navegador, no Zotero e no celular",
         "Entre em um novo dispositivo e continue lendo, continue perguntando",
         "Exclusões também sincronizam, então nada reaparece em outro dispositivo",
-        "Dê a Claude Code, Cursor e outros agentes acesso de leitura via MCP",
+        "MCP na nuvem: Claude Code, Cursor e outros agentes leem a base sincronizada entre seus dispositivos",
       ],
       cta: "Assinar",
     },
     note:
-      "Os preços são em dólares americanos, cobrados mensalmente e adiantado. Sua chave de API nunca sai do seu dispositivo — a assinatura cobre a sincronização na nuvem e o acesso MCP. Cancele quando quiser; o acesso continua até o fim do período que você já pagou.",
+      "Os preços são em dólares americanos, cobrados mensalmente e adiantado. Sua chave de API nunca sai do seu dispositivo — a assinatura cobre a sincronização na nuvem e o MCP na nuvem. Cancele quando quiser; o acesso continua até o fim do período que você já pagou.",
     faqTitle: "Perguntas sobre a assinatura",
     faq: [
       {
         q: "Ainda pago pelo uso do modelo?",
-        a: "Sim. A assinatura cobre a sincronização na nuvem e o acesso MCP. As chamadas ao modelo vão direto para o provedor que você configurou e são cobradas por ele, nunca por nós.",
+        a: "Sim. A assinatura cobre a sincronização na nuvem e o MCP na nuvem. As chamadas ao modelo vão direto para o provedor que você configurou e são cobradas por ele, nunca por nós.",
       },
       {
         q: "O que acontece se eu cancelar?",
@@ -672,7 +673,7 @@ export const pt: Content = {
       },
       {
         q: "Posso usar os apps sem assinar?",
-        a: "Sim. Os três apps funcionam plenamente no seu próprio dispositivo com a sua própria chave de API. Só a sincronização na nuvem e o acesso MCP exigem assinatura.",
+        a: "Sim. Os três apps funcionam plenamente no seu próprio dispositivo com a sua própria chave de API. Só a sincronização na nuvem e o MCP na nuvem exigem assinatura. O MCP local é gratuito.",
       },
       {
         q: "Como eu pago?",
@@ -791,7 +792,7 @@ export const pt: Content = {
     keys: {
       label: "Chaves de API para agentes",
       intro:
-        "Deixe qualquer agente de IA — Claude Code, Cursor, DSH — buscar na sua base de conhecimento via MCP. As chaves são somente leitura: um agente pode encontrar e ler o que você salvou, nunca alterar.",
+        "Deixe qualquer agente de IA — Claude Code, Cursor, DSH — buscar na sua base de conhecimento via MCP na nuvem. As chaves são somente leitura: um agente pode encontrar e ler o que você salvou, nunca alterar.",
       empty: "Nenhuma chave ainda.",
       namePlaceholder: "Para que serve esta chave? ex.: Claude Code",
       create: "Criar chave",
@@ -810,7 +811,7 @@ export const pt: Content = {
       limitReached: "Você atingiu o limite de chaves ativas. Revogue uma que não usa mais.",
       loadFailed: "Não foi possível carregar suas chaves de API.",
       createFailed: "Não foi possível criar a chave. Tente novamente.",
-      requiresPro: "O acesso MCP é um dos recursos pagos. Assine para conectar um agente.",
+      requiresPro: "O MCP na nuvem é um recurso pago. Assine para conectar um agente — ou use o servidor local renota-mcp, gratuito e sem conta.",
       mcpTitle: "Endpoint MCP",
       mcpHint: "Aponte seu agente para esta URL e envie a chave como bearer token.",
       configTitle: "Configuração do cliente",

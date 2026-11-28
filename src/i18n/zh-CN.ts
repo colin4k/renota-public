@@ -214,7 +214,7 @@ export const zhCN: Content = {
       points: [
         "只读：agent 能找到并引用你的条目，不能修改或删除。",
         "中文照样搜得到 —— 用的是和应用内同一套索引。",
-        "需要账号与 Pro 订阅：在账号页创建一把 API 密钥，填进 agent 的配置即可。",
+        "两条路：云端地址需要 Pro 账号和账号页创建的 API 密钥；本地的 renota-mcp server 开源免费，跑在你自己的机器上。",
       ],
       endpointLabel: "MCP 地址",
       cta: "在账号页创建 API 密钥",
@@ -225,11 +225,11 @@ export const zhCN: Content = {
       items: [
         {
           q: "需要注册账号吗？",
-          a: "不需要。每个应用不登录都能用。账号只用于两项付费功能：云同步和 MCP 访问。",
+          a: "不需要。每个应用不登录都能用。账号只用于两项付费功能：云同步和云端 MCP。本地的 MCP 完全不需要账号。",
         },
         {
           q: "收费吗？",
-          a: "应用本身免费。云同步和 MCP 访问都是付费功能，包含在每月 9.90 美元的 Pro 订阅里。模型调用按你自己的服务商计费，花多少取决于你选的模型。",
+          a: "应用本身免费。云同步和云端 MCP 是付费功能，都包含在每月 9.90 美元的 Pro 订阅里。本地的 MCP —— 你自己跑的开源 renota-mcp server —— 是免费的。模型调用按你自己的服务商计费，花多少取决于你选的模型。",
         },
         {
           q: "我的数据会去哪？",
@@ -241,7 +241,7 @@ export const zhCN: Content = {
         },
         {
           q: "能把知识库接到 Claude Code 或 Cursor 吗？",
-          a: "可以。在账号页创建一把 API 密钥，把 MCP 地址和密钥填进 agent 的配置，它就能检索你的条目。这个能力包含在 Pro 订阅里，而且只读 —— agent 读得到，改不了。",
+          a: "可以，两条路。云端地址属于 Pro：在账号页创建一把 API 密钥，填进 agent 配置即可。或者在本机跑开源的 renota-mcp server，不需要账号。两种方式都是只读的 —— agent 读得到，改不了。",
         },
       ],
     },
@@ -495,7 +495,7 @@ export const zhCN: Content = {
           },
           {
             q: "Chrome 扩展能读这个知识库吗？",
-            a: "可以：开启云同步后，扩展和插件用同一份知识库；也可以让 Claude、Cursor 这类客户端通过 renota-mcp 直接检索两边的笔记。",
+            a: "可以。开启云同步后，扩展和插件在设备之间用同一份知识库 —— 这部分需要 Pro。另外，免费的 renota-mcp server 跑在你自己的机器上，读取本地库，让 Claude、Cursor 这类客户端一次检索两边的笔记，不需要账号，也不上传任何东西。",
           },
           {
             q: "它会和其他 Zotero 插件冲突吗？",
@@ -623,7 +623,7 @@ export const zhCN: Content = {
   pricing: {
     title: "价格",
     intro:
-      "三个应用都免费，自带 API Key 就能用。付费的是一份 Pro 订阅 —— 每月 9.90 美元，包含云同步和 MCP 访问：让同一份知识库在浏览器、Zotero 和手机之间保持一致，也能被 agent 读取。",
+      "三个应用都免费，自带 API Key 就能用。付费的是一份 Pro 订阅 —— 每月 9.90 美元，包含云同步和云端 MCP：让同一份知识库在浏览器、Zotero 和手机之间保持一致，也能被 agent 从云端读取。",
     badge: "随时取消",
     plansTitle: "两档，一份知识库",
     free: {
@@ -636,6 +636,7 @@ export const zhCN: Content = {
         "自带 API Key，模型调用由你的服务商计费",
         "摘录、批注、洞见都存在你的设备上",
         "不需要付费就能开始用",
+        "本地 MCP server 把知识库接给 agent —— 开源、自建，数据不出本机",
       ],
       cta: "获取应用",
     },
@@ -643,24 +644,24 @@ export const zhCN: Content = {
       name: "Pro",
       price: "$9.90",
       period: "每月",
-      summary: "开启云同步，让同一份知识库跟着你的每一台设备走；同时让 agent 通过 MCP 读取它。",
+      summary: "开启云同步，让同一份知识库跟着你的每一台设备走；同时让 agent 通过云端 MCP 读取它。",
       features: [
         "包含免费档的全部功能",
         "200 MB 云端存储空间，用来存放知识库",
         "浏览器、Zotero 和手机看到同一批摘录",
         "换一台设备登录，接着读、接着问",
         "删除也会同步，不会在另一台设备上冒出来",
-        "用 MCP 把知识库接给 Claude Code、Cursor 等 agent",
+        "云端 MCP：让 Claude Code、Cursor 等 agent 读到跨设备同步的知识库",
       ],
       cta: "订阅 Pro",
     },
     note:
-      "价格为美元，按月预付。API Key 从不离开你的设备 —— 订阅费用涵盖云同步与 MCP 访问。随时可以取消，取消后仍可使用到已付费周期的最后一刻。",
+      "价格为美元，按月预付。API Key 从不离开你的设备 —— 订阅费用涵盖云同步与云端 MCP。随时可以取消，取消后仍可使用到已付费周期的最后一刻。",
     faqTitle: "关于订阅",
     faq: [
       {
         q: "订阅之后还要另付模型费用吗？",
-        a: "需要。订阅包含云同步与 MCP 访问。模型调用直接发给你配置的服务商，由他们计费，不经过我们。",
+        a: "需要。订阅包含云同步与云端 MCP。模型调用直接发给你配置的服务商，由他们计费，不经过我们。",
       },
       {
         q: "取消之后会怎样？",
@@ -668,7 +669,7 @@ export const zhCN: Content = {
       },
       {
         q: "不订阅能用吗？",
-        a: "能。三个应用在自己的设备上都能完整使用，只要自备 API Key。只有云同步和 MCP 访问需要订阅。",
+        a: "能。三个应用在自己的设备上都能完整使用，只要自备 API Key。只有云同步和云端 MCP 需要订阅，本地的 MCP 是免费的。",
       },
       {
         q: "怎么付款？",
@@ -786,7 +787,7 @@ export const zhCN: Content = {
     keys: {
       label: "Agent 用的 API 密钥",
       intro:
-        "让任何 AI agent（Claude Code、Cursor、DSH……）通过 MCP 检索你的知识库。密钥是只读的：agent 能找到并读取你存下的内容，但不能修改。",
+        "让任何 AI agent（Claude Code、Cursor、DSH……）通过云端 MCP 检索你的知识库。密钥是只读的：agent 能找到并读取你存下的内容，但不能修改。",
       empty: "还没有密钥。",
       namePlaceholder: "这把密钥给谁用？例如 Claude Code",
       create: "创建密钥",
@@ -805,7 +806,7 @@ export const zhCN: Content = {
       limitReached: "有效密钥已达上限，请先吊销一把不再使用的。",
       loadFailed: "无法加载 API 密钥。",
       createFailed: "创建密钥失败，请重试。",
-      requiresPro: "MCP 访问是付费功能之一，订阅后才能让 agent 连接。",
+      requiresPro: "云端 MCP 是付费功能，订阅后才能让 agent 连接；你也可以在本机跑免费的 renota-mcp server，不需要账号。",
       mcpTitle: "MCP 地址",
       mcpHint: "把这个地址配置到 agent 里，并把密钥作为 Bearer 令牌发送。",
       configTitle: "客户端配置",

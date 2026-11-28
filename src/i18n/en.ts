@@ -217,7 +217,7 @@ export const en = {
       points: [
         "Read-only: an agent can find and quote your entries, never change or delete them.",
         "Chinese queries work too — it uses the same index as the apps.",
-        "Needs an account on the Pro plan: create an API key on the account page and put it in your agent's config.",
+        "Two ways in: the cloud endpoint needs a Pro account and an API key from the account page; the local renota-mcp server is free, open source, and runs on your own machine.",
       ],
       endpointLabel: "MCP endpoint",
       cta: "Create an API key on the account page",
@@ -228,11 +228,11 @@ export const en = {
       items: [
         {
           q: "Do I need an account?",
-          a: "No. Each app works without one. An account is only needed for the two paid features — cloud sync and MCP access.",
+          a: "No. Each app works without one. An account is only needed for the two paid features — cloud sync and the cloud MCP endpoint. Local MCP needs no account at all.",
         },
         {
           q: "Is it free?",
-          a: "The apps are free. Cloud sync and MCP access are the paid features, and both come with the Pro subscription at US$9.90 per month. You pay your model provider directly for API usage — the cost depends on which model you choose.",
+          a: "The apps are free. Cloud sync and the cloud MCP endpoint are the paid features, and both come with the Pro subscription at US$9.90 per month. Local MCP — the open-source renota-mcp server you run yourself — is free. You pay your model provider directly for API usage — the cost depends on which model you choose.",
         },
         {
           q: "Where does my data go?",
@@ -244,7 +244,7 @@ export const en = {
         },
         {
           q: "Can I connect my knowledge base to Claude Code or Cursor?",
-          a: "Yes. Create an API key on the account page, then point your agent at the MCP endpoint with that key. It is part of the Pro plan and read-only: an agent can read your entries, not change them.",
+          a: "Yes, two ways. The cloud endpoint is part of Pro: create an API key on the account page and point your agent at it. Or run the free, open-source renota-mcp server locally, with no account. Either way access is read-only: an agent can read your entries, not change them.",
         },
       ],
     },
@@ -500,7 +500,7 @@ export const en = {
           },
           {
             q: "Can the Chrome extension read this library?",
-            a: "Yes: with cloud sync on, the extension and the plugin share the same knowledge base. You can also point Claude, Cursor and other MCP clients at renota-mcp to search both sides at once.",
+            a: "Yes. With cloud sync on, the extension and the plugin share the same knowledge base across devices — that part needs Pro. Separately, the free renota-mcp server runs on your own machine, reads the local library and lets Claude, Cursor and other agents search both sides at once, with no account and nothing uploaded.",
           },
           {
             q: "Does it work alongside other Zotero plugins?",
@@ -628,7 +628,7 @@ export const en = {
   pricing: {
     title: "Pricing",
     intro:
-      "All three apps are free with your own API key. What you pay for is one Pro subscription — US$9.90 a month, covering cloud sync across the browser, Zotero and your phone and read access to your knowledge base over MCP.",
+      "All three apps are free with your own API key. What you pay for is one Pro subscription — US$9.90 a month, covering cloud sync across the browser, Zotero and your phone and cloud MCP: read access to your knowledge base from any device.",
     badge: "Cancel anytime",
     plansTitle: "Two plans, one knowledge base",
     free: {
@@ -641,6 +641,7 @@ export const en = {
         "Bring your own API key — model usage is billed by your provider",
         "Clips, highlights and notes stay on your device",
         "No payment needed to start",
+        "Local MCP server for agents — open source, self-hosted, nothing leaves your device",
       ],
       cta: "Get the apps",
     },
@@ -648,24 +649,24 @@ export const en = {
       name: "Pro",
       price: "$9.90",
       period: "per month",
-      summary: "Turn on cloud sync so the same knowledge base follows every device — and let agents read it over MCP.",
+      summary: "Turn on cloud sync so the same knowledge base follows every device — and let agents read it over cloud MCP.",
       features: [
         "Everything in Free",
         "200 MB of cloud storage for your knowledge base",
         "The same clips in the browser, in Zotero and on your phone",
         "Sign in on a new device and keep reading, keep asking",
         "Deletions sync too, so nothing reappears on another device",
-        "Give Claude Code, Cursor and other agents read access over MCP",
+        "Cloud MCP: let Claude Code, Cursor and other agents read what syncs across your devices",
       ],
       cta: "Subscribe",
     },
     note:
-      "Prices are in US dollars, billed monthly in advance. Your API key never leaves your device — the subscription covers cloud sync and MCP access. Cancel anytime; access continues to the end of the period you already paid for.",
+      "Prices are in US dollars, billed monthly in advance. Your API key never leaves your device — the subscription covers cloud sync and the cloud MCP endpoint. Cancel anytime; access continues to the end of the period you already paid for.",
     faqTitle: "Subscription questions",
     faq: [
       {
         q: "Do I still pay for model usage?",
-        a: "Yes. The subscription covers cloud sync and MCP access. Model calls go straight to the provider you configured and are billed by them, never by us.",
+        a: "Yes. The subscription covers cloud sync and the cloud MCP endpoint. Model calls go straight to the provider you configured and are billed by them, never by us.",
       },
       {
         q: "What happens if I cancel?",
@@ -673,7 +674,7 @@ export const en = {
       },
       {
         q: "Can I use the apps without subscribing?",
-        a: "Yes. All three apps work fully on your own device with your own API key. Only cloud sync and MCP access need a subscription.",
+        a: "Yes. All three apps work fully on your own device with your own API key. Only cloud sync and the cloud MCP endpoint need a subscription. Local MCP is free.",
       },
       {
         q: "How do I pay?",
@@ -793,7 +794,7 @@ export const en = {
     keys: {
       label: "API keys for agents",
       intro:
-        "Let any AI agent — Claude Code, Cursor, DSH — search your knowledge base over MCP. Keys are read-only: an agent can find and read what you saved, never change it.",
+        "Let any AI agent — Claude Code, Cursor, DSH — search your knowledge base over the cloud MCP endpoint. Keys are read-only: an agent can find and read what you saved, never change it.",
       empty: "No keys yet.",
       namePlaceholder: "What is this key for? e.g. Claude Code",
       create: "Create key",
@@ -812,7 +813,7 @@ export const en = {
       limitReached: "You have reached the limit of active keys. Revoke one you no longer use.",
       loadFailed: "Could not load your API keys.",
       createFailed: "Could not create the key. Please try again.",
-      requiresPro: "MCP access is one of the paid features. Subscribe to connect an agent.",
+      requiresPro: "The cloud MCP endpoint is a paid feature. Subscribe to connect an agent — or run the free local renota-mcp server, which needs no account.",
       mcpTitle: "MCP endpoint",
       mcpHint: "Point your agent at this URL and send the key as a bearer token.",
       configTitle: "Client config",

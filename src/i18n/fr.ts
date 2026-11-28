@@ -218,7 +218,7 @@ export const fr: Content = {
       points: [
         "Lecture seule : un agent peut trouver et citer vos entrées, jamais les modifier ni les supprimer.",
         "Les requêtes en chinois fonctionnent aussi — il utilise le même index que les applis.",
-        "Nécessite un compte sur le forfait Pro : créez une clé API sur la page du compte et placez-la dans la configuration de votre agent.",
+        "Deux façons : le point d'accès cloud demande un compte Pro et une clé API créée sur la page du compte ; le serveur renota-mcp local est gratuit, open source et tourne sur votre machine.",
       ],
       endpointLabel: "Point d'accès MCP",
       cta: "Créer une clé API sur la page du compte",
@@ -229,11 +229,11 @@ export const fr: Content = {
       items: [
         {
           q: "Ai-je besoin d'un compte ?",
-          a: "Non. Chaque appli fonctionne sans compte. Un compte n'est nécessaire que pour les deux fonctions payantes : la synchronisation cloud et l'accès MCP.",
+          a: "Non. Chaque appli fonctionne sans compte. Un compte n'est nécessaire que pour les deux fonctions payantes : la synchronisation cloud et le point d'accès MCP cloud. Le MCP local ne demande aucun compte.",
         },
         {
           q: "Est-ce gratuit ?",
-          a: "Les applis sont gratuites. La synchronisation cloud et l'accès MCP sont les fonctions payantes : les deux sont incluses dans l'abonnement Pro à US$9.90 par mois. Vous payez directement votre fournisseur de modèle pour l'usage de l'API — le coût dépend du modèle choisi.",
+          a: "Les applis sont gratuites. La synchronisation cloud et le point d'accès MCP cloud sont les fonctions payantes, incluses dans l'abonnement Pro à US$9.90 par mois. Le MCP local — le serveur renota-mcp open source que vous hébergez — est gratuit. Vous payez directement votre fournisseur de modèle pour l'usage de l'API.",
         },
         {
           q: "Où vont mes données ?",
@@ -245,7 +245,7 @@ export const fr: Content = {
         },
         {
           q: "Puis-je connecter ma base de connaissances à Claude Code ou Cursor ?",
-          a: "Oui. Créez une clé API sur la page du compte, puis pointez votre agent vers le point d'accès MCP avec cette clé. Cela fait partie du forfait Pro et c'est en lecture seule : un agent peut lire vos entrées, pas les modifier.",
+          a: "Oui, de deux façons. Le point d'accès cloud fait partie de Pro : créez une clé API sur la page du compte et pointez votre agent dessus. Ou lancez localement le serveur renota-mcp, gratuit et open source, sans compte. Dans les deux cas l'accès est en lecture seule.",
         },
       ],
     },
@@ -499,7 +499,7 @@ export const fr: Content = {
           },
           {
             q: "L'extension Chrome peut-elle lire cette bibliothèque ?",
-            a: "Oui : avec la synchronisation cloud activée, l'extension et le plugin partagent la même bibliothèque. Vous pouvez aussi brancher Claude, Cursor et d'autres clients MCP sur renota-mcp pour interroger les deux côtés.",
+            a: "Oui. Avec la synchronisation cloud, l'extension et le plugin partagent la même bibliothèque entre appareils — cette partie demande Pro. À côté, le serveur renota-mcp gratuit tourne sur votre machine, lit la bibliothèque locale et permet à Claude, Cursor et d'autres agents d'interroger les deux côtés, sans compte et sans rien envoyer.",
           },
           {
             q: "Fonctionne-t-il avec les autres plugins Zotero ?",
@@ -627,7 +627,7 @@ export const fr: Content = {
   pricing: {
     title: "Tarifs",
     intro:
-      "Les trois applis sont gratuites avec votre propre clé API. Ce que vous payez, c'est un seul abonnement Pro — US$9.90 par mois, qui couvre la synchronisation cloud entre le navigateur, Zotero et votre téléphone, ainsi que l'accès en lecture à votre base de connaissances via MCP.",
+      "Les trois applis sont gratuites avec votre propre clé API. Ce que vous payez, c'est un seul abonnement Pro — US$9.90 par mois, qui couvre la synchronisation cloud entre le navigateur, Zotero et votre téléphone, ainsi que le MCP cloud : l'accès en lecture à votre base de connaissances depuis n'importe quel appareil.",
     badge: "Résiliable à tout moment",
     plansTitle: "Deux forfaits, une base de connaissances",
     free: {
@@ -640,6 +640,7 @@ export const fr: Content = {
         "Votre propre clé API — l'usage du modèle est facturé par votre fournisseur",
         "Les extraits, surlignages et notes restent sur votre appareil",
         "Aucun paiement nécessaire pour commencer",
+        "Serveur MCP local pour les agents — open source, auto-hébergé, rien ne quitte votre appareil",
       ],
       cta: "Obtenir les applis",
     },
@@ -647,24 +648,24 @@ export const fr: Content = {
       name: "Pro",
       price: "$9.90",
       period: "par mois",
-      summary: "Activez la synchronisation cloud pour que la même base de connaissances suive chaque appareil — et laissez les agents la lire via MCP.",
+      summary: "Activez la synchronisation cloud pour que la même base de connaissances suive chaque appareil — et laissez les agents la lire via le MCP cloud.",
       features: [
         "Tout ce qui est inclus dans Gratuit",
         "200 MB de stockage cloud pour votre base de connaissances",
         "Les mêmes extraits dans le navigateur, dans Zotero et sur votre téléphone",
         "Connectez-vous sur un nouvel appareil et continuez à lire, à interroger",
         "Les suppressions sont synchronisées aussi : rien ne réapparaît sur un autre appareil",
-        "Donnez à Claude Code, Cursor et d'autres agents un accès en lecture via MCP",
+        "MCP cloud : Claude Code, Cursor et d'autres agents lisent la base synchronisée entre vos appareils",
       ],
       cta: "S'abonner",
     },
     note:
-      "Les prix sont en dollars américains, facturés mensuellement d'avance. Votre clé API ne quitte jamais votre appareil — l'abonnement couvre la synchronisation cloud et l'accès MCP. Résiliable à tout moment ; l'accès se poursuit jusqu'à la fin de la période déjà payée.",
+      "Les prix sont en dollars américains, facturés mensuellement d'avance. Votre clé API ne quitte jamais votre appareil — l'abonnement couvre la synchronisation cloud et le point d'accès MCP cloud. Résiliable à tout moment ; l'accès se poursuit jusqu'à la fin de la période déjà payée.",
     faqTitle: "Questions sur l'abonnement",
     faq: [
       {
         q: "Est-ce que je paie toujours l'usage du modèle ?",
-        a: "Oui. L'abonnement couvre la synchronisation cloud et l'accès MCP. Les appels au modèle vont directement au fournisseur que vous avez configuré et sont facturés par lui, jamais par nous.",
+        a: "Oui. L'abonnement couvre la synchronisation cloud et le point d'accès MCP cloud. Les appels au modèle vont directement au fournisseur que vous avez configuré et sont facturés par lui, jamais par nous.",
       },
       {
         q: "Que se passe-t-il si je résilie ?",
@@ -672,7 +673,7 @@ export const fr: Content = {
       },
       {
         q: "Puis-je utiliser les applis sans abonnement ?",
-        a: "Oui. Les trois applis fonctionnent pleinement sur votre appareil avec votre propre clé API. Seules la synchronisation cloud et l'accès MCP demandent un abonnement.",
+        a: "Oui. Les trois applis fonctionnent pleinement sur votre appareil avec votre propre clé API. Seules la synchronisation cloud et le point d'accès MCP cloud demandent un abonnement. Le MCP local est gratuit.",
       },
       {
         q: "Comment payer ?",
@@ -791,7 +792,7 @@ export const fr: Content = {
     keys: {
       label: "Clés API pour les agents",
       intro:
-        "Laissez n'importe quel agent IA — Claude Code, Cursor, DSH — rechercher votre base de connaissances via MCP. Les clés sont en lecture seule : un agent peut trouver et lire ce que vous avez enregistré, jamais le modifier.",
+        "Laissez n'importe quel agent IA — Claude Code, Cursor, DSH — rechercher votre base de connaissances via le point d'accès MCP cloud. Les clés sont en lecture seule : un agent peut trouver et lire ce que vous avez enregistré, jamais le modifier.",
       empty: "Aucune clé pour l'instant.",
       namePlaceholder: "À quoi sert cette clé ? ex. Claude Code",
       create: "Créer une clé",
@@ -810,7 +811,7 @@ export const fr: Content = {
       limitReached: "Vous avez atteint la limite de clés actives. Révoquez-en une que vous n'utilisez plus.",
       loadFailed: "Impossible de charger vos clés API.",
       createFailed: "Impossible de créer la clé. Veuillez réessayer.",
-      requiresPro: "L'accès MCP est l'une des fonctions payantes. Abonnez-vous pour connecter un agent.",
+      requiresPro: "Le point d'accès MCP cloud est une fonction payante. Abonnez-vous pour connecter un agent — ou utilisez le serveur renota-mcp local, gratuit et sans compte.",
       mcpTitle: "Point d'accès MCP",
       mcpHint: "Pointez votre agent vers cette URL et envoyez la clé comme jeton bearer.",
       configTitle: "Configuration du client",

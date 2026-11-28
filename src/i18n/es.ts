@@ -218,7 +218,7 @@ export const es: Content = {
       points: [
         "Solo lectura: un agente puede encontrar y citar tus entradas, nunca cambiarlas ni borrarlas.",
         "Las consultas en chino también funcionan: usa el mismo índice que las apps.",
-        "Requiere una cuenta en el plan Pro: crea una clave API en la página de la cuenta y ponla en la configuración de tu agente.",
+        "Dos vías: el punto de conexión en la nube necesita una cuenta Pro y una clave API creada en la página de la cuenta; el servidor local renota-mcp es gratis, de código abierto y se ejecuta en tu propio equipo.",
       ],
       endpointLabel: "Punto de conexión MCP",
       cta: "Crear una clave API en la página de la cuenta",
@@ -229,11 +229,11 @@ export const es: Content = {
       items: [
         {
           q: "¿Necesito una cuenta?",
-          a: "No. Cada app funciona sin cuenta. Solo la necesitas para las dos funciones de pago: la sincronización en la nube y el acceso MCP.",
+          a: "No. Cada app funciona sin cuenta. Solo la necesitas para las dos funciones de pago: la sincronización en la nube y el MCP en la nube. El MCP local no necesita cuenta.",
         },
         {
           q: "¿Es gratis?",
-          a: "Las apps son gratis. La sincronización en la nube y el acceso MCP son las funciones de pago, incluidas en la suscripción Pro de US$9.90 al mes. Las llamadas a la API las pagas directamente al proveedor del modelo, y el coste depende del modelo que elijas.",
+          a: "Las apps son gratis. La sincronización en la nube y el MCP en la nube son las funciones de pago, incluidas en la suscripción Pro de US$9.90 al mes. El MCP local —el servidor renota-mcp de código abierto que ejecutas tú— es gratis. Las llamadas a la API las pagas directamente al proveedor del modelo.",
         },
         {
           q: "¿A dónde van mis datos?",
@@ -245,7 +245,7 @@ export const es: Content = {
         },
         {
           q: "¿Puedo conectar mi base de conocimiento a Claude Code o Cursor?",
-          a: "Sí. Crea una clave API en la página de la cuenta y apunta tu agente al punto de conexión MCP con esa clave. Forma parte del plan Pro y es de solo lectura: un agente puede leer tus entradas, no cambiarlas.",
+          a: "Sí, de dos formas. El punto de conexión en la nube forma parte de Pro: crea una clave API en la página de la cuenta y apunta tu agente ahí. O ejecuta en local el servidor renota-mcp, gratis y de código abierto, sin cuenta. En ambos casos el acceso es de solo lectura.",
         },
       ],
     },
@@ -499,7 +499,7 @@ export const es: Content = {
           },
           {
             q: "¿Puede la extensión de Chrome leer esta biblioteca?",
-            a: "Sí: con la sincronización en la nube activada, la extensión y el plugin comparten la misma base de conocimiento. También puedes conectar Claude, Cursor y otros clientes MCP a renota-mcp para buscar en ambos lados.",
+            a: "Sí. Con la sincronización en la nube, la extensión y el plugin comparten la misma base entre dispositivos — eso requiere Pro. Aparte, el servidor renota-mcp gratuito se ejecuta en tu equipo, lee la biblioteca local y deja que Claude, Cursor y otros agentes busquen en ambos lados, sin cuenta y sin subir nada.",
           },
           {
             q: "¿Funciona junto a otros plugins de Zotero?",
@@ -627,7 +627,7 @@ export const es: Content = {
   pricing: {
     title: "Precios",
     intro:
-      "Las tres apps son gratis con tu propia clave API. La suscripción Pro, de US$9.90 al mes, cubre las dos funciones de pago: la sincronización en la nube que mantiene una misma base de conocimiento al día en el navegador, Zotero y el teléfono, y el acceso de lectura a esa base por MCP.",
+      "Las tres apps son gratis con tu propia clave API. La suscripción Pro, de US$9.90 al mes, cubre la sincronización en la nube entre el navegador, Zotero y el teléfono, y el MCP en la nube: acceso de lectura a tu base de conocimiento desde cualquier dispositivo.",
     badge: "Cancela cuando quieras",
     plansTitle: "Dos planes, una base de conocimiento",
     free: {
@@ -640,6 +640,7 @@ export const es: Content = {
         "Trae tu propia clave API: el uso del modelo te lo factura tu proveedor",
         "Los fragmentos, resaltados y notas se quedan en tu dispositivo",
         "No hace falta pagar nada para empezar",
+        "Servidor MCP local para agentes: código abierto, autoalojado, nada sale de tu dispositivo",
       ],
       cta: "Consigue las apps",
     },
@@ -647,24 +648,24 @@ export const es: Content = {
       name: "Pro",
       price: "$9.90",
       period: "al mes",
-      summary: "Activa la sincronización en la nube para que la misma base de conocimiento siga a todos tus dispositivos — y deja que los agentes la lean por MCP.",
+      summary: "Activa la sincronización en la nube para que la misma base de conocimiento siga a todos tus dispositivos — y deja que los agentes la lean por MCP en la nube.",
       features: [
         "Todo lo del plan Gratis",
         "200 MB de almacenamiento en la nube para tu base de conocimiento",
         "Los mismos fragmentos en el navegador, en Zotero y en el teléfono",
         "Inicia sesión en un dispositivo nuevo y sigue leyendo, sigue preguntando",
         "Las eliminaciones también se sincronizan, así que nada reaparece en otro dispositivo",
-        "Da a Claude Code, Cursor y otros agentes acceso de lectura por MCP",
+        "MCP en la nube: Claude Code, Cursor y otros agentes leen la base sincronizada entre tus dispositivos",
       ],
       cta: "Suscribirse",
     },
     note:
-      "Los precios están en dólares estadounidenses y se facturan por adelantado cada mes. Tu clave API nunca sale de tu dispositivo: la suscripción cubre la sincronización en la nube y el acceso MCP. Cancela cuando quieras; el acceso continúa hasta el final del periodo que ya has pagado.",
+      "Los precios están en dólares estadounidenses y se facturan por adelantado cada mes. Tu clave API nunca sale de tu dispositivo: la suscripción cubre la sincronización en la nube y el MCP en la nube. Cancela cuando quieras; el acceso continúa hasta el final del periodo que ya has pagado.",
     faqTitle: "Preguntas sobre la suscripción",
     faq: [
       {
         q: "¿Sigo pagando por el uso del modelo?",
-        a: "Sí. La suscripción cubre la sincronización en la nube y el acceso MCP. Las llamadas al modelo van directamente al proveedor que hayas configurado y te las factura él, nunca nosotros.",
+        a: "Sí. La suscripción cubre la sincronización en la nube y el MCP en la nube. Las llamadas al modelo van directamente al proveedor que hayas configurado y te las factura él, nunca nosotros.",
       },
       {
         q: "¿Qué pasa si cancelo?",
@@ -672,7 +673,7 @@ export const es: Content = {
       },
       {
         q: "¿Puedo usar las apps sin suscribirme?",
-        a: "Sí. Las tres apps funcionan por completo en tu propio dispositivo con tu propia clave API. Solo la sincronización en la nube y el acceso MCP necesitan una suscripción.",
+        a: "Sí. Las tres apps funcionan por completo en tu propio dispositivo con tu propia clave API. Solo la sincronización en la nube y el MCP en la nube necesitan una suscripción. El MCP local es gratis.",
       },
       {
         q: "¿Cómo pago?",
@@ -791,7 +792,7 @@ export const es: Content = {
     keys: {
       label: "Claves API para agentes",
       intro:
-        "Deja que cualquier agente de IA —Claude Code, Cursor, DSH— busque en tu base de conocimiento a través de MCP. Las claves son de solo lectura: un agente puede encontrar y leer lo que guardaste, nunca cambiarlo.",
+        "Deja que cualquier agente de IA —Claude Code, Cursor, DSH— busque en tu base de conocimiento a través del MCP en la nube. Las claves son de solo lectura: un agente puede encontrar y leer lo que guardaste, nunca cambiarlo.",
       empty: "Todavía no hay claves.",
       namePlaceholder: "¿Para qué es esta clave? P. ej. Claude Code",
       create: "Crear clave",
@@ -810,7 +811,7 @@ export const es: Content = {
       limitReached: "Has alcanzado el límite de claves activas. Revoca una que ya no uses.",
       loadFailed: "No se pudieron cargar tus claves API.",
       createFailed: "No se pudo crear la clave. Inténtalo de nuevo.",
-      requiresPro: "El acceso MCP es una de las funciones de pago. Suscríbete para conectar un agente.",
+      requiresPro: "El MCP en la nube es una función de pago. Suscríbete para conectar un agente, o usa el servidor local renota-mcp, gratis y sin cuenta.",
       mcpTitle: "Punto de conexión MCP",
       mcpHint: "Apunta tu agente a esta URL y envía la clave como token bearer.",
       configTitle: "Configuración del cliente",
