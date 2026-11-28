@@ -793,10 +793,13 @@ code, pre, kbd { font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Me
 .site-footer a { color: var(--text-2); font-size: 0.875rem; text-decoration: none; transition: color var(--t-fast) var(--ease); }
 .site-footer a:hover { color: var(--text); }
 .footer-bottom { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--hairline); color: var(--muted); font-size: 0.8125rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
-/* 第三方收录徽章：外观由对方的内联样式决定，这里只管它在页脚底行的位置，
-   以及不要继承 .site-footer a 的悬停提亮（它是外链卡片，不是文字链接）。 */
-.footer-bottom .footer-badge { flex: none; }
-.footer-bottom .footer-badge:hover { color: inherit; }
+/* 第三方收录徽章：外观由各家自己的内联样式 / SVG 决定，这里只管它们在页脚底行的位置，
+   以及不要继承 .site-footer a 的悬停提亮（它们是外链卡片，不是文字链接）。 */
+.footer-badges { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 12px; }
+.footer-badges .footer-badge { flex: none; }
+.footer-badges .footer-badge:hover { color: inherit; }
+/* 徽章是 <img> 或内联 flex 卡，行内基线会在图下留 4px 空隙，压掉。 */
+.footer-badges img { display: block; }
 .muted { color: var(--text-2); }
 .small { font-size: 0.875rem; }
 
@@ -844,6 +847,8 @@ code, pre, kbd { font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Me
   .hero.home { padding: 56px 0 40px; }
   .get-dialog:target { padding: 16px; }
   .get-dialog-panel { padding: 20px; }
+  /* 窄屏徽章必然换到第二行，靠左站队才跟上面的版权行对齐。 */
+  .footer-badges { justify-content: flex-start; }
 }
 
 @media (prefers-reduced-motion: reduce) {

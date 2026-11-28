@@ -350,11 +350,14 @@ components:
 
 ### 目录徽章（第三方）
 
-`shapelessai.com` 的「Featured on ShapelessAI」收录徽章，深色版，只挂首页页脚底行右侧（`src/render/layout.ts` 的 `SHAPELESS_BADGE`）。
+首页页脚底行右侧的一行外链徽章（`src/render/layout.ts` 的 `SHAPELESS_BADGE` 与 `ZIVVI_BADGE`），换收录与曝光的对价：
 
-它是外部资产：内联样式、蓝调描边、大写宽字距的 `FEATURED ON` 都由对方给定，**不套本站 token**，也是上面「不用大写字母 + 宽字距做标签」的唯一例外。不要改写它的文案、`href` 或 `rel` —— 对方用「服务端 HTML 里的真实文本 + 一条普通外链」校验收录，改了就不算数。要换外观只能整体换成对方给的另一版。
+- `shapelessai.com`「Featured on ShapelessAI」：深色卡，内联样式。
+- `zivvi.app`「Renota on Zivvi」：实时 SVG（`/badge/renota?theme=dark`），图里带当前 upvote 数。
 
-它只出现在首页：每多一页输出，就多一次到第三方的图片请求。
+两者都是外部资产：内联样式、蓝调或紫调描边、大写宽字距的 `FEATURED ON` 都由对方给定，**不套本站 token**，也是上面「不用大写字母 + 宽字距做标签」的例外。不要改写它们的文案、`href` 或 `rel`：ShapelessAI 用「服务端 HTML 里的真实文本 + 一条普通外链」校验收录，改了就不算数；Zivvi 的 SVG 要留在对方域上，下载自托管会把 upvote 数冻住。
+
+整组只出现在首页：每多一页输出，就多一次到第三方的请求。窄屏随 flex 换行，徽章本身不缩放。
 
 ## Do's and Don'ts
 
